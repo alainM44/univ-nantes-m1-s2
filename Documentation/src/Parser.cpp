@@ -16,7 +16,7 @@ vector<string> Parser::Split_meta(const string &ligne, char separator) const
 
 vector<string> Parser::Split_do(const string &ligne) const
 {
-	//
+	//sdfdsfdsf
 	int debut_donnee=0;
 	int fin_donnee;
 	vector <string> result; 
