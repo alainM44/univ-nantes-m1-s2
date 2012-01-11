@@ -13,21 +13,27 @@
 #include <unistd.h>
 #include <getopt.h>
 #include <string>
-
+#include <iostream>
 
 class Read_Param {
+
+
 private:
-	struct globalArgs_t {
-		int noLegend;				/* -I option */
-		char *langCode;				/* -l option */
-		const char *outFileName;	/* -o option */
-	} globalArgs;
+	std::string legend;
+	std::string outnamefile;
 
 
 public:
+	/**
+	 * Constructeur
+	 * Par si aucun nom de légendes ou de fichier de sortie n'est précisé en ligne de commande, les valeurs par défault suivantes sont appliquée
+	 */
 	Read_Param();
-	std::vector<std::string> Give_Param();
+	void set_Param(int argc, char* argv[]);
 	virtual ~Read_Param();
+	/**
+	 * Affichage de l'aide. En cas de demande ou en cas de mauvaise utilisation.
+	 */
 	void print_usage();
 };
 
