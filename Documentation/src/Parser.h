@@ -6,8 +6,7 @@
 
 /*! \class Parser
  * \brief classe permettant le parsing du fichier d'entrée.
- *
- *  La classe rentre les données dans des tableaux de types vector
+ * \brief La classe rentre les données dans des tableaux de types vector
  */
 class Parser {
 
