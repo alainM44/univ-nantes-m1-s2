@@ -7,9 +7,14 @@
 //============================================================================
 
 #include <iostream>
+#include "Integer.h"
 using namespace std;
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	Integer* n = new Integer(3);
+	
+	Integer m(4);
+	
+	delete n;
 	return 0;
 }
