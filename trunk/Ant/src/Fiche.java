@@ -1,5 +1,5 @@
 public class Fiche {
-
+ 
 	String m_nom;
 	String [] m_prenoms;
 	Adresse m_adresseP;
