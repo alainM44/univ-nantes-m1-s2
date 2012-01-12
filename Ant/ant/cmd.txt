@@ -1,4 +1,0 @@
-mkdir doc
-mkdir bin
-mkdir jar 
-
