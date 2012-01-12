@@ -91,7 +91,7 @@ public class ExtendedInteger {
 	}
 	public ExtendedInteger div(ExtendedInteger x){
 		if(x.representable && this.representable && x.entierR!=0 )
-			return new ExtendedInteger((short) (this.entierR*x.entierR));
+			return new ExtendedInteger((short) (this.entierR/x.entierR));
 		else if (x.representable && !this.representable )
 			return new ExtendedInteger(this.entierNR);
 		else if(!x.representable && this.representable )

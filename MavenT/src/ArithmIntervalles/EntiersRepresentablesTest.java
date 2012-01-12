@@ -16,7 +16,7 @@ public class EntiersRepresentablesTest extends TestCase{
 	}
 
 	@Test
-	public void addSimpleTest(ExtendedInteger x){
+	public void testAddSimple(){
 		
 		ExtendedInteger e1= new ExtendedInteger((short) 5);
 		ExtendedInteger e2= new ExtendedInteger((short) 2);
@@ -26,7 +26,7 @@ public class EntiersRepresentablesTest extends TestCase{
 	}
 	
 	@Test
-	public void subSimpleTest(ExtendedInteger x){
+	public void testSimple(){
 		
 		ExtendedInteger e1= new ExtendedInteger((short) 5);
 		ExtendedInteger e2= new ExtendedInteger((short) 2);
@@ -35,8 +35,10 @@ public class EntiersRepresentablesTest extends TestCase{
 		assertTrue(e3.representable);
 	}
 	
+
+
 	@Test
-	public void multSimpleTest(ExtendedInteger x){
+	public void testMultSimple(){
 		
 		ExtendedInteger e1= new ExtendedInteger((short) 5);
 		ExtendedInteger e2= new ExtendedInteger((short) 2);
@@ -46,17 +48,17 @@ public class EntiersRepresentablesTest extends TestCase{
 	}
 	
 	@Test
-	public void divSimpleTest(ExtendedInteger x){
+	public void testDivSimple(){
 		
 		ExtendedInteger e1= new ExtendedInteger((short) 6);
 		ExtendedInteger e2= new ExtendedInteger((short) 2);
-		ExtendedInteger e3= e1.mult(e2);
-		assertTrue(e3.entierR == 3);
+		ExtendedInteger e3= e1.div(e2);
+		assertTrue("val e3 : "+e3.entierR,e3.entierR == 3);
 		assertTrue(e3.representable);
 	}
 	
 	@Test
-	public void addFailTest(ExtendedInteger x){
+	public void testAddFail(){
 		
 		ExtendedInteger e1= new ExtendedInteger((short) 32767);
 		ExtendedInteger e2= new ExtendedInteger((short) 2);
@@ -65,7 +67,7 @@ public class EntiersRepresentablesTest extends TestCase{
 	}
 	
 	@Test
-	public void subFailTest(ExtendedInteger x){
+	public void testSubFail(){
 		
 		ExtendedInteger e1= new ExtendedInteger((short) -32768);
 		ExtendedInteger e2= new ExtendedInteger((short) 2);
@@ -74,7 +76,7 @@ public class EntiersRepresentablesTest extends TestCase{
 	}
 	
 	@Test
-	public void multFailTest(ExtendedInteger x){
+	public void testMultFail(){
 		
 		ExtendedInteger e1= new ExtendedInteger((short) 3000);
 		ExtendedInteger e2= new ExtendedInteger((short) 1000);
@@ -83,11 +85,11 @@ public class EntiersRepresentablesTest extends TestCase{
 	}
 	
 	@Test
-	public void divFailTest(ExtendedInteger x){
+	public void testDivFailTest(){
 		
 		ExtendedInteger e1= new ExtendedInteger((short) 6);
-		ExtendedInteger e2= new ExtendedInteger((short) 2);
-		ExtendedInteger e3= e1.mult(e2);
+		ExtendedInteger e2= new ExtendedInteger((short) 0);
+		ExtendedInteger e3= e1.div(e2);
 		assertFalse(e3.representable);
 	}
 	
