@@ -27,13 +27,11 @@ void Read_Param::print_usage(  )
 	cout << "-l or --legende  ma_legende"  << endl;
 	cout <<	"-n or --outnamefile output_name_file" << endl;
 }
-/**
- *Parcours des options et mise à jours si besoin des attributs legend et outnamefile
- */
+
 void Read_Param::set_Param(int argc,char**argv){
 
 	int c;
-	/* On parcourt la liste des options*/
+	// On parcourt la liste des options
 	while (1)
 	{
 		static struct option long_options[] =
@@ -43,13 +41,13 @@ void Read_Param::set_Param(int argc,char**argv){
 				{"outnamefile",  required_argument, 0, 'n'},
 				{0, 0, 0, 0}
 		};
-		/* Valeur de l'index des options stockée par getopt_long */
+		//Valeur de l'index des options stockée par getopt_long
 		int option_index = 0;
 
 		c = getopt_long (argc, argv, "hl:n:",
 				long_options, &option_index);
 
-		/* Test de détection de la fin des options */
+		// Test de détection de la fin des options */
 		if (c == -1)
 			break;
 
@@ -79,7 +77,7 @@ void Read_Param::set_Param(int argc,char**argv){
 			break;
 		case '?':
 			print_usage();
-			/* getopt_long already printed an error message. */
+			// getopt_long already printed an error message.
 			break;
 
 		default:
