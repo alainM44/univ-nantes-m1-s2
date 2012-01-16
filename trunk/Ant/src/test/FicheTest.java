@@ -27,7 +27,6 @@ public class FicheTest extends TestCase {
 		f2.setM_prenoms("Jean", 1);
 		f2.setM_prenoms("Joseph", 2);
 		assertTrue("Coucou", f1.compare(f2));
-
 	}
 	
 	@Test
