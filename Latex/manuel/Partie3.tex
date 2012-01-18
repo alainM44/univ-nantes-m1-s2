@@ -1,2 +1,49 @@
-\chapter{Fichier d'entrée}\label{chap:fichDonnees}
+\chapter{Fichier d'entrée}
+\label{chap:fichDonnees}
+L'utilisation de LoCD requière en entrée un fichier texte à la sytaxe précise. Ce fichier est composé de deux parties : Méta données et données.%références à faire
+\section{Partie Meta données du fichier d'entrée}
+C'est ici que sont définies si besoins les informations décrivant le diagramme. Il est possble d'y préciser 3 sortes d'informations. Un non respect du format qui va ere décrit ci-après soulevera l'erreur suivante : 
+\begin{figure}[htbp]
+  \includegraphics[scale=0.40]{img/eformatfichier}
+  \caption{Erreur}
+  \label{fig:enbdonees}
+\end{figure}
+
+
+\begin{enumerate}
+\item
+Le titre 
+\item
+Un sous titre
+\item
+Une note
+\end{enumerate}
+Ces trois donnée doivent être décrite de la manière suivante : 
+\begin{enumerate}
+\item
+Une ligne par information 
+\item
+Une ligne commence par  « > »
+\item
+Un des trois mots clefs suivants : \begin{verbatim} TITLE SUBTITLE NOTE \end{verbatim}
+
+\end{enumerate}
+
+
+\section{Données}
+Elles seront renseignées sur deux lignes. La première renseignera les étiquettes des données. Elles seront séparées par un ou des espaces (ou caractères de tabulation). Les valeurs seront sur la ligne suivantes. Les espaces (et\/ou caractères de tabulation) permettent de séparer deux étiquettes ou deux données :
+\begin{verbatim}
+Etiquette1 Etiquette2     Etiquette3 			Etiquette4
+ \end{verbatim} 
+ 
+
+
+\section{Exemple de fichier d'entrée} 
+Toutes les lignes ont une taille d’au maximum 80 colonnes. Dans le cas contraire l'erreur suivante sera relevée : 
+\begin{figure}[htbp]
+  \includegraphics[scale=0.40]{img/enbdonnes}
+  \caption{Erreur}
+  \label{fig:enbdonees}
+\end{figure}
+
 
