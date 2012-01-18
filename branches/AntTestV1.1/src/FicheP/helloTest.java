@@ -14,6 +14,7 @@ import abbot.finder.MultipleComponentsFoundException;
 import abbot.finder.matchers.ClassMatcher;
 import abbot.tester.ComponentTester;
 import abbot.tester.FrameTester;
+import abbot.tester.JTextFieldTester;
 import junit.extensions.abbot.ComponentTestFixture;
 
 /**
@@ -24,81 +25,38 @@ import junit.extensions.abbot.ComponentTestFixture;
 public class helloTest extends ComponentTestFixture
 {
 
-	private ComponentTester tester;
+	private ComponentTester testerFrame;
+	private ComponentTester testerField;
+	private Ihm_gestion_graph ihm;
 
 	protected void setUp()
 	{
-		tester = FrameTester.getTester(hello.class);
+		ihm = new Ihm_gestion_graph();
+		testerFrame = FrameTester.getTester(Ihm_gestion_graph.class);
+		ihm.setVisible(true);
 	}
 
 	private String gotClick;
 
-	public void testClick() throws ComponentNotFoundException, MultipleComponentsFoundException
+	public void testAjoutFiche() throws ComponentNotFoundException,
+			MultipleComponentsFoundException
 	{
-		ActionListener al = new ActionListener()
-		{
-			public void actionPerformed(ActionEvent ev)
-			{
-				gotClick = ev.getActionCommand();
-			}
-		};
-
-		Component nom = new JTextField();
-		   nom = (JTextField) tester.getFinder().find(new ClassMatcher(JTextField.class));
-		tester.actionClick(nom);
-
-		hello left = new hello();
-		// hello right = new hello(hello.RIGHT);
-		// hello up = new hello(hello.UP);
-		// hello down = new hello(hello.DOWN);
-
-		// left.addActionListener(al);
-		// right.addActionListener(al);
-		// up.addActionListener(al);
-		// down.addActionListener(al);
-
-		JPanel pane = new JPanel();
-		pane.add(left);
-
-		// This method provided by ComponentTestFixture
-		showFrame(pane);
-
-		gotClick = null;
-		tester.actionClick(pane);
-
-		assertEquals("Action failed", "Ajout", gotClick);
-		gotClick = null;
-		// tester.actionClick(right);
-		// assertEquals("Action failed", left.getBut().getText(), gotClick);
-		// // gotClick = null;
-		// tester.actionClick(up);
-		// assertEquals("Action failed", hello.UP, gotClick);
-		// gotClick = null;
-		// tester.actionClick(down);
-		// assertEquals("Action failed", hello.DOWN, gotClick);
+		// On clique sur chaque champs de texte puis on rentre la valeur
+		testerFrame.actionClick(ihm.getJtf_nom());
+		testerFrame.keyString("Dupond");
+		assertEquals("Valeur attendu : Dupont Valeur actuelle : "
+				+ ihm.getJtf_nom().getText(), "Dupond", ihm.getJtf_nom()
+				.getText());
+		testerFrame.actionClick(ihm.getJtf_num());
+		testerFrame.keyString("12");
+		assertEquals("Valeur attendu : 12 Valeur actuelle : "
+				+ ihm.getJtf_num().getText(), "12", ihm.getJtf_num()
+				.getText());
+		Fiche f1 = new Fiche("Dupond", new Adresse(12, "rue de la cote", 44000,
+				"France"), "dupond@yahoo.fr", 1478964512);
 	}
 
 	private int count = 0;
-
-	public void testRepeatedFire()
-	{
-		hello fen = new hello();
-		ActionListener al = new ActionListener()
-		{
-			public void actionPerformed(ActionEvent ev)
-			{
-				++count;
-			}
-		};
-
-		showFrame(fen);
-
-		// Hold the button down for 5 seconds
-		tester.mousePress(fen);
-		tester.actionDelay(5000);
-		tester.mouseRelease();
-		assertTrue("Didn't get any repeated events", count > 1);
-	}
 
 	public helloTest(String name)
 	{
