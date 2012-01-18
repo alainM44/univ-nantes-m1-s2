@@ -30,6 +30,76 @@ public class Ihm_gestion_graph extends JFrame {
 
 
 
+	public List<Fiche> getFiches()
+	{
+		return fiches;
+	}
+
+	public ModeleDynamiqueObjet getModele()
+	{
+		return modele;
+	}
+
+	public JTable getTableau()
+	{
+		return tableau;
+	}
+
+	public JTextField getJtf_nom()
+	{
+		return jtf_nom;
+	}
+
+	public JTextField getJtf_prenom()
+	{
+		return jtf_prenom;
+	}
+
+	public JTextField getJtf_mail()
+	{
+		return jtf_mail;
+	}
+
+	public JTextField getJtf_rue()
+	{
+		return jtf_rue;
+	}
+
+	public JTextField getJtf_num()
+	{
+		return jtf_num;
+	}
+
+	public JTextField getJtf_codep()
+	{
+		return jtf_codep;
+	}
+
+	public JTextField getJtf_pays()
+	{
+		return jtf_pays;
+	}
+
+	public JTextField getJtf_tel()
+	{
+		return jtf_tel;
+	}
+
+	public JButton getBut_add()
+	{
+		return but_add;
+	}
+
+	public JButton getBut_sup()
+	{
+		return but_sup;
+	}
+
+	public JButton getBut_comp()
+	{
+		return but_comp;
+	}
+
 	public Ihm_gestion_graph() {
 		super();
 
@@ -104,7 +174,7 @@ public class Ihm_gestion_graph extends JFrame {
 
 	private class RemoveAction extends AbstractAction {
 		private RemoveAction() {
-			super("Supprimmer");
+			super("Supprimer");
 		}
 
 		public void actionPerformed(ActionEvent e) {

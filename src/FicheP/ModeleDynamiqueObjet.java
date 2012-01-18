@@ -18,24 +18,24 @@ public class ModeleDynamiqueObjet extends AbstractTableModel {
 		this.fiches=fiches;
 		
 
-		Fiche f1 = new Fiche("Dupond", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
-//		f1.setM_prenoms("Jacque", 0);
-//		f1.setM_prenoms("Jean", 1);
-//		f1.setM_prenoms("Joseph", 2);
-
-		Fiche f2= new Fiche("Dupont", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
-//		f2.setM_prenoms("Jacque", 0);
-//		f2.setM_prenoms("Jean", 1);
-//		f2.setM_prenoms("Joseph", 2);
-		Fiche f3= new Fiche("Durand", new Adresse(8, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
-//		f3.setM_prenoms("George", 0);
-//		f3.setM_prenoms("Ramir", 1);
-		Fiche f4 = new Fiche("Dupond", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
-	
-		fiches.add(f1);
-		fiches.add(f2);
-		fiches.add(f3);
-		fiches.add(f4);
+//		Fiche f1 = new Fiche("Dupond", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
+////		f1.setM_prenoms("Jacque", 0);
+////		f1.setM_prenoms("Jean", 1);
+////		f1.setM_prenoms("Joseph", 2);
+//
+//		Fiche f2= new Fiche("Dupont", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
+////		f2.setM_prenoms("Jacque", 0);
+////		f2.setM_prenoms("Jean", 1);
+////		f2.setM_prenoms("Joseph", 2);
+//		Fiche f3= new Fiche("Durand", new Adresse(8, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
+////		f3.setM_prenoms("George", 0);
+////		f3.setM_prenoms("Ramir", 1);
+//		Fiche f4 = new Fiche("Dupond", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
+//	
+//		fiches.add(f1);
+//		fiches.add(f2);
+//		fiches.add(f3);
+//		fiches.add(f4);
 	}
 		
 
