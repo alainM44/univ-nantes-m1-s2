@@ -1,1 +1,13 @@
 \chapter{Utilisation console}
+ 
+LoCD peut être utilisé uniquement en ligne de commande. Cette partie demandes des connaissances pré requises sur les commandes unix. En effet seul les fonctionalités de l'outil seront explicitées. La mecanisme des options est similaire à toute autres commandes unix. Pour plus de d'information sur les commandes unix, nous recommandons l'ouvrage suivant : \cite{linux}
+\section{Utilisation basique}
+La simple commande suivante générera un pdf avec d'un histogrammes avec les paramètres par défaut : % rajouter ref!!!!
+\begin{lstlisting}
+LoCD inputfile.txt
+\end{lstlisting}
+Le diagramme obtenu stocké dans le dossier courant sous le nom de
+\begin{lstlisting} 
+new_file.pdf
+\end{lstlisting}
+% et à les caractéristiques graphiques suivantes ~\ref{fig:dbatons}. Le changement du nom de ficher de sortie peut être modifier en rajoutant l'option \begin{lstlisting}-f outfilename \end{lstlisting} ou dans sa version longue \begin{lstlisting}--filename\end{listing}
