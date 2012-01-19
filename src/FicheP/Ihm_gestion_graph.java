@@ -27,76 +27,59 @@ public class Ihm_gestion_graph extends JFrame {
 	private JButton but_sup = new JButton(new RemoveAction());
 	private JButton but_comp = new JButton(new CompareAction());
 
-
-
-
-	public List<Fiche> getFiches()
-	{
+	public List<Fiche> getFiches() {
 		return fiches;
 	}
 
-	public ModeleDynamiqueObjet getModele()
-	{
+	public ModeleDynamiqueObjet getModele() {
 		return modele;
 	}
 
-	public JTable getTableau()
-	{
+	public JTable getTableau() {
 		return tableau;
 	}
 
-	public JTextField getJtf_nom()
-	{
+	public JTextField getJtf_nom() {
 		return jtf_nom;
 	}
 
-	public JTextField getJtf_prenom()
-	{
+	public JTextField getJtf_prenom() {
 		return jtf_prenom;
 	}
 
-	public JTextField getJtf_mail()
-	{
+	public JTextField getJtf_mail() {
 		return jtf_mail;
 	}
 
-	public JTextField getJtf_rue()
-	{
+	public JTextField getJtf_rue() {
 		return jtf_rue;
 	}
 
-	public JTextField getJtf_num()
-	{
+	public JTextField getJtf_num() {
 		return jtf_num;
 	}
 
-	public JTextField getJtf_codep()
-	{
+	public JTextField getJtf_codep() {
 		return jtf_codep;
 	}
 
-	public JTextField getJtf_pays()
-	{
+	public JTextField getJtf_pays() {
 		return jtf_pays;
 	}
 
-	public JTextField getJtf_tel()
-	{
+	public JTextField getJtf_tel() {
 		return jtf_tel;
 	}
 
-	public JButton getBut_add()
-	{
+	public JButton getBut_add() {
 		return but_add;
 	}
 
-	public JButton getBut_sup()
-	{
+	public JButton getBut_sup() {
 		return but_sup;
 	}
 
-	public JButton getBut_comp()
-	{
+	public JButton getBut_comp() {
 		return but_comp;
 	}
 
@@ -113,7 +96,7 @@ public class Ihm_gestion_graph extends JFrame {
 		jtf_pays.addMouseListener(new jtfhandler());
 		jtf_rue.addMouseListener(new jtfhandler());
 		jtf_tel.addMouseListener(new jtfhandler());
-		
+
 		left_box.add(jtf_nom);
 		left_box.add(jtf_prenom);
 		left_box.add(jtf_mail);
@@ -123,21 +106,18 @@ public class Ihm_gestion_graph extends JFrame {
 		left_box.add(jtf_pays);
 		left_box.add(jtf_tel);
 
-
 		Box but_box = Box.createHorizontalBox();
-		//sbut_add.addActionListener(new button_handler());
+		// sbut_add.addActionListener(new button_handler());
 
 		but_box.add(but_add);
 		but_box.add(but_sup);
 		left_box.add(but_box);
-		getContentPane().add(left_box,BorderLayout.EAST);
+		getContentPane().add(left_box, BorderLayout.EAST);
 
 		setTitle("JTable avec mod�le dynamique");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		tableau = new JTable(modele);
-
-
 
 		getContentPane().add(new JScrollPane(tableau), BorderLayout.WEST);
 
@@ -148,7 +128,6 @@ public class Ihm_gestion_graph extends JFrame {
 		boutons.add(but_comp);
 		boutons.add(Box.createHorizontalGlue());
 		boutons.add(lab);
-
 
 		getContentPane().add(boutons, BorderLayout.SOUTH);
 
@@ -168,7 +147,10 @@ public class Ihm_gestion_graph extends JFrame {
 		}
 
 		public void actionPerformed(ActionEvent e) {
-			modele.addFiche(new Fiche(jtf_nom.getText(), new Adresse(Integer.parseInt(jtf_num.getText()), jtf_rue.getText(), Integer.parseInt(jtf_codep.getText()), jtf_pays.getText()), jtf_mail.getText(),Integer.parseInt(jtf_num.getText())));
+			modele.addFiche(new Fiche(jtf_nom.getText(), new Adresse(Integer
+					.parseInt(jtf_num.getText()), jtf_rue.getText(), Integer
+					.parseInt(jtf_codep.getText()), jtf_pays.getText()),
+					jtf_mail.getText(), Integer.parseInt(jtf_tel.getText())));
 		}
 	}
 
@@ -180,11 +162,12 @@ public class Ihm_gestion_graph extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			int[] selection = tableau.getSelectedRows();
 
-			for(int i = selection.length - 1; i >= 0; i--){
+			for (int i = selection.length - 1; i >= 0; i--) {
 				modele.removeFiche(selection[i]);
 			}
 		}
 	}
+
 	private class CompareAction extends AbstractAction {
 		private CompareAction() {
 			super("Comparer");
@@ -195,56 +178,54 @@ public class Ihm_gestion_graph extends JFrame {
 			// TODO Auto-generated method stub
 
 			int[] selection = tableau.getSelectedRows();
-			//			System.out.println(selection.length);
-			//			System.out.println(fiches.get(selection[0]).m_nom);
-			//			System.out.println(fiches.get(selection[1]).m_nom);
-			if	(modele.compFiche(selection[0], selection[1]))
+			// System.out.println(selection.length);
+			// System.out.println(fiches.get(selection[0]).m_nom);
+			// System.out.println(fiches.get(selection[1]).m_nom);
+			if (modele.compFiche(selection[0], selection[1]))
 				lab.setText("EGALES");
 			else
 				lab.setText(" PAS EGALES");
 
-
 		}
 	}
-	
-	private class jtfhandler implements MouseListener {
 
-	
+	private class jtfhandler implements MouseListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			JTextField source =(JTextField)e.getSource();
+			JTextField source = (JTextField) e.getSource();
 			source.setSelectionStart(0);
 			source.setSelectionEnd(source.getText().length());
-			
+
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseExited(MouseEvent arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mousePressed(MouseEvent arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
-		
+
 	}
+
 	public JLabel getLab() {
 		return lab;
 	}
@@ -252,6 +233,5 @@ public class Ihm_gestion_graph extends JFrame {
 	public void setLab(JLabel lab) {
 		this.lab = lab;
 	}
-
 
 }
