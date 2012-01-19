@@ -1,13 +1,64 @@
 \chapter{Utilisation console}
  
 LoCD peut être utilisé uniquement en ligne de commande. Cette partie demandes des connaissances pré requises sur les commandes unix. En effet seul les fonctionalités de l'outil seront explicitées. La mecanisme des options est similaire à toute autres commandes unix. Pour plus de d'information sur les commandes unix, nous recommandons l'ouvrage suivant : \cite{linux}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Utilisation basique}
+\label{sec:usebas}
 La simple commande suivante générera un pdf avec d'un histogrammes avec les paramètres par défaut : % rajouter ref!!!!
-\begin{lstlisting}
-LoCD inputfile.txt
-\end{lstlisting}
-Le diagramme obtenu stocké dans le dossier courant sous le nom de
-\begin{lstlisting} 
-new_file.pdf
-\end{lstlisting}
-% et à les caractéristiques graphiques suivantes ~\ref{fig:dbatons}. Le changement du nom de ficher de sortie peut être modifier en rajoutant l'option \begin{lstlisting}-f outfilename \end{lstlisting} ou dans sa version longue \begin{lstlisting}--filename\end{listing}
+\begin{verbatim}LoCD inputfile.txt\end{verbatim}Les choix du type de diagramme est possible grâce à l'option \verb+-t+ (ou \verb+--type+ ) suivit de : 
+\begin{itemize}
+\item
+\verb+circulaire+ pour un diagramme circulaire.
+\item
+\verb+histogramme+ pour un histogramme.
+\item
+\verb+nuage+ pour un diagramme en nuage de points.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Gestion des méta données}
+Une option pour chacune des méta données disponible (cf : ~\ref{chap:fichDonnees}) est définie :
+\begin{itemize}
+\item
+\verb+-t+ ou \verb+--title+ pour afficher le titre.
+\item
+\verb+-s+ ou \verb+--subtitle+ pour afficher le sous titre.
+\item
+\verb+-n+ ou \verb+--note+ pour afficher le sous titre.
+\end{itemize}
+Si une de ces options est renseignée, il est possible de rajouter une valeur pour le paramêtre concerné. Par exemple : 
+\begin{verbatim}
+LoCD --title "Mon titre de diagramme" --subtitle "le sous" titre"
+\end{verbatim} 
+Dans le cas où l'une de ces options serait rajoutée ; et que aucune valeur ne lui est attribuée (en ligne de commande ou dans le fichier d'entrée) ; un avertissement apparaîtra à l'execution. Le diagramme n'aura pas de sous titre.\label{err:optmissing} % rajouter une ref!!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Mise en forme reglages divers}
+Le diagramme obtenu dans le cas d'une utilisation basique (~\ref{sec:usebas}) est stocké dans le dossier courant sous le nom de \verb+new_file.pdf+ et à les caractéristiques graphiques suivantes illustrée dans la figure :  ~\ref{fig:dbatons}.\\ Le changement du nom de ficher de sortie peut être modifier en rajoutant l'option \verb+-f outfilename+ ou dans sa version longue \verb+--filename+. 
+\subsection{Couleurs}
+\label{subsec:couleurs}
+L'option \verb+-c+ (\verb+--couleur+) permet d'éditer la couleur de chaque données. Dans cette version LoCD propose une palette de 6 couleurs :
+\begin{itemize}
+\item
+orange
+\item
+rouge
+\item
+vert
+\item
+bleu
+\item
+bleu ciel
+\item
+violet
+\end{itemize}
+Deux méthodes sont possibles :
+\begin{enumerate}
+\item
+Faire suivre l'option d'un nom de couleur (listées ci-dessus). Le diagramme aura alors cette unique couleur.
+\item
+Faire suivre l'option du nom de la donnée puis d'un «couple» nom\_donnee:couleur séparé par le caractère \verb+:+. Une ou toutes les données peuvent être ainsi précisées. Dans tout autre cas, la couleur par défaut sera appliquée.
+\end{enumerate}   
+\subsection{Mise en page}
+\label{subsec:misepage}
+Dans la configuration par défault. Le diagramme est centrée dans une page de format A4 («au centre»). Le titre et le sous titre sont placés au dessus du diagramme (au nord»). La note elle, est placée à droite de des titres («nord est»). La figure \ref{fig:dnuages} est l'illustration de cette mise en page par défaut.
+ 
