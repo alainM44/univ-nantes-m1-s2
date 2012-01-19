@@ -2,14 +2,7 @@
 \label{chap:fichDonnees}
 L'utilisation de LoCD requière en entrée un fichier texte à la sytaxe précise. Ce fichier est composé de deux parties : Méta données et données.%références à faire
 \section{Partie Meta données du fichier d'entrée}
-C'est ici que sont définies si besoins les informations décrivant le diagramme. Il est possble d'y préciser 3 sortes d'informations. Un non respect du format qui va ere décrit ci-après soulevera l'erreur suivante : 
-\begin{figure}[htbp]
-  \includegraphics[scale=0.40]{img/eformatfichier}
-  \caption{Erreur}
-  \label{fig:enbdonees}
-\end{figure}
-
-
+C'est ici que sont définies si besoins les informations décrivant le diagramme. Il est possble d'y préciser 3 sortes d'informations. 
 \begin{enumerate}
 \item
 Le titre 
@@ -26,8 +19,14 @@ Une ligne par information
 Une ligne commence par  « > »
 \item
 Un des trois mots clefs suivants : \begin{verbatim} TITLE SUBTITLE NOTE \end{verbatim}
-
 \end{enumerate}
+Un non respect du format qui va être décrit ci-après soulevera l'erreur suivante : 
+\begin{figure}[htbp]
+\centering
+  \includegraphics[scale=0.40]{img/eformatfichier}
+  \caption{Erreur : format}
+  \label{fig:enbdonees}
+\end{figure}
 
 
 \section{Données}
@@ -36,14 +35,24 @@ Elles seront renseignées sur deux lignes. La première renseignera les étiquet
 Etiquette1 Etiquette2     Etiquette3 			Etiquette4
  \end{verbatim} 
  
-
-
-\section{Exemple de fichier d'entrée} 
 Toutes les lignes ont une taille d’au maximum 80 colonnes. Dans le cas contraire l'erreur suivante sera relevée : 
 \begin{figure}[htbp]
+  \centering
   \includegraphics[scale=0.40]{img/enbdonnes}
-  \caption{Erreur}
+  \caption{Erreur : nb données}
   \label{fig:enbdonees}
 \end{figure}
 
 
+
+\section{Exemple de fichier d'entrée}
+Pour synthétiser les différents abordés dans ce chapitre voici un exemple de fichier d'entrée valide : 
+\begin{verbatim}
+>TITLE: Les plus grands pays du monde pays (~2010)
+>SUBTITLE: En km²
+>Note: La France n'est que 42\up{ème}
+
+Russie      Canada 	   États-Unis    Chine 	    Brésil 
+17 098 242  9 984 670  9 629 091  	9 596 961  		8 514 877 km2 	
+\end{verbatim}
+sources \cite{wiki}
