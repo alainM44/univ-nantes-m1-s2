@@ -18,10 +18,10 @@ public class Ihm_gestion_graph extends JFrame {
 	private JTextField jtf_prenom = new JTextField("Entrez un prenom");
 	private JTextField jtf_mail = new JTextField("Entrez une adresse mail");
 	private JTextField jtf_rue = new JTextField("Entrez une rue");
-	private JTextField jtf_num = new JTextField("Entrez un numéro");
+	private JTextField jtf_num = new JTextField("Entrez un numéro de rue");
 	private JTextField jtf_codep = new JTextField("Entrez un codep");
 	private JTextField jtf_pays = new JTextField("Entrez un pays");
-	private JTextField jtf_tel = new JTextField("Entrez un numéro");
+	private JTextField jtf_tel = new JTextField("Entrez un telephone");
 	private JLabel lab = new JLabel("");
 	private JButton but_add = new JButton(new AddAction());
 	private JButton but_sup = new JButton(new RemoveAction());
@@ -62,7 +62,7 @@ public class Ihm_gestion_graph extends JFrame {
 		left_box.add(but_box);
 		getContentPane().add(left_box,BorderLayout.EAST);
 
-		setTitle("JTable avec mod�le dynamique");
+		setTitle("JTable avec modele dynamique");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		tableau = new JTable(modele);
@@ -89,7 +89,8 @@ public class Ihm_gestion_graph extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new Ihm_gestion_graph().setVisible(true);
+		JFrame f = new Ihm_gestion_graph();
+		f.setVisible(true);
 	}
 
 	private class AddAction extends AbstractAction {
@@ -98,7 +99,7 @@ public class Ihm_gestion_graph extends JFrame {
 		}
 
 		public void actionPerformed(ActionEvent e) {
-			modele.addFiche(new Fiche(jtf_nom.getText(), new Adresse(Integer.parseInt(jtf_num.getText()), jtf_rue.getText(), Integer.parseInt(jtf_codep.getText()), jtf_pays.getText()), jtf_mail.getText(),Integer.parseInt(jtf_num.getText())));
+			modele.addFiche(new Fiche(jtf_nom.getText(),jtf_prenom.getText(), new Adresse(Integer.parseInt(jtf_num.getText()), jtf_rue.getText(), Integer.parseInt(jtf_codep.getText()), jtf_pays.getText()), jtf_mail.getText(),Integer.parseInt(jtf_num.getText())));
 		}
 	}
 
