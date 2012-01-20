@@ -3,8 +3,8 @@ package genTache;
 public class TachePeriodique extends AbstractTache {
 	private int Pi;
 
-	public TachePeriodique(int ci, int di,int id,int pi) {
-		super(ci, di,id);
+	public TachePeriodique(int id,int ci, int di,int pi) {
+		super(id,ci, di);
 		Pi=pi;
 	}
 
