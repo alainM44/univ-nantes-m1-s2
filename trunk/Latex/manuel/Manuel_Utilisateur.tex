@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,utf8x]{report}
+\documentclass[12pt,a4paper,utf8x,titlepage]{report}
 \usepackage [frenchb]{babel}
 \usepackage[utf8]{inputenc}  
 \usepackage[T1]{fontenc} 
@@ -28,34 +28,35 @@
 % POur crééer un index
 \usepackage{makeidx}
 \usepackage{graphicx}
+\usepackage[tt]{titlepic}
 \usepackage{tocbibind}
 \hypersetup{
-backref=true,
-%permet d'ajouter des liens dans...
-pagebackref=true,%...les bibliographies
-hyperindex=true, %ajoute des liens dans les index.
-colorlinks=true, %colorise les liens
-breaklinks=true, %permet le retour à la ligne dans les liens trop longs
-urlcolor= blue, %couleur des hyperliens
-linkcolor= blue, %couleur des liens internes
-bookmarks=true, %créé des signets pour Acrobat
-bookmarksopen=true,
-%si les signets Acrobat sont créés,
-%les afficher complètement.
-pdftitle={Manuel Utilisateur pour LoCD}, %informations apparaissant dans
-pdfauthor={MARGUERITE Alain\\ RINCE Romain},
-%dans les informations du document
-pdfsubject={LoCD}
-%sous Acrobat.
+  backref=true,
+  %permet d'ajouter des liens dans...
+  pagebackref=true,%...les bibliographies
+  hyperindex=true, %ajoute des liens dans les index.
+  colorlinks=true, %colorise les liens
+  breaklinks=true, %permet le retour à la ligne dans les liens trop longs
+  urlcolor= blue, %couleur des hyperliens
+  linkcolor= blue, %couleur des liens internes
+  bookmarks=true, %créé des signets pour Acrobat
+  bookmarksopen=true,
+  %si les signets Acrobat sont créés,
+  %les afficher complètement.
+  pdftitle={Manuel Utilisateur pour LoCD}, %informations apparaissant dans
+  pdfauthor={MARGUERITE Alain\\ RINCE Romain},
+  %dans les informations du document
+  pdfsubject={LoCD}
+  %sous Acrobat.
 }
 %pied de page
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \fancypagestyle{plain}{
-\fancyfoot[C]{\thepage}
-\fancyhead[C]{\leftmark} 
- %\renewcommand{\headrulewidth}{0pt} % ...et le filet
+  \fancyfoot[C]{\thepage}
+  \fancyhead[C]{\leftmark} 
+  %\renewcommand{\headrulewidth}{0pt} % ...et le filet
 }
 %\renewcommand{\headrulewidth}{0.5pt}  %trait horizontal en tête
 \renewcommand{\footrulewidth}{0.5pt} %trait horizontal pied de page
@@ -65,7 +66,7 @@ pdfsubject={LoCD}
 
 %\renewcommand{\footrulewidth}{0.5pt}
 
-\renewcommand{\labelitemi}{$\bullet$}%changer les puces 
+%\renewcommand{\labelitemi}{$\bullet$}%changer les puces 
 \makeindex
 
 
@@ -73,23 +74,23 @@ pdfsubject={LoCD}
 \makeatletter
 \def\@makechapterhead#1{%
   \vspace*{50\p@}%
-  {\parindent \z@ \raggedright \normalfont
-    \interlinepenalty\@M
-    \ifnum \c@secnumdepth >\m@ne
-        \Huge\bfseries \thechapter\quad
-    \fi
-    \Huge \bfseries #1\par\nobreak
-    \vskip 40\p@
-  }}
+          {\parindent \z@ \raggedright \normalfont
+            \interlinepenalty\@M
+            \ifnum \c@secnumdepth >\m@ne
+            \Huge\bfseries \thechapter\quad
+            \fi
+            \Huge \bfseries #1\par\nobreak
+            \vskip 40\p@
+}}
 
 \def\@makeschapterhead#1{%
   \vspace*{50\p@}%
-  {\parindent \z@ \raggedright
-    \normalfont
-    \interlinepenalty\@M
-    \Huge \bfseries  #1\par\nobreak
-    \vskip 40\p@
-  }}
+          {\parindent \z@ \raggedright
+            \normalfont
+            \interlinepenalty\@M
+            \Huge \bfseries  #1\par\nobreak
+            \vskip 40\p@
+}}
 \makeatother
 %%%% fin macro %%%%
 
@@ -98,41 +99,48 @@ pdfsubject={LoCD}
 %Couverture 
 
 
-\title
-{Manuel Utilisateur pour LoCD}
 
 
 
-\author{MARGUERITE Alain\\ RINCE Romain}
 
-\date{Université de Nantes \\ 2 rue de la Houssinière, BP92208, F-44322 Nantes cedex 03, FRANCE}
+\titlepic{\includegraphics[scale=0.30]{img/logo}}
 
-\begin{document}
+\title{Manuel Utilisateur pour LoCD}
 
-\maketitle
+    \author{MARGUERITE Alain\\ RINCE Romain}
+    
+    
+    
+    
+    \date{\today}
+
+    \begin{document}
+
+    \maketitle
 
 
-\clearpage
+    \clearpage
 
-\tableofcontents
-\clearpage
+    \tableofcontents
+    \clearpage
 
-% Pour avoir un interligne de 1,5
-%\input{P0}
-\input{Partie0}
-\input{Partie1}
-\input{Partie2}
-\input{Partie3}
-\input{Partie4}
-\input{Partie5}
+    % Pour avoir un interligne de 1,5
+    %\input{P0}
+    \input{Partie0}
+    \input{Partie1}
+    \input{Partie2}
+    \input{Partie3}
+    \input{Partie4}
+    \input{Partie5}
+    \input{Partie6}
 
-% Pour finir l'interligne de 1,5
-\listoffigures
-\printindex
+    % Pour finir l'interligne de 1,5
+    \listoffigures
+    \printindex
 
-\appendix
-%\bibliographystyle{AB_bib}
-\bibliographystyle{alpha}
-\bibliography{/home/alain/workspace/Latex/manuel/biblio.bib}
+    \appendix
+    %\bibliographystyle{AB_bib}
+    \bibliographystyle{alpha}
+    \bibliography{/home/alain/workspace/Latex/manuel/biblio.bib}
 
-\end{document}
+    \end{document}
