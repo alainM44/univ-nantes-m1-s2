@@ -4,20 +4,18 @@
 \usepackage[T1]{fontenc} 
 % Pour pouvoir utiliser 
 \usepackage{ucs}
-
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{keystroke}
 \usepackage{amssymb}
 \usepackage{amsmath}
 %\usepackage{pifont}
-
 \usepackage{url} % Pour avoir de belles url
 \usepackage{geometry}
 \usepackage{hyperref}
-%[linktocpage]
-% Pour mettre du code source
-\usepackage {listings}
+
+
+\usepackage {listings}% Pour mettre du code source
 \lstset{language=sh}
 
 % Pour pouvoir passer en paysage
@@ -25,11 +23,15 @@
 
 % Pour pouvoir faire plusieurs colonnes
 \usepackage {multicol}
-% POur crééer un index
-\usepackage{makeidx}
+
+\usepackage{makeidx}% Pour crééer un index
 \usepackage{graphicx}
-\usepackage[tt]{titlepic}
+\usepackage{fourier-orns} %logo comme \danger
+\usepackage[cc]{titlepic} %rajouter le logo LoCD dans la page de garde
 \usepackage{tocbibind}
+\usepackage{wasysym} %emoticones
+\usepackage{glossary} % Créer un glossaire
+
 \hypersetup{
   backref=true,
   %permet d'ajouter des liens dans...
@@ -97,50 +99,46 @@
 
 
 %Couverture 
-
-
-
-
-
-
 \titlepic{\includegraphics[scale=0.30]{img/logo}}
-
 \title{Manuel Utilisateur pour LoCD}
-
-    \author{MARGUERITE Alain\\ RINCE Romain}
-    
-    
-    
-    
-    \date{\today}
-
-    \begin{document}
-
-    \maketitle
+\author{MARGUERITE Alain\\ RINCE Romain}
+\date{\today}
 
 
-    \clearpage
+%\storeglosentry{hist}{name=histoire,description=aventure}
+%\makeglossary
+\begin{document}
+\maketitle
 
-    \tableofcontents
-    \clearpage
 
-    % Pour avoir un interligne de 1,5
-    %\input{P0}
-    \input{Partie0}
-    \input{Partie1}
-    \input{Partie2}
-    \input{Partie3}
-    \input{Partie4}
-    \input{Partie5}
-    \input{Partie6}
 
-    % Pour finir l'interligne de 1,5
-    \listoffigures
-    \printindex
 
-    \appendix
-    %\bibliographystyle{AB_bib}
-    \bibliographystyle{alpha}
-    \bibliography{/home/alain/workspace/Latex/manuel/biblio.bib}
+\clearpage
 
-    \end{document}
+\tableofcontents
+\clearpage
+
+% Pour avoir un interligne de 1,5
+%\input{P0}
+\input{Partie0}
+\input{Partie1}
+\input{Partie2}
+\input{Partie3}
+\input{Partie4}
+\input{Partie5}
+\input{Partie6}
+
+% Pour finir l'interligne de 1,5
+\printglossary
+
+\listoffigures
+\printindex
+
+
+
+\appendix
+%\bibliographystyle{AB_bib}
+\bibliographystyle{alpha}
+\bibliography{/home/alain/workspace/Latex/manuel/biblio.bib}
+
+\end{document}
