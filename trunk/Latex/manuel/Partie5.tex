@@ -3,7 +3,7 @@
 
 \renewcommand{\labelitemi}{$\bullet$} %changer les puces pour cette page
 
-LoCD peut être utilisé uniquement en ligne de commande. Cette partie demandes des connaissances pré requises sur les commandes unix. En effet seul les fonctionalités de l'outil seront explicitées. La mecanisme des options est similaire à toute autres commandes unix. Pour plus de d'information sur les système unix, nous recommandons l'ouvrage suivant : \cite{linux}.
+LoCD peut être utilisé uniquement en ligne de commande. Cette partie demandes des connaissances pré requises sur les commandes unix. En effet seul les fonctionalités de l'outil seront explicitées. La mecanisme des options est similaire à toute autres commandes unix. Pour plus de d'information sur les système \gls{unix}, nous recommandons l'ouvrage suivant : \cite{linux}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -26,11 +26,11 @@ La simple commande suivante générera un pdf avec d'un histogrammes avec les pa
 Une option pour chacune des méta données disponible (cf : ~\ref{chap:fichDonnees}) est définie :
 \begin{itemize}
 \item
-\verb+-t+ ou \verb+--title+ pour afficher le titre.
+\verb+-t+ ou \verb+--title+ pour afficher le \gls{titre}. 
 \item
-\verb+-s+ ou \verb+--subtitle+ pour afficher le sous titre.
+\verb+-s+ ou \verb+--subtitle+ pour afficher le \gls{sous titre}.
 \item
-\verb+-n+ ou \verb+--note+ pour afficher la note.
+\verb+-n+ ou \verb+--note+ pour afficher la \gls{note}.
 \end{itemize}
 Si une de ces options est renseignée, il est possible de rajouter une valeur pour le paramêtre concerné. Par exemple : 
 \begin{verbatim}
@@ -45,7 +45,6 @@ Dans le cas où l'une de ces options serait rajoutée ; et que aucune valeur ne 
   \end{figure}  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Mise en forme reglages divers}
 Le diagramme obtenu dans le cas d'une utilisation basique (~\ref{sec:usebas}) est stocké dans le dossier courant sous le nom de \verb+new_file.pdf+ et a les caractéristiques graphiques suivantes illustrée dans la figure :  ~\ref{fig:dbatons}.\\ Le changement du nom de ficher de sortie peut être modifier en rajoutant l'option \verb+-f outfilename+ ou dans sa version longue \verb+--filename+. 
 \subsection{Couleurs}
