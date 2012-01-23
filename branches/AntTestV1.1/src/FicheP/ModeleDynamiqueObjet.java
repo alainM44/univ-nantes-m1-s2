@@ -20,7 +20,6 @@ public class ModeleDynamiqueObjet extends AbstractTableModel {
 	public ModeleDynamiqueObjet(List<Fiche> fiches) {
 		super();
 		this.fiches=fiches;
-
 		/*
 		 * A décommenter, s'il on veut la présence dans le carnet d'adresse au lancement de l'application
 		 */
