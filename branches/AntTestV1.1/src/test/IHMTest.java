@@ -82,8 +82,8 @@ public class IHMTest extends ComponentTestFixture {
 				+ ihm.getJtf_tel().getText(), "1478964512", ihm.getJtf_tel()
 				.getText());
 		testerFrame.actionClick(ihm.getBut_add());
-		
-		//On accède à la liste des fiches et on vérifie qu'elle a été ajouté
+
+		// On accède à la liste des fiches et on vérifie qu'elle a été ajouté
 		Fiche f = ihm.getFiches().get(0);
 		assertNotNull(f);
 		assertEquals("Valeur attendu : Dupont Valeur actuelle : "
@@ -152,8 +152,8 @@ public class IHMTest extends ComponentTestFixture {
 		// On relache Ctrl
 		testerFrame.keyRelease(17);
 		testerFrame.actionClick(ihm.getBut_comp());
-		
-		//On vérifie la cohérence du message de comparaison
+
+		// On vérifie la cohérence du message de comparaison
 		assertEquals("EGALES " + ihm.getLab().getText(), "EGALES", ihm.getLab()
 				.getText());
 	}
@@ -223,7 +223,7 @@ public class IHMTest extends ComponentTestFixture {
 		// On relache Ctrl
 		testerFrame.keyRelease(17);
 		testerFrame.actionClick(ihm.getBut_comp());
-		//On vérifie la cohérence du message de comparaison
+		// On vérifie la cohérence du message de comparaison
 		assertEquals(" PAS EGALES " + ihm.getLab().getText(), " PAS EGALES",
 				ihm.getLab().getText());
 	}
@@ -302,8 +302,6 @@ public class IHMTest extends ComponentTestFixture {
 				.get(0).getM_nom());
 
 	}
-
-	private int count = 0;
 
 	public IHMTest(String name) {
 		super(name);
