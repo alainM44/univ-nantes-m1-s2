@@ -1,10 +1,12 @@
-package FicheP;
+package test;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import junit.extensions.abbot.*;
+import FicheP.Fiche;
+import FicheP.Ihm_gestion_graph;
 import abbot.finder.ComponentNotFoundException;
 import abbot.finder.MultipleComponentsFoundException;
 import abbot.tester.ComponentTester;

@@ -136,7 +136,6 @@ public class Ihm_gestion_graph extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		tableau = new JTable(modele);
-
 		getContentPane().add(new JScrollPane(tableau), BorderLayout.WEST);
 
 		
@@ -170,9 +169,7 @@ public class Ihm_gestion_graph extends JFrame {
 		}
 
 		public void actionPerformed(ActionEvent e) {
-
-			modele.addFiche(new Fiche(jtf_nom.getText(),jtf_prenom.getText(), new Adresse(Integer.parseInt(jtf_num.getText()), jtf_rue.getText(), Integer.parseInt(jtf_codep.getText()), jtf_pays.getText()), jtf_mail.getText(),Integer.parseInt(jtf_tel.getText())));
-
+			modele.addFiche(new Fiche(jtf_nom.getText(),jtf_prenom.getText(), new Adresse(Integer.parseInt(jtf_num.getText()), jtf_rue.getText(), Integer.parseInt(jtf_codep.getText()), jtf_pays.getText()), jtf_mail.getText(),Integer.parseInt(jtf_num.getText())));
 		}
 	}
 
@@ -200,7 +197,6 @@ public class Ihm_gestion_graph extends JFrame {
 			// TODO Auto-generated method stub
 
 			int[] selection = tableau.getSelectedRows();
-
 //						System.out.println(selection.length);
 //						System.out.println(fiches.get(selection[0]).m_nom);
 //						System.out.println(fiches.get(selection[1]).m_nom);
