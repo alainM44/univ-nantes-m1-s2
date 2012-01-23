@@ -36,7 +36,7 @@ public class IHMTest extends ComponentTestFixture {
 	}
 
 	@Test
-	public void AjoutFiche() throws ComponentNotFoundException,
+	public void testAjoutFiche() throws ComponentNotFoundException,
 			MultipleComponentsFoundException {
 		// On ajoute la fiche <nom="Dupond", prenom = "Michel", Adresse=(12,
 		// "rue de la cote",
@@ -94,7 +94,7 @@ public class IHMTest extends ComponentTestFixture {
 	}
 
 	@Test
-	public void EgaliteFiche() {
+	public void testEgaliteFiche() {
 		// On ajoute la fiche <nom="Dupond", prenom = "Michel" Adresse=(12,
 		// "rue de la cote",
 		// 44000, "France"), mail ="dupond@yahoo.fr",tel 1478964512>
@@ -159,7 +159,7 @@ public class IHMTest extends ComponentTestFixture {
 	}
 
 	@Test
-	public void DifferenceFiche() {
+	public void testDifferenceFiche() {
 		// On ajoute la fiche <nom="Dupond", prenom = "Michel", Adresse=(12,
 		// "rue de la cote",
 		// 44000, "France"), mail ="dupond@yahoo.fr",tel 1478964512>
@@ -229,7 +229,7 @@ public class IHMTest extends ComponentTestFixture {
 	}
 
 	@Test
-	public void SuppressionFiche() {
+	public void testSuppressionFiche() {
 		// On ajoute la fiche <nom="Dupond", prenom = "Michel", Adresse=(12,
 		// "rue de la cote",
 		// 44000, "France"), mail ="dupond@yahoo.fr",tel 1478964512>
