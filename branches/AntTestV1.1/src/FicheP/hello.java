@@ -5,11 +5,9 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.event.ListDataListener;
+
 
 import com.thoughtworks.xstream.XStream;
 
@@ -24,13 +22,14 @@ public class hello extends JFrame {
 	private JTextField jtf_pays = new JTextField("Entrez un pays");
 	private JTextField jtf_tel = new JTextField("Entrez un numéro");
 	private int pos =0;
-	private JButton but = new JButton("Ajout");
+	private JButton but_add = new JButton("Ajout");
+	private JButton but_sup = new JButton("Supprimer");
+	private JComboBox combo1fiche = new JComboBox(); 
 	private Fiche[] carnet_adresses = new Fiche [3];
 	// Constructeur
 	public hello() {
 
-		super("Titre de la JFrame");
-
+		super("Gestion de Fiches d'adresse");
 		// Si on appuie sur la croix, le programme s'arrete
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -41,54 +40,66 @@ public class hello extends JFrame {
 		BorderLayout layout = new BorderLayout();
 		contentPane.setLayout(layout);
 
-		JPanel panel = new JPanel();
 
-		JLabel label = new JLabel(
-				"Bonjour, ceci est une JFrame qui contient"+
-		" un JPanel qui contient un JLabel");
-		panel.add(jtf_nom);
-		panel.add(jtf_prenom);
-		panel.add(jtf_mail);
-		panel.add(jtf_rue);
-		panel.add(jtf_num);
-		panel.add(jtf_codep);
-		
-		panel.add(jtf_pays);
-		panel.add(jtf_tel);
-		
-		but.addActionListener(new button_handler());
+		Box left_box = Box.createVerticalBox();
 
-		panel.add(but);
-		
-		
-		
-		
+		left_box.add(jtf_nom);
+		left_box.add(jtf_prenom);
+		left_box.add(jtf_mail);
+		left_box.add(jtf_rue);
+		left_box.add(jtf_num);
+		left_box.add(jtf_codep);
+		left_box.add(jtf_pays);
+		left_box.add(jtf_tel);
+
+
+		Box but_box = Box.createHorizontalBox();
+		but_add.addActionListener(new button_handler());
+
+		but_box.add(but_add);
+		but_box.add(but_sup);
+		left_box.add(but_box);
+		contentPane.add(left_box,BorderLayout.EAST);
+
 		// Ici ne sert pas car le panel est seul
-		contentPane.add(panel, BorderLayout.CENTER);
-		
+
+
+		//PARTIE CENTRALE
+		Box center_box = Box.createVerticalBox();
+
+
+		//combo1fiche.setEditable(true);
+		//center_box.add();
+
+		contentPane.add(center_box, BorderLayout.CENTER);
+		//	combo1fiche.addActionListener(this);
+
 
 		this.pack();
 		this.setVisible(true);
 
-		
+
 	}
 
 	// Méthode principale : démarrage du programme
 	public static void main(String[] args) {
-		new hello();
+		//new hello();
+		new Ihm_gestion_graph();
 	}
 	public class button_handler implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			
+
 			Fiche f1 = new Fiche(jtf_nom.getText(), new Adresse(Integer.parseInt(jtf_num.getText()), jtf_rue.getText(), Integer.parseInt(jtf_codep.getText()), jtf_pays.getText()), jtf_mail.getText(),Integer.parseInt(jtf_tel.getText()));
 			carnet_adresses[pos]=f1;
 			pos++;
+			combo1fiche.addItem(f1.m_nom.toString());
 			
+
 		}
-		
+
 	}
 	public JTextField getJtf_nom()
 	{
@@ -135,14 +146,11 @@ public class hello extends JFrame {
 		return pos;
 	}
 
-	public JButton getBut()
-	{
-		return but;
-	}
+
 
 	public Fiche[] getCarnet_adresses()
 	{
 		return carnet_adresses;
 	}
-	
+
 }

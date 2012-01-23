@@ -6,38 +6,34 @@ import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * Table pour la gestion dynamique des fiches d'adresses. Elle se trouve à l'ouest dans l'IHM
+ */
 public class ModeleDynamiqueObjet extends AbstractTableModel {
-//	private final List<Fiche> fiches = new ArrayList<Fiche>();
 
+	/*
+	 * Si l'on voulait afficher plus d'information il faudrait les ajouter dans ce tableau et rajouter les getteurs et les setteurs.
+	 */
 	private final String[] entetes = {"Nom", "mail","Tel"};
 	private  List<Fiche> fiches;
+
 	public ModeleDynamiqueObjet(List<Fiche> fiches) {
 		super();
-
 		this.fiches=fiches;
-		
 
-//		Fiche f1 = new Fiche("Dupond", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
-////		f1.setM_prenoms("Jacque", 0);
-////		f1.setM_prenoms("Jean", 1);
-////		f1.setM_prenoms("Joseph", 2);
-//
-//		Fiche f2= new Fiche("Dupont", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
-////		f2.setM_prenoms("Jacque", 0);
-////		f2.setM_prenoms("Jean", 1);
-////		f2.setM_prenoms("Joseph", 2);
-//		Fiche f3= new Fiche("Durand", new Adresse(8, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
-////		f3.setM_prenoms("George", 0);
-////		f3.setM_prenoms("Ramir", 1);
-//		Fiche f4 = new Fiche("Dupond", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
-//	
-//		fiches.add(f1);
-//		fiches.add(f2);
-//		fiches.add(f3);
-//		fiches.add(f4);
+		/*
+		 * A décommenter, s'il on veut la présence dans le carnet d'adresse au lancement de l'application
+		 */
+		//		Fiche f1 = new Fiche("Dupond", "jacque",new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
+		//		Fiche f2= new Fiche("Dupont","George", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
+		//		Fiche f3= new Fiche("Durand", "Michel", new Adresse(8, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
+		//		Fiche f4 = new Fiche("Dupond","jacque", new Adresse(12, "rue de la cote", 44000, "France"), "dupond@yahoo.fr",1478964512);
+		//		fiches.add(f1);
+		//		fiches.add(f2);
+		//		fiches.add(f3);
+		//		fiches.add(f4);
 	}
-		
+
 
 	public int getRowCount() {
 		return fiches.size();
@@ -50,7 +46,9 @@ public class ModeleDynamiqueObjet extends AbstractTableModel {
 	public String getColumnName(int columnIndex) {
 		return entetes[columnIndex];
 	}
-
+	/*
+	 * Methode permettant de récupérer les informations dans les colonnes de la table
+	 */
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch(columnIndex){
 		case 0:
@@ -59,7 +57,7 @@ public class ModeleDynamiqueObjet extends AbstractTableModel {
 			return fiches.get(rowIndex).getM_mails();
 		case 2:
 			return fiches.get(rowIndex).getM_tel();
-		
+
 		default:
 			return null; //Ne devrait jamais arriver
 		}
@@ -76,14 +74,19 @@ public class ModeleDynamiqueObjet extends AbstractTableModel {
 		fireTableRowsDeleted(rowIndex, rowIndex);
 	}
 	public boolean compFiche(int rowIndex,int rowIndex2) {
-//
-//		System.out.println(fiches.get(rowIndex).getM_nom());
-//		System.out.println(fiches.get(rowIndex2).getM_nom());
+		/*
+		 *  Pour le deboggage
+		 * System.out.println(fiches.get(rowIndex).getM_nom());
+		 * System.out.println(fiches.get(rowIndex2).getM_nom());
+		 * 	System.out.println(fiches.get(rowIndex).compare(fiches.get(rowIndex2)));
+		 * 
+		 */
+
 		return(fiches.get(rowIndex).compare(fiches.get(rowIndex2)));
-//			System.out.println("Egales");
-//		
-//		else
-//			System.out.println("Pas Egales");
-//	
-		}
+		//			System.out.println("Egales");
+		//		
+		//		else
+		//			System.out.println("Pas Egales");
+		//	
+	}
 }
