@@ -8,7 +8,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * L'affichage d'une fiche pour des raison de simplicités se fait uniquement avec le nom, le mail et le téléphonne de la personne.
+ */
 public class Ihm_gestion_graph extends JFrame {
 	/**
 	 * Attibuts de l'interface graphique.
@@ -48,6 +50,9 @@ public class Ihm_gestion_graph extends JFrame {
 		super();
 		Box left_box = Box.createVerticalBox();
 
+		/*
+		 * On "branche" les jtexfields à la liste des événement. Voir la classe jtfhandler.
+		 */
 		jtf_nom.addMouseListener(new jtfhandler());
 		jtf_codep.addMouseListener(new jtfhandler());
 		jtf_prenom.addMouseListener(new jtfhandler());
@@ -75,15 +80,16 @@ public class Ihm_gestion_graph extends JFrame {
 		left_box.add(but_box);
 		getContentPane().add(left_box,BorderLayout.EAST);
 
-		setTitle("JTable avec modele dynamique");
+		setTitle("Gestion de fiches");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		tableau = new JTable(modele);
-
-
-
 		getContentPane().add(new JScrollPane(tableau), BorderLayout.WEST);
 
+		
+		/*
+		 * Partie Sud de l'IHM
+		 */
 		Box boutons = Box.createHorizontalBox();
 
 		boutons.add(but_add);
@@ -118,7 +124,7 @@ public class Ihm_gestion_graph extends JFrame {
 
 	private class RemoveAction extends AbstractAction {
 		private RemoveAction() {
-			super("Supprimmer");
+			super("Supprimer");
 		}
 
 		public void actionPerformed(ActionEvent e) {
