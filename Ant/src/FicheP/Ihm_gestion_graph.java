@@ -10,10 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ihm_gestion_graph extends JFrame {
+	/**
+	 * Attibuts de l'interface graphique.
+	 * Lest Jtextfield servent à rentrer les informations pour créer une nouvelle fiche.
+	 */
+	private static final long serialVersionUID = 1L;
 	private final List<Fiche> fiches = new ArrayList<Fiche>();
 	private ModeleDynamiqueObjet modele = new ModeleDynamiqueObjet(fiches);
 	private JTable tableau;
-
 	private JTextField jtf_nom = new JTextField("Entrez un nom");
 	private JTextField jtf_prenom = new JTextField("Entrez un prenom");
 	private JTextField jtf_mail = new JTextField("Entrez une adresse mail");
@@ -23,8 +27,18 @@ public class Ihm_gestion_graph extends JFrame {
 	private JTextField jtf_pays = new JTextField("Entrez un pays");
 	private JTextField jtf_tel = new JTextField("Entrez un telephone");
 	private JLabel lab = new JLabel("");
+	/*
+	 * Le bouton ajouter sert à créer une nouvelle fiche à partir du text des JTextField.
+	 */
 	private JButton but_add = new JButton(new AddAction());
+	/*
+	 * Le bouton supprimer implémente notre nouvelle fonctionalité demandée dans le sujet. 
+	 * Il est capable de supprimer la ou les fiches selectionées à la souris.
+	 */
 	private JButton but_sup = new JButton(new RemoveAction());
+	/*
+	 * Le bouton comparer sert
+	 */
 	private JButton but_comp = new JButton(new CompareAction());
 
 
@@ -32,7 +46,6 @@ public class Ihm_gestion_graph extends JFrame {
 
 	public Ihm_gestion_graph() {
 		super();
-
 		Box left_box = Box.createVerticalBox();
 
 		jtf_nom.addMouseListener(new jtfhandler());
@@ -126,9 +139,9 @@ public class Ihm_gestion_graph extends JFrame {
 			// TODO Auto-generated method stub
 
 			int[] selection = tableau.getSelectedRows();
-			//			System.out.println(selection.length);
-			//			System.out.println(fiches.get(selection[0]).m_nom);
-			//			System.out.println(fiches.get(selection[1]).m_nom);
+//						System.out.println(selection.length);
+//						System.out.println(fiches.get(selection[0]).m_nom);
+//						System.out.println(fiches.get(selection[1]).m_nom);
 			if	(modele.compFiche(selection[0], selection[1]))
 				lab.setText("EGALES");
 			else
