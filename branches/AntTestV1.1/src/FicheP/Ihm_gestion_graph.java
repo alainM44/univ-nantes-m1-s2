@@ -171,7 +171,7 @@ public class Ihm_gestion_graph extends JFrame {
 
 		public void actionPerformed(ActionEvent e) {
 
-			modele.addFiche(new Fiche(jtf_nom.getText(),jtf_prenom.getText(), new Adresse(Integer.parseInt(jtf_num.getText()), jtf_rue.getText(), Integer.parseInt(jtf_codep.getText()), jtf_pays.getText()), jtf_mail.getText(),Integer.parseInt(jtf_num.getText())));
+			modele.addFiche(new Fiche(jtf_nom.getText(),jtf_prenom.getText(), new Adresse(Integer.parseInt(jtf_num.getText()), jtf_rue.getText(), Integer.parseInt(jtf_codep.getText()), jtf_pays.getText()), jtf_mail.getText(),Integer.parseInt(jtf_tel.getText())));
 
 		}
 	}

@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="/home/romain/workspace/branches/AntTestV1.1/xstream-1.2.jar"/>
-	<classpathentry kind="lib" path="/home/romain/workspace/branches/AntTestV1.1/junit-4.5.jar"/>
-	<classpathentry kind="lib" path="/home/romain/workspace/branches/AntTestV1.1/abbot.jar"/>
+	<classpathentry kind="lib" path="/comptes/E074862X/workspace/Ant/junit-4.5.jar"/>
+	<classpathentry kind="lib" path="/comptes/E074862X/workspace/Ant/xstream-1.2.jar"/>
+	<classpathentry kind="lib" path="/comptes/E074862X/workspace/Ant/abbot.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
