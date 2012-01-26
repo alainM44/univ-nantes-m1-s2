@@ -4,3 +4,6 @@ During the last few weeks, we have made a survey about download phenomenon. Inde
 
 In this context, we wanted to learn how people see the download's evolution and how much important it is for them. However, make a classical survey (ask people question in the street) was not the solution here. In fact, people could have been frightened of telling the true about awkward questions. So we have thought that an online questionnaire might been a good way to have a large number of fair answers.
 
+Dire ce qu'on attendait
+
+Our first graph is a bart chart wich illustrates how men and women download. The results show that there no differences between men and women. Indeed both of them dowload (only 10% tell that they don't) legally and illegaly. Nethertheless, ours hypothesis about the type of download is confirmed. Almost 80% of people downoad illegaly. Even if people use the legal way, it is only 20% 
