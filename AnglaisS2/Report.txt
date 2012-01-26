@@ -1,0 +1,6 @@
+Survey Project : Report
+
+During the last few weeks, we have made a survey about download phenomenon. Indeed nowadays, our society is passing throught an internet crisis. One of the most significant  example, is the recent closure of the most famous download platform : MegaUpload. This controversial measure taken by the american goverment show how important download 
+
+In this context, we wanted to learn how people see the download's evolution and how much important it is for them. However, make a classical survey (ask people question in the street) was not the solution here. In fact, people could have been frightened of telling the true about awkward questions. So we have thought that an online questionnaire might been a good way to have a large number of fair answers.
+
