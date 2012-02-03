@@ -1,18 +1,22 @@
 package genTache;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Scanner;
 
 import com.thoughtworks.xstream.XStream;
 
-public class main
+public class mainGenerator
 {
 
 	static int temps = 1000;
 
 	/**
 	 * @param args
+	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args)
+	public static void main(String[] args) throws FileNotFoundException
 	{
 
 		java.util.Random r = new java.util.Random();
@@ -27,7 +31,7 @@ public class main
 		int pourAperiodique;
 		int U = temps;
 		int reste;
-		Tache[] tab;
+		AbstractTache[] tab;
 		boolean genauto = true;
 		Scanner in = new Scanner(System.in);
 
@@ -35,7 +39,7 @@ public class main
 		nbTachesP = in.nextInt();
 		System.out.println("Saisissez le nombre de tâches apériodiques : ");
 		nbTachesAP = in.nextInt();
-		tab = new Tache[nbTachesP + nbTachesAP];
+		tab = new AbstractTache[nbTachesP + nbTachesAP];
 		System.out
 				.println("Souhaitez vous une génération automatique pour les tâches périodiques ? (y/n)");
 		genauto = in.next().equals("y");
@@ -91,6 +95,7 @@ public class main
 			for (int i = nbTachesP + 1; i <= nbTachesP + nbTachesAP; i++)
 			{
 				ri = r.nextInt(temps);
+				//TODO : Di inutile
 				Di = r.nextInt(Math.min(temps - ri, U - nbTachesAP + i
 						- nbTachesP)) + 1;
 				Ci = r.nextInt(Di) + 1;
@@ -111,15 +116,20 @@ public class main
 								+ i);
 				System.out.println("Valeur pour Ci :");
 				Ci = in.nextInt();
-				System.out.println("Valeur pour Di :");
-				Di = in.nextInt();
+//				System.out.println("Valeur pour Di :");
+//				Di = in.nextInt();
 				System.out.println("Valeur pour ri :");
 				ri = in.nextInt();
-				tab[i - 1] = new TacheAperiodique(i, Ci, Di, ri);
-				U = U - Di;
+				tab[i - 1] = new TacheAperiodique(i, Ci, 0, ri);
+				U = U - Ci;
 			}
 		}
-		System.out.println(xstream.toXML(tab));
+	
+	    // Instanciation d'un fichier c:/temp/article.xml
+	    File taches = new File("/comptes/E11A932Q/workspace/MiniP1/taches.xml");
+	    FileOutputStream fos = new FileOutputStream(taches);
+	    xstream.toXML(tab,fos);
+	//	xstream.toXML(taches, fos);
 
 	}
 
