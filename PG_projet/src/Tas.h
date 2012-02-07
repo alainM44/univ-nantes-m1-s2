@@ -8,10 +8,11 @@
 #ifndef TAS_H_
 #define TAS_H_
 #include <vector>
-
-template<class T> class Tas {
+#include <stack>
+template<class T, class Compare = less<T> , class Allocator = allocator<T> > class Tas {
 private:
 	std::vector<T> tas;
+
 	int filsG(int pere) {
 		return (2 * (pere + 1)) - 1;
 	}
@@ -27,6 +28,9 @@ private:
 
 public:
 	Tas();
+	Tas(Tas& source){
+		this.tas=source.tas;
+	}
 	T& extraire() {
 		T& feuille, racine;
 		if (tas.size() == 0) {
@@ -82,6 +86,44 @@ public:
 	}
 	virtual ~Tas();
 
+	class iterator;
+
+	iterator begin();
+	iterator end();
+
 };
+
+template <typename T>
+class Tas<T>::iterator {
+	typedef Tas<T> tas_type;
+	typedef std::stack<T*> pile_type;
+
+public:
+	iterator(tas_type * t) :
+		t_(t), p_() {
+p_.push(t);
+
+	}
+
+	iterator& operator++()
+	{
+
+	}
+
+private:
+	tas_type * t_;
+	pile_type  p_ ;
+
+};
+
+template <typename T>
+Tas<T>::iterator Tas<T>::begin() {
+	return iterator(this);
+}
+
+template <typename T>
+Tas<T>::iterator Tas<T>::end() {
+	return iterator(0);
+}
 
 #endif /* TAS_H_ */
