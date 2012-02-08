@@ -15,9 +15,19 @@ public class TasksManager
 
 	private AbstractTache[] tab;
 
-	public int getId(){
+	public int getId(int id ){
 		return tab[id].getId();
 	}
+	
+	/*
+	 *@TODO Renvoyer la date du prochain événement
+	 */
+	public int next_event(int id ){
+		
+		return tab[id].getId();
+	}
+	
+	
 	public TasksManager(String filename)
 	{
 		super();

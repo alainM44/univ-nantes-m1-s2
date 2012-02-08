@@ -1,0 +1,22 @@
+<genTache.AbstractTache-array>
+  <genTache.TachePeriodique>
+    <Pi>377</Pi>
+    <ri>0</ri>
+    <id>1</id>
+    <Ci>1</Ci>
+    <Di>1</Di>
+  </genTache.TachePeriodique>
+  <genTache.TachePeriodique>
+    <Pi>162</Pi>
+    <ri>0</ri>
+    <id>2</id>
+    <Ci>6</Ci>
+    <Di>30</Di>
+  </genTache.TachePeriodique>
+  <genTache.TacheAperiodique>
+    <ri>859</ri>
+    <id>3</id>
+    <Ci>26</Ci>
+    <Di>71</Di>
+  </genTache.TacheAperiodique>
+</genTache.AbstractTache-array>

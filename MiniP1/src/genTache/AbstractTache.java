@@ -1,6 +1,6 @@
 package genTache;
 
-public abstract class AbstractTache implements Tache
+public abstract class AbstractTache implements ITache
 {
 
 	protected int ri;
