@@ -17,8 +17,6 @@ public class Loader
 		super();
 		prop = new Properties();
 		prop.load(new FileReader(filename));
-
-		
 	}
 
 	public Object creerInstance() throws FileNotFoundException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, SecurityException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{

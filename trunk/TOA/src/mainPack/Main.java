@@ -11,7 +11,6 @@ public class Main
 		IPersonne p = new Client();
 		MonProxy proxy = new MonProxy();
 		p = (IPersonne)proxy.proxyfy(p);
-
 		p.setNom("TestNom");
 		p.setPrenom("TestPreNom");
 		p.setAge(20);
