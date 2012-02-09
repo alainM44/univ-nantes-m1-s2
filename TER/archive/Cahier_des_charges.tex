@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+
+\title{\textbf{Cahier des charges d'un outil de visualisation de pavages}}
+\date{\today}
+\begin{document}
+\maketitle{}                                   %
+\paragraph{Introduction :} L'objectif est de définir un outil de visualisation d'une projection en une, deux ou trois dimensions d'un pavage à N dimensions typiquement produit par un outil de résolution par intervalles de problèmes numériques (tel que Realpaver). Cet outil permettra de visualiser entièrement ou partiellement le pavage et d'ajuster les propriétés graphiques de la visualisation, puis d'exporter le résultat. Une indépendance vis à vis du logiciel fournissant les données est requise. Le traducteur pour passer du format de sortie du logiciel source au langage d'entrée dédié à l'outil de visualisation n'entre pas dans la conception.
+\section{Format d'entrée}
+\subsection{Entête}
+\begin{itemize}
+\item
+Nombre de  boîtes. Cette valeur pourra évoluer en cours d'exécution du programme (affichage dynamique réagissant à chaque nouvelle donnée fournie)
+\item
+Liste des noms des variables (nombre de variables implicite)
+\item
+Liste des noms et types (nombre, chaine, intervalle) des caractéristiques associées aux boîtes (e.g., temps de calcul, précision, certification, ...)
+\item
+Autres données spécifiques à l'outil (e.g., filtres, affichages conditionnels, points de références ... )
+\item
+Un commentaire regroupant des informations sur la pavage dans son ensemble (e.g., outil d'obtention, paramètres, temps total, ...)
+\end{itemize}
+
+\subsection{Corps}
+Ensemble de boites comprenant chacune :
+\begin{itemize}
+\item
+Identifiant unique
+\item
+Coordonnées : un intervalle de la forme [a,b] (a et b sont des nombres flottants) pour chaque variable
+\item
+Caractéristiques : une liste de valeurs (types définis en entête)
+\end{itemize}
+
+\section{Fonctionnement}
+\begin{itemize}
+\item
+Affichage conditionnel : définir un style d'affichage paramétrable (e.g., couleur, transparence, trait, ...) en fonction de conditions sur la boite (e.g., l'intervalle de la variable $x$ chevauche l'intervalle $[-10,0]$ ; la boite contient le point de référence $P$ ; la caractéristique "temps de calcul" est comprise entre $0$ et $10$ ; ...)
+\item
+Filtrage : n'afficher que les boites vérifiant certaines conditions (cf. exemples ci-dessus)
+\item
+Choix des une, deux ou trois dimensions à afficher
+\item
+Définition des points de références éventuellement associés à des labels
+\item
+Ajout de commentaires aux boîtes et aux points de références
+\item
+Sauvegarde
+\item
+Exportation :
+   \begin{itemize}
+   \item
+   Image bitmap (png, jpeg, ...) ou vectorielle (svg, eps, ...)
+   \item
+   Textuelle : identique au format d'entrée
+   \end{itemize}
+Dans les deux cas, on pourra choisir s'il l'on veut l'intégralité des données, celles correspondantes à la fenêtre de visualisation ou juste celles de la selection
+\end{itemize}
+
+\section{Visualisation }
+\begin{itemize}
+\item
+Zoom : zoomer/dé-zoomer ; revenir à une vue globale du pavage (filtré)
+\item
+Déplacement (1, 2 ou 3D) de la fenêtre de visualisation
+\item
+Pour la 3D : rotation ``haut/bas`` et  ``gauche/droite``. En 1D et 2D : pas de rotation
+\item
+Possibilité de définir textuellement les zooms, déplacements et rotations.
+\item
+Sélection : une entité ( ou un ensemble ) avec possibilité d'agir dessus ( changer sa couleur, la visualiser dans une nouvelle fenêtre, modifier son label ... )
+\item
+Informations numériques :
+  \begin{itemize}
+  \item Globales : état de la mémoire, nombre de pavés total/filtrés/affichés, Id de l'objet pointé, coordonnées du pointeur
+  \item Spécifiques : pour une boîte donnée ( ou un point de référence ), pouvoir afficher \textbf{toutes} les données associées (Id, coordonnées, caractéristiques et style d'affichage)
+  \end{itemize}
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
