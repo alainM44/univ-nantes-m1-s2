@@ -1,0 +1,96 @@
+
+<!--Var -->
+
+<xsd:simpleType name="var_name">
+  <xsd:restriction base="xsd:string">
+    <xsd:pattern value="([a-zA-Z_][0-9])|([0-9][a-zA-Z_])"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:complexType name="var_list">
+  <xsd:list itemType="xsd:var_name" />
+</xsd:comlpexeType>
+<xsd:list itemType="xsd:var_name" />
+</xsd:comlpexeType>
+
+
+<!--TYPES  -->
+
+<xsd:simpleType name="type_name">
+  <xsd:restriction base="xsd:string">
+    <xsd:pattern value="[intervalle]|[number]|string])"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:complexType name="number">
+  <xsd:choice>
+    <xsd:element name="float" type="xsd:int" />
+    <xsd:element name="integer" type="xsd:string" />
+  </xsd:choice>
+</xsd:complexType>
+
+<!-- ?????? -->
+<xsd:complexType name="intervalle">
+  <xsd:restriction base="xsd:string">
+    <xsd:pattern value="([a-zA-Z_][0-9])|([0-9][a-zA-Z_])"/>
+  </xsd:restriction>
+</xsd:complexType>
+
+
+
+
+<!--CARACTERISTIQUES  -->
+
+<xsd:simpleType name="car_name">
+  <xsd:restriction base="xsd:string">
+    <xsd:pattern value="([a-zA-Z_][0-9])|([0-9][a-zA-Z_])"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:complexType name="caracteristique">
+  <xsd:sequence>
+    <xsd:element ref="car_name" />
+    <xsd:element ref="type_name" />
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="car_list">
+  <xsd:list itemType="xsd:caracteristique" />
+</xsd:comlpexeType>
+
+<!--INFO DE LOUTIL  -->
+
+<xsd:element name="PT_ID" type="xsd:positiveInteger"/>
+
+
+<xsd:simpleType name="PT_Label">
+  <xsd:restriction base="xsd:string">
+    <xsd:pattern value="[:_A-Za-z][-.:_0-9A-Za-z]*"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+
+<xsd:complexType name="PT_coord">
+    <xsd:element name="float" type="xsd:int" />
+</xsd:complexType>
+
+<xsd:complexType name="PT_coord_list">
+  <xsd:list itemType="xsd:PT_coord" />
+</xsd:comlpexeType>
+
+
+<!--CARACTERISTIQUES D'AFFICHAGE  -->
+
+<xsd:simpleType name="RVB_code">
+  <xsd:restriction base="xsd:string">
+    <xsd:pattern value="[0-255]+' '+[0-255]+' '[0-255]"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="transparency">
+  <xsd:restriction base="xsd:nonNegativeInteger">
+	    <xsd:maxExclusive value="100" />
+  </xsd:restriction>
+</xsd:simpleType>
+	
+<xsd:element name="nb_pixels" type="nonNegativeInteger"/>
