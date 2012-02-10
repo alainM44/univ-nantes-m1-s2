@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import sstr.TasksManager;
 import sstr.Writer;
 
 import com.thoughtworks.xstream.XStream;
@@ -18,8 +19,9 @@ public class main
 
 	/**
 	 * @param args
+	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args)
+	public static void main(String[] args) throws FileNotFoundException
 	{
 //		AbstractTache[] tab;
 //		try
@@ -64,5 +66,6 @@ public class main
 	mywriter.addEvent(10, "READY-B",2,"");
 	mywriter.addEvent(10, "READY-B",2,"");
 	mywriter.generateFile();
+	TasksManager tm =new TasksManager(null);
 }
 }
