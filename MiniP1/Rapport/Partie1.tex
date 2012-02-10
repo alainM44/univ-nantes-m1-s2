@@ -1,0 +1,51 @@
+\chapter{Génération de tâches dans un fichier}
+La première partie du projet avait pour objectif d'obtenir un nombre n de taches périodiques et apériodiques pour de futurs traitements décrits dans la partie 2 : rajouter lien dym. \'A nouveau le choix du format d'un tel fichier nous était laissé. Nous avons choisis de générer un fichier xml (à nouveau pour des raisons  de simplicité) à la syntaxe suivante : 
+\begin{lstlisting}
+<genTache.AbstractTache-array>
+  <genTache.TachePeriodique>
+    <Pi>377</Pi>
+    <ri>0</ri>
+    <id>1</id>
+    <Ci>1</Ci>
+    <Di>1</Di>
+  </genTache.TachePeriodique>
+  <genTache.TachePeriodique>
+    <Pi>162</Pi>
+    <ri>0</ri>
+    <id>2</id>
+    <Ci>6</Ci>
+    <Di>30</Di>
+  </genTache.TachePeriodique>
+  <genTache.TacheAperiodique>
+    <ri>859</ri>
+    <id>3</id>
+    <Ci>26</Ci>
+    <Di>71</Di>
+  </genTache.TacheAperiodique>
+</genTache.AbstractTache-array>
+\end{lstlisting}
+On remarque que les taches périodiques sont identifiées par : 
+\begin{itemize}
+\item
+Pi 
+\item
+ri 
+\item
+id 
+\item
+Ci
+\item
+Di  
+\end{itemize} 
+Alors que les tâches apériodiques ont seulement : 
+\begin{itemize}
+\item
+ri 
+\item
+id 
+\item
+Ci
+\item
+Di 
+\end{itemize} 
+
