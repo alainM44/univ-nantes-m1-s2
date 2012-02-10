@@ -56,4 +56,11 @@ public abstract class AbstractTache implements ITache
 		this.id = id;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "AbstractTache [id=" + id + ", Ci=" + Ci + ", Di=" + Di
+				+ ", ri=" + ri + "]";
+	}
+
 }
