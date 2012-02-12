@@ -1,18 +1,12 @@
 package sstr;
 
 import genTache.AbstractTache;
-import genTache.ITache;
 import genTache.TacheAperiodique;
 import genTache.TachePeriodique;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
@@ -66,7 +60,7 @@ public class TasksManager {
 		// Redirection du fichier c:/temp/article.xml vers un flux
 		// d'entrée fichier
 		FileInputStream fis = new FileInputStream(new File(
-				"/home/alain/workspace/MiniP1/taches.xml"));
+				/home/alain/workspace/MiniP1/taches.xml));
 
 		// Désérialisation du fichier c:/temp/article.xml vers un nouvel
 		// objet article
