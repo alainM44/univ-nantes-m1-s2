@@ -28,8 +28,18 @@ private:
 
 public:
 	Tas();
-	Tas(Tas& source){
-		this.tas=source.tas;
+	Tas(Tas& source) {
+		this.tas = source.tas;
+	}
+	int size()
+	{
+		return tas.size();
+	}
+	T& getMax() {
+		return &tas.at(0);
+	}
+	T& get(int pos) {
+		return &tas.at(pos);
 	}
 	T& extraire() {
 		T& feuille, racine;
@@ -88,40 +98,48 @@ public:
 
 	class iterator;
 
-	iterator begin();
+	iterator begin() {
+		return iterator(this, 0, new std::stack<int>());
+	}
+	;
 	iterator end();
 
 };
 
-template <typename T>
+template<typename T>
 class Tas<T>::iterator {
+	friend class Tas;
 	typedef Tas<T> tas_type;
-	typedef std::stack<T*> pile_type;
+	typedef std::stack<int> pile_type;
 
 public:
-	iterator(tas_type * t) :
-		t_(t), p_() {
-p_.push(t);
-
+	iterator(tas_type * t, int pos, pile_type * p) :
+		t_(t), pos_(pos) p_(p) {
 	}
 
-	iterator& operator++()
+	iterator& operator++() {
+if (Tas<T>::filsG(pos)>= t_->size())
+{
+	if (Tas<T>::filsD(pos)>= t_->size())
 	{
 
+	}
+}
 	}
 
 private:
 	tas_type * t_;
-	pile_type  p_ ;
+	int pos_;
+	pile_type * p_;
 
 };
 
-template <typename T>
+template<typename T>
 Tas<T>::iterator Tas<T>::begin() {
 	return iterator(this);
 }
 
-template <typename T>
+template<typename T>
 Tas<T>::iterator Tas<T>::end() {
 	return iterator(0);
 }
