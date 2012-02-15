@@ -4,13 +4,59 @@
 \usepackage[T1]{fontenc} 
 % Pour pouvoir utiliser 
 \usepackage{ucs}
-\usepackage{color}
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{keystroke}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{listings}
+%\usepackage{pifont}
+\usepackage{url} % Pour avoir de belles url
+\usepackage{geometry}
+\usepackage{hyperref}
+
+
+\usepackage {listings}% Pour mettre du code source
+\lstset{language=sh}
+
+% Pour pouvoir passer en paysage
+\usepackage{lscape}
+
+% Pour pouvoir faire plusieurs colonnes
+\usepackage {multicol}
+
+\usepackage{makeidx}% Pour crééer un index
+\usepackage{graphicx} % Pour insérer des images (entres autres)
+\usepackage{fourier-orns} %logo comme \danger
+\usepackage[cc]{titlepic} %rajouter le logo LoCD dans la page de garde
+\usepackage{tocbibind}
+\usepackage{wasysym} %emoticones
+
+\usepackage{glossaries} % Créer un glossaire
+
+\hypersetup{
+  backref=true,
+  %permet d'ajouter des liens dans...
+  pagebackref=true,%...les bibliographies
+  hyperindex=true, %ajoute des liens dans les index.
+  colorlinks=true, %colorise les liens
+  breaklinks=true, %permet le retour à la ligne dans les liens trop longs
+  urlcolor= blue, %couleur des hyperliens
+  linkcolor= blue, %couleur des liens internes
+  bookmarks=true, %créé des signets pour Acrobat
+  bookmarksopen=true,
+  %si les signets Acrobat sont créés,
+  %les afficher complètement.
+  pdftitle={MiniP1_rapport}, %informations apparaissant dans
+  pdfauthor={MARGUERITE Alain\\ RINCE Romain},
+  %dans les informations du document
+  pdfsubject={LoCD}
+  %sous Acrobat.
+}
+%Entête pied de page
+%Définition des entêtes : 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
 \lstset{language=XML,    numbers=left
    , tabsize=2
    , frame=single
@@ -90,7 +136,7 @@
 	Université de Nantes\\
 	2010-2011}\\
 	\vspace{15mm}
-	\Huge{Projet de Travaux pratiques :\\Systèmes Distribués}
+	\Huge{Projet de Travaux pratiques :\\Systèmes Distribués \\ Mini -projet1}
 }
 
 
@@ -122,7 +168,9 @@
 \begin{onehalfspace}
 \input{P0_cahier_des_charges}
 \input{P1_analyse_et_solution_du_probleme}
-
+\input{P2_Manuel_Utilisateur}
+\input{P3_jeux_essais}
+\input{P4_Bilan_et_conclusion}
 
 
 % Pour finir l'interligne de 1,5

@@ -1,31 +1,49 @@
-\chapter{Introduction}
+\chapter{Cahier des charges}
 \paragraph{Introduction :}
  L'objectif est de définir un outil de simulation  d'ordonancement de tâche en temps réel. Parmies ses fonctionalités, l'outil devra pour tester les contraintes temporelles d'un ensemble de tâches générées au préalable. La génération de ces tâches entre par dans la conception de l'outil. Cet outil permettra d'exporter le résultat dans un fichier  d'extension $.ktr$ pour être exploité directement par l'outil graphique Kiwi.
  
-\section{Format d'entrée}
-Il est définit dans le langage XML. Sa syntase sera la suivante
-\subsection{Entête}
-\begin{itemize}
-\item
-
-Des balises \verb+<genTache.AbstractTache-array>+ encadrent la totalité du fichier.
-\item
-Une tâche périodique sera définie dans une balise  \verb+<genTache.TachePeriodique>+ 
-\item
-Une tâche apériodique sera définie dans une balise  \verb+<genTache.TacheAPeriodique>+ 
-\item
-Dans une tache tous ses attributs seront définis de la manière suivante \verb+<nom_attribut>valeur_attribut</nom_attribut>+
-\end{itemize}
-
+\section{Données en entrées}
+L'outil doit pouvoir permettre à l'utilisateur de rentrer des tâches périodiques et ou apériodiques lui même (en précisant chacune des attributs) ou de demander une génération aléatoire pour les deux catégories.
 \section{Fonctionnement}
 \begin{itemize}
-\item
-Une génération des tâches dans le format définit ci-dessus. Cette génération doit pouvoir être aléatoire ou définie entièrement par l'utlisateur.
 \item
 Une analyse d'ordonnançabilité. L'outil affichera à l'utilisateur les résultats des différents test  s'afficheront avec les conclusions qui en découlent.
 \item
 Un environnement de simulation. L'outil lors du calcul de de l'ordonancement devra afficher les différents événements. Un bilan de ces action sera résumé dans un fichier au terme de l'execution (facultatif).
+
+L'outil doit pouvoir proposer plusieurs politiques d'ordonnancement. \'A savoir : 
+\begin{itemize}
+\item
+Pour les tâches périodiques :
+
+\begin{itemize}
+\item
+Rate Monotonic
+\item
+EDF
+\end{itemize}
+
+\item
+Pour les tâches apériodique : 
+\begin{itemize}
+\item
+BG
+\item
+TBS
+\end{itemize}
+
+\end{itemize} 
 \item
 Un fichier d'extension $.ktr$ sera généré au terme de l'execution, et contiendra le déroulement de l'ordonancement jusqu'a son terme.
+\item
+L'outil doit communiquer au terme de l'execution différents résusltats de performance qu'il aura lui même calculés. Les informations à fournir sont les suivantes : 
+\begin{itemize}
+\item
+Le nombre de violations d'échéances.
+\item
+le nombre de commutations de contexte et de préemptions.
+\item
+
+\end{itemize}
 \end{itemize}
 

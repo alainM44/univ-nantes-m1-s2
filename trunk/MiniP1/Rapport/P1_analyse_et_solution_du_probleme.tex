@@ -1,8 +1,25 @@
-\chapter{Génération de tâches dans un fichier}
-\paragraph{Introduction :}
-Dans le cadre du module Systèmes Distribués, l'opportunité de  spécifier et concevoir  un générateur de tâches temps réel sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdnous est proposé. Le langage d'implémentation étant libre, notre binome à choisi Java. Ce choix est basé principalement par le fait qu'il s'agissait du langage le plus maitrisé. Cela a permis de concentrer nos efforts sur la mise en place des algorithmes et non sur des probèmes de langage.
+\chapter{Analyse et solutions du problème}
+\section{Introduction et choix du langage}
+Dans le cadre du module Systèmes Distribués, l'opportunité de  spécifier et concevoir  un générateur de tâches temps réel nous est proposé. Le langage d'implémentation étant libre, notre binome a opté pour Java. Ce choix est basé principalement par le fait qu'il s'agissait du langage le plus maitrisé. Cela nous a permis de concentrer nos efforts sur la mise en place des algorithmes et non sur des probèmes de langage.
  L'objectif est de définir un outil de simulation  d'ordonancement de tâche en temps réel.
+
+\section{Modelisation du problème}
+Le cahier des charges demandait une gestion de taches périodique et apériodiques. blah blah blah d'ordonancement
+\section{Génération de tâches dans un fichier}
 La première partie du projet avait pour objectif d'obtenir un nombre n de taches périodiques et apériodiques pour de futurs traitements décrits dans la partie 2 : rajouter lien dym. \'A nouveau le choix du format d'un tel fichier nous était laissé. Nous avons choisis de générer un fichier xml (à nouveau pour des raisons  de simplicité) à la syntaxe suivante : 
+
+\begin{itemize}
+\item
+Des balises \verb+<genTache.AbstractTache-array>+ encadrent la totalité du fichier.
+\item
+Une tâche périodique sera définie dans une balise  \verb+<genTache.TachePeriodique>+ 
+\item
+Une tâche apériodique sera définie dans une balise  \verb+<genTache.TacheAPeriodique>+ 
+\item
+Dans une tache tous ses attributs seront définis de la manière suivante \verb+<nom_attribut>valeur_attribut</nom_attribut>+
+\end{itemize}
+
+Voici un exemple d'un respectant le format décrit ci-dessus : 
 
 \begin{lstlisting}
 <genTache.AbstractTache-array>
@@ -52,7 +69,10 @@ Ci
 \item
 Di 
 \end{itemize} 
+\section{Algorithmes et mises en oeuvre}
 
 Calcul des tâches ap  
 Le calcul des tâches ap est effectué selon la formule suivante : $ U_a =  \frac{\sum_{i=1}^m C_i}{ppcm(P_i)}$   ....  L'utilisateur entre la variable Uap  et le nombre de tache ap qu'il désire (m) les variables restantes 
 charge des ap sur une hyperpériode 
+\section{Interface proposée}
+
