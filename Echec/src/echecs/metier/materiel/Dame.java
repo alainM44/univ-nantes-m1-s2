@@ -1,7 +1,7 @@
 package echecs.metier.materiel;
 
-/** Packages utilisés par ce package
- *  Au sein de ce projet, seul metier.plateau.* est autorisé
+/** Packages utilisï¿½s par ce package
+ *  Au sein de ce projet, seul metier.plateau.* est autorisï¿½
  */
 import echecs.metier.plateau.*;
 
@@ -11,7 +11,7 @@ import javax.swing.*;
  * Titre :
  * Description :
  * Copyright :    Copyright (c) 2002
- * Société : Fabrice Tranchand
+ * Sociï¿½tï¿½ : Fabrice Tranchand
  * @author Fabrice Tranchand
  * @version 1.0
  */
@@ -28,10 +28,10 @@ public class Dame extends Piece
   //     constructeur
   // -----------------------------------------------------------------
   // *****************************************************************
-  //     le premier paramètre désigne la couleur de la pièce
-  //     le second paramètre désigne la case initiale de la pièce
+  //     le premier paramï¿½tre dï¿½signe la couleur de la piï¿½ce
+  //     le second paramï¿½tre dï¿½signe la case initiale de la piï¿½ce
   // *****************************************************************
-  public Dame(int couleur_p, Case caseInitiale_p)
+  public Dame(int couleur_p, StubCase caseInitiale_p)
   {
     super(couleur_p, caseInitiale_p);
   }
@@ -39,10 +39,10 @@ public class Dame extends Piece
 
 
   // ----------------------------------------------------------------
-  //     les méthodes publiques
+  //     les mï¿½thodes publiques
   // ----------------------------------------------------------------
   // *****************************************************************
-  //     retourne l'icône de la pièce
+  //     retourne l'icï¿½ne de la piï¿½ce
   // *****************************************************************
   public Icon getFigure()
   {
@@ -54,10 +54,10 @@ public class Dame extends Piece
     return retour;
   }
   // *****************************************************************
-  //     retourne true si la pièce peut se déplacer sur la case en
-  //     paramètre, en respectant le déplacement de la pièce
+  //     retourne true si la piï¿½ce peut se dï¿½placer sur la case en
+  //     paramï¿½tre, en respectant le dï¿½placement de la piï¿½ce
   // *****************************************************************
-  public boolean peutBouger(Case nouvelle_p)
+  public boolean peutBouger(StubCase nouvelle_p)
   {
     boolean retour = false;
     if ( getPosition().memeColonne(nouvelle_p) ||
@@ -66,7 +66,7 @@ public class Dame extends Piece
     return retour;
   }
   // *****************************************************************
-  //     retourne l'abréviation de la pièce utilisée dans les notations
+  //     retourne l'abrï¿½viation de la piï¿½ce utilisï¿½e dans les notations
   // *****************************************************************
   public String getType() { return "D"; }
 }
