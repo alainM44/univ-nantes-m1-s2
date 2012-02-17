@@ -1,7 +1,7 @@
 package echecs.metier.materiel;
 
-/** Packages utilisés par ce package
- *  Au sein de ce projet, seul metier.plateau.* est autorisé
+/** Packages utilisï¿½s par ce package
+ *  Au sein de ce projet, seul metier.plateau.* est autorisï¿½
  */
 import echecs.metier.plateau.*;
 
@@ -11,7 +11,7 @@ import javax.swing.*;
  * Titre :
  * Description :
  * Copyright :    Copyright (c) 2002
- * Société : Fabrice Tranchand
+ * Sociï¿½tï¿½ : Fabrice Tranchand
  * @author Fabrice Tranchand
  * @version 1.0
  */
@@ -21,16 +21,16 @@ public abstract class Piece extends Jeton
   // -----------------------------------------------------------------
   //     attributs
   // -----------------------------------------------------------------
-  /* couleur de la pièce : cf. classe Couleur                       */
+  /* couleur de la piï¿½ce : cf. classe Couleur                       */
   private int couleur;
-  /* indique si la pièce a déjà bougé                               */
+  /* indique si la piï¿½ce a dï¿½jï¿½ bougï¿½                               */
   private boolean aDejaBouge;
 
   // -----------------------------------------------------------------
   //     associations
   // -----------------------------------------------------------------
-  /* case sur laquelle est posée la pièce                           */
-  private Case position;
+  /* case sur laquelle est posï¿½e la piï¿½ce                           */
+  private StubCase position;
 
 
 
@@ -40,10 +40,10 @@ public abstract class Piece extends Jeton
   //     constructeur
   // -----------------------------------------------------------------
   // *****************************************************************
-  //     le premier paramètre désigne la couleur de la pièce
-  //     le second paramètre désigne la case initiale de la pièce
+  //     le premier paramï¿½tre dï¿½signe la couleur de la piï¿½ce
+  //     le second paramï¿½tre dï¿½signe la case initiale de la piï¿½ce
   // *****************************************************************
-  public Piece(int couleur_p, Case caseInitiale_p)
+  public Piece(int couleur_p, StubCase caseInitiale_p)
   {
     couleur = couleur_p;
     aDejaBouge = false;
@@ -54,41 +54,41 @@ public abstract class Piece extends Jeton
 
 
   // ----------------------------------------------------------------
-  //     les méthodes publiques
+  //     les mï¿½thodes publiques
   // ----------------------------------------------------------------
   // *****************************************************************
   //     accesseurs
   // *****************************************************************
   public int getCouleur() { return couleur; }
   public boolean aDejaBouge() { return aDejaBouge; }
-  public Case getPosition() { return position; }
+  public StubCase getPosition() { return position; }
 
   // *****************************************************************
-  //     retourne l'icône de la pièce
+  //     retourne l'icï¿½ne de la piï¿½ce
   //     A REDEFINIR
   // *****************************************************************
   public abstract Icon getFigure();
   // *****************************************************************
-  //     retourne true si la pièce peut se déplacer sur la case en
-  //     paramètre, en respectant le déplacement de la pièce
+  //     retourne true si la piï¿½ce peut se dï¿½placer sur la case en
+  //     paramï¿½tre, en respectant le dï¿½placement de la piï¿½ce
   //     A REDEFINIR
   // *****************************************************************
-  public abstract boolean peutBouger(Case nouvelle_p);
+  public abstract boolean peutBouger(StubCase nouvelle_p);
   // *****************************************************************
-  //     retourne l'abréviation de la pièce utilisée dans les notations
+  //     retourne l'abrï¿½viation de la piï¿½ce utilisï¿½e dans les notations
   //     A REDEFINIR
   // *****************************************************************
   public abstract String getType();
   // *****************************************************************
-  //     retourne true si la case peut sauter par dessus les pièces
+  //     retourne true si la case peut sauter par dessus les piï¿½ces
   // *****************************************************************
   public boolean ignoreObstacle() { return false;}
   // *****************************************************************
-  //     retourne true la pièce est sur le plateau de jeu
+  //     retourne true la piï¿½ce est sur le plateau de jeu
   // *****************************************************************
   public boolean estPresente() { return position != null;}
   // *****************************************************************
-  //     retire la pièce du jeu
+  //     retire la piï¿½ce du jeu
   // *****************************************************************
   public void enlever()
   {
@@ -96,19 +96,19 @@ public abstract class Piece extends Jeton
     position = null;
   }
   // *****************************************************************
-  //     déplace la pièce sur une nouvelle case, passée en paramètre
+  //     dï¿½place la piï¿½ce sur une nouvelle case, passï¿½e en paramï¿½tre
   // *****************************************************************
-  public void bouger(Case nouvelle_p)
+  public void bouger(StubCase nouvelle_p)
   {
     if (position != null)
       aDejaBouge = true;
     replacer(nouvelle_p);
   }
   // *****************************************************************
-  //     place le pièce sur la case passée en paramètre, sans considérer
-  //     ceci comme un déplacement (aDejaBouge inchangé)
+  //     place le piï¿½ce sur la case passï¿½e en paramï¿½tre, sans considï¿½rer
+  //     ceci comme un dï¿½placement (aDejaBouge inchangï¿½)
   // *****************************************************************
-  public void replacer(Case nouvelle_p)
+  public void replacer(StubCase nouvelle_p)
   {
     if (position != null)
       position.liberer();
