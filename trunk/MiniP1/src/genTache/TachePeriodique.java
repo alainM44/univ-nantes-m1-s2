@@ -17,7 +17,12 @@ public class TachePeriodique extends AbstractTache
 		Pi = pi;
 		ri = 0;
 	}
-
+	public TachePeriodique(TachePeriodique source)
+	{
+		super(source.getId(), source.getCi(), source.getDi());
+		this.ri = source.getRi();
+		this.Pi=source.getPi();
+	}
 	public int getPi()
 	{
 		return Pi;

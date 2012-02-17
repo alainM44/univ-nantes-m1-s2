@@ -20,6 +20,12 @@ public class TasksManager
 	private ArrayList<TachePeriodique> tachesPeriodiques;
 	private int hyperperiode;
 
+	
+	/**
+	 * Renvoit une copie de la tache avec son Ci mis à jour (cas d'une tache qui s'est executé partiellement)
+	 */
+	
+	
 	/**
 	 * La fonction renvoie la prochaine tâche à se réveiller après ou pendant
 	 * l'instant t
@@ -41,7 +47,7 @@ public class TasksManager
 			// La formule suivante calcule le début de période le plus proche
 			// après ou pendant l'instant t. La formule est en fait :
 			// prochainReveil = t + (Pi - t%Pi)
-			prochainReveil = t + prochainReveil - t % prochainReveil;
+			prochainReveil = t+1 + prochainReveil - (t+1) % prochainReveil;
 			if (prochainReveil < reveil)
 				reveil = tache.getRi();
 		}
@@ -49,11 +55,41 @@ public class TasksManager
 		// On cherche ensuite dans les taches apériodiques
 		for (TacheAperiodique tache : tachesAperiodiques)
 		{
-			if (tache.getRi() < reveil && tache.getRi() >= t)
+			if (tache.getRi() < reveil && tache.getRi() > t)
 				reveil = tache.getRi();
 		}
 		return reveil;
 	}
+
+	/**
+	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
+	 * 
+	 */
+	public ArrayList<TachePeriodique> getTachesP(int t)
+	{
+		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
+		for (TachePeriodique tache : tachesPeriodiques)
+		{
+			if (t % tache.getRi() == 0)
+				result.add(new TachePeriodique(tache));
+		}
+		return result;
+	}
+	/**
+	 * Pour récupérer toutes les taches apériodiques se réveillant à la date t
+	 * 
+	 */
+	public ArrayList<TacheAperiodique> getTachesA(int t)
+	{
+		ArrayList<TacheAperiodique> result = new ArrayList<TacheAperiodique>();
+		for (TacheAperiodique tache : tachesAperiodiques)
+		{
+			if ( tache.getRi() == t)
+				result.add(new TacheAperiodique(tache));
+		}
+		return result;
+	}
+
 
 	/**
 	 * Renvoyer la tache dont la période d'activationPi est petite
@@ -115,7 +151,6 @@ public class TasksManager
 		hyperperiode = PPCM(tachesPeriodiques);
 
 	}
-
 
 	protected int PPCM(ArrayList<TachePeriodique> t)
 	{
