@@ -24,26 +24,37 @@ for i in range(len(data.modules)):
 #######################################
 solution = [[model.IntVar(0,1,"semestre"+ str(i) + " module "+ data.modules[j]) for j in range(len(data.modules))] for i in range(data.s)]
 
+#Creation de variable sur les ECTS par semestre#
+ECTSBySem = [model.IntVar(data.minC, data.maxC) for i in range(data.s)]
+
+#Creation de variable sur le nb de matiere par semestre#
+ModBySem = [model.IntVar(data.minM, data.maxM) for i in range(data.s)]
+
 ##########################
 #Creation des contraintes#
 ##########################
+#La somme de ECTSBySem doit etre egale à la somme des ECTS#
+model.Add(sum(data.ECTS) == model.Sum(ECTSBySem))
+
+#La somme de MatBySem doit etre egale au nb de matiere dansl'année#
+model.Add(len(data.modules) == model.Sum(ModBySem))
 
 #Chaque module n'apparait qu'une fois par an
 for j in range(len(data.modules)):
     module = [row[j] for row in solution]
     model.Add(model.Count(module,1,1))
 
-#Le nombre de modules par semestres est entre minM et maxM
+#Le nombre de modules par semestres est egale au ModBySem associé 
 for i in range(data.s):
     nbModules = model.Sum(solution[i])
-    model.Add(model.BetweenCt(nbModules,data.minM,data.maxM))
+    model.Add(ModBySem[i] == nbModules)
 
-              #Le nombre d'ECTS doit etre borne entre minC et MaxC
+#Le nombre d'ECTS doit etre egale au ECTSBySem de on semestre
 for i in range(data.s) :
     nbECTS = model.ScalProd(solution[i], data.ECTS)
-    model.Add(model.BetweenCt(nbECTS,data.minC,data.maxC))
+    model.Add(ECTSBySem[i] == nbECTS)
 
-                  #Contrainte de precedences sur les modules et les semestres
+#Contrainte de precedences sur les modules et les semestres
 for p in prereqIndice :
     b= model.BoolVar()
     semestreM1 = [s[p[0]] for s in solution]
@@ -54,9 +65,11 @@ for p in prereqIndice :
 sol=[]
 for s in solution :
     sol = sol + s
+sol += ModBySem
+sol += ECTSBySem
 db = model.Phase(sol,
                  model.INT_VAR_DEFAULT,
-                 model.ASSIGN_MIN_VALUE)
+                 model.ASSIGN_MAX_VALUE)
 
 # Recherche
 model.NewSearch(db)
