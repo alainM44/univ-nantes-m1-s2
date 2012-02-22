@@ -1,11 +1,17 @@
-\section{Algorithmes sdfsdfsd}
- blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+\section{Mise en oeuvre de la méthode de résolution par intervalle}
+
 
 \subsection{Données en entrée}
- blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+
 
 \subsection{Algorithmes}
- blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+La méthode de résolution par intervalles met en oeuvre deux opérations détaillées dans \cite{Neumaier}: 
+\begin{itemize}
+\item{Branch}
+\begin{quote} Diviser pour mieux régner. \end{quote} Cette méthode consiste à diviser récurcivement un problème en deux sous problèmes. Appliquée à la méthode de résolution par intervalles, on «découpe» en deux l'intervalle concerné (en son milieu ou non). On obtient alors deux problèmes plus «faciles» à étudier.
+\item{Bound}
+La découpe d'un problème en sous problème peut amener à une situation ou un des sous problème crées ne contient aucune solution. On peut alors étudier trier ces sous problèmes pour supprimer un espaces de recherche superflu. Cette étape est appellée \textbf{pruning}.
+\end{itemize}
 
 
 \subsection{Données en sortie}
