@@ -2,11 +2,9 @@
 Les méthodes formelles et numériques, bien performantes par certains aspects, sont rapidement limité dans les calculs numériques exacts en préservant toutes solutions. C'est dans ce cadre que la méthode de résolution par intervalles ont toutes leurs places. Construite grâce à l'arithmétique des intervalles, elle utilise aussi des notions apportées par la programmation par contrainte.
  
 \subsection{L'Arithmétique des intervalles}
-Cette arithmétique permet un calcul sur un ensembles $\mathbb{I}$ d'intervalles sur $\mathbb{R}$. Les bornes $b1$ et $b2$ d'intervalle $[b1,b2]$ sont choisie en prenant un arrondi respectueusement inférieur à $b1$ et supérieur à $b2$ de manière à garantir l'exactitude des calculs. L'extension des fonctions aux intervalles, introduite par Moore en 1966, permet une «transition» à des intervalles grâce à opérateur d'encadrement. Une liste exhaustive des opérations de cet opérateur est listée dans \cite{Jermann}.  
-  blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+Cette arithmétique permet un calcul sur un ensembles $\mathbb{I}$ d'intervalles sur $\mathbb{R}$. Les bornes $b1$ et $b2$ d'intervalle $[b1,b2]$ sont choisie en prenant un arrondi respectueusement inférieur à $b1$ et supérieur à $b2$ de manière à garantir l'exactitude des calculs. L'extension des fonctions aux intervalles, introduite par Moore en 1966, permet une transition à des intervalles grâce à opérateur d'encadrement. Une liste exhaustive des opérations de cet opérateur est listée dans \cite{Jermann}. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
 \subsection{Utilisation des intervalles pour la notion de contraintes}
-
- blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+En utilisant l'arithmétique des intervalles, la méthode de résolution par intervalles utilisent des notions de programmation par contraintes. On y retrouve celle de consistance. La consistance permet d'évaluer le rapport entre les variables d'un domaine et les solution effective d'un problème. Par exemple un CSP globalement consistant lorsque toutes les valeurs des variables de son domaine appartiennent au moins à une solution de ses solutions. On devine qu'il peut être intéréssant pour un CSP de posséder une consistance la plus forte possible. Ainsi les opérations pour la résolution de problèmes seront moins nombreuses. 
 
 
 \subsection{Exemples d'application}
