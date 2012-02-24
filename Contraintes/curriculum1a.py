@@ -52,7 +52,7 @@ def curriculum(data):
         sol = sol + s
     db = model.Phase(sol,
                      model.INT_VAR_DEFAULT,
-                     model.ASSIGN_MIN_VALUE)
+                     model.ASSIGN_MAX_VALUE)
 
 # Recherche
     model.NewSearch(db)
@@ -65,6 +65,7 @@ def curriculum(data):
             print(affiche+"\n")
         print(model.Branches())
         print(model.Failures())
+        print(model.WallTime())
     model.EndSearch()
 
 if __name__ == '__main__':
