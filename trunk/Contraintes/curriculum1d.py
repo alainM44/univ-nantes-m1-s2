@@ -78,6 +78,7 @@ def curriculum(data):
             print(affiche+"\n")
    		print(model.Branches())
     	print(model.Failures())
+        print(model.WallTime())
     model.EndSearch()
 
 if __name__ == '__main__':
