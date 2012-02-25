@@ -105,7 +105,7 @@ public class TasksManager
 			if (tache.getRi() == t)
 			{
 				result.add(new TacheAperiodique(tache));
-				w.addEvent(t, "START",tache.getId());
+				w.addEvent(tache.getRi(), "START",tache.getId());
 			}
 		
 		}
