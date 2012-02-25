@@ -20,12 +20,11 @@ public class TasksManager
 	private ArrayList<TachePeriodique> tachesPeriodiques;
 	private int hyperperiode;
 
-	
 	/**
-	 * Renvoit une copie de la tache avec son Ci mis à jour (cas d'une tache qui s'est executé partiellement)
+	 * Renvoit une copie de la tache avec son Ci mis à jour (cas d'une tache qui
+	 * s'est executé partiellement)
 	 */
-	
-	
+
 	/**
 	 * La fonction renvoie la prochaine tâche à se réveiller après ou pendant
 	 * l'instant t
@@ -39,7 +38,7 @@ public class TasksManager
 		// Attention
 		int reveil = hyperperiode;
 		int prochainReveil;
-
+		// int min = hyperperiode;
 		// On commence par parcourir les taches périodiques
 		for (TachePeriodique tache : tachesPeriodiques)
 		{
@@ -47,17 +46,32 @@ public class TasksManager
 			// La formule suivante calcule le début de période le plus proche
 			// après ou pendant l'instant t. La formule est en fait :
 			// prochainReveil = t + (Pi - t%Pi)
-			prochainReveil = t+1 + prochainReveil - (t+1) % prochainReveil;
-			if (prochainReveil < reveil)
-				reveil = tache.getRi();
+			prochainReveil = t + 1
+					+ (prochainReveil - ((t + 1) % prochainReveil));
+			
+			if (t == tache.getRi()) // cas ouù reveil pendant
+			{
+				System.out.println("prochain reveil : " + t);
+				
+				return t;
+			}
+			System.out.println("prochain reveil : " + prochainReveil);	
+			// if (prochainReveil < reveil) // ? ??? toujours vrai !
+			if (reveil > prochainReveil)
+			{
+
+				// reveil =t+ tache.getRi();
+				reveil = prochainReveil;
+			}
 		}
 
 		// On cherche ensuite dans les taches apériodiques
-		for (TacheAperiodique tache : tachesAperiodiques)
-		{
-			if (tache.getRi() < reveil && tache.getRi() > t)
-				reveil = tache.getRi();
-		}
+		// for (TacheAperiodique tache : tachesAperiodiques)
+		// {
+		// if (tache.getRi() < reveil && tache.getRi() > t)
+		// reveil = tache.getRi();
+		// }
+		System.out.println("nouveau nxt reveil : " + reveil + "avec t = " + t);
 		return reveil;
 	}
 
@@ -70,11 +84,21 @@ public class TasksManager
 		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
 		for (TachePeriodique tache : tachesPeriodiques)
 		{
-			if (t % tache.getRi() == 0)
+			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème
+																			// si
+																			// t
+																			// =
+																			// 0
+																			// j'ai
+																			// changé
+																			// getRI
+																			// et
+																			// getPI
 				result.add(new TachePeriodique(tache));
 		}
 		return result;
 	}
+
 	/**
 	 * Pour récupérer toutes les taches apériodiques se réveillant à la date t
 	 * 
@@ -84,12 +108,11 @@ public class TasksManager
 		ArrayList<TacheAperiodique> result = new ArrayList<TacheAperiodique>();
 		for (TacheAperiodique tache : tachesAperiodiques)
 		{
-			if ( tache.getRi() == t)
+			if (tache.getRi() == t)
 				result.add(new TacheAperiodique(tache));
 		}
 		return result;
 	}
-
 
 	/**
 	 * Renvoyer la tache dont la période d'activationPi est petite
@@ -126,7 +149,7 @@ public class TasksManager
 		// Instanciation de la classe XStream
 		XStream xstream = new XStream(new DomDriver());
 
-		// Redirection du fichier c:/temp/article.xml vers un flux
+		// Redirection du fichier vers un flux
 		// d'entrée fichier
 		FileInputStream fis = new FileInputStream(new File(filename));
 		// Affichage sur la console du contenu de l'attribut synopsis
@@ -142,8 +165,7 @@ public class TasksManager
 			if (tab[i] instanceof TacheAperiodique)
 			{
 				tachesAperiodiques.add((TacheAperiodique) tab[i]);
-			}
-			else
+			} else
 			{
 				tachesPeriodiques.add((TachePeriodique) tab[i]);
 			}
@@ -196,16 +218,16 @@ public class TasksManager
 	 * Tests de faisabilité
 	 */
 
-	protected int getRmCondNeccessaire()
+	protected float getRmCondNeccessaire()
 	{
-		int U = 0;
-		for (int i = 1; i <= tachesPeriodiques.size(); i++)
-			U += tachesPeriodiques.get(i).getCi()
+		float U = 0;
+		for (int i = 0; i <= tachesPeriodiques.size() - 1; i++)
+			U += (float) tachesPeriodiques.get(i).getCi()
 					/ tachesPeriodiques.get(i).getPi();
 		return U;
 	}
 
-	protected int getEDFCondSuffisanteDiEGALEhPi()
+	protected float getEDFCondSuffisanteDiEGALEhPi()
 	{
 		return getRmCondNeccessaire();
 	}
