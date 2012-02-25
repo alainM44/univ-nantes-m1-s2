@@ -48,14 +48,14 @@ public class TasksManager
 			// prochainReveil = t + (Pi - t%Pi)
 			prochainReveil = t + 1
 					+ (prochainReveil - ((t + 1) % prochainReveil));
-			
+
 			if (t == tache.getRi()) // cas ouù reveil pendant
 			{
-				System.out.println("prochain reveil : " + t);
-				
+			System.out.println("prochain reveil : " + t);
+
 				return t;
 			}
-			System.out.println("prochain reveil : " + prochainReveil);	
+			//System.out.println("prochain reveil : " + prochainReveil);
 			// if (prochainReveil < reveil) // ? ??? toujours vrai !
 			if (reveil > prochainReveil)
 			{
@@ -66,12 +66,12 @@ public class TasksManager
 		}
 
 		// On cherche ensuite dans les taches apériodiques
-		// for (TacheAperiodique tache : tachesAperiodiques)
-		// {
-		// if (tache.getRi() < reveil && tache.getRi() > t)
-		// reveil = tache.getRi();
-		// }
-		System.out.println("nouveau nxt reveil : " + reveil + "avec t = " + t);
+		 for (TacheAperiodique tache : tachesAperiodiques)
+		 {
+		 if (tache.getRi() < reveil && tache.getRi() > t)
+		 reveil = tache.getRi();
+		 }
+		//System.out.println("nouveau nxt reveil : " + reveil + " avec t = " + t);
 		return reveil;
 	}
 
@@ -79,22 +79,16 @@ public class TasksManager
 	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
 	 * 
 	 */
-	public ArrayList<TachePeriodique> getTachesP(int t)
+	public ArrayList<TachePeriodique> getTachesP(int t, Writer w)
 	{
 		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
 		for (TachePeriodique tache : tachesPeriodiques)
 		{
-			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème
-																			// si
-																			// t
-																			// =
-																			// 0
-																			// j'ai
-																			// changé
-																			// getRI
-																			// et
-																			// getPI
+			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
+			{
 				result.add(new TachePeriodique(tache));
+				w.addEvent(t, "START",tache.getId());
+			}
 		}
 		return result;
 	}
@@ -103,15 +97,35 @@ public class TasksManager
 	 * Pour récupérer toutes les taches apériodiques se réveillant à la date t
 	 * 
 	 */
-	public ArrayList<TacheAperiodique> getTachesA(int t)
+	public ArrayList<TacheAperiodique> getTachesA(int t, Writer w)
 	{
 		ArrayList<TacheAperiodique> result = new ArrayList<TacheAperiodique>();
 		for (TacheAperiodique tache : tachesAperiodiques)
 		{
 			if (tache.getRi() == t)
+			{
 				result.add(new TacheAperiodique(tache));
+				w.addEvent(t, "START",tache.getId());
+			}
+		
 		}
+		//	System.out.println("taaaacheA"+result);
 		return result;
+	}
+
+	public ArrayList<TacheAperiodique> getTachesAperiodiques()
+	{
+		return tachesAperiodiques;
+	}
+
+	public ArrayList<TachePeriodique> getTachesPeriodiques()
+	{
+		return tachesPeriodiques;
+	}
+
+	public int getHyperperiode()
+	{
+		return hyperperiode;
 	}
 
 	/**
@@ -165,7 +179,8 @@ public class TasksManager
 			if (tab[i] instanceof TacheAperiodique)
 			{
 				tachesAperiodiques.add((TacheAperiodique) tab[i]);
-			} else
+			}
+			else
 			{
 				tachesPeriodiques.add((TachePeriodique) tab[i]);
 			}
