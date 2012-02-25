@@ -1,13 +1,13 @@
-\section{Mise en oeuvre de la méthode de résolution par intervalle}
+\section{Mise en œuvre de la méthode de résolution par intervalle}
 
 
 \subsection{Données en entrée}
-Un probème de satisfaction de contraintes est défini par 3 élémentes : 
+Un problème de satisfaction de contraintes est défini par 3 éléments : 
 \begin{itemize}
 \item
 Un ensemble de variable $\mathbf{V} = \left\{ v_1,...,v_n \right\}$.
 \item
-Un domaine de valeurs pour chaque variable. Chaque valeur du domaine $D_i$ associé à la variable $v_i$ est une valeur que peut potentilement prendre $v_i$ : $\mathbf{D} = D_1 \times ... \times D_n $.
+Un domaine de valeurs pour chaque variable. Chaque valeur du domaine $D_i$ associé à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times ... \times D_n $.
 \item
 Un ensemble de contraintes (relations) $\mathbf{C}$ restreignant les variables de $\mathbf{V}$ défini ci-dessus :  $\mathbf{C} = \left\{c_1,...,cm\right\}$. 
 \end{itemize}
@@ -16,11 +16,10 @@ Un ensemble de contraintes (relations) $\mathbf{C}$ restreignant les variables d
 La méthode de résolution par intervalles met en oeuvre deux opérations détaillées dans \cite{Neumaier}: 
 \begin{itemize}
 \item{Branch}
-\begin{quote}Diviser pour mieux régner\end{quote} Cette méthode consiste à diviser récurcivement un problème en deux sous problèmes. Appliquée à la méthode de résolution par intervalles, on «découpe» en deux l'intervalle concerné (en son milieu ou non). On obtient alors deux problèmes plus «faciles» à étudier.
+\begin{quote}Diviser pour mieux régner\end{quote} Cette méthode consiste à diviser récursivement un problème en deux sous problèmes. Appliquée à la méthode de résolution par intervalles, on découpe en deux l'intervalle concerné (en son milieu ou non). On obtient alors deux problèmes plus «faciles» à étudier.
 \item{Bound}
-La découpe d'un problème en sous problème peut amener à une situation ou un des sous problème crées ne contient aucune solution. On peut alors étudier trier ces sous problèmes pour supprimer un espaces de recherche superflu. Cette étape est appellée \textbf{pruning}.
+La découpe d'un problème en sous problème peut amener à une situation ou un des sous problème crées ne contient aucune solution. On peut alors étudier trier ces sous problèmes pour supprimer un espaces de recherche superflu. Cette étape est appelée \textbf{pruning}.
 \end{itemize}
-
 
 \subsection{Données en sortie}
  blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
