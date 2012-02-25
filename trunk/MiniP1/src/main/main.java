@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import sstr.Algorithms;
 import sstr.TasksManager;
 import sstr.Writer;
 
@@ -20,12 +21,15 @@ public class main
 
 	/**
 	 * @param args
-	 * @throws FileNotFoundException
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws FileNotFoundException
+	public static void main(String[] args) throws Exception
 	{
 		
-		TasksManager tm = new TasksManager(mainGenerator.FileGenerator());
+		TasksManager tm = new TasksManager("cours_RMBG.xml"); // TEST RM_BG
+		Algorithms al = new Algorithms(tm);
+		al.RmBg();
+		//TasksManager tm = new TasksManager(mainGenerator.FileGenerator());
 		//tm.RM();
 	}
 }
