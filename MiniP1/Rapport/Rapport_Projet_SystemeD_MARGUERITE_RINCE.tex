@@ -144,7 +144,7 @@
 \author{MARGUERITE Alain\\ RINCE Romain
 	\vspace{45mm}
 }
-\titlepic{\includegraphics{img/logo}}
+\titlepic{\includegraphics[scale=1.70]{img/logouniv}     \hspace{2cm} \includegraphics[scale=0.12	]{img/logo}}
 \date
 {	
 	\normalsize{Université de Nantes \\ 2 rue de la Houssinière, BP92208, F-44322 Nantes cedex 03, FRANCE
@@ -153,9 +153,10 @@
 	Encadrant : QUEUDET Audrey \\
 	}
 }
+\newglossaryentry{unix}{name=Unix,description={Le système Unix est un système d'exploitation multi-utilisateurs, multi-tâches, ce qui signifie qu'il permet à un ordinateur mono ou multi-processeurs de faire exécuter simultanément plusieurs programmes par un ou plusieurs utilisateurs. }}
 
 \begin{document}
-
+\renewcommand{\labelitemi}{$\bullet$} 	
 \maketitle
 
 
@@ -172,13 +173,19 @@
 \input{P3_jeux_essais}
 \input{P4_Bilan_et_conclusion}
 
-
 % Pour finir l'interligne de 1,5
 \end{onehalfspace}
+
+\printglossary
+
+\listoffigures
 
 \printindex
 
 \appendix
+
+\bibliographystyle{alpha}
+\bibliography{biblio.bib}
 
 
 \end{document}
