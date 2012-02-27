@@ -85,9 +85,9 @@ def curriculum(data):
                 if (0 != solution[i][j].Value()) :  
                     affiche = affiche + data.modules[j]+" "
             print(affiche+"\n")
-        print(model.Branches())
-        print(model.Failures())
-        print(model.WallTime())
+        print 'branches ', model.Branches()
+        print 'failures ', model.Failures()
+        print('times ', model.WallTime())
     model.EndSearch()
 
 if __name__ == '__main__':

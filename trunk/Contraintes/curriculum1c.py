@@ -93,9 +93,9 @@ def curriculum(data):
                     affiche = affiche + data.modules[j]+" "
             print(affiche+"ECTS : "+str(collector.Value(0,ECTSBySem[i]))+"\n")
         print collector.ObjectiveValue(0)
-        print(model.Branches())
-        print(model.Failures())       
-        print(model.WallTime())
+        print 'branches ', model.Branches()
+        print 'failures ', model.Failures()
+        print('times ', model.WallTime())
     model.EndSearch()
 
 if __name__ == '__main__':
