@@ -1,0 +1,77 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[frenchb]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx} % Pour insérer des images (entres autres)
+\usepackage[cc]{titlepic}
+\usepackage{hyperref}
+
+\hypersetup{
+  backref=true,
+  %permet d'ajouter des liens dans...
+  pagebackref=true,%...les bibliographies
+  hyperindex=true, %ajoute des liens dans les index.
+  colorlinks=true, %colorise les liens
+  breaklinks=true, %permet le retour à la ligne dans les liens trop longs
+  urlcolor= blue, %couleur des hyperliens
+  linkcolor= red, %couleur des liens internes
+  bookmarks=true, %créé des signets pour Acrobat
+  bookmarksopen=true,
+  %si les signets Acrobat sont créés,
+  %les afficher complètement.
+  pdftitle={Programmation par contraintes}, %informations apparaissant dans
+  pdfauthor={MARGUERITE Alain\\ RINCE Romain},
+  %dans les informations du document
+  pdfsubject={Programmation par contraintes}
+  %sous Acrobat.
+}
+\title
+{
+	\normalsize{ M1 ALMA\\ 
+	Université de Nantes\\
+	2010-2011}\\
+	\vspace{15mm}
+	\Huge{Projet de Travaux pratiques :\\Systèmes Distribués \\ Mini -projet1}
+}
+
+
+
+\author{MARGUERITE Alain\\ RINCE Romain
+	\vspace{45mm}
+}
+\titlepic{\includegraphics[scale=1.70]{logouniv}     \hspace{2cm} \includegraphics[scale=0.12	]{logo}}
+\date
+{	
+	\normalsize{Université de Nantes \\ 2 rue de la Houssinière, BP92208, F-44322 Nantes cedex 03, FRANCE
+	\\ 
+	\vspace{5mm}	
+	Encadrant : Frederic Goualard \\
+	}
+}
+
+\begin{document}
+\maketitle
+\clearpage
+\section{Brève explication sur le lancement d'une résolution}
+Aucun des programmes ne contient de prompt d'interrogation pour obtenir le fichier de spécification du problème. Il est nécessaire que l'utilisateur ajoute en paramètre l'adresse du fichier lors de l’exécution de la commande bash de la forme \verb+python <NOM_DU_PROG> <FICHIER_DE_SPEC>+. Par exemple : \begin{verbatim}python curicullum1a.py data8\end{verbatim}
+
+\section{Présentation du modèle pour la résolution}
+L'ensemble des questions ont été résolues en utilisant quasiment le même modèle. Nous avons donc choisi de représenter les différentes affectations des modules à un semestre par une matrice de booléens.  Les lignes de la matrices sont les différents semestres tandis que chaque colonne représente un module; ainsi la valeur vrai à la case[$i$][$j$] signifie que le module en j\up{ème} position dans la liste des modules est associé au i\up{ème} semestre. Chaque case de la matrice sera donc une variable du problème.
+
+\section{Réponse au problème 1a}
+Pour résoudre le problème les contraintes suivantes ont été ajoutées:
+\begin{itemize}
+\item On vérifie qu'un module ne peut apparaître qu'une seule fois dans l'ensemble des semestres. Pour cela on utilise un \verb+Count+ sur chaque colonne de la matrice solution en vérifiant qu'il n'y ait qu'une seule variable à vrai. \begin{equation}  \forall i: \sum_{j=1}^{nbModules}Mat[i][j] = 1 \end{equation}.
+\item On vérifie que le nombre de modules dans un semestre est bien comprise entre le nombre maximum et minimum de matière possible dans un semestre grâce à la contrainte globale \verb+Between+.\begin{equation}\label{eq:Matiere}\forall{i}:  minM \leq \sum_{j=1}^{nbModules}Mat[i][j] \geq maxM\end{equation}.
+\item On réalise la même vérification sur le nombre d'ECTS par semestre en effectuant au préalable un produit scalaire entre chaque ligne de la matrice et la liste qui fournit le nombre d'ECTS pour chaque module.\begin{equation}\label{eq:ECTS}\forall{i}:  minC \leq \sum_{j=1}^{nbModules} {{Mat[i][j]} \times ECTS[j]} \geq maxC\end{equation}
+\item Enfin on vérifie que l'on respecte toutes les règles de précédences fournies en récupérant les semestres associés aux modules de la règle puis en comparant leurs valeurs grâce à un \verb+IsGreaterCt+. L'obtention du numéro du semestre n'est pas triviale et consiste à effectuer le produit scalaire entre la colonne du module dont l'on recherche son semestre et un tableau contenant les valeurs, triées de façon croissante, de 1 au nombre de semestre total.
+\end{itemize}
+Les paramètres de la recherche sont l'affectation des variables dans l'ordre dans lesquelles elles ont été fournies et l'on assigne la valeur maximale en premier c'est-à-dire vrai (les valeurs étant 0 pour faux et 1 pour vrai)
+
+\section{Réponse au problème 1b}
+Pour ce problème, nous avons ajouté des variables sur le nombre d'ECTS par semestre et le nombre de matière par semestre.
+Les contraintes sur le nombre d'ECTS par semestre (\ref{eq:ECTS}) et le nombre de matière ar semestre (\ref{eq:Matiere}) n'existe donc plus puisque celle-ci sont implicitement données par le domaines des variables.
+
+
+
+\end{document}
