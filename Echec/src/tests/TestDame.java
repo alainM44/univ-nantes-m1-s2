@@ -2,12 +2,17 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import echecs.metier.materiel.Dame;
 import echecs.metier.plateau.Case;
+import echecs.metier.plateau.Couleur;
 import echecs.metier.plateau.StubCase;
+
 //Coup Joueur partie Dame Fou Pion Case Echiquier
 public class TestDame
 {
@@ -17,13 +22,14 @@ public class TestDame
 	public void creeDame()
 	{
 		d = new Dame(0, new StubCase('d', 1));
+
 	}
 
 	@Test
 	public void testConst()
 	{
 		Dame d1 = new Dame(0, new StubCase('d', 1));
-		assertEquals('d', d1.getPosition().getColonne());
+		assertEquals('d'-'a'+1, d1.getPosition().getColonne());
 		assertEquals(1, d1.getPosition().getLigne());
 	}
 
@@ -59,7 +65,7 @@ public class TestDame
 	@Test
 	public void testGetPosition()
 	{
-		assertEquals('d'-'a'+1, d.getPosition().getColonne());
+		assertEquals('d' - 'a' + 1, d.getPosition().getColonne());
 		assertEquals(1, d.getPosition().getLigne());
 
 	}
@@ -76,7 +82,7 @@ public class TestDame
 	{
 		assertEquals(true, d.estPresente());
 	}
-	
+
 	@Test
 	public void testEnlever()
 	{
@@ -84,30 +90,49 @@ public class TestDame
 		assertEquals(null, d.getPosition());
 		assertEquals(false, d.estPresente());
 	}
-	
+
 	@Test
 	public void testBouger()
 	{
 		d.bouger(new StubCase('d', 2));
 		assertEquals(2, d.getPosition().getLigne());
-		assertEquals('d' - 'a' +1, d.getPosition().getColonne());
+		assertEquals('d' - 'a' + 1, d.getPosition().getColonne());
 		assertEquals(true, d.aDejaBouge());
 
 	}
-	
-	
+
 	@Test
 	public void testReplacer()
 	{
 		d.replacer(new StubCase('f', 3));
-		assertEquals('f'- 'a' +1, d.getPosition().getColonne());
+		assertEquals('f' - 'a' + 1, d.getPosition().getColonne());
 		assertEquals(3, d.getPosition().getLigne());
 	}
-	
-	
+
 	@Test
 	public void testPeutBouger()
 	{
-		assertEquals(false,d.peutBouger(new StubCase('f', 4)));
+		assertEquals(true, d.peutBouger(new StubCase('d', 4)));
+
+	}
+
+	@Test
+	public void testPeutPasBouger()
+	{
+		assertEquals(false, d.peutBouger(new StubCase('a', 1)));
+
+	}
+
+	@Test
+	public void testGetType()
+	{
+		String da = "D";
+		assertEquals(true, d.getType().equals(da));
+	}
+
+	@Test
+	public void testPresente()
+	{
+		assertNotNull(d.estPresente());
 	}
 }
