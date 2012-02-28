@@ -1,3 +1,5 @@
+#Alain MARGUERITE
+#Romain RINCE
 import os.path
 import sys
 
