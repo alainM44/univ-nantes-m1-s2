@@ -21,28 +21,28 @@ public class TestPartie
 		Partie p = new Partie();
 		assertEquals(8, p.getLargeur());
 	}
-	
+
 	@Test
 	public void testGetHauteur()
 	{
 		Partie p = new Partie();
 		assertEquals(8, p.getHauteur());
 	}
-	
+
 	@Test
 	public void testGetEchiquier()
 	{
 		Partie p = new Partie();
-		assertNotNull( p.getEchiquier());
+		assertNotNull(p.getEchiquier());
 	}
-	
+
 	@Test
 	public void testGetTrait()
 	{
 		Partie p = new Partie();
 		assertEquals(0, p.getTrait().getCouleur());
 	}
-	
+
 	@Test
 	public void testGetAdversaire()
 	{
@@ -52,14 +52,14 @@ public class TestPartie
 		assertEquals(1, j2.getCouleur());
 		assertEquals(0, p.getAdversaire(j2).getCouleur());
 	}
-	
+
 	@Test
 	public void testJouer()
 	{
 		Partie p = new Partie();
-Echiquier e = p.getEchiquier();
-StubCase CaseCavalier = 
-p.jouer(piece, c);
+		Echiquier e = p.getEchiquier();
+		StubCase CaseCavalier = e.getCase(2, 1);
+		p.jouer(CaseCavalier.getJeton(), c);
 	}
 
 }
