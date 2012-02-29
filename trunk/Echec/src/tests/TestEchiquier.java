@@ -33,13 +33,30 @@ public class TestEchiquier
 	@Test
 	public void testIntervalleLibre()
 	{
-
 		StubCase c1 = new StubCase('a', 4);
 		StubCase c2 = new StubCase('b', 4);
-
 		assertEquals(true, e.intervalleLibre(c1, c2));
 
 	}
+	
+	//On detecte une erreur 
+	@Test 
+	public void testIntervalleLibre2()
+	{
+		StubCase c1 = new StubCase('a', 4);
+		StubCase c2 = new StubCase('a', 1);
+		assertEquals(true, e.intervalleLibre(c1, c2));
 
+	}
+	//On detecte une erreur 
+	@Test 
+	public void testIntervalleLibre2()
+	{
+		StubCase c1 = new StubCase('a', 4);
+	e.
+		StubCase c2 = new StubCase('a', 1);
+		assertEquals(true, e.intervalleLibre(c1, c2));
+
+	}
 	
 }
