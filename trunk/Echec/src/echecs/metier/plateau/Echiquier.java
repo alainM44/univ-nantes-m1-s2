@@ -54,13 +54,17 @@ public class Echiquier
   //     si ces StubCases ne sont pas align�es (ni en ligne, ni en colonne
   //     ni en diagonale, la m�thode retourne true
   // *****************************************************************
+  
+  /**
+   * Erreur détectée : elementAt(1) ou lieu de i
+   */
   public boolean intervalleLibre(StubCase debut_p, StubCase fin_p)
   {
     boolean retour = true;
     Vector intervalle = getIntervalle(debut_p, fin_p);
     for (int i=0; i<intervalle.size() && retour; i++)
     {
-      StubCase uneStubCase = (StubCase)(intervalle.elementAt(1));
+      StubCase uneStubCase = (StubCase)(intervalle.elementAt(i));
       if (uneStubCase.isOccupee())
         retour = false;
     }
@@ -73,7 +77,7 @@ public class Echiquier
   //     la colonne et la ligne pass�es en param�tres sont suppos�es
   //     commenc�es � 1 (et non � 0)
   // *****************************************************************
-  public StubCase getStubCase(int colonne_p, int ligne_p)
+  public StubCase getCase(int colonne_p, int ligne_p)
   {
     StubCase retour = null;
     if (colonne_p > 0 && colonne_p <= nombreColonnes &&
@@ -88,9 +92,9 @@ public class Echiquier
   //     la colonne pass�e en param�tre est cens�e commenc�e � 'a'
   //     la ligne pass�e en param�tre est cens�e commenc�e � 1 (et non � 0)
   // *****************************************************************
-  public StubCase getStubCase(char colonne_p, int ligne_p)
+  public StubCase getCase(char colonne_p, int ligne_p)
   {
-    return getStubCase(colonne_p-'a'+1, ligne_p);
+    return getCase(colonne_p-'a'+1, ligne_p);
   }
 
 
@@ -107,9 +111,9 @@ public class Echiquier
   {
     Vector retour = new Vector();
     for (int i=debut_p.getLigne(); i<fin_p.getLigne(); i++)
-      retour.add(getStubCase(debut_p.getColonne(), i));
+      retour.add(getCase(debut_p.getColonne(), i));
     for (int i=fin_p.getLigne(); i<debut_p.getLigne(); i++)
-      retour.add(getStubCase(debut_p.getColonne(), i));
+      retour.add(getCase(debut_p.getColonne(), i));
 
     return retour;
   }
@@ -122,9 +126,9 @@ public class Echiquier
   {
     Vector retour = new Vector();
     for (int i=debut_p.getColonne() + 1; i<fin_p.getColonne(); i++)
-      retour.add(getStubCase(i, debut_p.getLigne()));
+      retour.add(getCase(i, debut_p.getLigne()));
     for (int i=fin_p.getColonne() + 1; i<debut_p.getColonne(); i++)
-      retour.add(getStubCase(i, debut_p.getLigne()));
+      retour.add(getCase(i, debut_p.getLigne()));
 
     return retour;
   }
@@ -139,17 +143,17 @@ public class Echiquier
     if (debut_p.getColonne() < fin_p.getColonne())
       if (debut_p.getLigne() < fin_p.getLigne())
         for (int i = 1; i < (fin_p.getLigne() - debut_p.getLigne()); i++)
-          retour.add(getStubCase(debut_p.getColonne()+i, debut_p.getLigne()+i));
+          retour.add(getCase(debut_p.getColonne()+i, debut_p.getLigne()+i));
       else
         for (int i = 1; i < (debut_p.getLigne() - fin_p.getLigne()); i++)
-          retour.add(getStubCase(debut_p.getColonne()+i, debut_p.getLigne()-i));
+          retour.add(getCase(debut_p.getColonne()+i, debut_p.getLigne()-i));
     else
       if (debut_p.getLigne() < fin_p.getLigne())
         for (int i = 1; i < (fin_p.getLigne() - debut_p.getLigne()); i++)
-          retour.add(getStubCase(debut_p.getColonne()-i, debut_p.getLigne()+i));
+          retour.add(getCase(debut_p.getColonne()-i, debut_p.getLigne()+i));
       else
         for (int i = 1; i < (debut_p.getLigne() - fin_p.getLigne()); i++)
-          retour.add(getStubCase(debut_p.getColonne()-i, debut_p.getLigne()-i));
+          retour.add(getCase(debut_p.getColonne()-i, debut_p.getLigne()-i));
 
     return retour;
   }
@@ -157,13 +161,17 @@ public class Echiquier
   //     retourne la liste des StubCases comprises entre les 2 StubCases en
   //     param�tres, celles-ci �tant exclues
   // *****************************************************************
+  
+  /** 
+   * Erreur détectée : inversion entre l'action du if et du 1er elsif Test echiquer
+   */
   private Vector getIntervalle(StubCase debut_p, StubCase fin_p)
   {
     Vector retour = new Vector();
     if (debut_p.memeColonne(fin_p))
-      retour = getLigne(debut_p, fin_p);
+    	  retour = getColonne(debut_p, fin_p);  
     else if (debut_p.memeLigne(fin_p))
-      retour = getColonne(debut_p, fin_p);
+    	   retour = getLigne(debut_p, fin_p);
     else if (debut_p.memeDiagonale(fin_p))
       retour = getDiagonale(debut_p,fin_p);
 
