@@ -1,8 +1,8 @@
 package echecs.metier.jeu;
 
-/** Packages utilisés par ce package
+/** Packages utilisï¿½s par ce package
  *  Au sein de ce projet, seul metier.plateau.*
- *                             metier.materiel.*  sont autorisés
+ *                             metier.materiel.*  sont autorisï¿½s
  */
 import echecs.metier.plateau.*;
 import echecs.metier.materiel.*;
@@ -11,7 +11,7 @@ import echecs.metier.materiel.*;
  * Titre :
  * Description :
  * Copyright :    Copyright (c) 2002
- * Société : Fabrice Tranchand
+ * Sociï¿½tï¿½ : Fabrice Tranchand
  * @author Fabrice Tranchand
  * @version 1.0
  */
@@ -21,7 +21,7 @@ public class Partie
   // -----------------------------------------------------------------
   //     constantes de la classe
   // -----------------------------------------------------------------
-  // nombre de pièces du jeu
+  // nombre de piï¿½ces du jeu
   private static final int NB_PIECES = 32;
   // largeur du plateau (nombre de cases)
   private static final int LARGEUR_PLATEAU = 8;
@@ -31,13 +31,17 @@ public class Partie
   // -----------------------------------------------------------------
   //     associations
   // -----------------------------------------------------------------
-  // échiquier sur lequel se déroule la partie
+  // ï¿½chiquier sur lequel se dï¿½roule la partie
   private Echiquier echiquier = new Echiquier(LARGEUR_PLATEAU, HAUTEUR_PLATEAU);
   // les joueurs de la partie
-  private Joueur joueurs[];
+  /**
+   * joueurs non initialisÃ©.
+   * TrouvÃ© grace Ã  TestPartie
+   */
+  private Joueur joueurs[] = new Joueur[2];
   // le joueur qui a le trait cad celui qui doit joueur
   private Joueur trait;
-  // les pièces du jeu
+  // les piï¿½ces du jeu
   private Piece pieces[] = new Piece[NB_PIECES];
   // les rois !
   private Piece rois[] = new Piece[2];
@@ -49,7 +53,7 @@ public class Partie
   //     constructeur
   // -----------------------------------------------------------------
   // *****************************************************************
-  //     instancie les joueurs et les pièces
+  //     instancie les joueurs et les piï¿½ces
   // *****************************************************************
   public Partie()
   {
@@ -64,7 +68,7 @@ public class Partie
 
 
   // ----------------------------------------------------------------
-  //     les méthodes publiques
+  //     les mï¿½thodes publiques
   // ----------------------------------------------------------------
   // *****************************************************************
   //     accesseurs
@@ -86,10 +90,10 @@ public class Partie
   }
   // *****************************************************************
   //     retourne true si le coup est correct
-  //     le premier paramètre désigne la pièce déplacée
-  //     le second paramètre désigne la case d'arrivée de cette pièce
+  //     le premier paramï¿½tre dï¿½signe la piï¿½ce dï¿½placï¿½e
+  //     le second paramï¿½tre dï¿½signe la case d'arrivï¿½e de cette piï¿½ce
   // *****************************************************************
-  public boolean jouer(Piece piece_p, Case caseArrivee_p)
+  public boolean jouer(Piece piece_p, StubCase caseArrivee_p)
   {
     boolean retour = true;
     Coup coupEnCours = new Coup(echiquier, trait, piece_p, caseArrivee_p);
@@ -109,20 +113,20 @@ public class Partie
     return retour;
   }
   // *****************************************************************
-  //     retourne la pièce située sur la case en paramètre
+  //     retourne la piï¿½ce situï¿½e sur la case en paramï¿½tre
   // *****************************************************************
-  public Piece getPiece(Case case_p)
+  public Piece getPiece(StubCase case_p)
   {
     return (Piece)(case_p.getJeton());
   }
   // *****************************************************************
-  //     retourne true si le joueur passé en paramètre est en position
-  //     d'échec
+  //     retourne true si le joueur passï¿½ en paramï¿½tre est en position
+  //     d'ï¿½chec
   // *****************************************************************
   public boolean echec(Joueur joueur_p)
   {
     boolean retour = false;
-    Case caseRoi = getCaseRoi(joueur_p);
+    StubCase caseRoi = getCaseRoi(joueur_p);
     Joueur adversaire = getAdversaire(joueur_p);
     for (int i=0; i<=NB_PIECES && (!retour); i++)
     {
@@ -137,8 +141,8 @@ public class Partie
     return retour;
   }
   // *****************************************************************
-  //     retourne true si le joueur passé en paramètre ne peut pas jouer
-  //     sans se retrouver en échec
+  //     retourne true si le joueur passï¿½ en paramï¿½tre ne peut pas jouer
+  //     sans se retrouver en ï¿½chec
   // *****************************************************************
   public boolean pat(Joueur joueur_p)
   {
@@ -159,12 +163,12 @@ public class Partie
 
 
   // ----------------------------------------------------------------
-  //     les méthodes privées
+  //     les mï¿½thodes privï¿½es
   // ----------------------------------------------------------------
   // *****************************************************************
-  //     retourne la case sur lequel est situé le roi du joueur en paramètre
+  //     retourne la case sur lequel est situï¿½ le roi du joueur en paramï¿½tre
   // *****************************************************************
-  private Case getCaseRoi(Joueur joueur_p)
+  private StubCase getCaseRoi(Joueur joueur_p)
   {
     Piece piece = rois[0];
     if (joueur_p.getCouleur() == rois[1].getCouleur())
@@ -172,13 +176,13 @@ public class Partie
     return piece.getPosition();
   }
   // *****************************************************************
-  //     retourne true si le coup serait valide. Le coup n'est pas effectué
-  //     cad que les pièces ne sont pas réellement déplacées
-  //     le premier paramètre désigne l'auteur de ce coup
-  //     le deuxième coup désigne la pièce à déplacer
-  //     le troisième coup désigne la case d'arrivée de la pièce
+  //     retourne true si le coup serait valide. Le coup n'est pas effectuï¿½
+  //     cad que les piï¿½ces ne sont pas rï¿½ellement dï¿½placï¿½es
+  //     le premier paramï¿½tre dï¿½signe l'auteur de ce coup
+  //     le deuxiï¿½me coup dï¿½signe la piï¿½ce ï¿½ dï¿½placer
+  //     le troisiï¿½me coup dï¿½signe la case d'arrivï¿½e de la piï¿½ce
   // *****************************************************************
-  private boolean simulerCoup(Joueur joueur_p, Piece piece_p, Case case_p)
+  private boolean simulerCoup(Joueur joueur_p, Piece piece_p, StubCase case_p)
   {
     boolean retour = true;
     Coup coup = new Coup(echiquier, joueur_p, piece_p, case_p);
@@ -192,14 +196,14 @@ public class Partie
     return retour;
   }
   // *****************************************************************
-  //     entérine le coup joué
+  //     entï¿½rine le coup jouï¿½
   // *****************************************************************
   private void validerCoup()
   {
     changerTrait();
   }
   // *****************************************************************
-  //     change le joueur à qui c'est le tour
+  //     change le joueur ï¿½ qui c'est le tour
   // *****************************************************************
   private void changerTrait()
   {
@@ -209,7 +213,7 @@ public class Partie
       trait = joueurs[1];
   }
   // *****************************************************************
-  //     instancie les pièces
+  //     instancie les piï¿½ces
   // *****************************************************************
   private void creerPieces()
   {
