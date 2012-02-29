@@ -31,7 +31,7 @@ public class Roi extends Piece
   //     le premier param�tre d�signe la couleur de la pi�ce
   //     le second param�tre d�signe la case initiale de la pi�ce
   // *****************************************************************
-  public Roi(int couleur_p, Case caseInitiale_p)
+  public Roi(int couleur_p, StubCase caseInitiale_p)
   {
     super(couleur_p, caseInitiale_p);
   }

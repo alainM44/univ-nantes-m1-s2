@@ -29,7 +29,7 @@ public class Echiquier
   //     associations
   // -----------------------------------------------------------------
   /* les cases de l'�chiquier                                       */
-  private StubCase StubCases[][];
+  private StubCase Cases[][];
 
 
   // -----------------------------------------------------------------
@@ -39,19 +39,19 @@ public class Echiquier
   {
     nombreColonnes = nbColonnes_p;
     nombreLignes = nbLignes_p;
-    StubCases = new StubCase[nombreColonnes][nombreLignes];
+    Cases = new StubCase[nombreColonnes][nombreLignes];
     for (char i=0; i<nombreColonnes; i++)
       for (int j=0; j<nombreLignes; j++)
-        StubCases[i][j] = new StubCase(i+1, j+1);
+        Cases[i][j] = new StubCase(i+1, j+1);
   }
 
   // -----------------------------------------------------------------
   //     les m�thodes publiques
   // -----------------------------------------------------------------
   // *****************************************************************
-  //     retourne true si les StubCases comprises entre les 2 StubCases en
-  //     param�tres sont inoccup�es (ces 2 StubCases exclues)
-  //     si ces StubCases ne sont pas align�es (ni en ligne, ni en colonne
+  //     retourne true si les Cases comprises entre les 2 Cases en
+  //     param�tres sont inoccup�es (ces 2 Cases exclues)
+  //     si ces Cases ne sont pas align�es (ni en ligne, ni en colonne
   //     ni en diagonale, la m�thode retourne true
   // *****************************************************************
   
@@ -64,15 +64,15 @@ public class Echiquier
     Vector intervalle = getIntervalle(debut_p, fin_p);
     for (int i=0; i<intervalle.size() && retour; i++)
     {
-      StubCase uneStubCase = (StubCase)(intervalle.elementAt(i));
-      if (uneStubCase.isOccupee())
+      StubCase uneCase = (StubCase)(intervalle.elementAt(i));
+      if (uneCase.isOccupee())
         retour = false;
     }
 
     return retour;
   }
   // *****************************************************************
-  //     retourne la StubCase rep�r�e par la colonne et la ligne pass�es
+  //     retourne la Case rep�r�e par la colonne et la ligne pass�es
   //     en param�tres.
   //     la colonne et la ligne pass�es en param�tres sont suppos�es
   //     commenc�es � 1 (et non � 0)
@@ -82,12 +82,12 @@ public class Echiquier
     StubCase retour = null;
     if (colonne_p > 0 && colonne_p <= nombreColonnes &&
         ligne_p > 0 && ligne_p <= nombreLignes)
-      retour = StubCases[colonne_p-1][ligne_p-1];
+      retour = Cases[colonne_p-1][ligne_p-1];
 
     return retour;
   }
   // *****************************************************************
-  //     retourne la StubCase rep�r�e par la colonne et la ligne pass�es
+  //     retourne la Case rep�r�e par la colonne et la ligne pass�es
   //     en param�tres.
   //     la colonne pass�e en param�tre est cens�e commenc�e � 'a'
   //     la ligne pass�e en param�tre est cens�e commenc�e � 1 (et non � 0)
@@ -103,9 +103,9 @@ public class Echiquier
   //     les m�thodes priv�es
   // -----------------------------------------------------------------
   // *****************************************************************
-  //     retourne la liste des StubCases comprises entre les 2 StubCases en
+  //     retourne la liste des Cases comprises entre les 2 Cases en
   //     param�tres, celles-ci �tant exclues
-  //     les 2 StubCases en param�tres sont cens�es �tre sur une m�me ligne
+  //     les 2 Cases en param�tres sont cens�es �tre sur une m�me ligne
   // *****************************************************************
   private Vector getLigne(StubCase debut_p, StubCase fin_p)
   {
@@ -118,9 +118,9 @@ public class Echiquier
     return retour;
   }
   // *****************************************************************
-  //     retourne la liste des StubCases comprises entre les 2 StubCases en
+  //     retourne la liste des Cases comprises entre les 2 Cases en
   //     param�tres, celles-ci �tant exclues
-  //     les 2 StubCases en param�tres sont cens�es �tre sur une m�me colonne
+  //     les 2 Cases en param�tres sont cens�es �tre sur une m�me colonne
   // *****************************************************************
   private Vector getColonne(StubCase debut_p, StubCase fin_p)
   {
@@ -133,9 +133,9 @@ public class Echiquier
     return retour;
   }
   // *****************************************************************
-  //     retourne la liste des StubCases comprises entre les 2 StubCases en
+  //     retourne la liste des Cases comprises entre les 2 Cases en
   //     param�tres, celles-ci �tant exclues
-  //     les 2 StubCases en param�tres sont cens�es �tre sur une m�me diagonale
+  //     les 2 Cases en param�tres sont cens�es �tre sur une m�me diagonale
   // *****************************************************************
   private Vector getDiagonale(StubCase debut_p, StubCase fin_p)
   {
@@ -158,7 +158,7 @@ public class Echiquier
     return retour;
   }
   // *****************************************************************
-  //     retourne la liste des StubCases comprises entre les 2 StubCases en
+  //     retourne la liste des Cases comprises entre les 2 Cases en
   //     param�tres, celles-ci �tant exclues
   // *****************************************************************
   
