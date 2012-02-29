@@ -164,14 +164,15 @@ public class Echiquier
   
   /** 
    * Erreur détectée : inversion entre l'action du if et du 1er elsif Test echiquer
+   * nom mal choisi
    */
   private Vector getIntervalle(StubCase debut_p, StubCase fin_p)
   {
     Vector retour = new Vector();
     if (debut_p.memeColonne(fin_p))
-    	  retour = getColonne(debut_p, fin_p);  
+    	  retour = getLigne(debut_p, fin_p);  
     else if (debut_p.memeLigne(fin_p))
-    	   retour = getLigne(debut_p, fin_p);
+    	   retour = getColonne(debut_p, fin_p);
     else if (debut_p.memeDiagonale(fin_p))
       retour = getDiagonale(debut_p,fin_p);
 
