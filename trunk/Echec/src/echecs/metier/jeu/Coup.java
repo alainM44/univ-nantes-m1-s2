@@ -1,8 +1,8 @@
 package echecs.metier.jeu;
 
-/** Packages utilisés par ce package
+/** Packages utilisï¿½s par ce package
  *  Au sein de ce projet, seul metier.plateau.*
- *                             metier.materiel.*  sont autorisés
+ *                             metier.materiel.*  sont autorisï¿½s
  */
 import echecs.metier.plateau.*;
 import echecs.metier.materiel.*;
@@ -11,7 +11,7 @@ import echecs.metier.materiel.*;
  * Titre :
  * Description :
  * Copyright :    Copyright (c) 2002
- * Société : Fabrice Tranchand
+ * Sociï¿½tï¿½ : Fabrice Tranchand
  * @author Fabrice Tranchand
  * @version 1.0
  */
@@ -23,15 +23,15 @@ public class Coup
   // -----------------------------------------------------------------
   /* joueur auteur du coup                                          */
   private Joueur auteur;
-  /* case d'arrivée de la pièce déplacée                            */
-  private Case caseArrivee;
-  /* case de départ de la pièce déplacée                            */
-  private Case caseDepart;
-  /* pièce déplacée                                                 */
+  /* case d'arrivï¿½e de la piï¿½ce dï¿½placï¿½e                            */
+  private StubCase caseArrivee;
+  /* case de dï¿½part de la piï¿½ce dï¿½placï¿½e                            */
+  private StubCase caseDepart;
+  /* piï¿½ce dï¿½placï¿½e                                                 */
   private Piece piece;
-  /* pièce prise par la pièce déplacée                              */
+  /* piï¿½ce prise par la piï¿½ce dï¿½placï¿½e                              */
   private Piece piecePrise;
-  /* l'échiquier                                                    */
+  /* l'ï¿½chiquier                                                    */
   private Echiquier echiquier;
 
 
@@ -41,15 +41,15 @@ public class Coup
   //     constructeur
   // -----------------------------------------------------------------
   // *****************************************************************
-  //     le premier paramètre désigne l'auteur du coup
-  //     le second paramètre désigne la pièce qui est déplacée
-  //     le troisième paramètre désigne la case d'arrivée de cette pièce
-  //     le constructeur ne déplace pas les pièces
+  //     le premier paramï¿½tre dï¿½signe l'auteur du coup
+  //     le second paramï¿½tre dï¿½signe la piï¿½ce qui est dï¿½placï¿½e
+  //     le troisiï¿½me paramï¿½tre dï¿½signe la case d'arrivï¿½e de cette piï¿½ce
+  //     le constructeur ne dï¿½place pas les piï¿½ces
   // *****************************************************************
   public Coup(Echiquier echiquier_p,
               Joueur joueur_p,
               Piece piece_p,
-              Case case_p)
+              StubCase case_p)
   {
     echiquier = echiquier_p;
     auteur = joueur_p;
@@ -64,28 +64,32 @@ public class Coup
 
 
   // ----------------------------------------------------------------
-  //     les méthodes publiques
+  //     les mï¿½thodes publiques
   // ----------------------------------------------------------------
   // *****************************************************************
-  //     retourne true si le coup est conforme au règles des échecs selon
-  //     les règles suivantes :
-  //        - le joueur déplace l'une de ses pièces
-  //        - la case d'arrivée est libre ou occupée par une pièce adverse
-  //        - la pièce se déplace conformément à son type
+  //     retourne true si le coup est conforme au rï¿½gles des ï¿½checs selon
+  //     les rï¿½gles suivantes :
+  //        - le joueur dï¿½place l'une de ses piï¿½ces
+  //        - la case d'arrivï¿½e est libre ou occupï¿½e par une piï¿½ce adverse
+  //        - la piï¿½ce se dï¿½place conformï¿½ment ï¿½ son type
   // *****************************************************************
+  /**
+   * PeutBouger interrogait la piÃ¨ce mangÃ©e au lieu de la piÃ¨ce se dÃ©palaÃ§ant.
+   * TrouvÃ© grace Ã  TestCoup testEstValideLigne
+   */
   public boolean estValide()
   {
     boolean retour = true;
     if (! pieceCorrecte()) retour = false;
     else if (! caseArriveeCorrecte()) retour = false;
-    else if (! piecePrise.peutBouger(caseArrivee)) retour = false;
+    else if (! piece.peutBouger(caseArrivee)) retour = false;
     else retour = piece.ignoreObstacle() ||
               echiquier.intervalleLibre(piece.getPosition(), caseArrivee);
 
     return retour;
   }
   // *****************************************************************
-  //     met à jour l'échiquier en déplaçant la pièce
+  //     met ï¿½ jour l'ï¿½chiquier en dï¿½plaï¿½ant la piï¿½ce
   // *****************************************************************
   public void effectuer()
   {
@@ -93,7 +97,7 @@ public class Coup
     piece.bouger(caseArrivee);
   }
   // *****************************************************************
-  //     annule le coup en replaçant les pièces comme si le coup n'avait
+  //     annule le coup en replaï¿½ant les piï¿½ces comme si le coup n'avait
   //     pas eu lieu
   // *****************************************************************
   public void annuler()
@@ -108,26 +112,26 @@ public class Coup
 
 
   // ----------------------------------------------------------------
-  //     les méthodes privées
+  //     les mï¿½thodes privï¿½es
   // ----------------------------------------------------------------
   // *****************************************************************
-  //     retourne true si la case d'arrivée est libre ou occupée par
-  //     une pièce adverse
+  //     retourne true si la case d'arrivï¿½e est libre ou occupï¿½e par
+  //     une piï¿½ce adverse
   // *****************************************************************
   private boolean caseArriveeCorrecte()
   {
     return ( pieceBouge() && (! pieceDuJoueur()));
   }
   // *****************************************************************
-  //     retourne true si la case d'arrivée est différente de la case
-  //     de départ
+  //     retourne true si la case d'arrivï¿½e est diffï¿½rente de la case
+  //     de dï¿½part
   // *****************************************************************
   private boolean pieceBouge()
   {
     return caseArrivee != caseDepart;
   }
   // *****************************************************************
-  //     retourne true si la case d'arrivée est occupée par une pièce
+  //     retourne true si la case d'arrivï¿½e est occupï¿½e par une piï¿½ce
   //     de l'auteur du coup
   // *****************************************************************
   private boolean pieceDuJoueur()
@@ -139,8 +143,8 @@ public class Coup
     return retour;
   }
   // *****************************************************************
-  //     retourne true si la pièce jouée est sur l'échiquier et
-  //     appartient à l'auteur du coup
+  //     retourne true si la piï¿½ce jouï¿½e est sur l'ï¿½chiquier et
+  //     appartient ï¿½ l'auteur du coup
   // *****************************************************************
   private boolean pieceCorrecte()
   {
