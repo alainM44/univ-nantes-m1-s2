@@ -1,8 +1,8 @@
 package echecs.metier.jeu;
 
-/** Packages utilisés par ce package
+/** Packages utilisï¿½s par ce package
  *  Au sein de ce projet, seul metier.plateau.*
- *                             metier.materiel.*  sont autorisés
+ *                             metier.materiel.*  sont autorisï¿½s
  */
 import echecs.metier.plateau.Couleur;
 
@@ -10,7 +10,7 @@ import echecs.metier.plateau.Couleur;
  * Titre :
  * Description :
  * Copyright :    Copyright (c) 2002
- * Société : Fabrice Tranchand
+ * Sociï¿½tï¿½ : Fabrice Tranchand
  * @author Fabrice Tranchand
  * @version 1.0
  */
@@ -30,7 +30,7 @@ public class Joueur
   //     constructeur
   // -----------------------------------------------------------------
   // *****************************************************************
-  //     le paramètre indique la couleur du joueur
+  //     le paramï¿½tre indique la couleur du joueur
   // *****************************************************************
   public Joueur(int couleur_p)
   {
@@ -41,12 +41,15 @@ public class Joueur
 
 
   // ----------------------------------------------------------------
-  //     les méthodes publiques
+  //     les mï¿½thodes publiques
   // ----------------------------------------------------------------
   // *****************************************************************
   //     accesseurs
   // *****************************************************************
-  public int getCouleur() { return Couleur.NOIR; }
+  /**
+   * getCouleur retourne toujours noir. TrouvÃ© grace Ã  TestJoueur.
+   */
+  public int getCouleur() { return couleur; }
   // *****************************************************************
   //     retourne la nom du joueur (les "Blancs" ou les "Noirs")
   // *****************************************************************
