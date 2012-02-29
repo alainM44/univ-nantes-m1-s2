@@ -1,59 +1,49 @@
-<project name = "Ant">
+<project name="Ant" basedir=".">
 
-  <property name = "src" value = "./src"/>
-  <property name = "bin" value = "./bin"/>
-  <property name = "doc" value = "./doc"/>
-  <property name = "idoin" value = "./idoin"/>
-  <property name = "lib" value = "./lib"/>
-  <target name = "init">
-    <mkdir dir= "${bin}"/>
-    <mkdir dir= "${src}"/>
-    <mkdir dir= "${doc}"/>
-    <mkdir dir= "${idoin}"/>
-  </target>
+	<property name="src" value="./src" />
+	<property name="bin" value="./bin" />
+	<property name="doc" value="./doc" />
+	<property name="lib" value="./lib" />
 
-  <target name = "build" depends = "init">
-    <javac srcdir = "${src}" destdir = "${bin}" classpathref = "build.classpath" includeantruntime ="false"/>
-    <move todir="${idoin}">
-      <fileset dir="${bin}">
-	<include name="*.class"/>
-      </fileset>
-    </move>
-  </target>
+	<target name="init">
+		<mkdir dir="${bin}" />
+	</target>
 
-  <path id="classpath.base">
-    <fileset id="libsref" dir="${lib}" includes="*.jar"/>
-  </path>
+	<target name="build" depends="init">
+		<javac srcdir="${src}" destdir="${bin}" classpathref="build.classpath" includeantruntime="false" />
+	</target>
 
+	<path id="classpath.base">
+		<fileset id="libsref" dir="${lib}" includes="*.jar" />
+	</path>
 
-  <target name = "jar" depends = "build" >
-    <jar basedir = "${idoin}/"  destfile  = "carnet.jar" >
-    <zipgroupfileset refid="libsref" />
-      <manifest>
-	<attribute name="Main-Class" value="Main" />
-      </manifest>
-    </jar>
-  </target>
+	<target name="jar" depends="build">
+		<jar basedir="${bin}/" destfile="interface.jar">
+			<zipgroupfileset refid="libsref" />
+			<manifest>
+				<attribute name="Main-Class" value="${bin}/Ihm_gestion_graph" />
+			</manifest>
+		</jar>
+	</target>
 
-  <target name = "exec" depends = "jar" >
-    <java jar ="carnet.jar"  fork="yes"/>
-  </target>
+	<target name="exec" depends="jar">
+		<java jar="interface.jar" fork="yes" />
+	</target>
 
-  <target name = "doc" >
-    <javadoc sourcefiles="${src}/Main.java,${src}/Fiche.java,${src}/Adresse.java" destdir="${doc}"/>
-  </target>
+	<target name="doc">
+		<javadoc sourcefiles="${src}/Main.java,${src}/Fiche.java,${src}/Adresse.java" destdir="${doc}" />
+	</target>
 
-  <path id="build.classpath">
-    <fileset dir="${lib}">
-      <include name="**/*.jar" />
-    </fileset>
-  </path>
+	<path id="build.classpath">
+		<fileset dir="${lib}">
+			<include name="xstream-1.2.jar" />
+		</fileset>
+	</path>
 
 
-  <target name = "clean">
-    <delete dir="${doc}"/>
-    <delete dir="${idoin}"/>
-    <delete dir="${bin}"/>
-  </target>
+	<target name="clean">
+		<delete dir="${doc}" />
+		<delete dir="${bin}" />
+	</target>
 </project>
 
