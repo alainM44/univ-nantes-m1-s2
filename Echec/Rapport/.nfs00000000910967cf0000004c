@@ -1,0 +1,19 @@
+\chapter{Introduction}
+\paragraph{Introduction :}
+ L'objectif est de définir un outil de simulation  d'ordonancement de tâche en temps réel. Parmies ses fonctionalités, l'outil devra pour tester les contraintes temporelles d'un ensemble de tâches générées au préalable. La génération de ces tâches n'entre par dans la conception de l'outil. Cet outil permettra d'exporter le résultat dans un fichier  d'extension $.ktr$ pour être exploité directement par l'outil graphique Kiwi.
+ 
+\section{Format d'entrée}
+Il est définit dans le langage XML. Sa syntase sera la suivante
+\subsection{Entête}
+\begin{itemize}
+\item
+Des balises \veb+<genTache.AbstractTache-array>+ encadrent la totalité du fichier.
+\item
+Une tâche périodique sera définie dans une balise  \veb+<genTache.TachePeriodique>+ 
+\item
+Une tâche apériodique sera définie dans une balise  \veb+<genTache.TacheAPeriodique>+ 
+\item
+Dans une tache tous ses attributs seront définis de la manière suivante \veb+<nom_attribut>valeur_attribut</nom_attribut>+
+\item
+Un commentaire regroupant des informations sur la pavage dans son ensemble (e.g., outil d'obtention, paramètres, temps total, ...)
+\end{itemize}
