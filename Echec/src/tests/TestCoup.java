@@ -9,7 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import echecs.metier.jeu.Coup;
+import echecs.metier.jeu.Joueur;
+import echecs.metier.materiel.Cavalier;
 import echecs.metier.materiel.Dame;
+import echecs.metier.materiel.Piece;
 import echecs.metier.plateau.Case;
 import echecs.metier.plateau.Couleur;
 import echecs.metier.plateau.Echiquier;
@@ -18,125 +21,64 @@ import echecs.metier.plateau.StubCase;
 //Coup Joueur partie Dame Fou Pion Case Echiquier
 public class TestCoup
 {
-	Coup p;
+	Coup c;
 
 	@Before
-	public void creeDame()
+	public void creeCoup()
 	{
-		
-		E = new Echiquier(8, 8);
-		p = new Coup(echiquier_p, joueur_p, piece_p, case_p)
+
 
 	}
 
 	@Test
-	public void testConst()
+	public void testEstValide()
 	{
-		Coup d1 = new Coup(0, new StubCase('d', 1));
-		assertEquals('d'-'a'+1, d1.getPosition().getColonne());
-		assertEquals(1, d1.getPosition().getLigne());
+		Echiquier e = new Echiquier(8, 8);
+		Joueur j = new Joueur(0);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(2, 4);
+		Dame d = new Dame(0, scdep);
+		c =new Coup(e, j, d, scarr);
+		assertTrue(c.estValide());
 	}
-
-	@Test(expected = Exception.class)
-	public void testConstColFail()
-	{
-		Coup d1 = new Coup(0, new StubCase('i', 1));
-
-	}
-
-	@Test(expected = Exception.class)
-	public void testConstLigneFail()
-	{
-		Coup d1 = new Coup(0, new StubCase('d', 0));
-	}
-
+	
 	@Test
-	public void testGetCouleur()
+	public void testEstValideFailDeplacement()
 	{
-		assertEquals(0, d.getCouleur());
-		d = new Coup(1, new StubCase('d', 1));
-		assertEquals(1, d.getCouleur());
+		Echiquier e = new Echiquier(8, 8);
+		Joueur j = new Joueur(0);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(5, 7);
+		Dame d = new Dame(0, scdep);
+		c =new Coup(e, j, d, scarr);
+		assertFalse(c.estValide());
 	}
-
+	
 	@Test
-	public void testADejaBouge()
+	public void testEstValideFailSaut()
 	{
-		assertEquals(false, d.aDejaBouge());
-		d.bouger(new StubCase('d', 2));
-		assertEquals(true, d.aDejaBouge());
+		Echiquier e = new Echiquier(8, 8);
+		Joueur j = new Joueur(0);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase obstacle = new StubCase(3, 4);
+		StubCase scarr = new StubCase(2, 7);
+		Dame d = new Dame(0, scdep);
+		Dame obsDame = new Dame(1, obstacle);
+		c =new Coup(e, j, d, scarr);
+		assertFalse(c.estValide());
 	}
-
+	
 	@Test
-	public void testGetPosition()
+	public void testEffectuer()
 	{
-		assertEquals('d' - 'a' + 1, d.getPosition().getColonne());
-		assertEquals(1, d.getPosition().getLigne());
-
-	}
-
-	@Test
-	public void testIgnoreObstacle()
-	{
-		assertEquals(false, d.ignoreObstacle());
-
-	}
-
-	@Test
-	public void testEstPresent()
-	{
-		assertEquals(true, d.estPresente());
-	}
-
-	@Test
-	public void testEnlever()
-	{
-		d.enlever();
-		assertEquals(null, d.getPosition());
-		assertEquals(false, d.estPresente());
-	}
-
-	@Test
-	public void testBouger()
-	{
-		d.bouger(new StubCase('d', 2));
-		assertEquals(2, d.getPosition().getLigne());
-		assertEquals('d' - 'a' + 1, d.getPosition().getColonne());
-		assertEquals(true, d.aDejaBouge());
-
-	}
-
-	@Test
-	public void testReplacer()
-	{
-		d.replacer(new StubCase('f', 3));
-		assertEquals('f' - 'a' + 1, d.getPosition().getColonne());
-		assertEquals(3, d.getPosition().getLigne());
-	}
-
-	@Test
-	public void testPeutBouger()
-	{
-		assertEquals(true, d.peutBouger(new StubCase('d', 4)));
-
-	}
-
-	@Test
-	public void testPeutPasBouger()
-	{
-		assertEquals(false, d.peutBouger(new StubCase('a', 1)));
-
-	}
-
-	@Test
-	public void testGetType()
-	{
-		String da = "D";
-		assertEquals(true, d.getType().equals(da));
-	}
-
-	@Test
-	public void testPresente()
-	{
-		assertNotNull(d.estPresente());
+		Echiquier e = new Echiquier(8, 8);
+		Joueur j = new Joueur(0);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(4, 3);
+		Dame d = new Dame(0, scdep);
+		c =new Coup(e, j, d, scarr);
+		c.effectuer();
+		assertFalse(scdep.isOccupee());
+		assertTrue(scarr.isOccupee());
 	}
 }

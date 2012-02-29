@@ -110,16 +110,29 @@ public class TestDame
 	}
 
 	@Test
-	public void testPeutBouger()
+	public void testPeutBougerColonne()
 	{
 		assertEquals(true, d.peutBouger(new StubCase('d', 4)));
+
+	}
+	@Test
+	public void testPeutBougerLigne()
+	{
+		assertEquals(true, d.peutBouger(new StubCase('a', 1)));
+
+	}
+	
+	@Test
+	public void testPeutBougerDiag()
+	{
+		assertEquals(true, d.peutBouger(new StubCase('f', 3)));
 
 	}
 
 	@Test
 	public void testPeutPasBouger()
 	{
-		assertEquals(false, d.peutBouger(new StubCase('a', 1)));
+		assertEquals(false, d.peutBouger(new StubCase('b', 4)));
 
 	}
 
