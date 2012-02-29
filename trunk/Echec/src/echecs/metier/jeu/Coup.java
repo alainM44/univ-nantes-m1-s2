@@ -75,7 +75,7 @@ public class Coup
   // *****************************************************************
   /**
    * PeutBouger interrogait la pièce mangée au lieu de la pièce se dépalaçant.
-   * Trouvé grace à TestCoup testEstValideLigne
+   * Trouvé grace à TestCoup testEstValide
    */
   public boolean estValide()
   {
