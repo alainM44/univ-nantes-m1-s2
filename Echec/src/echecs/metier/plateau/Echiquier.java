@@ -1,6 +1,6 @@
 package echecs.metier.plateau;
 
-/** Packages utilisés par ce package
+/** Packages utilisï¿½s par ce package
  *  Aucun au sein de ce projet !
  */
 
@@ -10,7 +10,7 @@ import java.util.*;
  * Titre :
  * Description :
  * Copyright :    Copyright (c) 2002
- * Société : Fabrice Tranchand
+ * Sociï¿½tï¿½ : Fabrice Tranchand
  * @author Fabrice Tranchand
  * @version 1.0
  */
@@ -20,16 +20,16 @@ public class Echiquier
   // -----------------------------------------------------------------
   //     attributs de la classe
   // -----------------------------------------------------------------
-  /* nombre de colonnes de l'échiquier                              */
+  /* nombre de colonnes de l'ï¿½chiquier                              */
   private int nombreColonnes;
-  /* nombre de lignes de l'échiquier                                */
+  /* nombre de lignes de l'ï¿½chiquier                                */
   private int nombreLignes;
 
   // -----------------------------------------------------------------
   //     associations
   // -----------------------------------------------------------------
-  /* les cases de l'échiquier                                       */
-  private Case cases[][];
+  /* les cases de l'ï¿½chiquier                                       */
+  private StubCase StubCases[][];
 
 
   // -----------------------------------------------------------------
@@ -39,125 +39,125 @@ public class Echiquier
   {
     nombreColonnes = nbColonnes_p;
     nombreLignes = nbLignes_p;
-    cases = new Case[nombreColonnes][nombreLignes];
+    StubCases = new StubCase[nombreColonnes][nombreLignes];
     for (char i=0; i<nombreColonnes; i++)
       for (int j=0; j<nombreLignes; j++)
-        cases[i][j] = new Case(i+1, j+1);
+        StubCases[i][j] = new StubCase(i+1, j+1);
   }
 
   // -----------------------------------------------------------------
-  //     les méthodes publiques
+  //     les mï¿½thodes publiques
   // -----------------------------------------------------------------
   // *****************************************************************
-  //     retourne true si les cases comprises entre les 2 cases en
-  //     paramètres sont inoccupées (ces 2 cases exclues)
-  //     si ces cases ne sont pas alignées (ni en ligne, ni en colonne
-  //     ni en diagonale, la méthode retourne true
+  //     retourne true si les StubCases comprises entre les 2 StubCases en
+  //     paramï¿½tres sont inoccupï¿½es (ces 2 StubCases exclues)
+  //     si ces StubCases ne sont pas alignï¿½es (ni en ligne, ni en colonne
+  //     ni en diagonale, la mï¿½thode retourne true
   // *****************************************************************
-  public boolean intervalleLibre(Case debut_p, Case fin_p)
+  public boolean intervalleLibre(StubCase debut_p, StubCase fin_p)
   {
     boolean retour = true;
     Vector intervalle = getIntervalle(debut_p, fin_p);
     for (int i=0; i<intervalle.size() && retour; i++)
     {
-      Case uneCase = (Case)(intervalle.elementAt(1));
-      if (uneCase.isOccupee())
+      StubCase uneStubCase = (StubCase)(intervalle.elementAt(1));
+      if (uneStubCase.isOccupee())
         retour = false;
     }
 
     return retour;
   }
   // *****************************************************************
-  //     retourne la case repérée par la colonne et la ligne passées
-  //     en paramètres.
-  //     la colonne et la ligne passées en paramètres sont supposées
-  //     commencées à 1 (et non à 0)
+  //     retourne la StubCase repï¿½rï¿½e par la colonne et la ligne passï¿½es
+  //     en paramï¿½tres.
+  //     la colonne et la ligne passï¿½es en paramï¿½tres sont supposï¿½es
+  //     commencï¿½es ï¿½ 1 (et non ï¿½ 0)
   // *****************************************************************
-  public Case getCase(int colonne_p, int ligne_p)
+  public StubCase getStubCase(int colonne_p, int ligne_p)
   {
-    Case retour = null;
+    StubCase retour = null;
     if (colonne_p > 0 && colonne_p <= nombreColonnes &&
         ligne_p > 0 && ligne_p <= nombreLignes)
-      retour = cases[colonne_p-1][ligne_p-1];
+      retour = StubCases[colonne_p-1][ligne_p-1];
 
     return retour;
   }
   // *****************************************************************
-  //     retourne la case repérée par la colonne et la ligne passées
-  //     en paramètres.
-  //     la colonne passée en paramètre est censée commencée à 'a'
-  //     la ligne passée en paramètre est censée commencée à 1 (et non à 0)
+  //     retourne la StubCase repï¿½rï¿½e par la colonne et la ligne passï¿½es
+  //     en paramï¿½tres.
+  //     la colonne passï¿½e en paramï¿½tre est censï¿½e commencï¿½e ï¿½ 'a'
+  //     la ligne passï¿½e en paramï¿½tre est censï¿½e commencï¿½e ï¿½ 1 (et non ï¿½ 0)
   // *****************************************************************
-  public Case getCase(char colonne_p, int ligne_p)
+  public StubCase getStubCase(char colonne_p, int ligne_p)
   {
-    return getCase(colonne_p-'a'+1, ligne_p);
+    return getStubCase(colonne_p-'a'+1, ligne_p);
   }
 
 
 
   // -----------------------------------------------------------------
-  //     les méthodes privées
+  //     les mï¿½thodes privï¿½es
   // -----------------------------------------------------------------
   // *****************************************************************
-  //     retourne la liste des cases comprises entre les 2 cases en
-  //     paramètres, celles-ci étant exclues
-  //     les 2 cases en paramètres sont censées être sur une même ligne
+  //     retourne la liste des StubCases comprises entre les 2 StubCases en
+  //     paramï¿½tres, celles-ci ï¿½tant exclues
+  //     les 2 StubCases en paramï¿½tres sont censï¿½es ï¿½tre sur une mï¿½me ligne
   // *****************************************************************
-  private Vector getLigne(Case debut_p, Case fin_p)
+  private Vector getLigne(StubCase debut_p, StubCase fin_p)
   {
     Vector retour = new Vector();
     for (int i=debut_p.getLigne(); i<fin_p.getLigne(); i++)
-      retour.add(getCase(debut_p.getColonne(), i));
+      retour.add(getStubCase(debut_p.getColonne(), i));
     for (int i=fin_p.getLigne(); i<debut_p.getLigne(); i++)
-      retour.add(getCase(debut_p.getColonne(), i));
+      retour.add(getStubCase(debut_p.getColonne(), i));
 
     return retour;
   }
   // *****************************************************************
-  //     retourne la liste des cases comprises entre les 2 cases en
-  //     paramètres, celles-ci étant exclues
-  //     les 2 cases en paramètres sont censées être sur une même colonne
+  //     retourne la liste des StubCases comprises entre les 2 StubCases en
+  //     paramï¿½tres, celles-ci ï¿½tant exclues
+  //     les 2 StubCases en paramï¿½tres sont censï¿½es ï¿½tre sur une mï¿½me colonne
   // *****************************************************************
-  private Vector getColonne(Case debut_p, Case fin_p)
+  private Vector getColonne(StubCase debut_p, StubCase fin_p)
   {
     Vector retour = new Vector();
     for (int i=debut_p.getColonne() + 1; i<fin_p.getColonne(); i++)
-      retour.add(getCase(i, debut_p.getLigne()));
+      retour.add(getStubCase(i, debut_p.getLigne()));
     for (int i=fin_p.getColonne() + 1; i<debut_p.getColonne(); i++)
-      retour.add(getCase(i, debut_p.getLigne()));
+      retour.add(getStubCase(i, debut_p.getLigne()));
 
     return retour;
   }
   // *****************************************************************
-  //     retourne la liste des cases comprises entre les 2 cases en
-  //     paramètres, celles-ci étant exclues
-  //     les 2 cases en paramètres sont censées être sur une même diagonale
+  //     retourne la liste des StubCases comprises entre les 2 StubCases en
+  //     paramï¿½tres, celles-ci ï¿½tant exclues
+  //     les 2 StubCases en paramï¿½tres sont censï¿½es ï¿½tre sur une mï¿½me diagonale
   // *****************************************************************
-  private Vector getDiagonale(Case debut_p, Case fin_p)
+  private Vector getDiagonale(StubCase debut_p, StubCase fin_p)
   {
     Vector retour = new Vector();
     if (debut_p.getColonne() < fin_p.getColonne())
       if (debut_p.getLigne() < fin_p.getLigne())
         for (int i = 1; i < (fin_p.getLigne() - debut_p.getLigne()); i++)
-          retour.add(getCase(debut_p.getColonne()+i, debut_p.getLigne()+i));
+          retour.add(getStubCase(debut_p.getColonne()+i, debut_p.getLigne()+i));
       else
         for (int i = 1; i < (debut_p.getLigne() - fin_p.getLigne()); i++)
-          retour.add(getCase(debut_p.getColonne()+i, debut_p.getLigne()-i));
+          retour.add(getStubCase(debut_p.getColonne()+i, debut_p.getLigne()-i));
     else
       if (debut_p.getLigne() < fin_p.getLigne())
         for (int i = 1; i < (fin_p.getLigne() - debut_p.getLigne()); i++)
-          retour.add(getCase(debut_p.getColonne()-i, debut_p.getLigne()+i));
+          retour.add(getStubCase(debut_p.getColonne()-i, debut_p.getLigne()+i));
       else
         for (int i = 1; i < (debut_p.getLigne() - fin_p.getLigne()); i++)
-          retour.add(getCase(debut_p.getColonne()-i, debut_p.getLigne()-i));
+          retour.add(getStubCase(debut_p.getColonne()-i, debut_p.getLigne()-i));
 
     return retour;
   }
   // *****************************************************************
-  //     retourne la liste des cases comprises entre les 2 cases en
-  //     paramètres, celles-ci étant exclues
+  //     retourne la liste des StubCases comprises entre les 2 StubCases en
+  //     paramï¿½tres, celles-ci ï¿½tant exclues
   // *****************************************************************
-  private Vector getIntervalle(Case debut_p, Case fin_p)
+  private Vector getIntervalle(StubCase debut_p, StubCase fin_p)
   {
     Vector retour = new Vector();
     if (debut_p.memeColonne(fin_p))
