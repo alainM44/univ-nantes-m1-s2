@@ -100,10 +100,15 @@ public class Coup
   //     annule le coup en repla�ant les pi�ces comme si le coup n'avait
   //     pas eu lieu
   // *****************************************************************
+  /**
+   * piecePrise peut être null et l'on obtient un null pointer exception.
+   * trouvé avec TestCoup testAnnuler
+   */
   public void annuler()
   {
     piece.replacer(caseDepart);
-    piecePrise.replacer(caseArrivee);
+    if (piecePrise != null)
+    	piecePrise.replacer(caseArrivee);
   }
 
 
