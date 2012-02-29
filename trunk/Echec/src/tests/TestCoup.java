@@ -27,7 +27,6 @@ public class TestCoup
 	public void creeCoup()
 	{
 
-
 	}
 
 	@Test
@@ -38,10 +37,10 @@ public class TestCoup
 		StubCase scdep = new StubCase(4, 4);
 		StubCase scarr = new StubCase(2, 4);
 		Dame d = new Dame(0, scdep);
-		c =new Coup(e, j, d, scarr);
+		c = new Coup(e, j, d, scarr);
 		assertTrue(c.estValide());
 	}
-	
+
 	@Test
 	public void testEstValideFailDeplacement()
 	{
@@ -50,10 +49,10 @@ public class TestCoup
 		StubCase scdep = new StubCase(4, 4);
 		StubCase scarr = new StubCase(5, 7);
 		Dame d = new Dame(0, scdep);
-		c =new Coup(e, j, d, scarr);
+		c = new Coup(e, j, d, scarr);
 		assertFalse(c.estValide());
 	}
-	
+
 	@Test
 	public void testEstValideFailSaut()
 	{
@@ -64,10 +63,10 @@ public class TestCoup
 		StubCase scarr = new StubCase(2, 7);
 		Dame d = new Dame(0, scdep);
 		Dame obsDame = new Dame(1, obstacle);
-		c =new Coup(e, j, d, scarr);
+		c = new Coup(e, j, d, scarr);
 		assertFalse(c.estValide());
 	}
-	
+
 	@Test
 	public void testEffectuer()
 	{
@@ -76,9 +75,64 @@ public class TestCoup
 		StubCase scdep = new StubCase(4, 4);
 		StubCase scarr = new StubCase(4, 3);
 		Dame d = new Dame(0, scdep);
-		c =new Coup(e, j, d, scarr);
+		c = new Coup(e, j, d, scarr);
 		c.effectuer();
 		assertFalse(scdep.isOccupee());
 		assertTrue(scarr.isOccupee());
 	}
+
+	@Test
+	public void testEffectuerPrise()
+	{
+		Echiquier e = new Echiquier(8, 8);
+		Joueur j = new Joueur(0);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(4, 3);
+		Dame d = new Dame(0, scdep);		
+		Dame obsDame = new Dame(1, scarr);
+		c = new Coup(e, j, d, scarr);
+		c.effectuer();
+		assertFalse(scdep.isOccupee());
+		assertTrue(scarr.isOccupee());
+		assertNull(obsDame.getPosition());
+	}
+	
+	@Test
+	public void testAnnuler()
+	{
+		Echiquier e = new Echiquier(8, 8);
+		Joueur j = new Joueur(0);
+		StubCase scdep = new StubCase(3, 2);
+		StubCase scarr = new StubCase(4, 3);
+		Dame d = new Dame(0, scdep);		
+		c = new Coup(e, j, d, scarr);
+		c.effectuer();
+		c.annuler();
+		assertTrue(scdep.isOccupee());
+		assertFalse(scarr.isOccupee());
+		assertEquals(3, d.getPosition().getColonne());
+		assertEquals(2, d.getPosition().getLigne());
+	}
+	
+	@Test
+	public void testAnnulerArriveeOccupee()
+	{
+		Echiquier e = new Echiquier(8, 8);
+		Joueur j = new Joueur(0);
+		StubCase scdep = new StubCase(3, 2);
+		StubCase scarr = new StubCase(4, 3);
+		Dame d = new Dame(0, scdep);	
+		Dame obsDame = new Dame(1, scarr);
+		c = new Coup(e, j, d, scarr);
+		c.effectuer();
+		c.annuler();
+		assertTrue(scdep.isOccupee());
+		assertTrue(scarr.isOccupee());
+		assertEquals(3, d.getPosition().getColonne());
+		assertEquals(2, d.getPosition().getLigne());
+		assertEquals(4, obsDame.getPosition().getColonne());
+		assertEquals(3, obsDame.getPosition().getLigne());
+	}
+	
+
 }
