@@ -123,12 +123,15 @@ public class Partie
   //     retourne true si le joueur pass� en param�tre est en position
   //     d'�chec
   // *****************************************************************
+  /**
+   * erreur sur le nombre de pieces à parcourir. Remplacement d'un <= par <
+   */
   public boolean echec(Joueur joueur_p)
   {
     boolean retour = false;
     StubCase caseRoi = getCaseRoi(joueur_p);
     Joueur adversaire = getAdversaire(joueur_p);
-    for (int i=0; i<=NB_PIECES && (!retour); i++)
+    for (int i=0; i<NB_PIECES && (!retour); i++)
     {
       if (pieces[i].estPresente() &&
           pieces[i].getCouleur() == adversaire.getCouleur())
@@ -205,12 +208,15 @@ public class Partie
   // *****************************************************************
   //     change le joueur � qui c'est le tour
   // *****************************************************************
+  /**
+   * erreur de changement de trait trouver avec TestPartie testJouer
+   */
   private void changerTrait()
   {
     if (trait == joueurs[0])
-      trait = joueurs[0];
-    else
       trait = joueurs[1];
+    else
+      trait = joueurs[0];
   }
   // *****************************************************************
   //     instancie les pi�ces

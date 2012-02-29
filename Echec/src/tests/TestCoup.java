@@ -66,6 +66,32 @@ public class TestCoup
 		c = new Coup(e, j, d, scarr);
 		assertFalse(c.estValide());
 	}
+	
+	@Test
+	public void testEstValidePrise()
+	{
+		Echiquier e = new Echiquier(8, 8);
+		Joueur j = new Joueur(0);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(5, 5);
+		Dame d = new Dame(0, scdep);
+		Dame obsDame = new Dame(1, scarr);
+		c = new Coup(e, j, d, scarr);
+		assertTrue(c.estValide());
+	}
+	
+	@Test
+	public void testEstValidePriseFail()
+	{
+		Echiquier e = new Echiquier(8, 8);
+		Joueur j = new Joueur(0);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(5, 5);
+		Dame d = new Dame(0, scdep);
+		Dame obsDame = new Dame(0, scarr);
+		c = new Coup(e, j, d, scarr);
+		assertFalse(c.estValide());
+	}
 
 	@Test
 	public void testEffectuer()
