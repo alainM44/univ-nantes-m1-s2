@@ -107,12 +107,16 @@ public class Echiquier
   //     param�tres, celles-ci �tant exclues
   //     les 2 Cases en param�tres sont cens�es �tre sur une m�me ligne
   // *****************************************************************
+  
+/**
+ * Indice de départ mal positionné
+ */
   private Vector getLigne(StubCase debut_p, StubCase fin_p)
   {
     Vector retour = new Vector();
-    for (int i=debut_p.getLigne(); i<fin_p.getLigne(); i++)
+    for (int i=debut_p.getLigne() + 1; i<fin_p.getLigne(); i++)
       retour.add(getCase(debut_p.getColonne(), i));
-    for (int i=fin_p.getLigne(); i<debut_p.getLigne(); i++)
+    for (int i=fin_p.getLigne() + 1; i<debut_p.getLigne(); i++)
       retour.add(getCase(debut_p.getColonne(), i));
 
     return retour;
