@@ -1,1 +1,28 @@
 \chapter{Rapport de Tests}
+\section{Dame}
+\begin{enumerate}
+\item
+Erreur peutBouger : absence d'un test dans le if : la dame peut aussi se déplacer sur une ligne. Trouvée grâce au testPeutBougerLigne().
+\end{enumerate}
+\section{Fou}
+\begin{enumerate}
+\item
+Erreur peutBouger : condition en trop dans le if :le fou peut se déplacer en ligne.  Trouvée grâce au testPeutBougerLigne().
+\end{enumerate}
+\section{Echiquier}
+\begin{enumerate}
+\item
+Erreur intervalleLibre : elementAt(1) ou lieu de elementAt(i). Trouvée grâce au testIntervallePasLibre().
+\item
+Erreur getIntervalle: nom mal choisi. On pourrait croire à une inversion entre le if et le premier elsif. Trouvée grâce au testIntervallePasLibre().
+\item
+Erreur getLigne : Indice de départ mal positionné. Trouvée grâce au testIntervallePasLibre().
+\end{enumerate}
+
+\section{Coup}
+\begin{enumerate}
+\item
+Erreur estValide() : test sur la pièce allant être prise au lieu de celle se déplaçant. Trouvée grâce au test testEstValide().
+\item
+Erreur annuler() : la pièce prise pouvait être nulle. Trouvée grâce au test testAnnuler().
+\end{enumerate}
