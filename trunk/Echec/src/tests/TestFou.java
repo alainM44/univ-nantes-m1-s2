@@ -29,18 +29,7 @@ public class TestFou
 		assertEquals(1, d1.getPosition().getLigne());
 	}
 
-	@Test(expected = Exception.class)
-	public void testConstColFail()
-	{
-		Fou f = new Fou(0, new StubCase('w', 1));
 
-	}
-
-	@Test(expected = Exception.class)
-	public void testConstLigneFail()
-	{
-		Fou f = new Fou(0, new StubCase('d', 0));
-	}
 
 	@Test
 	public void testGetCouleur()
@@ -116,8 +105,8 @@ public class TestFou
 	public void testPeutPasBouger()
 	{
 		assertEquals(false, f.peutBouger(new StubCase('a', 1)));
-
 	}
+
 
 	@Test
 	public void testGetType()
