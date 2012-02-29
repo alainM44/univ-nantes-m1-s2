@@ -57,11 +57,13 @@ public class Fou extends Piece
   //     retourne true si la pi�ce peut se d�placer sur la case en
   //     param�tre, en respectant le d�placement de la pi�ce
   // *****************************************************************
+  /**
+   * Erreur : déplacement en ligne. Non autorisé pour le fou
+   */
   public boolean peutBouger(StubCase nouvelle_p)
   {
     boolean retour = false;
-    if ( getPosition().memeLigne(nouvelle_p) ||
-	 getPosition().memeDiagonale(nouvelle_p))
+    if ( 	 getPosition().memeDiagonale(nouvelle_p))
       retour = true;
     return retour;
   }
