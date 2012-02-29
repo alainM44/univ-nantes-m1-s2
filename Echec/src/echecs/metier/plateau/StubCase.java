@@ -97,9 +97,12 @@ public class StubCase
 	// retourne true si la case en param�tre est sur la m�me ligne
 	// que la case
 	// *****************************************************************
+	/**
+	 * renvoie toujours true. Trouvé avec TestDame test nePeutPasBouger
+	 */
 	public boolean memeLigne(StubCase autre_p)
 	{
-		return true;
+		return ligne == autre_p.ligne;
 	}
 
 	// *****************************************************************
