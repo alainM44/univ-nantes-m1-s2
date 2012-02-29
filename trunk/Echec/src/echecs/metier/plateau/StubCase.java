@@ -66,9 +66,12 @@ public class StubCase
 	// *****************************************************************
 	// accesseurs des attributs calcul�s !
 	// *****************************************************************
+	/**
+	 * Renvoie estLibre au lieu de isOccupee. Trouvé gràce à test Coup
+	 */
 	public boolean isOccupee()
 	{
-		return jeton == null;
+		return jeton != null;
 	}
 
 	public int getCouleur()
