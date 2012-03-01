@@ -1,16 +1,9 @@
 package tests;
 
 import static org.junit.Assert.*;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import echecs.metier.materiel.Dame;
-import echecs.metier.plateau.Case;
-import echecs.metier.plateau.Couleur;
 import echecs.metier.plateau.StubCase;
 
 //Coup Joueur partie Dame Fou Pion Case Echiquier
