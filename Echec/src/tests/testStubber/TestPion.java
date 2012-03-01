@@ -1,11 +1,17 @@
-package tests;
+package tests.testStubber;
 
 import static org.junit.Assert.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import org.junit.Before;
 import org.junit.Test;
+import echecs.metier.materiel.Dame;
 import echecs.metier.materiel.Pion;
 import echecs.metier.plateau.Case;
+import echecs.metier.plateau.Couleur;
+import echecs.metier.plateau.StubCase;
 
+//Coup Joueur partie Dame Fou Pion Case Echiquier
 public class TestPion
 {
 	Pion p;
@@ -13,14 +19,14 @@ public class TestPion
 	@Before
 	public void creeDame()
 	{
-		p = new Pion(0, new Case('d', 2));
+		p = new Pion(0, new StubCase('d', 2));
 
 	}
 
 	@Test
 	public void testConst()
 	{
-		Pion d1 = new Pion(0, new Case('d', 2));
+		Pion d1 = new Pion(0, new StubCase('d', 2));
 		assertEquals('d'-'a'+1, d1.getPosition().getColonne());
 		assertEquals(2, d1.getPosition().getLigne());
 	}
@@ -30,7 +36,7 @@ public class TestPion
 	public void testGetCouleur()
 	{
 		assertEquals(0, p.getCouleur());
-		p = new Pion(1, new Case('d', 2));
+		p = new Pion(1, new StubCase('d', 2));
 		assertEquals(1, p.getCouleur());
 	}
 
@@ -38,7 +44,7 @@ public class TestPion
 	public void testADejaBouge()
 	{
 		assertEquals(false, p.aDejaBouge());
-		p.bouger(new Case('d', 2));
+		p.bouger(new StubCase('d', 2));
 		assertEquals(true, p.aDejaBouge());
 	}
 
@@ -74,7 +80,7 @@ public class TestPion
 	@Test
 	public void testBouger()
 	{
-		p.bouger(new Case('d', 2));
+		p.bouger(new StubCase('d', 2));
 		assertEquals(2, p.getPosition().getLigne());
 		assertEquals('d' - 'a' + 1, p.getPosition().getColonne());
 		assertEquals(true, p.aDejaBouge());
@@ -84,7 +90,7 @@ public class TestPion
 	@Test
 	public void testReplacer()
 	{
-		p.replacer(new Case('f', 3));
+		p.replacer(new StubCase('f', 3));
 		assertEquals('f' - 'a' + 1, p.getPosition().getColonne());
 		assertEquals(3, p.getPosition().getLigne());
 	}
@@ -92,14 +98,14 @@ public class TestPion
 	@Test
 	public void testPeutBouger()
 	{
-		assertEquals(true, p.peutBouger(new Case('d', 3)));
+		assertEquals(true, p.peutBouger(new StubCase('d', 3)));
 
 	}
 
 	@Test
 	public void testPeutPasBouger()
 	{
-		assertEquals(false, p.peutBouger(new Case('a', 1)));
+		assertEquals(false, p.peutBouger(new StubCase('a', 1)));
 
 	}
 

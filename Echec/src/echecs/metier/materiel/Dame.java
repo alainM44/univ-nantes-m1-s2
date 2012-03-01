@@ -30,7 +30,7 @@ public class Dame extends Piece
 	// le premier param�tre d�signe la couleur de la pi�ce
 	// le second param�tre d�signe la case initiale de la pi�ce
 	// *****************************************************************
-	public Dame(int couleur_p, StubCase caseInitiale_p)
+	public Dame(int couleur_p, Case caseInitiale_p)
 	{
 		super(couleur_p, caseInitiale_p);
 	}
@@ -59,7 +59,7 @@ public class Dame extends Piece
 	 * Pas de vérification de la meme ligne. Trouvé grace à TestDame
 	 * testPeutBougerLigne
 	 */
-	public boolean peutBouger(StubCase nouvelle_p)
+	public boolean peutBouger(Case nouvelle_p)
 	{
 		boolean retour = false;
 		if (getPosition().memeColonne(nouvelle_p)

@@ -1,9 +1,14 @@
-package tests;
+package tests.testStubber;
 
 import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
+
 import echecs.metier.materiel.Dame;
 import echecs.metier.plateau.Case;
+import echecs.metier.plateau.Couleur;
+import echecs.metier.plateau.Jeton;
+import echecs.metier.plateau.StubCase;
 
 //Coup Joueur partie Dame Fou Pion Case Echiquier
 public class TestCase {
@@ -48,7 +53,7 @@ public class TestCase {
 	@Test
 	public void testsetjeton() {
 		Case c1 = new Case('a', 1);
-		Dame d = new Dame(0, new Case(1, 1));
+		Dame d = new Dame(0, new StubCase(1, 1));
 		c1.setJeton(d);
 		assertEquals(d, c1.getJeton());
 	}
@@ -56,7 +61,7 @@ public class TestCase {
 	@Test
 	public void testLiberer() {
 		Case c1 = new Case('a', 1);
-		Dame d = new Dame(0, new Case(1, 1));
+		Dame d = new Dame(0, new StubCase(1, 1));
 		c1.setJeton(d);
 		c1.liberer();
 		assertEquals(null, c1.getJeton());

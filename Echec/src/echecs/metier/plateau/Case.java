@@ -1,11 +1,5 @@
 package echecs.metier.plateau;
 
-/** Packages utilis�s par ce package
- *  Aucun au sein de ce projet !
- */
-
-import java.util.*;
-
 /**
  * Titre : Description : Copyright : Copyright (c) 2002 Soci�t� : Fabrice
  * Tranchand

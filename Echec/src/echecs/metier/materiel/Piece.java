@@ -30,7 +30,7 @@ public abstract class Piece extends Jeton
   //     associations
   // -----------------------------------------------------------------
   /* case sur laquelle est pos�e la pi�ce                           */
-  private StubCase position;
+  private Case position;
 
 
 
@@ -43,7 +43,7 @@ public abstract class Piece extends Jeton
   //     le premier param�tre d�signe la couleur de la pi�ce
   //     le second param�tre d�signe la case initiale de la pi�ce
   // *****************************************************************
-  public Piece(int couleur_p, StubCase caseInitiale_p)
+  public Piece(int couleur_p, Case caseInitiale_p)
   {
     couleur = couleur_p;
     aDejaBouge = false;
@@ -61,7 +61,7 @@ public abstract class Piece extends Jeton
   // *****************************************************************
   public int getCouleur() { return couleur; }
   public boolean aDejaBouge() { return aDejaBouge; }
-  public StubCase getPosition() { return position; }
+  public Case getPosition() { return position; }
 
   // *****************************************************************
   //     retourne l'ic�ne de la pi�ce
@@ -73,7 +73,7 @@ public abstract class Piece extends Jeton
   //     param�tre, en respectant le d�placement de la pi�ce
   //     A REDEFINIR
   // *****************************************************************
-  public abstract boolean peutBouger(StubCase nouvelle_p);
+  public abstract boolean peutBouger(Case nouvelle_p);
   // *****************************************************************
   //     retourne l'abr�viation de la pi�ce utilis�e dans les notations
   //     A REDEFINIR
@@ -98,7 +98,7 @@ public abstract class Piece extends Jeton
   // *****************************************************************
   //     d�place la pi�ce sur une nouvelle case, pass�e en param�tre
   // *****************************************************************
-  public void bouger(StubCase nouvelle_p)
+  public void bouger(Case nouvelle_p)
   {
     if (position != null)
       aDejaBouge = true;
@@ -108,7 +108,7 @@ public abstract class Piece extends Jeton
   //     place le pi�ce sur la case pass�e en param�tre, sans consid�rer
   //     ceci comme un d�placement (aDejaBouge inchang�)
   // *****************************************************************
-  public void replacer(StubCase nouvelle_p)
+  public void replacer(Case nouvelle_p)
   {
     if (position != null)
       position.liberer();

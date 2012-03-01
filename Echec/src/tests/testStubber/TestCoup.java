@@ -1,15 +1,22 @@
-package tests;
+package tests.testStubber;
 
 import static org.junit.Assert.*;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import echecs.metier.jeu.Coup;
 import echecs.metier.jeu.Joueur;
+import echecs.metier.materiel.Cavalier;
 import echecs.metier.materiel.Dame;
+import echecs.metier.materiel.Piece;
 import echecs.metier.plateau.Case;
+import echecs.metier.plateau.Couleur;
 import echecs.metier.plateau.Echiquier;
+import echecs.metier.plateau.StubCase;
 
 //Coup Joueur partie Dame Fou Pion Case Echiquier
 public class TestCoup
@@ -27,8 +34,8 @@ public class TestCoup
 	{
 		Echiquier e = new Echiquier(8, 8);
 		Joueur j = new Joueur(0);
-		Case scdep = new Case(4, 4);
-		Case scarr = new Case(2, 4);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(2, 4);
 		Dame d = new Dame(0, scdep);
 		c = new Coup(e, j, d, scarr);
 		assertTrue(c.estValide());
@@ -39,8 +46,8 @@ public class TestCoup
 	{
 		Echiquier e = new Echiquier(8, 8);
 		Joueur j = new Joueur(0);
-		Case scdep = new Case(4, 4);
-		Case scarr = new Case(5, 7);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(5, 7);
 		Dame d = new Dame(0, scdep);
 		c = new Coup(e, j, d, scarr);
 		assertFalse(c.estValide());
@@ -51,9 +58,9 @@ public class TestCoup
 	{
 		Echiquier e = new Echiquier(8, 8);
 		Joueur j = new Joueur(0);
-		Case scdep = new Case(4, 4);
-		Case obstacle = new Case(3, 4);
-		Case scarr = new Case(2, 7);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase obstacle = new StubCase(3, 4);
+		StubCase scarr = new StubCase(2, 7);
 		Dame d = new Dame(0, scdep);
 		Dame obsDame = new Dame(1, obstacle);
 		c = new Coup(e, j, d, scarr);
@@ -65,8 +72,8 @@ public class TestCoup
 	{
 		Echiquier e = new Echiquier(8, 8);
 		Joueur j = new Joueur(0);
-		Case scdep = new Case(4, 4);
-		Case scarr = new Case(5, 5);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(5, 5);
 		Dame d = new Dame(0, scdep);
 		Dame obsDame = new Dame(1, scarr);
 		c = new Coup(e, j, d, scarr);
@@ -78,8 +85,8 @@ public class TestCoup
 	{
 		Echiquier e = new Echiquier(8, 8);
 		Joueur j = new Joueur(0);
-		Case scdep = new Case(4, 4);
-		Case scarr = new Case(5, 5);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(5, 5);
 		Dame d = new Dame(0, scdep);
 		Dame obsDame = new Dame(0, scarr);
 		c = new Coup(e, j, d, scarr);
@@ -91,8 +98,8 @@ public class TestCoup
 	{
 		Echiquier e = new Echiquier(8, 8);
 		Joueur j = new Joueur(0);
-		Case scdep = new Case(4, 4);
-		Case scarr = new Case(4, 3);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(4, 3);
 		Dame d = new Dame(0, scdep);
 		c = new Coup(e, j, d, scarr);
 		c.effectuer();
@@ -105,8 +112,8 @@ public class TestCoup
 	{
 		Echiquier e = new Echiquier(8, 8);
 		Joueur j = new Joueur(0);
-		Case scdep = new Case(4, 4);
-		Case scarr = new Case(4, 3);
+		StubCase scdep = new StubCase(4, 4);
+		StubCase scarr = new StubCase(4, 3);
 		Dame d = new Dame(0, scdep);		
 		Dame obsDame = new Dame(1, scarr);
 		c = new Coup(e, j, d, scarr);
@@ -121,8 +128,8 @@ public class TestCoup
 	{
 		Echiquier e = new Echiquier(8, 8);
 		Joueur j = new Joueur(0);
-		Case scdep = new Case(3, 2);
-		Case scarr = new Case(4, 3);
+		StubCase scdep = new StubCase(3, 2);
+		StubCase scarr = new StubCase(4, 3);
 		Dame d = new Dame(0, scdep);		
 		c = new Coup(e, j, d, scarr);
 		c.effectuer();
@@ -138,8 +145,8 @@ public class TestCoup
 	{
 		Echiquier e = new Echiquier(8, 8);
 		Joueur j = new Joueur(0);
-		Case scdep = new Case(3, 2);
-		Case scarr = new Case(4, 3);
+		StubCase scdep = new StubCase(3, 2);
+		StubCase scarr = new StubCase(4, 3);
 		Dame d = new Dame(0, scdep);	
 		Dame obsDame = new Dame(1, scarr);
 		c = new Coup(e, j, d, scarr);

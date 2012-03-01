@@ -31,7 +31,7 @@ public class Fou extends Piece
   //     le premier param�tre d�signe la couleur de la pi�ce
   //     le second param�tre d�signe la case initiale de la pi�ce
   // *****************************************************************
-  public Fou(int couleur_p, StubCase caseInitiale_p)
+  public Fou(int couleur_p, Case caseInitiale_p)
   {
     super(couleur_p, caseInitiale_p);
   }
@@ -60,7 +60,7 @@ public class Fou extends Piece
   /**
    * Erreur : déplacement en ligne. Non autorisé pour le fou
    */
-  public boolean peutBouger(StubCase nouvelle_p)
+  public boolean peutBouger(Case nouvelle_p)
   {
     boolean retour = false;
     if ( 	 getPosition().memeDiagonale(nouvelle_p))

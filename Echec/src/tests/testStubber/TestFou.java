@@ -1,4 +1,4 @@
-package tests;
+package tests.testStubber;
 
 import static org.junit.Assert.*;
 
@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import echecs.metier.materiel.Fou;
-import echecs.metier.plateau.Case;
+import echecs.metier.plateau.StubCase;
 
 //Coup Joueur partie Dame Fou Pion Case Echiquier
 public class TestFou
@@ -17,14 +17,14 @@ public class TestFou
 	@Before
 	public void creeFou()
 	{
-		f = new Fou(0, new Case('c', 1));
+		f = new Fou(0, new StubCase('c', 1));
 
 	}
 
 	@Test
 	public void testConst()
 	{
-		Fou d1 = new Fou(0, new Case('c', 1));
+		Fou d1 = new Fou(0, new StubCase('c', 1));
 		assertEquals('c'-'a'+1, d1.getPosition().getColonne());
 		assertEquals(1, d1.getPosition().getLigne());
 	}
@@ -35,7 +35,7 @@ public class TestFou
 	public void testGetCouleur()
 	{
 		assertEquals(0, f.getCouleur());
-		f = new Fou(1, new Case('d', 1));
+		f = new Fou(1, new StubCase('d', 1));
 		assertEquals(1, f.getCouleur());
 	}
 
@@ -43,7 +43,7 @@ public class TestFou
 	public void testADejaBouge()
 	{
 		assertEquals(false, f.aDejaBouge());
-		f.bouger(new Case('e', 2));
+		f.bouger(new StubCase('e', 2));
 		assertEquals(true, f.aDejaBouge());
 	}
 
@@ -79,7 +79,7 @@ public class TestFou
 	@Test
 	public void testBouger()
 	{
-		f.bouger(new Case('e', 3));
+		f.bouger(new StubCase('e', 3));
 		assertEquals(3, f.getPosition().getLigne());
 		assertEquals('e' - 'a' + 1, f.getPosition().getColonne());
 		assertEquals(true, f.aDejaBouge());
@@ -89,7 +89,7 @@ public class TestFou
 	@Test
 	public void testReplacer()
 	{
-		f.replacer(new Case('f', 3));
+		f.replacer(new StubCase('f', 3));
 		assertEquals('f' - 'a' + 1, f.getPosition().getColonne());
 		assertEquals(3, f.getPosition().getLigne());
 	}
@@ -97,14 +97,14 @@ public class TestFou
 	@Test
 	public void testPeutBouger()
 	{
-		assertEquals(true, f.peutBouger(new Case('e', 3)));
+		assertEquals(true, f.peutBouger(new StubCase('e', 3)));
 
 	}
 
 	@Test
 	public void testPeutPasBouger()
 	{
-		assertEquals(false, f.peutBouger(new Case('a', 1)));
+		assertEquals(false, f.peutBouger(new StubCase('a', 1)));
 	}
 
 
