@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import echecs.metier.jeu.Joueur;
 import echecs.metier.jeu.Partie;
-import echecs.metier.materiel.Piece;
 import echecs.metier.plateau.Couleur;
 import echecs.metier.plateau.Echiquier;
 import echecs.metier.plateau.StubCase;
