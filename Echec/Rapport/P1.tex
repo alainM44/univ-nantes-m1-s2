@@ -1,14 +1,24 @@
 \chapter{Rapport de Tests}
+
 \section{Dame}
 \begin{enumerate}
 \item
 Erreur peutBouger : absence d'un test dans le if : la dame peut aussi se déplacer sur une ligne. Trouvée grâce au testPeutBougerLigne().
 \end{enumerate}
+
 \section{Fou}
 \begin{enumerate}
 \item
 Erreur peutBouger : condition en trop dans le if :le fou peut se déplacer en ligne.  Trouvée grâce au testPeutBougerLigne().
 \end{enumerate}
+
+\section{Pion}
+\begin{enumerate}
+\item
+Erreur getType() : retourne chaîne vide au lieu de P.  Trouvée grâce au testGetType().
+\end{enumerate}
+
+
 \section{Echiquier}
 \begin{enumerate}
 \item
@@ -25,4 +35,15 @@ Erreur getLigne : Indice de départ mal positionné. Trouvée grâce au testInte
 Erreur estValide() : test sur la pièce allant être prise au lieu de celle se déplaçant. Trouvée grâce au test testEstValide().
 \item
 Erreur annuler() : la pièce prise pouvait être nulle. Trouvée grâce au test testAnnuler().
+\end{enumerate}
+
+\section{Partie}
+\begin{enumerate}
+\item
+ Erreur private Joueur joueurs[] : joueurs non initialisés. Trouvée grâce à testPartie().
+\item
+Erreur echec(Joueur joueur\_p) :  au niveau du nombre de pieces à parcourir. Trouvée grâce à  testJouerEchec().
+\item
+Erreur changerTrait() : erreur de changement de trait entre les deux joueurs. Touvée grâce à testJouer().
+
 \end{enumerate}

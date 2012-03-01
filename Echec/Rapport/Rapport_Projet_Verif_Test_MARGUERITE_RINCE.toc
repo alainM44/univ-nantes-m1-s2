@@ -6,5 +6,7 @@
 \contentsline {chapter}{\numberline {2}Rapport de Tests}{4}{chapter.2}
 \contentsline {section}{\numberline {2.1}Dame}{4}{section.2.1}
 \contentsline {section}{\numberline {2.2}Fou}{4}{section.2.2}
-\contentsline {section}{\numberline {2.3}Echiquier}{4}{section.2.3}
-\contentsline {section}{\numberline {2.4}Coup}{4}{section.2.4}
+\contentsline {section}{\numberline {2.3}Pion}{4}{section.2.3}
+\contentsline {section}{\numberline {2.4}Echiquier}{4}{section.2.4}
+\contentsline {section}{\numberline {2.5}Coup}{4}{section.2.5}
+\contentsline {section}{\numberline {2.6}Partie}{5}{section.2.6}
