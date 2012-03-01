@@ -1,4 +1,4 @@
-package tests;
+package tests.testStubber;
 
 import static org.junit.Assert.*;
 
@@ -8,7 +8,7 @@ import echecs.metier.jeu.Joueur;
 import echecs.metier.jeu.Partie;
 import echecs.metier.plateau.Couleur;
 import echecs.metier.plateau.Echiquier;
-import echecs.metier.plateau.Case;
+import echecs.metier.plateau.StubCase;
 
 public class TestPartie
 {
@@ -57,7 +57,7 @@ public class TestPartie
 	{
 		Partie p = new Partie();
 		Echiquier e = p.getEchiquier();
-		Case CaseCavalier = e.getCase(2, 8);
+		StubCase CaseCavalier = e.getCase(2, 8);
 		assertFalse(p.jouer(p.getPiece(CaseCavalier), e.getCase(1, 6)));
 		CaseCavalier = e.getCase(2, 1);
 		assertTrue(p.jouer(p.getPiece(CaseCavalier), e.getCase(1, 3)));		
@@ -119,7 +119,7 @@ public class TestPartie
 
 	}
 	
-	@Test
+	@Test//TODO
 	public void testJouerPat()
 	{
 		Partie p = new Partie();

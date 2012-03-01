@@ -24,9 +24,9 @@ public class Coup
   /* joueur auteur du coup                                          */
   private Joueur auteur;
   /* case d'arriv�e de la pi�ce d�plac�e                            */
-  private StubCase caseArrivee;
+  private Case caseArrivee;
   /* case de d�part de la pi�ce d�plac�e                            */
-  private StubCase caseDepart;
+  private Case caseDepart;
   /* pi�ce d�plac�e                                                 */
   private Piece piece;
   /* pi�ce prise par la pi�ce d�plac�e                              */
@@ -49,7 +49,7 @@ public class Coup
   public Coup(Echiquier echiquier_p,
               Joueur joueur_p,
               Piece piece_p,
-              StubCase case_p)
+              Case case_p)
   {
     echiquier = echiquier_p;
     auteur = joueur_p;

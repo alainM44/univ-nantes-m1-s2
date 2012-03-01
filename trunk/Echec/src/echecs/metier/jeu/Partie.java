@@ -93,7 +93,7 @@ public class Partie
   //     le premier param�tre d�signe la pi�ce d�plac�e
   //     le second param�tre d�signe la case d'arriv�e de cette pi�ce
   // *****************************************************************
-  public boolean jouer(Piece piece_p, StubCase caseArrivee_p)
+  public boolean jouer(Piece piece_p, Case caseArrivee_p)
   {
     boolean retour = true;
     Coup coupEnCours = new Coup(echiquier, trait, piece_p, caseArrivee_p);
@@ -115,7 +115,7 @@ public class Partie
   // *****************************************************************
   //     retourne la pi�ce situ�e sur la case en param�tre
   // *****************************************************************
-  public Piece getPiece(StubCase case_p)
+  public Piece getPiece(Case case_p)
   {
     return (Piece)(case_p.getJeton());
   }
@@ -129,7 +129,7 @@ public class Partie
   public boolean echec(Joueur joueur_p)
   {
     boolean retour = false;
-    StubCase caseRoi = getCaseRoi(joueur_p);
+    Case caseRoi = getCaseRoi(joueur_p);
     Joueur adversaire = getAdversaire(joueur_p);
     for (int i=0; i<NB_PIECES && (!retour); i++)
     {
@@ -171,7 +171,7 @@ public class Partie
   // *****************************************************************
   //     retourne la case sur lequel est situ� le roi du joueur en param�tre
   // *****************************************************************
-  private StubCase getCaseRoi(Joueur joueur_p)
+  private Case getCaseRoi(Joueur joueur_p)
   {
     Piece piece = rois[0];
     if (joueur_p.getCouleur() == rois[1].getCouleur())
@@ -185,7 +185,7 @@ public class Partie
   //     le deuxi�me coup d�signe la pi�ce � d�placer
   //     le troisi�me coup d�signe la case d'arriv�e de la pi�ce
   // *****************************************************************
-  private boolean simulerCoup(Joueur joueur_p, Piece piece_p, StubCase case_p)
+  private boolean simulerCoup(Joueur joueur_p, Piece piece_p, Case case_p)
   {
     boolean retour = true;
     Coup coup = new Coup(echiquier, joueur_p, piece_p, case_p);

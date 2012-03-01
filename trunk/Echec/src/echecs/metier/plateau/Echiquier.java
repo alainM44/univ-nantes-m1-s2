@@ -29,7 +29,7 @@ public class Echiquier
   //     associations
   // -----------------------------------------------------------------
   /* les cases de l'�chiquier                                       */
-  private StubCase Cases[][];
+  private Case Cases[][];
 
 
   // -----------------------------------------------------------------
@@ -39,10 +39,10 @@ public class Echiquier
   {
     nombreColonnes = nbColonnes_p;
     nombreLignes = nbLignes_p;
-    Cases = new StubCase[nombreColonnes][nombreLignes];
+    Cases = new Case[nombreColonnes][nombreLignes];
     for (char i=0; i<nombreColonnes; i++)
       for (int j=0; j<nombreLignes; j++)
-        Cases[i][j] = new StubCase(i+1, j+1);
+        Cases[i][j] = new Case(i+1, j+1);
   }
 
   // -----------------------------------------------------------------
@@ -58,13 +58,13 @@ public class Echiquier
   /**
    * Erreur détectée : elementAt(1) ou lieu de i
    */
-  public boolean intervalleLibre(StubCase debut_p, StubCase fin_p)
+  public boolean intervalleLibre(Case debut_p, Case fin_p)
   {
     boolean retour = true;
     Vector intervalle = getIntervalle(debut_p, fin_p);
     for (int i=0; i<intervalle.size() && retour; i++)
     {
-      StubCase uneCase = (StubCase)(intervalle.elementAt(i));
+      Case uneCase = (Case)(intervalle.elementAt(i));
       if (uneCase.isOccupee())
         retour = false;
     }
@@ -77,9 +77,9 @@ public class Echiquier
   //     la colonne et la ligne pass�es en param�tres sont suppos�es
   //     commenc�es � 1 (et non � 0)
   // *****************************************************************
-  public StubCase getCase(int colonne_p, int ligne_p)
+  public Case getCase(int colonne_p, int ligne_p)
   {
-    StubCase retour = null;
+    Case retour = null;
     if (colonne_p > 0 && colonne_p <= nombreColonnes &&
         ligne_p > 0 && ligne_p <= nombreLignes)
       retour = Cases[colonne_p-1][ligne_p-1];
@@ -92,7 +92,7 @@ public class Echiquier
   //     la colonne pass�e en param�tre est cens�e commenc�e � 'a'
   //     la ligne pass�e en param�tre est cens�e commenc�e � 1 (et non � 0)
   // *****************************************************************
-  public StubCase getCase(char colonne_p, int ligne_p)
+  public Case getCase(char colonne_p, int ligne_p)
   {
     return getCase(colonne_p-'a'+1, ligne_p);
   }
@@ -111,7 +111,7 @@ public class Echiquier
 /**
  * Indice de départ mal positionné
  */
-  private Vector getLigne(StubCase debut_p, StubCase fin_p)
+  private Vector getLigne(Case debut_p, Case fin_p)
   {
     Vector retour = new Vector();
     for (int i=debut_p.getLigne() + 1; i<fin_p.getLigne(); i++)
@@ -126,7 +126,7 @@ public class Echiquier
   //     param�tres, celles-ci �tant exclues
   //     les 2 Cases en param�tres sont cens�es �tre sur une m�me colonne
   // *****************************************************************
-  private Vector getColonne(StubCase debut_p, StubCase fin_p)
+  private Vector getColonne(Case debut_p, Case fin_p)
   {
     Vector retour = new Vector();
     for (int i=debut_p.getColonne() + 1; i<fin_p.getColonne(); i++)
@@ -141,7 +141,7 @@ public class Echiquier
   //     param�tres, celles-ci �tant exclues
   //     les 2 Cases en param�tres sont cens�es �tre sur une m�me diagonale
   // *****************************************************************
-  private Vector getDiagonale(StubCase debut_p, StubCase fin_p)
+  private Vector getDiagonale(Case debut_p, Case fin_p)
   {
     Vector retour = new Vector();
     if (debut_p.getColonne() < fin_p.getColonne())
@@ -170,7 +170,7 @@ public class Echiquier
    * Erreur détectée : inversion entre l'action du if et du 1er elsif Test echiquer
    * nom mal choisi
    */
-  private Vector getIntervalle(StubCase debut_p, StubCase fin_p)
+  private Vector getIntervalle(Case debut_p, Case fin_p)
   {
     Vector retour = new Vector();
     if (debut_p.memeColonne(fin_p))

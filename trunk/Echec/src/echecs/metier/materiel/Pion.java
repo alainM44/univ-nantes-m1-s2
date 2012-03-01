@@ -31,7 +31,7 @@ public class Pion extends Piece
   //     le premier param�tre d�signe la couleur de la pi�ce
   //     le second param�tre d�signe la case initiale de la pi�ce
   // *****************************************************************
-  public Pion(int couleur_p, StubCase caseInitiale_p)
+  public Pion(int couleur_p, Case caseInitiale_p)
   {
     super(couleur_p, caseInitiale_p);
   }
@@ -57,7 +57,7 @@ public class Pion extends Piece
   //     retourne true si la pi�ce peut se d�placer sur la case en
   //     param�tre, en respectant le d�placement de la pi�ce
   // *****************************************************************
-  public boolean peutBouger(StubCase nouvelle_p)
+  public boolean peutBouger(Case nouvelle_p)
   {
     boolean retour = false;
     if (getPosition() != null)
@@ -86,7 +86,7 @@ public class Pion extends Piece
   // *****************************************************************
   //     retourne true si le d�placement correspond � une prise en passant
   // *****************************************************************
-  private boolean priseEnPassant(StubCase nouvelle_p)
+  private boolean priseEnPassant(Case nouvelle_p)
   {
     // non impl�ment�e dans cette version
     return false;
@@ -95,7 +95,7 @@ public class Pion extends Piece
   //     retourne true si le d�placement correspond au premier d�placement
   //     d'un pion
   // *****************************************************************
-  private boolean avanceeInitiale(StubCase nouvelle_p)
+  private boolean avanceeInitiale(Case nouvelle_p)
   {
     boolean retour = false;
     if ( getPosition().memeColonne(nouvelle_p) &&
@@ -112,7 +112,7 @@ public class Pion extends Piece
   // *****************************************************************
   //     retourne true si le d�placement correspond � une prise
   // *****************************************************************
-  private boolean priseClassique(StubCase nouvelle_p)
+  private boolean priseClassique(Case nouvelle_p)
   {
     boolean retour = false;
     if ( nouvelle_p.isOccupee() &&
@@ -127,7 +127,7 @@ public class Pion extends Piece
   // *****************************************************************
   //     retourne true si le d�placement correspond � une avanc�e du pion
   // *****************************************************************
-  private boolean avanceeClassique(StubCase nouvelle_p)
+  private boolean avanceeClassique(Case nouvelle_p)
   {
     boolean retour = false;
     if ( (! nouvelle_p.isOccupee()) &&

@@ -34,7 +34,7 @@ public class Cavalier extends Piece
   //     le premier param�tre d�signe la couleur de la pi�ce
   //     le second param�tre d�signe la case initiale de la pi�ce
   // *****************************************************************
-  public Cavalier(int couleur_p, StubCase caseInitiale_p)
+  public Cavalier(int couleur_p, Case caseInitiale_p)
   {
     super(couleur_p, caseInitiale_p);
   }
@@ -64,7 +64,7 @@ public class Cavalier extends Piece
   //     retourne true si la pi�ce peut se d�placer sur la case en
   //     param�tre, en respectant le d�placement de la pi�ce
   // *****************************************************************
-  public boolean peutBouger(StubCase nouvelle_p)
+  public boolean peutBouger(Case nouvelle_p)
   {
     boolean retour = false;
     if ( (!getPosition().memeColonne(nouvelle_p)) &&
