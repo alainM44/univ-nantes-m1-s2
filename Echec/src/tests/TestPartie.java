@@ -103,6 +103,8 @@ public class TestPartie
 		assertFalse(p.jouer(p.getPiece(e.getCase(5, 1)), e.getCase(4, 2)));
 		assertTrue(p.jouer(p.getPiece(e.getCase(4, 1)), e.getCase(5, 2)));
 		assertFalse(p.jouer(p.getPiece(e.getCase(4, 8)), e.getCase(4, 1)));
+		assertTrue(p.echec(p.getTrait()));
+		assertFalse(p.pat(p.getTrait()));
 
 		
 
@@ -130,6 +132,7 @@ public class TestPartie
 		p.getPiece(e.getCase(1, 8)).enlever();
 		p.getPiece(e.getCase(2, 8)).enlever();
 		p.getPiece(e.getCase(3, 8)).enlever();
+		p.getPiece(e.getCase(4, 8)).enlever();
 		p.getPiece(e.getCase(6, 8)).enlever();
 		p.getPiece(e.getCase(7, 8)).enlever();
 		p.getPiece(e.getCase(8, 8)).enlever();
@@ -141,9 +144,8 @@ public class TestPartie
 		p.getPiece(e.getCase(6, 7)).enlever();
 		p.getPiece(e.getCase(7, 7)).enlever();
 		p.getPiece(e.getCase(8, 7)).enlever();
-		assertFalse(p.jouer(p.getPiece(e.getCase(5, 1)), e.getCase(4, 2)));
-		assertTrue(p.jouer(p.getPiece(e.getCase(4, 1)), e.getCase(5, 2)));
-		assertFalse(p.jouer(p.getPiece(e.getCase(4, 8)), e.getCase(4, 1)));
+		p.jouer(p.getPiece(e.getCase(4, 8)), e.getCase(4, 1));
+
 
 		
 
