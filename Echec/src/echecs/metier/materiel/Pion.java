@@ -72,7 +72,10 @@ public class Pion extends Piece
   // *****************************************************************
   //     retourne l'abr�viation de la pi�ce utilis�e dans les notations
   // *****************************************************************
-  public String getType() { return ""; };
+  /**
+   * Erreur : retourne chaîne vide.
+   */
+  public String getType() { return "P"; };
 
 
 
