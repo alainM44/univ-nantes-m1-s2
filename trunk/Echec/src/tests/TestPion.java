@@ -31,18 +31,6 @@ public class TestPion
 		assertEquals(2, d1.getPosition().getLigne());
 	}
 
-	@Test(expected = Exception.class)
-	public void testConstColFail()
-	{
-		Pion p1 = new Pion(0, new StubCase('i', 1));
-
-	}
-
-	@Test(expected = Exception.class)
-	public void testConstLigneFail()
-	{
-		Pion p1 = new Pion(0, new StubCase('d', 0));
-	}
 
 	@Test
 	public void testGetCouleur()
