@@ -155,10 +155,17 @@ public class Case
 	// *****************************************************************
 	// retourne true si la case en param�tre est voisine de la case
 	// *****************************************************************
+	/**
+	 * Considère les cases diagonales comme non voisine or roi utilise caseVoisine pour connaitre le déplacement autorisé.
+	 * Trouvé grâce à testCase testCaseVoisineTrue
+	 * 
+	 * Considère une case comme voisine à elle-même
+	 * Trouvé grace à testCase testCaseVoisineFalse
+	 */
 	public boolean caseVoisine(Case autre_p)
 	{
 		return ((Math.abs(ligne - autre_p.ligne) <= 1)
-				&& (Math.abs(colonne - autre_p.colonne) <= 1) && (((ligne - autre_p.ligne) == 0) || ((colonne - autre_p.colonne) == 0)));
+				&& (Math.abs(colonne - autre_p.colonne) <= 1) && !(((ligne - autre_p.ligne) == 0) && ((colonne - autre_p.colonne) == 0)));
 	}
 
 	// *****************************************************************

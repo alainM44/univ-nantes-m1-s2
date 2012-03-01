@@ -124,32 +124,46 @@ public class TestCase {
 	}
 	
 	@Test
-	public void testCaseVoisineEQ() {
-		Case c1 = new Case('a', 2);
+	public void testCaseVoisineTrue() {
+		Case c1 = new Case('b', 2);
 		Case c2;
 		c2 = new Case('a', 1);
 		assertTrue(c1.caseVoisine(c2));
-		c2 = new Case('a', 1);
+		c2 = new Case('a', 2);
 		assertTrue(c1.caseVoisine(c2));
-		c2 = new Case('a', 1);
+		c2 = new Case('a', 3);
 		assertTrue(c1.caseVoisine(c2));
-		c2 = new Case('a', 1);
+		c2 = new Case('b', 1);
 		assertTrue(c1.caseVoisine(c2));
-		c2 = new Case('a', 1);
+		c2 = new Case('b', 3);
 		assertTrue(c1.caseVoisine(c2));
-		c2 = new Case('a', 1);
+		c2 = new Case('c', 1);
 		assertTrue(c1.caseVoisine(c2));
-		c2 = new Case('a', 1);
+		c2 = new Case('c', 2);
 		assertTrue(c1.caseVoisine(c2));
-		c2 = new Case('a', 1);
+		c2 = new Case('c', 3);
 		assertTrue(c1.caseVoisine(c2));
 	}
 
 	@Test
-	public void testMemDiaDIFF() {
+	public void testCaseVoisineFalse() {
 		Case c1 = new Case('a', 1);
-		Case c2 = new Case('a', 3);
-		assertFalse(c1.memeDiagonale(c2));
+		Case c2 ;
+		c2= new Case('a', 8);
+		assertFalse(c1.caseVoisine(c2));
+		c2= new Case('h', 1);
+		assertFalse(c1.caseVoisine(c2));
+		c2= new Case('h', 8);
+		assertFalse(c1.caseVoisine(c2));
+		c2= new Case('b', 8);
+		assertFalse(c1.caseVoisine(c2));
+		c2= new Case('h', 2);
+		assertFalse(c1.caseVoisine(c2));
+		c2= new Case('a', 1);
+		assertFalse(c1.caseVoisine(c2));
 	
 	}
+	
+	@Test
+	public void testEstAuDessus() {
 }
