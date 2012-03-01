@@ -50,6 +50,11 @@ Erreur changerTrait() : erreur de changement de trait entre les deux joueurs. To
 \section{Case}
 \begin{enumerate}
 \item
- Erreur  : Case(char colonne\_p, int ligne\_p) testConstEqCol() : Inversion des parametres du constructeur pour l'initialisation des attributs. Touvée grâce à testConstEqCol().
-
+ Erreur Case(char colonne\_p, int ligne\_p) testConstEqCol() : Inversion des parametres du constructeur pour l'initialisation des attributs. Touvée grâce à testConstEqCol().
+\item
+Erreur isOccupee() :  Renvoie estLibre au lieu de isOccupee. Trouvé gràce à testEffectuer() (TestCoup).
+\item	
+Erreur caseVoisine() : la fonction condière que les case en diagonales (de distance inférieur ou égale à 1 au lieu de 0) ne sont pas voisines. Cependant une pièce telle que le roi utilise caseVoisine pour connaitre le déplacement autorisé.Trouvé gràce à testCaseVoisineFalse().
+\item
+Nous avons été intrigué par le fait que a méthode estAudessus n'est jamais utilisée. 
 \end{enumerate}
