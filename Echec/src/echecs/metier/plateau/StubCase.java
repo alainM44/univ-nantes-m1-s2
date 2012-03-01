@@ -26,8 +26,8 @@ public class StubCase
 	// *****************************************************************
 	public StubCase(char colonne_p, int ligne_p)
 	{
-		colonne = colonne_p - 'a' + 1;
-	    ligne = ligne_p;
+			colonne = colonne_p - 'a' + 1;
+		    ligne = ligne_p;
 	    jeton = null;
 	}
 
