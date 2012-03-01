@@ -82,9 +82,12 @@ public class Case
 	// *****************************************************************
 	// accesseurs des attributs calcul�s !
 	// *****************************************************************
+	/**
+	 * Renvoie estLibre au lieu de isOccupee. Trouvé gràce à test Coup
+	 */
 	public boolean isOccupee()
 	{
-		return jeton == null;
+		return jeton != null;
 	}
 
 	public int getCouleur()
@@ -115,6 +118,7 @@ public class Case
 	// retourne true si la case en param�tre est sur la m�me ligne
 	// que la case
 	// *****************************************************************
+	
 	public boolean memeLigne(Case autre_p)
 	{
 		return ligne == autre_p.ligne;
