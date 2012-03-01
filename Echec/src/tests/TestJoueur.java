@@ -16,11 +16,6 @@ public class TestJoueur
 			
 		}
 		
-		@Test(expected=Exception.class)
-		public void testConstFail(){
-			Joueur j = new Joueur(-1);
-			
-		}
 		
 		@Test
 		public void testGetCouleur()

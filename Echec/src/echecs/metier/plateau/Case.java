@@ -147,6 +147,9 @@ public class Case
 	// retourne true si la case en param�tre est juste au-dessus
 	// de la case
 	// *****************************************************************
+	/**
+	 * estAuDessus n'est jamais appelée
+	 */
 	public boolean estAuDessus(Case autre_p)
 	{
 		return ((ligne == autre_p.ligne + 1) && (colonne == autre_p.colonne));
