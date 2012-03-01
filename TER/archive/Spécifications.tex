@@ -16,7 +16,8 @@
 \renewcommand\labelitemi{\textbullet}
 
 \paragraph{Introduction :} L'objectif est de définir un outil de visualisation d'une projection en une, deux ou trois dimensions d'un pavage à N dimensions typiquement produit par un outil de résolution par intervalles de problèmes numériques (tel que Realpaver). Cet outil permettra de visualiser entièrement ou partiellement le pavage et d'ajuster les propriétés graphiques de la visualisation, puis d'exporter le résultat. Une indépendance vis à vis du logiciel fournissant les données est requise. Le traducteur pour passer du format de sortie du logiciel source au langage d'entrée dédié à l'outil de visualisation n'entre pas dans la conception.
-
+\paragraph{Mise en garde}
+Il existe des différences entres les les images et le texte. Ces différences seront signaler par le symbole $\triangle$ .Dans tous les cas se référer en priorité au texte
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Format d'entrée}
 
@@ -96,7 +97,7 @@ Liste de boîtes du pavage, chacune comprenant :
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Présentation de l'IHM générale}
 \paragraph{Note sur les informations de spécifications}
-Les spécifications seront dans cette partie décrite textuellement et illustrées. Les illustrations peuvent être incomplète et il est necessaire de s'appuyer sur le texte pour les spécifications exactes. Dans la mesure du possible les éléments manquant dans les illustrations seront annotés par \danger 
+Les spécifications seront dans cette partie décrite textuellement et illustrées. Les illustrations peuvent être incomplète et il est necessaire de s'appuyer sur le texte pour les spécifications exactes. Dans la mesure du possible les éléments manquant dans les illustrations seront annotés par $\triangle$ 
 On trouvera 5 composantes dans la fenêtre de l'outil :
 \begin{itemize}
 \item Une barre de menu en haut.
@@ -154,9 +155,9 @@ Elle est composée des sous-menus :
     \item[.] Out
     \end{itemize}
   \end{itemize}
-\item Help :\danger
+\item Help :$\triangle$
   \begin{itemize}
-  \item Help
+  \item Help 
   \item About
   \end{itemize}
 \end{itemize}
@@ -167,8 +168,8 @@ Elle est composée des sous-menus :
 \subsection{Barre d'outil} 
 Elle est composée d'icônes (raccourcis) d'items de la barre de menu décrite précédemment. Son contenu est paramétrable par l'utilisateur. Les éléments suivants y sont toujours présents :
 \begin{itemize}
-\item les ID des variables visualisées (3 combobox éditables comprenant chacun la liste de toutes les variables).\danger
-\item Le zoom homogène, i.e., égal sur toutes les dimensions (1 champ texte éditable et 2 boutons "+" et "-").\danger
+\item les ID des variables visualisées (3 combobox éditables comprenant chacun la liste de toutes les variables).$\triangle$
+\item Le zoom homogène, i.e., égal sur toutes les dimensions (1 champ texte éditable et 2 boutons "+" et "-").$\triangle$
 \end{itemize}
 
 %----------------------------------------------------------------------------------
@@ -216,11 +217,11 @@ Elle est contient divers information générales sur les données de l'applicati
 \end{figure}
 Essentiellement dédié à la lectures d'informations complémentaires de la visualisation. Il contient 4 parties :
 \begin{itemize}
-\item Dans la partie supérieure, une liste des boites donnant leurs ID, les valeurs (intervalles) des variables visualisées (1, 2 ou 3), la liste des ID des filtres dont la règle est validée par la boite \danger, l'ID de l'affichage conditionnel qui s'applique à la boite \danger. Cette liste pourra ne comporter que les boites actuellement visualisées, que celles satisfaisant au moins un filtre, ou l'intégralité des boites du pavage en entrée (choix au moyen d'un radio-bouton\danger). Elle pourra être réordonnée, de façon croissante ou décroissante, selon les ID ou les valeurs des variables visualisées (selon la borne inférieure de l'intervalle). Si la liste excède la taille de la zone dédiée, une barre de défilement verticale apparaît. La sélection, par clic gauche de la souris, d'une boite de la liste la met également en surbrillance dans la fenêtre de visualisation. Réciproquement, la sélection d'une boite dans la zone de visualisation sélectionne automatiquement celle-ci dans la liste.
+\item Dans la partie supérieure, une liste des boites donnant leurs ID, les valeurs (intervalles) des variables visualisées (1, 2 ou 3), la liste des ID des filtres dont la règle est validée par la boite $\triangle$, l'ID de l'affichage conditionnel qui s'applique à la boite $\triangle$. Cette liste pourra ne comporter que les boites actuellement visualisées, que celles satisfaisant au moins un filtre, ou l'intégralité des boites du pavage en entrée (choix au moyen d'un radio-bouton$\triangle$). Elle pourra être réordonnée, de façon croissante ou décroissante, selon les ID ou les valeurs des variables visualisées (selon la borne inférieure de l'intervalle). Si la liste excède la taille de la zone dédiée, une barre de défilement verticale apparaît. La sélection, par clic gauche de la souris, d'une boite de la liste la met également en surbrillance dans la fenêtre de visualisation. Réciproquement, la sélection d'une boite dans la zone de visualisation sélectionne automatiquement celle-ci dans la liste.
 \item Dans la partie inférieure gauche, les informations (non éditables) détaillées de la boîte sélectionnée dans la zone supérieure : la liste des valeurs de toutes les variables, munie au besoin d'un barre de défilement verticale, ordonnable (croissant ou décroissant) selon les noms des variables ou leurs valeurs (bornes inférieures ou supérieures) ; et la liste des caractéristiques de la boite, munie au besoin d'un barre de défilement verticale, ordonnable (croissant ou décroissant) selon les noms des caractéristiques, ou leurs valeurs (d'abord les String, puis les Number, puis les Interval selon leur borne inférieure).
 \item Dans la partie inférieure droite, le commentaire et la caractéristiques d'affichages de la boite actuellement sélectionnée dans la zone supérieure:
   \begin{itemize}
-  \item l'ID et le label de l'affichage conditionnel s'appliquant à la boite. \danger
+  \item l'ID et le label de l'affichage conditionnel s'appliquant à la boite. $\triangle$
   \item 4 glissières associées à des champs textes permettant de personnaliser la couleur et la transparence de la boite selon le codage RVBA.\\ SUPPRIMER LE COMBO ET LA NOTION DE COULEUR DE TRAIT.
   \end{itemize}
 Un bouton Save permet d'enregistrer le style d'affichage personnalisé et le commentaire saisi.
@@ -240,7 +241,7 @@ Un bouton Save permet d'enregistrer le style d'affichage personnalisé et le com
 \paragraph{Utilisation de l'onglet :}
 
 \begin{itemize}
-\item Dans la partie supérieure, la liste des points de référence avec leur ID, leur label et leurs coordonnées pour les variables visualisées. Cette liste pourra ne comporter que les points actuellement visualisées, ou l'intégralité des points définis (choix au moyen d'un radio-bouton\danger). Elle pourra être réordonnée, de façon croissante ou décroissante, selon les ID, les labels, et les valeurs des variables visualisées. Si la liste excède la taille de la zone dédiée, une barre de défilement verticale apparaîtra. La sélection, par clic gauche de la souris, d'un point de la liste le met également en surbrillance dans la fenêtre de visualisation. Réciproquement, la sélection d'un point dans la zone de visualisation sélectionne automatiquement celui-ci dans cette liste.
+\item Dans la partie supérieure, la liste des points de référence avec leur ID, leur label et leurs coordonnées pour les variables visualisées. Cette liste pourra ne comporter que les points actuellement visualisées, ou l'intégralité des points définis (choix au moyen d'un radio-bouton$\triangle$). Elle pourra être réordonnée, de façon croissante ou décroissante, selon les ID, les labels, et les valeurs des variables visualisées. Si la liste excède la taille de la zone dédiée, une barre de défilement verticale apparaîtra. La sélection, par clic gauche de la souris, d'un point de la liste le met également en surbrillance dans la fenêtre de visualisation. Réciproquement, la sélection d'un point dans la zone de visualisation sélectionne automatiquement celui-ci dans cette liste.
 \item Quatres boutons séparant la partie supérieure de la partie inférieure:
   \begin{itemize}
   \item[.] New : Pour créer un nouveau point de référence. Il aura tous ces champs rempli de valeurs par défaut (paramétrables dans le menu Préférences).
@@ -258,7 +259,7 @@ Un bouton Save permet d'enregistrer le style d'affichage personnalisé et le com
     \item[] La mise en forme (gras, souligné, italique)
     \end{itemize}
   \item[.] 3 glissières associées à des champs textes permettant de personnaliser la couleur selon le codage RVB.
-  \item[.] 1 glissière associée à un champ texte permettant de régler la taille du point de 1 à 10 pixels de diamètre. \danger
+  \item[.] 1 glissière associée à un champ texte permettant de régler la taille du point de 1 à 10 pixels de diamètre. $\triangle$
   \end{itemize}
 \end{itemize}
 
@@ -275,7 +276,7 @@ Un bouton Save permet d'enregistrer le style d'affichage personnalisé et le com
 \paragraph{Utilisation de l'onglet :}
 
 \begin{itemize}
-\item Dans la partie supérieure, la liste des filtres avec leur ID, leur label (sous forme de champ texte directement éditable dans la liste), leur état \danger (actif ou inactif, sous forme de checkbox directement éditable dans la liste) et le nombre de boites qui valident leurs règles \danger. Cette liste pourra être réordonnée, de façon croissante ou décroissante, selon les ID, les labels, l'état et le nombre de boites. Si la liste excède la taille de la zone dédiée, une barre de défilement verticale apparaîtra.
+\item Dans la partie supérieure, la liste des filtres avec leur ID, leur label (sous forme de champ texte directement éditable dans la liste), leur état $\triangle$ (actif ou inactif, sous forme de checkbox directement éditable dans la liste) et le nombre de boites qui valident leurs règles $\triangle$. Cette liste pourra être réordonnée, de façon croissante ou décroissante, selon les ID, les labels, l'état et le nombre de boites. Si la liste excède la taille de la zone dédiée, une barre de défilement verticale apparaîtra.
 \item Quatres boutons séparant la partie supérieure de la partie inférieure:
   \begin{itemize} 
   \item[.] New : Pour créer un nouveau filtre vierge.
@@ -287,15 +288,15 @@ Un bouton Save permet d'enregistrer le style d'affichage personnalisé et le com
   \item[.] la liste des conditions constituant la règle du filtre. Cette liste indique, pour chaque condition, l'élément testé, la relation de comparaison choisie, et la valeur de référence. La sélection d'une condition dans cette liste rempli les champs éditables se trouvant sous la liste avec les données correspondantes.
   \item[.] la liste des ID des boites validant la règle du filtre. La sélection d'une boite dans cette liste la sélectionne automatiquement dans l'onglet Box et la met en surbrillance dans la fenêtre de visualisation.
   \end{itemize}
-  Sous la liste des conditions se trouvent des champs éditables permettant d'ajouter, modifier et supprimer une condition : \danger
+  Sous la liste des conditions se trouvent des champs éditables permettant d'ajouter, modifier et supprimer une condition : $\triangle$
   \begin{itemize}
   \item[.] Un combobox pour le choix de l'élément testé (ID, variable, caractéristique, formule).
   \item[.] Une second combobox, permettant de choisir l'ID de la variable ou de la caractéristique concernée ; il est remplacé par un champ texte permettant de saisir la formule ; ou par rien du tout si l'élément testé est l'ID.
   \item[.] Un combobox permettant de choisir la relation.
   \item[.] Un champ texte permettant de saisir la valeur de référence ; le type de la donnée saisie sera validé selon la nature de l'élément testé (ID $\to$ entier positif ; variable, formule $\to$ Number ; caactéristique $\to$ Number ou String selon le type de la caractéristique).
-  \item[.] un bouton "Add" pour ajouter une nouvelle condition (vierge).\danger
-  \item[.] un bouton "Mod" pour enregistrer les modifications apportées à la condition sélectionnée dans la liste au-dessus.\danger
-  \item[.] un bouton "Sup" pour supprimer la condition sélectionnée dans la liste au-dessus.\danger
+  \item[.] un bouton "Add" pour ajouter une nouvelle condition (vierge).$\triangle$
+  \item[.] un bouton "Mod" pour enregistrer les modifications apportées à la condition sélectionnée dans la liste au-dessus.$\triangle$
+  \item[.] un bouton "Sup" pour supprimer la condition sélectionnée dans la liste au-dessus.$\triangle$
   \end{itemize}
 \end{itemize}
 
@@ -313,7 +314,7 @@ Un bouton Save permet d'enregistrer le style d'affichage personnalisé et le com
 
 \paragraph{Utilisation de l'onglet :}
 \begin{itemize}
-\item Dans la partie supérieure, la liste des affichages conditionnels avec leur ID, leur label (sous forme de champ texte directement éditable dans la liste), leur priorité \danger et le nombre de boites qui valident leurs règles \danger. Cette liste pourra être réordonnée, de façon croissante ou décroissante, selon les ID, les labels, les priorités et le nombre de boites. Si la liste excède la taille de la zone dédiée, une barre de défilement verticale apparaîtra.
+\item Dans la partie supérieure, la liste des affichages conditionnels avec leur ID, leur label (sous forme de champ texte directement éditable dans la liste), leur priorité $\triangle$ et le nombre de boites qui valident leurs règles $\triangle$. Cette liste pourra être réordonnée, de façon croissante ou décroissante, selon les ID, les labels, les priorités et le nombre de boites. Si la liste excède la taille de la zone dédiée, une barre de défilement verticale apparaîtra.
 \item Cinq boutons séparant la partie supérieure de la partie inférieure:
   \begin{itemize}
   \item[.] New : Pour créer un nouvel affichage conditionnel vierge.
@@ -327,7 +328,7 @@ Un bouton Save permet d'enregistrer le style d'affichage personnalisé et le com
   \item[.] la liste des conditions constituant la règle de l'affichage conditionnel sélectionné (cf. onglet Filters).
   \item[.] la liste des ID des boites validant la règle de l'affichage conditionnel sélectionné. La sélection d'une boite dans cette liste la sélectionne automatiquement dans l'onglet Box et la met en surbrillance dans la fenêtre de visualisation.
   \end{itemize}
-  Sous la liste des conditions se trouvent des champs éditables permettant d'ajouter, modifier et supprimer une condition (cf. Onglet Filters).\danger
+  Sous la liste des conditions se trouvent des champs éditables permettant d'ajouter, modifier et supprimer une condition (cf. Onglet Filters).$\triangle$
 \item Dans la partie inférieure, la définition du style de l'affichage conditionnel sélectionné : 4 glissières associées à des champs textes permettant de personnaliser la couleur et la transparence selon le codage RVBA.\\ SUPPRIMER LE COMBO ET LA NOTION DE COULEUR DE TRAIT.\\Un bouton Save permet d'enregistrer les modfications du style d'affichage.
 \end{itemize}
 
