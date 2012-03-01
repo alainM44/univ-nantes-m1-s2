@@ -26,18 +26,7 @@ public class TestDame
 		assertEquals(1, d1.getPosition().getLigne());
 	}
 
-	@Test(expected = Exception.class)
-	public void testConstColFail()
-	{
-		Dame d1 = new Dame(0, new StubCase('i', 1));
 
-	}
-
-	@Test(expected = Exception.class)
-	public void testConstLigneFail()
-	{
-		Dame d1 = new Dame(0, new StubCase('d', 0));
-	}
 
 	@Test
 	public void testGetCouleur()

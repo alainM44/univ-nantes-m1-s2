@@ -166,4 +166,26 @@ public class TestCase {
 	
 	@Test
 	public void testEstAuDessus() {
+		Case c1 = new Case('a', 1);
+		Case c2 ;
+		c2= new Case('a', 2);
+		assertTrue(c2.estAuDessus(c1));
+
+	}
+	
+	@Test
+	public void testEstAuDessusFail() {
+		Case c1 = new Case('a', 1);
+		Case c2 ;
+		c2= new Case('a', 3);
+		assertFalse(c2.estAuDessus(c1));
+
+	}
+	
+	@Test
+	public void testToString() {
+		Case c1 = new Case('a', 1);
+		assertEquals("a1",c1.toString());
+
+	}
 }
