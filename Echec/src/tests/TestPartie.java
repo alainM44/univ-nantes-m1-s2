@@ -68,6 +68,15 @@ public class TestPartie
 	}
 	
 	@Test
+	public void testGetPiece()
+	{
+		Partie p = new Partie();
+		Echiquier e = p.getEchiquier();
+		assertEquals("class echecs.metier.materiel.Tour",p.getPiece(e.getCase(1, 1)).getClass().toString());
+		assertEquals("class echecs.metier.materiel.Dame",p.getPiece(e.getCase(4, 1)).getClass().toString());
+	}
+	
+	@Test
 	public void testJouerEchec()
 	{
 		Partie p = new Partie();
@@ -132,7 +141,6 @@ public class TestPartie
 		p.getPiece(e.getCase(1, 8)).enlever();
 		p.getPiece(e.getCase(2, 8)).enlever();
 		p.getPiece(e.getCase(3, 8)).enlever();
-		p.getPiece(e.getCase(4, 8)).enlever();
 		p.getPiece(e.getCase(6, 8)).enlever();
 		p.getPiece(e.getCase(7, 8)).enlever();
 		p.getPiece(e.getCase(8, 8)).enlever();
@@ -144,7 +152,16 @@ public class TestPartie
 		p.getPiece(e.getCase(6, 7)).enlever();
 		p.getPiece(e.getCase(7, 7)).enlever();
 		p.getPiece(e.getCase(8, 7)).enlever();
-		p.jouer(p.getPiece(e.getCase(4, 8)), e.getCase(4, 1));
+		assertTrue(p.jouer(p.getPiece(e.getCase(4, 1)), e.getCase(3, 2)));
+		p.jouer(p.getPiece(e.getCase(4, 8)), e.getCase(3, 7));
+		p.jouer(p.getPiece(e.getCase(3, 2)), e.getCase(3, 7));
+		p.jouer(p.getPiece(e.getCase(5, 8)), e.getCase(6, 8));
+		p.jouer(p.getPiece(e.getCase(3, 7)), e.getCase(4, 7));
+		p.jouer(p.getPiece(e.getCase(6, 8)), e.getCase(7, 8));
+		p.jouer(p.getPiece(e.getCase(4, 7)), e.getCase(5, 7));
+		p.jouer(p.getPiece(e.getCase(7, 8)), e.getCase(8, 8));
+		p.jouer(p.getPiece(e.getCase(5, 7)), e.getCase(6, 7));
+		assertTrue(p.pat(p.getTrait()));
 
 
 		
