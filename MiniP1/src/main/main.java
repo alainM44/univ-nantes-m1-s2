@@ -90,6 +90,7 @@ public class main
 
 		TasksManager tm = new TasksManager("cours_EDFBG.xml"); // TEST RM_BG
 		Algorithms al = new Algorithms(tm);
+//		al.RmBg();
 		al.EdfBg();
 		
 
