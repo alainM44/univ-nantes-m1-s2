@@ -46,15 +46,11 @@ public class TasksManager
 			// La formule suivante calcule le début de période le plus proche
 			// après ou pendant l'instant t. La formule est en fait :
 			// prochainReveil = t + (Pi - t%Pi)
-			prochainReveil = t + 1
-					+ (prochainReveil - ((t + 1) % prochainReveil));
+			if(t%prochainReveil == 0 || t==0)
+			prochainReveil = t + prochainReveil;
+			else
+				prochainReveil = t -(t) % prochainReveil +prochainReveil;
 
-			if (t == tache.getRi()) // cas ouù reveil pendant
-			{
-			System.out.println("prochain reveil : " + t);
-
-				return t;
-			}
 			//System.out.println("prochain reveil : " + prochainReveil);
 			// if (prochainReveil < reveil) // ? ??? toujours vrai !
 			if (reveil > prochainReveil)
