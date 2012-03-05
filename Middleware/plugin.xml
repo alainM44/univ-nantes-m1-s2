@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="FluxVideo" name="Flux Video" schema="schema/FluxVideo.exsd"/>
+   <extension-point id="Reasoning" name="Reasoning" schema="schema/Reasoning.exsd"/>
 
    <extension
          point="org.eclipse.ui.actionSets">
