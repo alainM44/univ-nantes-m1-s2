@@ -9,7 +9,13 @@
 #define TAS_H_
 #include <vector>
 #include <stack>
-template<class T, class Compare = less<T> , class Allocator = allocator<T> > class Tas {
+#include <list>
+
+#include <map>
+template<class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
+class Tas
+
+{
 private:
 	std::vector<T> tas;
 
@@ -27,12 +33,16 @@ private:
 	}//a vérifier
 
 public:
-	Tas();
+	Tas() {
+		tas = std::vector<T> ();
+	}
+	;
+
 	Tas(Tas& source) {
 		this.tas = source.tas;
 	}
-	int size()
-	{
+
+	int size() {
 		return tas.size();
 	}
 	T& getMax() {
@@ -42,7 +52,8 @@ public:
 		return &tas.at(pos);
 	}
 	T& extraire() {
-		T& feuille, racine;
+		T& feuille = NULL;
+		T& racine =NULL;
 		if (tas.size() == 0) {
 			throw;
 		} else if (tas.size() == 1) {
@@ -61,11 +72,10 @@ public:
 	void tasser() {
 		//int filsg =filsG()
 		Tas::tasser(0);
-
 	}
 	void tasser(int element) {
-		int filsg = filsG();
-		int filsd = filsD();
+		int filsg = Tas<T>::filsG(element);
+		int filsd = Tas<T>::filsD(element);
 		int max, valTmp;
 		if (filsg < tas.size() && tas.at(filsg) > tas.at(element)) {
 			max = filsg;
@@ -76,10 +86,12 @@ public:
 			valTmp = tas.at(element);
 			tas.at(element) = tas.at(max);
 			tas.at(max) = valTmp;
-			Tas::tasser(max);
-
+			Tas<T>::tasser(max);
 		}
+	}
 
+	bool index_in_range(int i) const {
+		return i < (tas.size());
 	}
 	void ajouter(const T& element) {
 		int emplacementElement;
@@ -88,60 +100,126 @@ public:
 		tas.push_back(element);
 		emplacementElement = tas.size() - 1;
 		ancetre = Pere(emplacementElement);
-		while (ancêtre != -1 && tas.at(emplacementElement) > tas.at(ancetre)) {
+		while (ancetre != -1 && tas.at(emplacementElement) > tas.at(ancetre)) {
 			tas.at(emplacementElement) = tas.at(ancetre);
 			tas.at(ancetre) = element;
 		}
 
 	}
-	virtual ~Tas();
-
-	class iterator;
-
-	iterator begin() {
-		return iterator(this, 0, new std::stack<int>());
+	virtual ~Tas() {
 	}
 	;
-	iterator end();
+
+	class Iterator;
+
+	Iterator begin() {
+		return Iterator(this);
+	}
+	Iterator end() {
+		return Iterator(this, size());
+	}
+
+	//iterator end();
 
 };
 
-template<typename T>
-class Tas<T>::iterator {
-	friend class Tas;
+template<class T>
+class Iterator {
+	friend class Tas<T> ;
 	typedef Tas<T> tas_type;
-	typedef std::stack<int> pile_type;
+	//	typedef std::list<T&> pile_type;
+	typedef std::map<int, int> map_type;
 
 public:
-	iterator(tas_type * t, int pos, pile_type * p) :
-		t_(t), pos_(pos) p_(p) {
+
+	Iterator<T> (tas_type *t) {
+		t_ = t;
+		pos_ = 0;
+		fg_estVisite = false;
+		fd_estVisite = false;
+	}
+	//Iterator sale car mauvais utilisation du size pour permettre le end
+	Iterator<T> (tas_type *t, int size) {
+		t_ = t;
+		pos_ = size;
+		fg_estVisite = false;
+		fd_estVisite = false;
+	}
+	Tas<T>& operator*() {
+		if(pos_ < t_.size())
+			return *t_->tas[pos_]; //a vérifier
+		else
+			return NULL;
 	}
 
-	iterator& operator++() {
-if (Tas<T>::filsG(pos)>= t_->size())
-{
-	if (Tas<T>::filsD(pos)>= t_->size())
-	{
+	Iterator<T>* operator++() {
+		int fg = t_->filsG(pos_);
+		int fd = t_->filsD(pos_);
+		int pere = t_->pere(pos_);
+		int filsT = pos_;
+		//il y a un fils gauche
+		if (!fg_estVisite && t_->index_in_range(fg)) {
+			pos_ = fg;
+			return this;
+			//Fils gauche visité et il y a un fils droit
+		} else if (!fd_estVisite && t_->index_in_range(fd)) {
+			pos_ = fd;
+			return this;
+		} else {
+			while (filsT != -1 && ((filsT == t_->filsD(pere)) || (filsT
+					== t_->filsG(pere) && !t_->index_in_range(t_->filsD(pere))))) {
+				filsT = pere;
+				pere = t_->pere(pere);
+			}
+			//On est à la racine c'est la fin du parcours
+			if (filsT == -1) {
+				//TODO ajoute du cas filsT = -1 renvoi end
+				return NULL;
+				//On doit parcourir le fils droit de l'ancêtre
+			} else {
+				pos_ = t_->filsD(pere);
 
-	}
-}
+			}
+
+			return this;
+		}
 	}
 
 private:
 	tas_type * t_;
 	int pos_;
-	pile_type * p_;
+	bool fg_estVisite;
+	bool fd_estVisite;
+	//pile_type p_;
+	//map_type couleurs_noeuds;
+	//		Iterator<T> (tas_type * t) {
+	//			t_ = t;
+	//			p_ = pile_type();Tas<T>& operator*() {
+	//			pos_ = 0;
+	//			//tant que qu'en fin de liste on a pas la racine
+	//			//on enfile en queule a gauche tant que quil y a un filst gauche
+	//			visiter(t->tas[0]);
+	//
+	//		}
 
+	//		void visiter(int noeud) {
+	//			int fg = t_ > t_->filsG();
+	//			int fd = t_ > t_->filsD();
+	//
+	//			p_->push_back(noeud);
+	//			couleurs_noeuds[noeud] = 1; //marquage du sommet explore
+	//
+	//			if (t_->index_in_range(fg) && (couleurs_noeuds[fg] == 0))
+	//				visiter(fg);
+	//			if (t_->index_in_range(fd) && (couleurs_noeuds[fd] == 0))
+	//				visiter(fd);
+	//
+	//		}
+
+	//		Tas<T>& operator*() {
+	//			assert(pos_ < t_.size());
+	//			return *t_->tas[p_.pop_front()]; //a vérifier
+	//		}
 };
-
-template<typename T>
-Tas<T>::iterator Tas<T>::begin() {
-	return iterator(this);
-}
-
-template<typename T>
-Tas<T>::iterator Tas<T>::end() {
-	return iterator(0);
-}
 
 #endif /* TAS_H_ */
