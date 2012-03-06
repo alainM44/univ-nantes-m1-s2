@@ -18,10 +18,14 @@ public class mainGenerator
 	static int temps = 100;
 
 	/**
-	 * @param args
+	 * Permet la génération d'un fichier contenant une liste de taches
+	 * periodiques et aperiodiques. Les taches peuvent être générées
+	 * aléatoirement ou non, cependant la génération aléatoire est souvent
+	 * problématique puisqu'elle fait exploser l'hyperpériode.
+	 * 
 	 * @throws FileNotFoundException
 	 */
-	public  static String FileGenerator() throws FileNotFoundException
+	public static String FileGenerator() throws FileNotFoundException
 	{
 		java.util.Random r = new java.util.Random();
 		XStream xstream = new XStream();
@@ -38,7 +42,7 @@ public class mainGenerator
 		int resteAp = 0;
 		int reste = 0;
 		ArrayList<Integer> ppcmValues = new ArrayList<Integer>();
-		int ppcm =0;
+		int ppcm = 0;
 		AbstractTache[] tab;
 		boolean genauto = true;
 		boolean tachep = true;
@@ -173,7 +177,7 @@ public class mainGenerator
 		}
 		System.out.println("Entrez un nom de fichier : ");
 		in.nextLine();
-		filename=in.nextLine();
+		filename = in.nextLine();
 		// Instanciation d'un fichier c:/temp/article.xml
 		File taches = new File("/comptes/E074862X/workspace/MiniP1/taches.xml");
 		FileOutputStream fos = new FileOutputStream(taches);
@@ -221,23 +225,22 @@ public class mainGenerator
 		// System.out.println("PGCD = " + Nb2 + " PPCM = " + PPCM);
 		return PPCM;
 	} // fin Calcule_PPCM
-	
+
 	public static void main(String[] args) throws Exception
 	{
 		FileGenerator();
-		
 
-		//		menu();
+		// menu();
 		//
-		//		TasksManager tm = new TasksManager(mainGenerator.FileGenerator());
-		//		Algorithms al = new Algorithms(tm);
-		//		if (algo.equals("r"))
-		//			al.RmBg();
+		// TasksManager tm = new TasksManager(mainGenerator.FileGenerator());
+		// Algorithms al = new Algorithms(tm);
+		// if (algo.equals("r"))
+		// al.RmBg();
 		//
-		//		else if (algo.equals("e"))
-		//			al.EdfTbs();
-		//		else
-		//			System.out.println("Error pas d'algorithme valide selectionné");
+		// else if (algo.equals("e"))
+		// al.EdfTbs();
+		// else
+		// System.out.println("Error pas d'algorithme valide selectionné");
 
 	}
 }
