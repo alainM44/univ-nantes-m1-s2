@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import sstr.Algorithms;
+import sstr.TasksManager;
+
 import com.thoughtworks.xstream.XStream;
 
 public class mainGenerator
@@ -218,5 +221,23 @@ public class mainGenerator
 		// System.out.println("PGCD = " + Nb2 + " PPCM = " + PPCM);
 		return PPCM;
 	} // fin Calcule_PPCM
+	
+	public static void main(String[] args) throws Exception
+	{
+		FileGenerator();
+		
 
+		//		menu();
+		//
+		//		TasksManager tm = new TasksManager(mainGenerator.FileGenerator());
+		//		Algorithms al = new Algorithms(tm);
+		//		if (algo.equals("r"))
+		//			al.RmBg();
+		//
+		//		else if (algo.equals("e"))
+		//			al.EdfTbs();
+		//		else
+		//			System.out.println("Error pas d'algorithme valide selectionné");
+
+	}
 }
