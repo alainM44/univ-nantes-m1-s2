@@ -46,11 +46,15 @@ public class TasksManager
 			// La formule suivante calcule le début de période le plus proche
 			// après ou pendant l'instant t. La formule est en fait :
 			// prochainReveil = t + (Pi - t%Pi)
-			if(t%prochainReveil == 0 || t==0)
-			prochainReveil = t + prochainReveil;
-			else
-				prochainReveil = t -(t) % prochainReveil +prochainReveil;
+			prochainReveil = t + 1
+					+ (prochainReveil - ((t + 1) % prochainReveil));
 
+			if (t == tache.getRi()) // cas ouù reveil pendant
+			{
+			System.out.println("prochain reveil : " + t);
+
+				return t;
+			}
 			//System.out.println("prochain reveil : " + prochainReveil);
 			// if (prochainReveil < reveil) // ? ??? toujours vrai !
 			if (reveil > prochainReveil)
@@ -83,27 +87,11 @@ public class TasksManager
 			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
 			{
 				result.add(new TachePeriodique(tache));
-
-			}
-		}
-		return result;
-	}
-	
-	public ArrayList<TachePeriodique> getTachesPandWrite(int t, Writer w)
-	{
-		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
-		for (TachePeriodique tache : tachesPeriodiques)
-		{
-			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
-			{
-				result.add(new TachePeriodique(tache));
 				w.addEvent(t, "START",tache.getId());
 			}
 		}
 		return result;
 	}
-
-	
 
 	/**
 	 * Pour récupérer toutes les taches apériodiques se réveillant à la date t
