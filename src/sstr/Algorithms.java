@@ -491,25 +491,37 @@ public class Algorithms
 		int hyperperiode = tm.PPCM(tm.getTachesPeriodiques());
 		int t = 0;
 		int nextReveil;
-		int preemptions =0;
-		boolean preempte =false;
-		boolean finExec = false;
+		int preemptions = 0;
+		boolean preempte = false;
 		AbstractTache courante, candidate;
 		double inverseU;
 		if (Us != 0)
 			inverseU = 1.0 / Us;
 		else
 			inverseU = 0;
+		tabP.addAll(tm.getTachesP(t, w));
+		tabA.addAll(tm.getTachesA(t, w));
 		while (t < hyperperiode)
 		{
-			tabP.addAll(tm.getTachesP(t, w));
-			tabA.addAll(tm.getTachesA(t, w));
+
 			courante = plusGrandePrioritéTBS(inverseU, tabP, tabA);
+			for (TachePeriodique tache : tabP)
+
+				System.out.println("Tache " + tache.getId() + " Pi = "
+						+ tache.getPi() + " di = " + tache.getDi() + " ci = "
+						+ tache.getCi());
+			for (TacheAperiodique tache : tabA)
+				System.out.println("Tache " + tache.getId() + " ri = "
+						+ tache.getRi() + " di = " + tache.getDi() + " ci = "
+						+ tache.getCi());
+
 			preempte = false;
-			finExec = false;
 			w.addEvent(t, "EXEC-B", courante.getId());
 			nextReveil = tm.nextReveil(t);
-			while(nextReveil < t+courante.getCi() && !preempte)
+
+			System.out.println("Nouveau réveil de la tache " + courante.getId()
+					+ " à t = " + t);
+			while (nextReveil < t + courante.getCi() && !preempte)
 			{
 				tabP.addAll(tm.getTachesP(nextReveil, w));
 				tabA.addAll(tm.getTachesA(nextReveil, w));
@@ -519,21 +531,42 @@ public class Algorithms
 					courante.setCi(courante.getCi() - (nextReveil - t));
 					t = nextReveil;
 					nextReveil = tm.nextReveil(nextReveil);
+					System.out.println(courante.getId()
+							+ " s'execute encore à t = " + t);
 				}
 				else
 				{
 					preempte = true;
+					preemptions++;
 					w.addEvent(nextReveil, "EXEC-E", courante.getId());
 					courante.setCi(courante.getCi() - (nextReveil - t));
+					System.out.println(courante.getId() + " préemptée par "
+							+ candidate.getId() + "à t = " + nextReveil);
 					t = nextReveil;
 					nextReveil = tm.nextReveil(nextReveil);
 				}
 			}
-			if(!preempte)
+			if (!preempte)
 			{
-				w.addEvent(t+courante.getCi(), "EXEC-E", courante.getId());
-				w.addEvent(t+courante.getCi(), "STOP", courante.getId());
+				w.addEvent(t + courante.getCi(), "EXEC-E", courante.getId());
+				w.addEvent(t + courante.getCi(), "STOP", courante.getId());
+				deleteAbstractTache(courante, tabP, tabA);
+
+				t = t + courante.getCi();
 				
+				System.out.println(courante.getId() + " fini à t = "
+						+ (t));
+				
+				tabP.addAll(tm.getTachesP(t, w));
+				tabA.addAll(tm.getTachesA(t, w));
+				courante = plusGrandePrioritéTBS(inverseU, tabP, tabA);
+				if (courante == null)
+				{
+					t = nextReveil;
+					nextReveil = tm.nextReveil(nextReveil);
+					tabP.addAll(tm.getTachesP(t, w));
+					tabA.addAll(tm.getTachesA(t, w));
+				}
 			}
 
 		}
@@ -754,5 +787,27 @@ public class Algorithms
 				diPrecedant = tache.getRi() + tache.getDi();
 			}
 		}
+	}
+
+	public boolean deleteAbstractTache(AbstractTache toDelete,
+			ArrayList<TachePeriodique> tabP, ArrayList<TacheAperiodique> tabA)
+	{
+		for (TachePeriodique tache : tabP)
+		{
+			if (tache.getId() == toDelete.getId())
+			{
+				tabP.remove(tache);
+				return true;
+			}
+		}
+		for (TacheAperiodique tache : tabA)
+		{
+			if (tache.getId() == toDelete.getId())
+			{
+				tabA.remove(tache);
+				return true;
+			}
+		}
+		return false;
 	}
 }
