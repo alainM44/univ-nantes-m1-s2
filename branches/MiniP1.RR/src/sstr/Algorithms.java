@@ -570,6 +570,10 @@ public class Algorithms
 			}
 
 		}
+
+		System.out.println("Fin");
+//		affichageAnalyse(tempsExecution, tempsCreux, nbPremptions,			tempAttenteTacheA);
+		w.generateFile();
 	}
 
 	/**
