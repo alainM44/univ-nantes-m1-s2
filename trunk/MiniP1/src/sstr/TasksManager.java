@@ -89,7 +89,40 @@ public class TasksManager
 		}
 		return result;
 	}
-
+	/**
+	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
+	 * 
+	 */
+	public ArrayList<TacheAperiodique> getTachesA(int t, Writer w)
+	{
+		ArrayList<TacheAperiodique> result = new ArrayList<TacheAperiodique>();
+		for (TacheAperiodique tache : tachesAperiodiques)
+		{
+			if (t == tache.getRi())	
+			{
+				result.add(new TacheAperiodique(tache));
+				w.addEvent(t, "START",tache.getId());
+			}
+		}
+		return result;
+	}
+	/**
+	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
+	 * 
+	 */
+	public ArrayList<TachePeriodique> getTachesP(int t)
+	{
+		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
+		for (TachePeriodique tache : tachesPeriodiques)
+		{
+			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
+			{
+				result.add(new TachePeriodique(tache));
+			
+			}
+		}
+		return result;
+	}
 	
 	public ArrayList<TachePeriodique> getTachesPdiObjectif(int t, Writer w)
 	{
@@ -104,25 +137,7 @@ public class TasksManager
 		}
 		return result;
 	}
-	/**
-	 * Pour récupérer toutes les taches apériodiques se réveillant à la date t
-	 * 
-	 */
-	public ArrayList<TacheAperiodique> getTachesA(int t, Writer w)
-	{
-		ArrayList<TacheAperiodique> result = new ArrayList<TacheAperiodique>();
-		for (TacheAperiodique tache : tachesAperiodiques)
-		{
-			if (tache.getRi() == t)
-			{
-				result.add(new TacheAperiodique(tache));
-				w.addEvent(tache.getRi(), "START",tache.getId());
-			}
-		
-		}
-		//	System.out.println("taaaacheA"+result);
-		return result;
-	}
+
 	
 
 	public ArrayList<TacheAperiodique> getTachesAperiodiques()
