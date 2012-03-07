@@ -33,47 +33,44 @@ public class TasksManager
 	 *            Indique le moment à partir duquel considérer les taches.
 	 * @return La date du prochain réveil de tache
 	 */
-	public int nextReveil(int t)
-	{
-		// Attention
-		int reveil = hyperperiode;
-		int prochainReveil;
-		// int min = hyperperiode;
-		// On commence par parcourir les taches périodiques
-		for (TachePeriodique tache : tachesPeriodiques)
-		{
-			prochainReveil = tache.getPi();
-			// La formule suivante calcule le début de période le plus proche
-			// après ou pendant l'instant t. La formule est en fait :
-			// prochainReveil = t + (Pi - t%Pi)
-			prochainReveil = t + 1
-					+ (prochainReveil - ((t + 1) % prochainReveil));
+    public int nextReveil(int t)
+    {
+            // Attention
+            int reveil = hyperperiode;
+            int prochainReveil;
+            // int min = hyperperiode;
+            // On commence par parcourir les taches périodiques
+            for (TachePeriodique tache : tachesPeriodiques)
+            {
+                    prochainReveil = tache.getPi();
+                    // La formule suivante calcule le début de période le plus proche
+                    // après ou pendant l'instant t. La formule est en fait :
+                    // prochainReveil = t + (Pi - t%Pi)
+                    if(t%prochainReveil == 0 || t==0)
+                    prochainReveil = t + prochainReveil;
+                    else
+                            prochainReveil = t -(t) % prochainReveil +prochainReveil;
 
-			if (t == tache.getRi()) // cas ouù reveil pendant
-			{
-			System.out.println("prochain reveil : " + t);
+                    //System.out.println("prochain reveil : " + prochainReveil);
+                    // if (prochainReveil < reveil) // ? ??? toujours vrai !
+                    if (reveil > prochainReveil)
+                    {
 
-				return t;
-			}
-			//System.out.println("prochain reveil : " + prochainReveil);
-			// if (prochainReveil < reveil) // ? ??? toujours vrai !
-			if (reveil > prochainReveil)
-			{
+                            // reveil =t+ tache.getRi();
+                            reveil = prochainReveil;
+                    }
+            }
 
-				// reveil =t+ tache.getRi();
-				reveil = prochainReveil;
-			}
-		}
+            // On cherche ensuite dans les taches apériodiques
+             for (TacheAperiodique tache : tachesAperiodiques)
+             {
+             if (tache.getRi() < reveil && tache.getRi() > t)
+             reveil = tache.getRi();
+             }
+            //System.out.println("nouveau nxt reveil : " + reveil + " avec t = " + t);
+            return reveil;
+    }
 
-		// On cherche ensuite dans les taches apériodiques
-		 for (TacheAperiodique tache : tachesAperiodiques)
-		 {
-		 if (tache.getRi() < reveil && tache.getRi() > t)
-		 reveil = tache.getRi();
-		 }
-		//System.out.println("nouveau nxt reveil : " + reveil + " avec t = " + t);
-		return reveil;
-	}
 
 	/**
 	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
@@ -86,7 +83,7 @@ public class TasksManager
 		{
 			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
 			{
-				result.add(new TachePeriodique(tache));
+				result.add(new TachePeriodique(tache.getId(), tache.getCi(), tache.getDi()+t,tache.getPi()));
 				w.addEvent(t, "START",tache.getId());
 			}
 		}
