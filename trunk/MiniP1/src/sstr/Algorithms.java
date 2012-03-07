@@ -12,12 +12,6 @@ import java.util.Collections;
 
 import javax.sql.CommonDataSource;
 
-import org.apache.commons.math.MathConfigurationException;
-import org.apache.commons.math.stat.univariate.rank.Max;
-import org.apache.commons.math.stat.univariate.rank.Min;
-import org.apache.commons.math.stat.univariate.summary.Sum;
-import org.apache.commons.math.util.MathUtils;
-
 public class Algorithms
 {
 	TasksManager tm;
@@ -45,14 +39,16 @@ public class Algorithms
 		boolean flag_cpt = false;/* on consomme le cpt */
 		int t_temp = 0;
 		boolean tache_a_ajouter = false;
-		ArrayList tempAttenteTacheA = new ArrayList(tm.getTachesAperiodiques().size());
+		ArrayList tempAttenteTacheA = new ArrayList(tm.getTachesAperiodiques()
+				.size());
 		tabP.addAll(tm.getTachesP(t, w));
 		tabA.addAll(tm.getTachesA(t, w));
 
 		/* Tests affichages des test */
 		int ppcm = tm.PPCM(tm.getTachesPeriodiques());
 		System.out.println("PPCM : " + ppcm);
-		//		System.out.println("RM cond necessaire" + tm.getRmCondNeccessaire()); //TODO
+		// System.out.println("RM cond necessaire" + tm.getRmCondNeccessaire());
+		// //TODO
 		if (tm.getRmCondNeccessaire() > 1)
 			throw new Exception("test necesseraire négatif");
 
@@ -66,9 +62,10 @@ public class Algorithms
 
 		while (ppcm > 0)
 		{
-			System.out.println("debut de while t = " + t + " next reveil : " + nextreveil);
-			//			System.out.println("tabP :" + tabP);
-			//			System.out.println("tabA :" + tabA);
+			System.out.println("debut de while t = " + t + " next reveil : "
+					+ nextreveil);
+			// System.out.println("tabP :" + tabP);
+			// System.out.println("tabA :" + tabA);
 
 			if (nextreveil == t && t != 0)
 			{
@@ -81,9 +78,17 @@ public class Algorithms
 				ciCourante = courante.getCi();
 				nextreveil = tm.nextReveil(t);
 
-				if (nextreveil - t >= ciCourante || (nextreveil == 0)) // la  tache peut l'executer pendant son Ci
+				if (nextreveil - t >= ciCourante || (nextreveil == 0)) // la
+				// tache
+				// peut
+				// l'executer
+				// pendant
+				// son
+				// Ci
 				{
-					System.out.println("A t = " + t + "Tache " + courante.getId() + " sexecute :" + ciCourante + "et se termine");
+					System.out.println("A t = " + t + "Tache "
+							+ courante.getId() + " sexecute :" + ciCourante
+							+ "et se termine");
 					w.addEvent(t, "EXEC-B", courante.getId());
 					ajoutTacheASinecessaire(tabA, t, t + ciCourante);
 					w.addEvent(t + ciCourante, "EXEC-E", courante.getId());
@@ -93,40 +98,59 @@ public class Algorithms
 					tabP.remove(courante);
 					t += ciCourante;
 					ppcm -= ciCourante;
-					//					System.out.println("tabp apres suppr" + tabP);
+					// System.out.println("tabp apres suppr" + tabP);
 
 				}
 
 				else
 				// on récupère les nouvelles taches se reveillant.
 				{
-					//tabP.addAll(tm.getTachesP(nextreveil));
-					//tabA.addAll(tm.getTachesA(nextreveil));
+					// tabP.addAll(tm.getTachesP(nextreveil));
+					// tabA.addAll(tm.getTachesA(nextreveil));
 					candidate = plusGrandePrioriteEDF(tabP);
 					if (!candidate.equals(courante)) // la tache courante est
 					// préemptée
 					{
-						///////////////////////////////////////////////A VERIFIER ET A RAJOUTER DANS RM///////////////////////////////////////////////////////
+						// /////////////////////////////////////////////A
+						// VERIFIER ET A RAJOUTER DANS
+						// RM///////////////////////////////////////////////////////
 						t_temp = t;
-						while (courante.getCi() - cpt != 0 || t_temp != nextreveil || !tabP.isEmpty() || courante == plusGrandePrioriteEDF(tabP))
+						while (courante.getCi() - cpt != 0
+								|| t_temp != nextreveil || !tabP.isEmpty()
+								|| courante == plusGrandePrioriteEDF(tabP))
 						{
 							++t_temp;
 							++cpt;
 						}
 						w.addEvent(t, "EXEC-B", courante.getId());
-						System.out.println("A t = " + t + " TacheP " + courante.getId() + " sexecute : " + cpt + "fffffffff");
+						System.out.println("A t = " + t + " TacheP "
+								+ courante.getId() + " sexecute : " + cpt
+								+ "fffffffff");
 						t = t_temp;
 						t_temp = cpt = 0;
-						////////////////////////////////////////////////////////////////////////////////////////////////
-						ajoutTacheASinecessaire(tabA, t, t + (courante.getCi() - nextreveil + t)); //TODO TACHE P
-						w.addEvent(t + (courante.getCi() - nextreveil + t), "STOP", courante.getId());
+						// //////////////////////////////////////////////////////////////////////////////////////////////
+						ajoutTacheASinecessaire(tabA, t, t
+								+ (courante.getCi() - nextreveil + t)); // TODO
+						// TACHE
+						// P
+						w.addEvent(t + (courante.getCi() - nextreveil + t),
+								"STOP", courante.getId());
 						ppcm -= (courante.getCi() - nextreveil + t);
-						//System.out.println("avant modif : " + tabP.get(tabP.indexOf(courante)).getCi());
+						// System.out.println("avant modif : " +
+						// tabP.get(tabP.indexOf(courante)).getCi());
 
-						TachePeriodique maj = new TachePeriodique(tabP.get(tabP.indexOf(courante)).getId(), tabP.get(tabP.indexOf(courante)).getCi() - (courante.getCi() - nextreveil + t), tabP.get(tabP.indexOf(courante)).getDi(), tabP.get(tabP.indexOf(courante)).getPi());
+						TachePeriodique maj = new TachePeriodique(tabP.get(
+								tabP.indexOf(courante)).getId(), tabP.get(
+								tabP.indexOf(courante)).getCi()
+								- (courante.getCi() - nextreveil + t), tabP
+								.get(tabP.indexOf(courante)).getDi(), tabP.get(
+								tabP.indexOf(courante)).getPi());
 						tabP.set((tabP.indexOf(courante)), maj);
-						//tabP.get(tabP.indexOf(courante)).setCi(courante.getCi() - nextreveil + t); // modification le ci restait toujour le meme .
-						//	System.out.println("apres modif : " + tabP.get(tabP.indexOf(maj)).getCi());
+						// tabP.get(tabP.indexOf(courante)).setCi(courante.getCi()
+						// - nextreveil + t); // modification le ci restait
+						// toujour le meme .
+						// System.out.println("apres modif : " +
+						// tabP.get(tabP.indexOf(maj)).getCi());
 						courante = candidate;
 						t += (courante.getCi() - nextreveil + t);
 						ppcm -= (courante.getCi() - nextreveil + t);
@@ -135,7 +159,9 @@ public class Algorithms
 
 					else
 					{// la tache continue à s'executer
-						System.out.println("A t = " + t + "Tache " + courante.getId() + " sexecute :" + ciCourante + "et se termine");
+						System.out.println("A t = " + t + "Tache "
+								+ courante.getId() + " sexecute :" + ciCourante
+								+ "et se termine");
 						w.addEvent(t, "EXEC-B", courante.getId());
 						ajoutTacheASinecessaire(tabA, t, t + ciCourante);
 						w.addEvent(t + ciCourante, "EXEC-E", courante.getId());
@@ -158,10 +184,12 @@ public class Algorithms
 				// cet instant
 				ciCourante = courante.getCi();
 
-				if (nextreveil == (t + 1)) //on verifie que des taches n'arrivents pas avant de changer nxt reveil
+				if (nextreveil == (t + 1)) // on verifie que des taches
+				// n'arrivents pas avant de changer
+				// nxt reveil
 				{
 					tache_a_ajouter = true;
-					//tabP.addAll(tm.getTachesP(t+1, w));
+					// tabP.addAll(tm.getTachesP(t+1, w));
 					System.out.println("! ajouterP apres");
 				}
 
@@ -170,7 +198,9 @@ public class Algorithms
 				if (nextreveil - t >= ciCourante) // la tache peut s'executer
 				// pendant son Ci
 				{
-					System.out.println("A t = " + t + "TacheA " + courante.getId() + " sexecute :" + ciCourante + " et se termine");
+					System.out.println("A t = " + t + "TacheA "
+							+ courante.getId() + " sexecute :" + ciCourante
+							+ " et se termine");
 					w.addEvent(t, "EXEC-B", courante.getId());
 					w.addEvent(t + ciCourante, "EXEC-E", courante.getId());
 					w.addEvent(t + ciCourante, "STOP", courante.getId());
@@ -179,7 +209,10 @@ public class Algorithms
 					t += ciCourante;
 					ppcm -= ciCourante;
 
-					tempAttenteTacheA.add(t - courante.getRi() - courante.getCi()); //mise a jour du temps d'attente de la tache apériodique
+					tempAttenteTacheA.add(t - courante.getRi()
+							- courante.getCi()); // mise a jour du temps
+					// d'attente de la tache
+					// apériodique
 					System.out.println(tache_a_ajouter);
 					if (tache_a_ajouter)
 					{
@@ -206,7 +239,10 @@ public class Algorithms
 					}// fin de boucle
 					else
 					{// la tache continue à s'executer
-						System.out.println("A t = " + t + "TacheA " + courante.getId() + " sexecute :" + ciCourante);
+						System.out
+								.println("A t = " + t + "TacheA "
+										+ courante.getId() + " sexecute :"
+										+ ciCourante);
 						t += ciCourante;
 						ppcm -= ciCourante;
 						System.out.println("else");
@@ -232,7 +268,8 @@ public class Algorithms
 		}// fin while(ppcm!=0)
 		tempsExecution = t;
 		System.out.println("Fin" + tabA + tabP);
-		affichageAnalyse(tempsExecution, tempsCreux, nbPremptions, tempAttenteTacheA);
+		affichageAnalyse(tempsExecution, tempsCreux, nbPremptions,
+				tempAttenteTacheA);
 		w.generateFile();
 
 	}
@@ -246,7 +283,8 @@ public class Algorithms
 		int tempsCreux = 0;
 		int tempsExecution = 0;
 		int nbPremptions = 0;
-		ArrayList tempAttenteTacheA = new ArrayList(tm.getTachesAperiodiques().size());
+		ArrayList tempAttenteTacheA = new ArrayList(tm.getTachesAperiodiques()
+				.size());
 		tabP.addAll(tm.getTachesP(t, w));
 		tabA.addAll(tm.getTachesA(t, w));
 
@@ -267,9 +305,10 @@ public class Algorithms
 
 		while (ppcm > 0)
 		{
-			System.out.println("debut de while t = " + t + " next reveil : " + nextreveil);
-			//			System.out.println("tabP :" + tabP);
-			//			System.out.println("tabA :" + tabA);
+			System.out.println("debut de while t = " + t + " next reveil : "
+					+ nextreveil);
+			// System.out.println("tabP :" + tabP);
+			// System.out.println("tabA :" + tabA);
 
 			if (nextreveil == t && t != 0)
 			{
@@ -282,9 +321,17 @@ public class Algorithms
 				ciCourante = courante.getCi();
 				nextreveil = tm.nextReveil(t);
 
-				if (nextreveil - t >= ciCourante || (nextreveil == 0)) // la  tache peut l'executer pendant son Ci
+				if (nextreveil - t >= ciCourante || (nextreveil == 0)) // la
+				// tache
+				// peut
+				// l'executer
+				// pendant
+				// son
+				// Ci
 				{
-					System.out.println("A t = " + t + "Tache " + courante.getId() + " sexecute :" + ciCourante + "et se termine");
+					System.out.println("A t = " + t + "Tache "
+							+ courante.getId() + " sexecute :" + ciCourante
+							+ "et se termine");
 					w.addEvent(t, "EXEC-B", courante.getId());
 					ajoutTacheASinecessaire(tabA, t, t + ciCourante);
 					w.addEvent(t + ciCourante, "EXEC-E", courante.getId());
@@ -294,30 +341,43 @@ public class Algorithms
 					tabP.remove(courante);
 					t += ciCourante;
 					ppcm -= ciCourante;
-					//					System.out.println("tabp apres suppr" + tabP);
+					// System.out.println("tabp apres suppr" + tabP);
 
 				}
 
 				else
 				// on récupère les nouvelles taches se reveillant.
 				{
-					//tabP.addAll(tm.getTachesP(nextreveil));
-					//tabA.addAll(tm.getTachesA(nextreveil));
+					// tabP.addAll(tm.getTachesP(nextreveil));
+					// tabA.addAll(tm.getTachesA(nextreveil));
 					candidate = plusGrandePrioriteRM(tabP);
 					if (!candidate.equals(courante)) // la tache courante est
 					// préemptée
 					{
 						w.addEvent(t, "EXEC-B", courante.getId());
-						System.out.println("A t = " + t + "TacheP " + courante.getId() + " sexecute :" + (courante.getCi() - nextreveil + t));
-						ajoutTacheASinecessaire(tabA, t, t + (courante.getCi() - nextreveil + t));
-						w.addEvent(t + (courante.getCi() - nextreveil + t), "STOP", courante.getId());
+						System.out.println("A t = " + t + "TacheP "
+								+ courante.getId() + " sexecute :"
+								+ (courante.getCi() - nextreveil + t));
+						ajoutTacheASinecessaire(tabA, t, t
+								+ (courante.getCi() - nextreveil + t));
+						w.addEvent(t + (courante.getCi() - nextreveil + t),
+								"STOP", courante.getId());
 						ppcm -= (courante.getCi() - nextreveil + t);
-						//System.out.println("avant modif : " + tabP.get(tabP.indexOf(courante)).getCi());
+						// System.out.println("avant modif : " +
+						// tabP.get(tabP.indexOf(courante)).getCi());
 
-						TachePeriodique maj = new TachePeriodique(tabP.get(tabP.indexOf(courante)).getId(), tabP.get(tabP.indexOf(courante)).getCi() - (courante.getCi() - nextreveil + t), tabP.get(tabP.indexOf(courante)).getDi(), tabP.get(tabP.indexOf(courante)).getPi());
+						TachePeriodique maj = new TachePeriodique(tabP.get(
+								tabP.indexOf(courante)).getId(), tabP.get(
+								tabP.indexOf(courante)).getCi()
+								- (courante.getCi() - nextreveil + t), tabP
+								.get(tabP.indexOf(courante)).getDi(), tabP.get(
+								tabP.indexOf(courante)).getPi());
 						tabP.set((tabP.indexOf(courante)), maj);
-						//tabP.get(tabP.indexOf(courante)).setCi(courante.getCi() - nextreveil + t); // modification le ci restait toujour le meme .
-						//	System.out.println("apres modif : " + tabP.get(tabP.indexOf(maj)).getCi());
+						// tabP.get(tabP.indexOf(courante)).setCi(courante.getCi()
+						// - nextreveil + t); // modification le ci restait
+						// toujour le meme .
+						// System.out.println("apres modif : " +
+						// tabP.get(tabP.indexOf(maj)).getCi());
 						courante = candidate;
 						t += (courante.getCi() - nextreveil + t);
 						ppcm -= (courante.getCi() - nextreveil + t);
@@ -327,13 +387,22 @@ public class Algorithms
 					else
 					{// la tache continue à s'executer
 
-						System.out.println("A t = " + t + "TacheP " + courante.getId() + " sexecute :" + (courante.getCi() - nextreveil + t));
+						System.out.println("A t = " + t + "TacheP "
+								+ courante.getId() + " sexecute :"
+								+ (courante.getCi() - nextreveil + t));
 						w.addEvent(t, "EXEC-B", courante.getId());
-						ajoutTacheASinecessaire(tabA, t, t + (courante.getCi() - nextreveil + t));
-						w.addEvent(t + (courante.getCi() - nextreveil + t), "EXEC-E", courante.getId());
+						ajoutTacheASinecessaire(tabA, t, t
+								+ (courante.getCi() - nextreveil + t));
+						w.addEvent(t + (courante.getCi() - nextreveil + t),
+								"EXEC-E", courante.getId());
 						ppcm -= (courante.getCi() - nextreveil + t);
 
-						TachePeriodique maj = new TachePeriodique(tabP.get(tabP.indexOf(courante)).getId(), tabP.get(tabP.indexOf(courante)).getCi() - (courante.getCi() - nextreveil + t), tabP.get(tabP.indexOf(courante)).getDi(), tabP.get(tabP.indexOf(courante)).getPi());
+						TachePeriodique maj = new TachePeriodique(tabP.get(
+								tabP.indexOf(courante)).getId(), tabP.get(
+								tabP.indexOf(courante)).getCi()
+								- (courante.getCi() - nextreveil + t), tabP
+								.get(tabP.indexOf(courante)).getDi(), tabP.get(
+								tabP.indexOf(courante)).getPi());
 						tabP.set((tabP.indexOf(courante)), maj);
 
 						t += (courante.getCi() - nextreveil + t);
@@ -354,7 +423,9 @@ public class Algorithms
 				if (nextreveil - t >= ciCourante) // la tache peut s'executer
 				// pendant son Ci
 				{
-					System.out.println("A t = " + t + "TacheA " + courante.getId() + " sexecute :" + ciCourante + " et se termine");
+					System.out.println("A t = " + t + "TacheA "
+							+ courante.getId() + " sexecute :" + ciCourante
+							+ " et se termine");
 					w.addEvent(t, "EXEC-B", courante.getId());
 					w.addEvent(t + ciCourante, "EXEC-E", courante.getId());
 					w.addEvent(t + ciCourante, "STOP", courante.getId());
@@ -364,7 +435,10 @@ public class Algorithms
 					t += ciCourante;
 					ppcm -= ciCourante;
 
-					tempAttenteTacheA.add(t - courante.getRi() - courante.getCi()); //mise a jour du temps d'attente de la tache apériodique
+					tempAttenteTacheA.add(t - courante.getRi()
+							- courante.getCi()); // mise a jour du temps
+					// d'attente de la tache
+					// apériodique
 
 				}
 				else
@@ -383,7 +457,10 @@ public class Algorithms
 					}// fin de boucle
 					else
 					{// la tache continue à s'executer
-						System.out.println("A t = " + t + "TacheA " + courante.getId() + " sexecute :" + ciCourante);
+						System.out
+								.println("A t = " + t + "TacheA "
+										+ courante.getId() + " sexecute :"
+										+ ciCourante);
 						t += ciCourante;
 						ppcm -= ciCourante;
 						System.out.println("else");
@@ -402,7 +479,100 @@ public class Algorithms
 		}// fin while(ppcm!=0)
 		tempsExecution = t;
 		System.out.println("Fin");
-		affichageAnalyse(tempsExecution, tempsCreux, nbPremptions, tempAttenteTacheA);
+		affichageAnalyse(tempsExecution, tempsCreux, nbPremptions,
+				tempAttenteTacheA);
+		w.generateFile();
+	}
+
+	public void EdfTbs(double Us)
+	{
+		ArrayList<TachePeriodique> tabP = new ArrayList<TachePeriodique>();
+		ArrayList<TacheAperiodique> tabA = new ArrayList<TacheAperiodique>();
+		int hyperperiode = tm.PPCM(tm.getTachesPeriodiques());
+		int t = 0;
+		int nextReveil;
+		int preemptions = 0;
+		boolean preempte = false;
+		AbstractTache courante, candidate;
+		double inverseU;
+		if (Us != 0)
+			inverseU = 1.0 / Us;
+		else
+			inverseU = 0;
+		tabP.addAll(tm.getTachesP(t, w));
+		tabA.addAll(tm.getTachesA(t, w));
+		while (t < hyperperiode)
+		{
+
+			courante = plusGrandePrioritéTBS(inverseU, tabP, tabA);
+			for (TachePeriodique tache : tabP)
+
+				System.out.println("Tache " + tache.getId() + " Pi = "
+						+ tache.getPi() + " di = " + tache.getDi() + " ci = "
+						+ tache.getCi());
+			for (TacheAperiodique tache : tabA)
+				System.out.println("Tache " + tache.getId() + " ri = "
+						+ tache.getRi() + " di = " + tache.getDi() + " ci = "
+						+ tache.getCi());
+
+			preempte = false;
+			w.addEvent(t, "EXEC-B", courante.getId());
+			nextReveil = tm.nextReveil(t);
+
+			System.out.println("Nouveau réveil de la tache " + courante.getId()
+					+ " à t = " + t);
+			while (nextReveil < t + courante.getCi() && !preempte)
+			{
+				tabP.addAll(tm.getTachesP(nextReveil, w));
+				tabA.addAll(tm.getTachesA(nextReveil, w));
+				candidate = plusGrandePrioritéTBS(inverseU, tabP, tabA);
+				if (candidate == courante)
+				{
+					courante.setCi(courante.getCi() - (nextReveil - t));
+					t = nextReveil;
+					nextReveil = tm.nextReveil(nextReveil);
+					System.out.println(courante.getId()
+							+ " s'execute encore à t = " + t);
+				}
+				else
+				{
+					preempte = true;
+					preemptions++;
+					w.addEvent(nextReveil, "EXEC-E", courante.getId());
+					courante.setCi(courante.getCi() - (nextReveil - t));
+					System.out.println(courante.getId() + " préemptée par "
+							+ candidate.getId() + "à t = " + nextReveil);
+					t = nextReveil;
+					nextReveil = tm.nextReveil(nextReveil);
+				}
+			}
+			if (!preempte)
+			{
+				w.addEvent(t + courante.getCi(), "EXEC-E", courante.getId());
+				w.addEvent(t + courante.getCi(), "STOP", courante.getId());
+				deleteAbstractTache(courante, tabP, tabA);
+
+				t = t + courante.getCi();
+				
+				System.out.println(courante.getId() + " fini à t = "
+						+ (t));
+				
+				tabP.addAll(tm.getTachesP(t, w));
+				tabA.addAll(tm.getTachesA(t, w));
+				courante = plusGrandePrioritéTBS(inverseU, tabP, tabA);
+				if (courante == null)
+				{
+					t = nextReveil;
+					nextReveil = tm.nextReveil(nextReveil);
+					tabP.addAll(tm.getTachesP(t, w));
+					tabA.addAll(tm.getTachesA(t, w));
+				}
+			}
+
+		}
+
+		System.out.println("Fin");
+//		affichageAnalyse(tempsExecution, tempsCreux, nbPremptions,			tempAttenteTacheA);
 		w.generateFile();
 	}
 
@@ -421,14 +591,16 @@ public class Algorithms
 	public void ajoutTacheASinecessaire(ArrayList<TacheAperiodique> tab,
 			int deb, int fin)
 	{
-		//System.out.println("eeee : "+tab );
+		// System.out.println("eeee : "+tab );
 		for (TacheAperiodique tache : tm.getTachesAperiodiques())
 		{
 			if ((tache.getRi() <= fin) && (tache.getRi() > deb))
 			{
 
 				tab.add(tache);
-				System.out.println("Arrivée de tacheA : " + tache.getId() + "se reveillant entre " + deb + "et" + fin + "  " + tab);
+				System.out.println("Arrivée de tacheA : " + tache.getId()
+						+ "se reveillant entre " + deb + "et" + fin + "  "
+						+ tab);
 				w.addEvent(tache.getRi(), "START", tache.getId());
 			}
 		}
@@ -464,7 +636,8 @@ public class Algorithms
 		System.out.println("****BILAN ET ANALYSE****");
 		System.out.println("Temps d'execution : " + tempqExe);
 		System.out.println("Temps creux : " + tempsCreux);
-		System.out.println("Utilisation du processeur :" + ((tempqExe - tempsCreux) * 100) / tempqExe);
+		System.out.println("Utilisation du processeur :"
+				+ ((tempqExe - tempsCreux) * 100) / tempqExe);
 		System.out.println("Nombre de préemptions :" + nbP);
 		System.out.println("****TacheAp****");
 		System.out.println("Temps de réponse min : " + min);
@@ -515,6 +688,46 @@ public class Algorithms
 	}
 
 	/**
+	 * Recherche la taches parmi les périodiques et les apériodiques celle qui a
+	 * le di le plus faible. L'algorithme commence par donner aux taches
+	 * apériodiques une valeur pour le di
+	 * 
+	 * @param inverseU
+	 *            L'inverse de l'utilisation processeur pour permettre
+	 *            d'affecter des di aux taches apériodiques
+	 * @param tabP
+	 *            Liste des taches périodiques
+	 * @param tabA
+	 *            Liste des taches apériodiques
+	 * @return La tache qui a la plus grande priorité, dans ce cas le di le plus
+	 *         petit
+	 */
+	public AbstractTache plusGrandePrioritéTBS(double inverseU,
+			ArrayList<TachePeriodique> tabP, ArrayList<TacheAperiodique> tabA)
+	{
+		createDiForTachesA(inverseU, tabA);
+		AbstractTache retour;
+		if (tabP.size() != 0)
+			retour = tabP.get(0);
+
+		else if (tabA.size() != 0)
+			retour = tabA.get(0);
+		else
+			return null;
+		for (AbstractTache tache : tabP)
+		{
+			if (tache.getDi() < retour.getDi())
+				retour = tache;
+		}
+		for (AbstractTache tache : tabA)
+		{
+			if (tache.getDi() < retour.getDi())
+				retour = tache;
+		}
+		return retour;
+	}
+
+	/**
 	 * Compare le minimun de deux valeur
 	 * 
 	 * @param old
@@ -548,4 +761,57 @@ public class Algorithms
 			return atester;
 	}
 
+	/**
+	 * Change les di des taches Apériodiques dont leur di est à 0 pour le mettre
+	 * à la valeur : max(t, di_k-1) + Ci_k * inverseU pour la kième tache du
+	 * tableau. di_k-1 est donc le di de la tache avant celle étudiée, si il n'y
+	 * en as pas cette valeur est nulle
+	 * 
+	 * @param inverseU
+	 *            Correspont à l'inverse du facteur d'utilisation du processeur
+	 *            alloué pour les taches apériodiques
+	 * @param taches
+	 *            L'ensemble des taches étudiées. Leur di peut-être déjà
+	 *            fixé(!=0), dans ce cas il n'est pas recalculé
+	 */
+	public void createDiForTachesA(double inverseU,
+			ArrayList<TacheAperiodique> taches)
+	{
+		int diPrecedant = 0;
+		int max;
+		for (TacheAperiodique tache : taches)
+		{
+			if (tache.getDi() == 0)
+			{
+				max = Math.max(diPrecedant, tache.getRi());
+				tache.setDi((int) (max + tache.getCi() * inverseU));
+			}
+			else
+			{
+				diPrecedant = tache.getRi() + tache.getDi();
+			}
+		}
+	}
+
+	public boolean deleteAbstractTache(AbstractTache toDelete,
+			ArrayList<TachePeriodique> tabP, ArrayList<TacheAperiodique> tabA)
+	{
+		for (TachePeriodique tache : tabP)
+		{
+			if (tache.getId() == toDelete.getId())
+			{
+				tabP.remove(tache);
+				return true;
+			}
+		}
+		for (TacheAperiodique tache : tabA)
+		{
+			if (tache.getId() == toDelete.getId())
+			{
+				tabA.remove(tache);
+				return true;
+			}
+		}
+		return false;
+	}
 }
