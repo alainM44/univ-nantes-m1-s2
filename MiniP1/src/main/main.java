@@ -1,22 +1,11 @@
 package main;
 
-import genTache.AbstractTache;
-import genTache.ITache;
-import genTache.mainGenerator;
-
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import sstr.Algorithms;
 import sstr.TasksManager;
-import sstr.Writer;
-
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class main
 {
@@ -87,10 +76,10 @@ public class main
 	 */
 	public static void main(String[] args) throws Exception
 	{
-		TasksManager tm = new TasksManager("cours_RMBG.xml"); // TEST RM_BG
+		TasksManager tm = new TasksManager("cours_EDFTBS.xml"); // TEST RM_BG
 		Algorithms al = new Algorithms(tm);
 //		al.RmBg();
-		al.EdfBg();
+		al.EdfTbs(0.25);
 		
 
 		//		menu();
