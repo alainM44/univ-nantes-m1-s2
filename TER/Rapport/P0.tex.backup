@@ -3,7 +3,7 @@
 
 \section{Introduction}
  blahblahblahblahblahblahblahblahblah
-\section{Définition de la box}
+\section{Définition de la boîte}
 C'est l'entité du pavage. Les accès à ses attributs sont donc cruciaux. On rappelle qu'une boîte est définie de la manière suivante : 
 \begin{itemize}
  \item 
@@ -11,7 +11,10 @@ Un identifiant : Une String respectant un format précis (c.f 1.1 du document de
 \item
 Une liste de coordonnées. Une liste de d'intervalles de Double.
 \end{itemize}
+Ces données seront régulièrement requises durant les algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voir direct. Pour le cas de l'identifiant, s'agissant d'une simple string le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. Les algorithmes  de visualisation vont potentiellement avoir besoin d'accéder à ces différentes valeurs de cette liste. En revanche il est peu probable qu'ils opèrent des modifications (ajouts, suppressions) sur les valeurs de ces listes. Il faut donc privilégier le choix d'une structure concrète performante en terme de lecture comme par exemple un dictionnaire .
 
+\section{Lecture et stockages des boîtes}
+L'un des premiers apparaissant 
 
 
 
