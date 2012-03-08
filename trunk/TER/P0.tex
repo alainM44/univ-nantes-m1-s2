@@ -2,20 +2,60 @@
 %Dans le cadre du module Initiation à la recherche, 
 L'objectif de ce document est de décrire les notions essentielles à retenir en ce début de projet d'initiation à la recherche. Ces notions font parties d'un même sujet d'étude, au cœurs des travaux de l'équipe OPTI. Elles concernent le sujet des contraintes et des intervalles. Aussi des notions d'optimisation seront abordées.
 
+\section{Présentation du problème}
+\subsection{Définition du contexte}
+Un problème de satisfaction de contraintes (CSP) est défini par 3 éléments : 
+\begin{itemize}
+\item
+Un ensemble de variables $\mathbf{V} = \left\{ v_1,...,v_n \right\}$.
+\item
+Un domaine de valeurs pour chaque variable. Chaque valeur du domaine $D_i$ associé à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times ... \times D_n $.
+\item
+Un ensemble de contraintes (relations) $\mathbf{C}$ restreignant les variables de $\mathbf{V}$ défini ci-dessus :  $\mathbf{C} = \left\{c_1,...,cm\right\}$. 
+\end{itemize}
+
+\subsection{Exemple}
+
+Une représentation simple de ce type de problèmes est la recherche des intersections de deux cercles dans un plan :
+\begin{figure}[h] %on ouvre l'environnement figure
+  \center
+  \bf \Huge Image absente
+  \caption{Intersection de deux cercles} %la légende
+ \label{fig:Deuxcerlces} %la légende
+\end{figure} %on ferme l'environnement figure
+
+Dans le cadre de la recherche des intersections de deux cercles tels que : 
+Définissons deux cercles respectivement de rayons  $r_1$ et $r_2$ et de centres : $(x_1,y_1)$ et $(x_2,y_2)$.
+On peut alors fixer les données en entrées du problème :
+\begin{itemize}
+\item
+Un ensemble de variables $x$ et $y$ telles que  dans $\mathbb{R}$.
+\item
+Un domaine de valeurs pour chaque variable. La valeur du rayon de chaque cercle est située dans  $\mathbb{R⁺}$. Les coordonnées sont elles situées dans  $\mathbb{R}$.
+\item
+L'ensemble des contrainte est composé par les équations des cercles :
+\begin{equation*}
+\begin{cases}
+(x-x_1)²+(y-y_1)² = r_1²\\
+(x-x_2)²+(y-y_2)² = r_2²
+\end{cases}
+\end{equation*}
+
+\end{itemize}
+
+
+
 \section{Méthodes de calculs}
-Les méthodes de calcul sont les solutions apportées pour permettre la résolution de problèmes mathématiques en machine; en particulier lorsque l'on cherche à résoudre des problèmes sur les nombres réels. Elles permettent par exemple la résolution des CSP (Constraint Satisfaction Solver) ou GCSP (Geometric Constraint Satisfaction Solver) peuvent être divisées en deux catégories les méthodes formelles et les méthodes numériques. Les méthodes de calcul sont les solutions apportées pour permettre la résolution de problèmes mathématiques en machine; en particulier lorsque l'on cherche à résoudre des problèmes sur les nombres réels. Pour plus de détails sur la représentation flottante, on pourra se référer à la thèse de Frédéric Goualard \cite{Goualard}. 
+Les méthodes de calcul sont les solutions apportées pour permettre la résolution de problèmes mathématiques en machine; en particulier lorsque l'on cherche à résoudre des problèmes sur les nombres réels. Elles permettent par exemple la résolution des CSP  ou GCSP (Geometric Constraint Satisfaction Problem \cite{Jermann}) et peuvent être divisées en deux catégories : les méthodes formelles et les méthodes numériques. . 
 
 
 \subsection{Méthodes formelles}
-Les méthodes formelles permettent de résoudre des système d'équations ou d'inéquations en utilisant au maximum le calcul symbolique. Les approches les plus classiques des méthodes formelles utilisent des théories, telles que les idéaux polynomiaux pour les bases de Gröbner, ou la théorie des déterminant pour la méthode du résultant. Ces méthodes ont l'énorme avantage de retourner des solutions exactes et complètes d'un système d'équation, ou tout du moins de minimiser l'utilisation de l'arithmétique flottante. L'équation (\ref{eq}) serait ainsi considéré comme équivalente à $-2a$.Cependant les résolutions de problèmes par des méthodes formelles sont forcément restreintes par les possibilités du calcul symbolique et ne pourront donc pas toujours offrir de solution et  de mettre en œuvre des algorithmes de complexité exponentielles.
+Les méthodes formelles permettent de résoudre des système d'équations ou d'inéquations en utilisant au maximum le calcul symbolique. Les approches les plus classiques des méthodes formelles utilisent des théories, telles que les idéaux polynomiaux pour les bases de Gröbner, ou la théorie des déterminants pour la méthode du résultant. Ces méthodes ont l'énorme avantage de retourner des solutions exactes et complètes d'un système d'équation, ou tout du moins de minimiser l'utilisation de l'arithmétique flottante. L'équation (\ref{eq}) serait ainsi considéré comme équivalente à $-2a$.Cependant les résolutions de problèmes par des méthodes formelles sont forcément restreintes par les possibilités du calcul symbolique et ne pourront donc pas toujours offrir de solution et  de mettre en œuvre des algorithmes de complexité exponentielles.
 
 
 \subsection{Méthodes numériques}
+ \textbf{A CORRIGER}
 Les méthodes numériques consistent à évaluer de façon calculatoire la ou les solutions d'un problème. En effet elles sont capablent de résoudre n'importe quel système d'équation (ou d'égalités). Ainsi si l'on cherche la valeur de l'équation suivante pour $a$ et $b$ fixés : 
 \begin{equation}\label{eq} \frac{{(a-b)}^{2}-a^2-b^2}{b}\end{equation}                                             
-la machine va affecter directement les calculs pour évaluer le résultats. Or l'utilisation de la représentation flottante et de son arithmétique pour simuler les opérations réelles va entrainer une diffusion et une augmentation de l'erreur de calcul, à tel point que l'on ne peut  parfois plus assurer la validité d'une solution. On pourra d'ailleurs citer à titre d'exemple le problème de l'inversion d'une matrice mal conditionnée. Cependant ces calculs numériques utilisés  par des méthodes de résolutions par intervalles permettent de contourner ces problèmes.
-
-
-
-
+la machine va affecter directement les calculs pour évaluer le résultats. Or l'utilisation de la représentation flottante et de son arithmétique pour simuler les opérations réelles va entrainer une diffusion et une augmentation de l'erreur de calcul, à tel point que l'on ne peut  parfois plus assurer la validité d'une solution. On pourra d'ailleurs citer à titre d'exemple le problème de l'inversion d'une matrice mal conditionnée. Cependant ces calculs numériques utilisés  par des méthodes de résolutions par intervalles permettent de contourner ces problèmes. Pour plus de détails sur la représentation flottante, on pourra se référer à la thèse de Frédéric Goualard \cite{Goualard}
 
