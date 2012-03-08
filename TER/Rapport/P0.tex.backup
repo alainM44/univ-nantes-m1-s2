@@ -1,0 +1,17 @@
+\chapter{Etude des structures de données}
+%Dans le cadre du module Initiation à la recherche,  
+
+\section{Introduction}
+ blahblahblahblahblahblahblahblahblah
+\section{Définition de la box}
+C'est l'entité du pavage. Les accès à ses attributs sont donc cruciaux. On rappelle qu'une boîte est définie de la manière suivante : 
+\begin{itemize}
+ \item 
+Un identifiant : Une String respectant un format précis (c.f 1.1 du document de spécifications).
+\item
+Une liste de coordonnées. Une liste de d'intervalles de Double.
+\end{itemize}
+
+
+
+

@@ -1,0 +1,45 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: Rapport_de_documentations_RINCE_MARGUERITE.aux
+The style file: alpha.bst
+Database file #1: biblio.bib.bib
+You've used 3 entries,
+            2543 wiz_defined-function locations,
+            578 strings with 4876 characters,
+and the built_in function-call counts, 863 in all, are:
+= -- 80
+> -- 28
+< -- 3
++ -- 7
+- -- 7
+* -- 51
+:= -- 161
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 13
+chr.to.int$ -- 3
+cite$ -- 3
+duplicate$ -- 44
+empty$ -- 67
+format.name$ -- 13
+if$ -- 166
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 1
+newline$ -- 18
+num.names$ -- 11
+pop$ -- 17
+preamble$ -- 1
+purify$ -- 18
+quote$ -- 0
+skip$ -- 31
+stack$ -- 0
+substring$ -- 21
+swap$ -- 4
+text.length$ -- 3
+text.prefix$ -- 3
+top$ -- 0
+type$ -- 24
+warning$ -- 0
+while$ -- 7
+width$ -- 5
+write$ -- 40
