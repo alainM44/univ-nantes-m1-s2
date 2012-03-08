@@ -1,25 +1,15 @@
 \section{Mise en œuvre de la méthode de résolution par intervalles}
 
 
-\subsection{Données en entrée}
-Un problème de satisfaction de contraintes est défini par 3 éléments : 
-\begin{itemize}
-\item
-Un ensemble de variable $\mathbf{V} = \left\{ v_1,...,v_n \right\}$.
-\item
-Un domaine de valeurs pour chaque variable. Chaque valeur du domaine $D_i$ associé à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times ... \times D_n $.
-\item
-Un ensemble de contraintes (relations) $\mathbf{C}$ restreignant les variables de $\mathbf{V}$ défini ci-dessus :  $\mathbf{C} = \left\{c_1,...,cm\right\}$. 
-\end{itemize}
 
 \subsection{Algorithmes}
 La méthode de résolution par intervalles met en oeuvre deux opérations détaillées dans \cite{Neumaier}: 
 \begin{itemize}
 \item{Branch}
-\begin{quote}Diviser pour mieux régner\end{quote} Cette méthode consiste à diviser récursivement un problème en deux sous problèmes. Appliquée à la méthode de résolution par intervalles, on découpe en deux l'intervalle concerné (en son milieu ou non). On obtient alors deux problèmes plus «faciles» à étudier.
-\item{Bound}\\
+\begin{quote}Diviser pour mieux régner\end{quote} Cette méthode consiste à diviser récursivement un problème en deux sous problèmes. Appliquée à la méthode de résolution par intervalles, on découpe en deux l'intervalle concerné (en son milieu ou non). On obtient alors deux problèmes plus «petits» à étudier.
+\item{Prune}\\
 La découpe d'un problème en sous problèmes peut amener à une situation ou un des sous problèmes créés ne contient aucune solution. On peut alors étudier et trier ces sous problèmes pour en supprimer un espaces de recherche superflu. Cette étape est appelée \textbf{pruning}.
 \end{itemize}
 
 \subsection{Données en sortie}
-En sortie l'algorithme va nous retourner un ensemble de boîtes ou d'enveloppes. Cet ensemble garantissant, à contrario des méthodes numériques classiques, que toutes les solutions y sont incluses. Il est d'ailleurs possible de savoir si tout l'espace d'une enveloppe est solution du problème. En contrepartie on ne peut garantir l'existence d'une solution dans une enveloppe, il peut donc exister un certain flou autour des résultats de l'algorithme.
+En sortie l'algorithme va nous retourner un ensemble de boîtes. Cet ensemble garantissant, à contrario des méthodes numériques classiques, que toutes les solutions y sont incluses. Il est d'ailleurs possible de savoir si tout l'espace d'une boîte est solution du problème. En contrepartie on ne peut toujours garantir l'existence d'une solution dans une enveloppe, il peut donc exister une approximation autour des résultats de l'algorithme.
