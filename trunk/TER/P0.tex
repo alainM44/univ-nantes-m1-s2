@@ -34,28 +34,29 @@ Un ensemble de variables $x$ et $y$ telles que  dans $\mathbb{R}$.
 Un domaine de valeurs pour chaque variable. La valeur du rayon de chaque cercle est située dans  $\mathbb{R⁺}$. Les coordonnées sont elles situées dans  $\mathbb{R}$.
 \item
 L'ensemble des contrainte est composé par les équations des cercles :
-\begin{equation*}
+\begin{equation}\label{eq}
 \begin{cases}
 (x-x_1)²+(y-y_1)² = r_1²\\
 (x-x_2)²+(y-y_2)² = r_2²
 \end{cases}
-\end{equation*}
+\end{equation}
 
 \end{itemize}
 
 
 
 \section{Méthodes de calculs}
-Les méthodes de calcul sont les solutions apportées pour permettre la résolution de problèmes mathématiques en machine; en particulier lorsque l'on cherche à résoudre des problèmes sur les nombres réels. Elles permettent par exemple la résolution des CSP  ou GCSP (Geometric Constraint Satisfaction Problem \cite{Jermann}) et peuvent être divisées en deux catégories : les méthodes formelles et les méthodes numériques. . 
+Les méthodes de calculs sont les solutions apportées pour permettre la résolution de problèmes mathématiques en machine; en particulier lorsque l'on cherche à résoudre des problèmes sur les nombres réels. Elles permettent par exemple la résolution des CSP  ou GCSP (Geometric Constraint Satisfaction Problem \cite{Jermann}) et peuvent être divisées en deux catégories : les méthodes formelles et les méthodes numériques. . 
 
 
 \subsection{Méthodes formelles}
-Les méthodes formelles permettent de résoudre des système d'équations ou d'inéquations en utilisant au maximum le calcul symbolique. Les approches les plus classiques des méthodes formelles utilisent des théories, telles que les idéaux polynomiaux pour les bases de Gröbner, ou la théorie des déterminants pour la méthode du résultant. Ces méthodes ont l'énorme avantage de retourner des solutions exactes et complètes d'un système d'équation, ou tout du moins de minimiser l'utilisation de l'arithmétique flottante. L'équation (\ref{eq}) serait ainsi considéré comme équivalente à $-2a$.Cependant les résolutions de problèmes par des méthodes formelles sont forcément restreintes par les possibilités du calcul symbolique et ne pourront donc pas toujours offrir de solution et  de mettre en œuvre des algorithmes de complexité exponentielles.
+Les méthodes formelles permettent de résoudre des système d'équations ou d'inéquations en utilisant au maximum le calcul symbolique. Les approches les plus classiques des méthodes formelles utilisent des théories, telles que les idéaux polynomiaux pour les bases de Gröbner, ou la théorie des déterminants pour la méthode du résultant.
+
+ Ces méthodes ont l'énorme avantage de retourner des solutions exactes d'un système d'équation, ou tout du moins de minimiser l'utilisation de l'arithmétique flottante. Elles tenteront donc de résoudre le problème (\ref{eq}) en effectuant uniquement des opérations sur les équations sans évaluer les variables. On pourra donc avoir des expressions pour $x$ et $y$ représentant les solutions du problème de façon \emph{sémantique}. 
+
+Cependant les résolutions de problèmes par des méthodes formelles sont forcément restreintes par les possibilités du calcul symbolique et ne pourront donc pas toujours offrir de solution et de mettre en œuvre des algorithmes de complexité exponentielles. Il n'existe par exemple pas de formules permettant de trouver les solutions d'un polynôme de degré supérieur ou égal à cinq.
 
 
 \subsection{Méthodes numériques}
- \textbf{A CORRIGER}
-Les méthodes numériques consistent à évaluer de façon calculatoire la ou les solutions d'un problème. En effet elles sont capablent de résoudre n'importe quel système d'équation (ou d'égalités). Ainsi si l'on cherche la valeur de l'équation suivante pour $a$ et $b$ fixés : 
-\begin{equation}\label{eq} \frac{{(a-b)}^{2}-a^2-b^2}{b}\end{equation}                                             
-la machine va affecter directement les calculs pour évaluer le résultats. Or l'utilisation de la représentation flottante et de son arithmétique pour simuler les opérations réelles va entrainer une diffusion et une augmentation de l'erreur de calcul, à tel point que l'on ne peut  parfois plus assurer la validité d'une solution. On pourra d'ailleurs citer à titre d'exemple le problème de l'inversion d'une matrice mal conditionnée. Cependant ces calculs numériques utilisés  par des méthodes de résolutions par intervalles permettent de contourner ces problèmes. Pour plus de détails sur la représentation flottante, on pourra se référer à la thèse de Frédéric Goualard \cite{Goualard}
+Les méthodes numériques consistent à évaluer de façon calculatoire la ou les solutions d'un problème. En effet elles sont capables d'essayer de résoudre n'importe quel système d'équation (ou d'égalités). Ainsi dans le cas du problème (\ref{eq}) la machine va affecter directement les calculs pour évaluer le résultats. Or l'utilisation de la représentation flottante et de son arithmétique pour simuler les opérations réelles va entrainer une diffusion et une augmentation de l'erreur de calcul, à tel point que l'on ne peut  parfois plus assurer la validité d'une solution. On pourra d'ailleurs citer à titre d'exemple le problème de l'inversion d'une matrice mal conditionnée. Cependant ces calculs numériques utilisés  par des méthodes de résolutions par intervalles permettent de contourner ces problèmes. Pour plus de détails sur la représentation flottante, on pourra se référer à la thèse de Frédéric Goualard \cite{Goualard}
 
