@@ -3,13 +3,33 @@
 \catcode`;\active
 \catcode`!\active
 \catcode`?\active
+\ifx\hyper@anchor\@undefined
+\global \let \oldcontentsline\contentsline
+\gdef \contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global \let \oldnewlabel\newlabel
+\gdef \newlabel#1#2{\newlabelxx{#1}#2}
+\gdef \newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\let \contentsline\oldcontentsline
+\let \newlabel\oldnewlabel}
+\else
+\global \let \hyper@last\relax 
+\fi
+
+\@newglossary{main}{glg}{gls}{glo}
 \select@language{french}
 \@writefile{toc}{\select@language{french}}
 \@writefile{lof}{\select@language{french}}
 \@writefile{lot}{\select@language{french}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{2}}
+\@writefile{toc}{\contentsline {chapter}{Table des mati\`eres}{1}{section*.2}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Cahier des charges}{2}{chapter.1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}G\IeC {\'e}n\IeC {\'e}ration de t\IeC {\^a}ches dans un fichier}{3}}
+\@writefile{toc}{\contentsline {paragraph}{Introduction :}{2}{section*.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Donn\IeC {\'e}es en entr\IeC {\'e}es}{2}{section.1.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Fonctionnement}{2}{section.1.2}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Analyse et solutions du probl\IeC {\`e}me}{4}{chapter.2}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Introduction et choix du langage}{4}{section.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Modelisation du probl\IeC {\`e}me}{4}{section.2.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}G\IeC {\'e}n\IeC {\'e}ration de t\IeC {\^a}ches dans un fichier}{4}{section.2.3}}
