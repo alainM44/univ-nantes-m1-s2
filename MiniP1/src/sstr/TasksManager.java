@@ -110,6 +110,23 @@ public class TasksManager
 	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
 	 * 
 	 */
+	public ArrayList<TacheAperiodique> getTachesA(int t)
+	{
+		ArrayList<TacheAperiodique> result = new ArrayList<TacheAperiodique>();
+		for (TacheAperiodique tache : tachesAperiodiques)
+		{
+			if (t == tache.getRi())	
+			{
+				result.add(new TacheAperiodique(tache));
+		
+			}
+		}
+		return result;
+	}
+	/**
+	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
+	 * 
+	 */
 	public ArrayList<TachePeriodique> getTachesP(int t)
 	{
 		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
