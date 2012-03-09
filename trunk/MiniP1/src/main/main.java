@@ -76,10 +76,11 @@ public class main
 	 */
 	public static void main(String[] args) throws Exception
 	{
-		TasksManager tm = new TasksManager("cours_EDFBG.xml"); // TEST RM_BG
+		TasksManager tm = new TasksManager("cours_RMBG.xml"); // TEST RM_BG
 		Algorithms al = new Algorithms(tm);
-		al.EdfBg();
-//		al.EdfBg();
+		al.RmBg();
+	//	al.EdfBg();
+//		al.EdfTbs(0.25);
 		
 
 		//		menu();
