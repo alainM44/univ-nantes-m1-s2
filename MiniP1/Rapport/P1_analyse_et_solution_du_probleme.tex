@@ -72,6 +72,12 @@ Ci : durée d'exécution maximale.
 \item
 Di : délai critique.
 \end{itemize} 
+\subsection{Détail dur la génération aléatoire}
+Le cahier des charges spécifiait que la génération se devait d'offrir la possibilité de générer les taches aléatoirement ou bien en laissant l'utilisateur choisir les paramètres de chaqu'une d'elle. Cependant la génération de taches aléatoires pose de nombreux problèmes.
+
+Le premier problème est de savoir qu'elle est la taille maximale que l'on peut attribué a un $Ci$ ou un $Pi$. Il aurait été possible de laisser le choix à l'utilisateur mais dès que le nombre de taches est grand ou que leur $Pi$ est grand, l'hyperpériode explose. L'objectif étant par la suite de pouvoir générer un fichier pour kiwi, il aurait été possible d'avoir des durées d'ordonnancements qui dépassent les possibilités des valeurs pour kiwi. On pourrait aussi se demander comment générer les taches pour offrir une palette large vis-à-vis des paramètres des taches.
+
+
 \section{Algorithmes et structures mises en oeuvre}
 \sectionmark{Algorithmes}
 \subsection{Première Partie}
