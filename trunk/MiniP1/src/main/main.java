@@ -78,8 +78,8 @@ public class main
 	{
 		TasksManager tm = new TasksManager("cours_RMBG.xml"); // TEST RM_BG
 		Algorithms al = new Algorithms(tm);
-		al.RmBg();
-	//	al.EdfBg();
+	al.RmBg();
+//		al.EdfBg();
 //		al.EdfTbs(0.25);
 		
 
