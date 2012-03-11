@@ -33,44 +33,43 @@ public class TasksManager
 	 *            Indique le moment à partir duquel considérer les taches.
 	 * @return La date du prochain réveil de tache
 	 */
-    public int nextReveil(int t)
-    {
-            // Attention
-            int reveil = hyperperiode;
-            int prochainReveil;
-            // int min = hyperperiode;
-            // On commence par parcourir les taches périodiques
-            for (TachePeriodique tache : tachesPeriodiques)
-            {
-                    prochainReveil = tache.getPi();
-                    // La formule suivante calcule le début de période le plus proche
-                    // après ou pendant l'instant t. La formule est en fait :
-                    // prochainReveil = t + (Pi - t%Pi)
-                    if(t%prochainReveil == 0 || t==0)
-                    prochainReveil = t + prochainReveil;
-                    else
-                            prochainReveil = t -(t) % prochainReveil +prochainReveil;
+	public int nextReveil(int t)
+	{
+		// Attention
+		int reveil = hyperperiode;
+		int prochainReveil;
+		// int min = hyperperiode;
+		// On commence par parcourir les taches périodiques
+		for (TachePeriodique tache : tachesPeriodiques)
+		{
+			prochainReveil = tache.getPi();
+			// La formule suivante calcule le début de période le plus proche
+			// après ou pendant l'instant t. La formule est en fait :
+			// prochainReveil = t + (Pi - t%Pi)
+			if (t % prochainReveil == 0 || t == 0)
+				prochainReveil = t + prochainReveil;
+			else
+				prochainReveil = t - (t) % prochainReveil + prochainReveil;
 
-                    //System.out.println("prochain reveil : " + prochainReveil);
-                    // if (prochainReveil < reveil) // ? ??? toujours vrai !
-                    if (reveil > prochainReveil)
-                    {
+			//System.out.println("prochain reveil : " + prochainReveil);
+			// if (prochainReveil < reveil) // ? ??? toujours vrai !
+			if (reveil > prochainReveil)
+			{
 
-                            // reveil =t+ tache.getRi();
-                            reveil = prochainReveil;
-                    }
-            }
+				// reveil =t+ tache.getRi();
+				reveil = prochainReveil;
+			}
+		}
 
-            // On cherche ensuite dans les taches apériodiques
-             for (TacheAperiodique tache : tachesAperiodiques)
-             {
-             if (tache.getRi() < reveil && tache.getRi() > t)
-             reveil = tache.getRi();
-             }
-            //System.out.println("nouveau nxt reveil : " + reveil + " avec t = " + t);
-            return reveil;
-    }
-
+		// On cherche ensuite dans les taches apériodiques
+		for (TacheAperiodique tache : tachesAperiodiques)
+		{
+			if (tache.getRi() < reveil && tache.getRi() > t)
+				reveil = tache.getRi();
+		}
+		//System.out.println("nouveau nxt reveil : " + reveil + " avec t = " + t);
+		return reveil;
+	}
 
 	/**
 	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
@@ -84,11 +83,12 @@ public class TasksManager
 			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
 			{
 				result.add(new TachePeriodique(tache));
-				w.addEvent(t, "START",tache.getId());
+				w.addEvent(t, "START", tache.getId());
 			}
 		}
 		return result;
 	}
+
 	/**
 	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
 	 * 
@@ -98,14 +98,15 @@ public class TasksManager
 		ArrayList<TacheAperiodique> result = new ArrayList<TacheAperiodique>();
 		for (TacheAperiodique tache : tachesAperiodiques)
 		{
-			if (t == tache.getRi())	
+			if (t == tache.getRi())
 			{
 				result.add(new TacheAperiodique(tache));
-				w.addEvent(t, "START",tache.getId());
+				w.addEvent(t, "START", tache.getId());
 			}
 		}
 		return result;
 	}
+
 	/**
 	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
 	 * 
@@ -115,14 +116,15 @@ public class TasksManager
 		ArrayList<TacheAperiodique> result = new ArrayList<TacheAperiodique>();
 		for (TacheAperiodique tache : tachesAperiodiques)
 		{
-			if (t == tache.getRi())	
+			if (t == tache.getRi())
 			{
 				result.add(new TacheAperiodique(tache));
-		
+
 			}
 		}
 		return result;
 	}
+
 	/**
 	 * Pour récupérer toutes les taches périodiques se réveillant à la date t
 	 * 
@@ -135,12 +137,12 @@ public class TasksManager
 			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
 			{
 				result.add(new TachePeriodique(tache));
-			
+
 			}
 		}
 		return result;
 	}
-	
+
 	public ArrayList<TachePeriodique> getTachesPdiObjectif(int t, Writer w)
 	{
 		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
@@ -148,14 +150,12 @@ public class TasksManager
 		{
 			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
 			{
-				result.add(new TachePeriodique(tache.getId(), tache.getCi(), tache.getDi()+t,tache.getPi()));
-				w.addEvent(t, "START",tache.getId());
+				result.add(new TachePeriodique(tache.getId(), tache.getCi(), tache.getDi() + t, tache.getPi()));
+				w.addEvent(t, "START", tache.getId());
 			}
 		}
 		return result;
 	}
-
-	
 
 	public ArrayList<TacheAperiodique> getTachesAperiodiques()
 	{
@@ -206,17 +206,9 @@ public class TasksManager
 
 		// Instanciation de la classe XStream
 		XStream xstream = new XStream(new DomDriver());
-
-		// Redirection du fichier vers un flux
-		// d'entrée fichier
 		FileInputStream fis = new FileInputStream(new File(filename));
-		// Affichage sur la console du contenu de l'attribut synopsis
 
-		// Désérialisation du fichier c:/temp/article.xml vers un nouvel
-		// objet article
 		tab = (AbstractTache[]) xstream.fromXML(fis);
-		// // Affichage sur la console du contenu de l'attribut synopsis
-		// for (int i = 0; i < nouveauTab.length; i++)
 		// System.out.println(nouveauTab[i].getId());
 		for (int i = 0; i < tab.length; i++)
 		{
@@ -281,8 +273,7 @@ public class TasksManager
 	{
 		float U = 0;
 		for (int i = 0; i <= tachesPeriodiques.size() - 1; i++)
-			U += (float) tachesPeriodiques.get(i).getCi()
-					/ tachesPeriodiques.get(i).getPi();
+			U += (float) tachesPeriodiques.get(i).getCi() / tachesPeriodiques.get(i).getPi();
 		return U;
 	}
 
@@ -294,15 +285,60 @@ public class TasksManager
 	protected int getEDFCondSuffisanteDiINGPi()
 	{
 		int U = 0;
-		for (int i = 1; i <= tachesPeriodiques.size(); i++)
-			U += tachesPeriodiques.get(i).getCi()
-					/ tachesPeriodiques.get(i).getDi();
+		for (int i = 0; i <= tachesPeriodiques.size()-1; i++)
+			U += tachesPeriodiques.get(i).getCi() / tachesPeriodiques.get(i).getDi();
 		return U;
 	}
 
 	protected int getTBSCondNeccessaireEtSuffisante(int Up, int Us)
 	{
 		return Up + Us;
+	}
+
+	/**
+	 * Affichage des tests selon RM
+	 */
+	protected void PrintRMTEST()
+	{
+		if(getRmCondNeccessaire()>1)
+			System.out.println("Resultat du test de faisabilité : "+getRmCondNeccessaire()+ ">1  on ne  rien conclure");
+		else
+			System.out.println("Resultat du test de faisabilité : "+getRmCondNeccessaire());
+	}	
+	/**
+	 * Affichage des test selon EDF
+	 */
+	protected void PrintEdfTEST()
+	{
+		/* on regarde si on est dans le cas Di=Pi ou non */
+		boolean flag = true;
+		int cpt = 0;
+		ArrayList<TachePeriodique> tab = getTachesPeriodiques();
+		while (flag && cpt != tab.size())
+		{
+
+			if (tab.get(cpt).getDi() != tab.get(cpt).getPi())
+				flag = false;
+			cpt++;
+		}
+		if (flag) /*Di=Pi*/
+		{
+			System.out.println("Resutalt du test pour Ci=Pi selon EDF U= : " + getEDFCondSuffisanteDiEGALEhPi());
+			if (getEDFCondSuffisanteDiEGALEhPi() <= 1)
+				System.out.println("U<=1 condition suffisante vérifiée");
+			else
+				System.out.println("U>1 condition suffisante nonvérifiée");
+		}
+		else/*Di<Pi*/
+		{
+			System.out.println("Resutalt du test pour Ci<Pi selon EDF U= : " + getEDFCondSuffisanteDiINGPi());
+			if (getEDFCondSuffisanteDiINGPi() <= 1)
+				System.out.println("U<=1 condition suffisante vérifiée");
+			else
+				System.out.println("U>1 condition suffisante nonvérifiée");
+		}
+		
+		
 	}
 
 	/**
