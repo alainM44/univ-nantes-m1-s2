@@ -51,7 +51,7 @@ public class TasksManager
 			else
 				prochainReveil = t - (t) % prochainReveil + prochainReveil;
 
-			//System.out.println("prochain reveil : " + prochainReveil);
+			// System.out.println("prochain reveil : " + prochainReveil);
 			// if (prochainReveil < reveil) // ? ??? toujours vrai !
 			if (reveil > prochainReveil)
 			{
@@ -67,7 +67,8 @@ public class TasksManager
 			if (tache.getRi() < reveil && tache.getRi() > t)
 				reveil = tache.getRi();
 		}
-		//System.out.println("nouveau nxt reveil : " + reveil + " avec t = " + t);
+		// System.out.println("nouveau nxt reveil : " + reveil + " avec t = " +
+		// t);
 		return reveil;
 	}
 
@@ -80,7 +81,16 @@ public class TasksManager
 		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
 		for (TachePeriodique tache : tachesPeriodiques)
 		{
-			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
+			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème
+			// si
+			// t
+			// =
+			// 0
+			// j'ai
+			// changé
+			// getRI
+			// et
+			// getPI
 			{
 				result.add(new TachePeriodique(tache));
 				w.addEvent(t, "START", tache.getId());
@@ -134,7 +144,16 @@ public class TasksManager
 		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
 		for (TachePeriodique tache : tachesPeriodiques)
 		{
-			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
+			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème
+			// si
+			// t
+			// =
+			// 0
+			// j'ai
+			// changé
+			// getRI
+			// et
+			// getPI
 			{
 				result.add(new TachePeriodique(tache));
 
@@ -148,9 +167,19 @@ public class TasksManager
 		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
 		for (TachePeriodique tache : tachesPeriodiques)
 		{
-			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème  si t = 0 j'ai changé getRI	 et	 getPI
+			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème
+			// si
+			// t
+			// =
+			// 0
+			// j'ai
+			// changé
+			// getRI
+			// et
+			// getPI
 			{
-				result.add(new TachePeriodique(tache.getId(), tache.getCi(), tache.getDi() + t, tache.getPi()));
+				result.add(new TachePeriodique(tache.getId(), tache.getCi(),
+						tache.getDi() + t, tache.getPi()));
 				w.addEvent(t, "START", tache.getId());
 			}
 		}
@@ -273,7 +302,8 @@ public class TasksManager
 	{
 		float U = 0;
 		for (int i = 0; i <= tachesPeriodiques.size() - 1; i++)
-			U += (float) tachesPeriodiques.get(i).getCi() / tachesPeriodiques.get(i).getPi();
+			U += (float) tachesPeriodiques.get(i).getCi()
+					/ tachesPeriodiques.get(i).getPi();
 		return U;
 	}
 
@@ -285,8 +315,9 @@ public class TasksManager
 	protected int getEDFCondSuffisanteDiINGPi()
 	{
 		int U = 0;
-		for (int i = 0; i <= tachesPeriodiques.size()-1; i++)
-			U += tachesPeriodiques.get(i).getCi() / tachesPeriodiques.get(i).getDi();
+		for (int i = 0; i <= tachesPeriodiques.size() - 1; i++)
+			U += tachesPeriodiques.get(i).getCi()
+					/ tachesPeriodiques.get(i).getDi();
 		return U;
 	}
 
@@ -300,11 +331,14 @@ public class TasksManager
 	 */
 	protected void PrintRMTEST()
 	{
-		if(getRmCondNeccessaire()>1)
-			System.out.println("Resultat du test de faisabilité : "+getRmCondNeccessaire()+ ">1  on ne  rien conclure");
+		if (getRmCondNeccessaire() > 1)
+			System.out.println("Resultat du test de faisabilité : "
+					+ getRmCondNeccessaire() + ">1  on ne  rien conclure");
 		else
-			System.out.println("Resultat du test de faisabilité : "+getRmCondNeccessaire());
-	}	
+			System.out.println("Resultat du test de faisabilité : "
+					+ getRmCondNeccessaire());
+	}
+
 	/**
 	 * Affichage des test selon EDF
 	 */
@@ -321,24 +355,26 @@ public class TasksManager
 				flag = false;
 			cpt++;
 		}
-		if (flag) /*Di=Pi*/
+		if (flag) /* Di=Pi */
 		{
-			System.out.println("Resutalt du test pour Ci=Pi selon EDF U= : " + getEDFCondSuffisanteDiEGALEhPi());
+			System.out.println("Resutalt du test pour Ci=Pi selon EDF U= : "
+					+ getEDFCondSuffisanteDiEGALEhPi());
 			if (getEDFCondSuffisanteDiEGALEhPi() <= 1)
 				System.out.println("U<=1 condition suffisante vérifiée");
 			else
 				System.out.println("U>1 condition suffisante nonvérifiée");
 		}
-		else/*Di<Pi*/
+		else
+		/* Di<Pi */
 		{
-			System.out.println("Resutalt du test pour Ci<Pi selon EDF U= : " + getEDFCondSuffisanteDiINGPi());
+			System.out.println("Resutalt du test pour Ci<Pi selon EDF U= : "
+					+ getEDFCondSuffisanteDiINGPi());
 			if (getEDFCondSuffisanteDiINGPi() <= 1)
 				System.out.println("U<=1 condition suffisante vérifiée");
 			else
 				System.out.println("U>1 condition suffisante nonvérifiée");
 		}
-		
-		
+
 	}
 
 	/**
@@ -361,5 +397,15 @@ public class TasksManager
 		int dk = 0;
 		dk = Math.max(rk, dk_1) + Cka / Us;
 		return dk;
+	}
+
+	public double calculeUs()
+	{
+		double Up = 0;
+		for (TachePeriodique tache : tachesPeriodiques)
+		{
+			Up += ((double) tache.getCi()) / ((double) tache.getPi());
+		}
+		return 1 - Up;
 	}
 }
