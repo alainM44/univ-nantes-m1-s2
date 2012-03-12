@@ -2,7 +2,6 @@ package sstr;
 
 import genTache.TacheAperiodique;
 import genTache.TachePeriodique;
-
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -18,14 +17,11 @@ import java.io.IOException;
 public class Writer
 {
 	private String filename;
-
-	private int DECIMAL_DIGITS;
 	private int DURATION;
 	private String lines;
 	private String PALETTE;
 	private int ZOOM_X;
 	private int ZOOM_Y;
-	// COLOR EXEC-E 0 orchid4
 	private String DrawingOption;
 	private String Events;
 	private int last_date;// savoir si on doit sauter une ligne entre deux dates
@@ -34,7 +30,6 @@ public class Writer
 	{
 		super();
 		this.filename = filename;
-		this.DECIMAL_DIGITS = 0;
 		this.DURATION = duree;
 		this.PALETTE = "Rainbow";
 		this.ZOOM_X = 4;
@@ -47,7 +42,6 @@ public class Writer
 		this.DrawingOption = "DECIMAL_DIGITS 0" + "\n" + "DURATION " + this.DURATION + "\n" + lines +
 
 		"PALETTE " + this.PALETTE + "\n" + "ZOOM_X " + this.ZOOM_X + "\n" + "ZOOM_Y " + this.ZOOM_Y + "\n" +
-		// COLOR EXEC-E 0 orchid4 ";
 		"\n";
 		this.Events = "";
 		this.last_date = 0;
@@ -104,9 +98,10 @@ public class Writer
 		}
 		this.Events += Integer.toString(Time) + " " + Event_Type + Integer.toString(Line) + " " + Color + "\n";
 	}
+
 	/**
 	 * Ajout un événement dont les caractéristiques sont les parmètres suivants:
-	 * 	
+	 * 
 	 * @param Time
 	 *            date de l'évenement
 	 * @param Event_Type
@@ -123,9 +118,10 @@ public class Writer
 		}
 		this.Events += Integer.toString(Time) + " " + Event_Type + " " + Integer.toString(Line) + "\n";
 	}
+
 	/**
 	 * Ajout une ligne verticale avec les caractéristiques suivantes
-	 * 	
+	 * 
 	 * @param Time
 	 *            date de l'évenement
 	 * @param Event_Type
@@ -144,6 +140,11 @@ public class Writer
 
 	}
 
+	/**
+	 * Génération du fichier .ktr et lancement de kwi
+	 * 
+	 * @throws IOException
+	 */
 	public void generateFile() throws IOException
 	{
 		FileWriter writer = null;
@@ -171,7 +172,7 @@ public class Writer
 				}
 			}
 		}
-		Runtime.getRuntime().exec("./kiwi/kiwi " + filename);
+		Runtime.getRuntime().exec("./kiwi/kiwi " + filename);  // ouverture de kiwi avec le nouveau fichier généré.
 	}
 
 	public String getFilename()
