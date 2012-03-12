@@ -3,6 +3,7 @@
 <plugin>
    <extension-point id="Reasoning" name="Reasoning" schema="schema/Reasoning.exsd"/>
    <extension-point id="Acquisition" name="Acquisition" schema="schema/Acquisition.exsd"/>
+   <extension-point id="NetP" name="NetP" schema="schema/NetP.exsd"/>
 
    <extension
          point="org.eclipse.ui.actionSets">

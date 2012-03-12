@@ -71,8 +71,8 @@ public class Activator extends AbstractUIPlugin {
 		for(IConfigurationElement element: RegistryFactory.getRegistry().getConfigurationElementsFor("Middleware.Acquisition")){
 			System.out.println(element.getAttribute("Nom"));
 		}
-			for(IConfigurationElement element: RegistryFactory.getRegistry().getConfigurationElementsFor("Middleware.Analyse")){
-				System.out.println(element.getAttribute("Nom"));
+			for(IConfigurationElement element: RegistryFactory.getRegistry().getConfigurationElementsFor("Middleware.Reasoning")){
+				System.out.println(element.getAttribute("Alerte"));
 			/*for(String s:element.getAttributeNames()){
 				System.out.println("#"+s+"#");
 			}*/
