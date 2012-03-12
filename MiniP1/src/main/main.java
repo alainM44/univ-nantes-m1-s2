@@ -1,6 +1,7 @@
 package main;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -9,11 +10,19 @@ import sstr.TasksManager;
 
 public class main
 {
-
+	static int choix;
+	static int exemple;
 	static String Methode;
 	static String algo;
 	static String fichier;
+	static TasksManager tm;
+	static Algorithms al;
 
+	/**
+	 * Lire une chaîne de caractère sur l'entrée standard
+	 * 
+	 * @return chaîne lue
+	 */
 	public static String lireString()
 	{// lecture d'une chaine
 		String ligne_lue = null;
@@ -29,6 +38,11 @@ public class main
 		return ligne_lue;
 	}
 
+	/**
+	 * Lire un double sur l'entrée standard
+	 * 
+	 * @return double lu
+	 */
 	public static double lireDouble()
 	{// lecture d'un double
 		double x = 0; // valeur à lire
@@ -44,6 +58,31 @@ public class main
 		return x;
 	}
 
+	/**
+	 * Lecture d'un entier
+	 * 
+	 * @return entier lu
+	 */
+	public static int lireInt()
+	{// lecture d'un double
+		int x = 0; // valeur à lire
+		try
+		{
+			String ligne_lue = lireString();
+			x = Integer.parseInt(ligne_lue);
+		} catch (NumberFormatException err)
+		{
+			System.out.println("***Erreur de données Integer attendu***");
+			System.exit(0);
+		}
+		return x;
+	}
+
+	/**
+	 * Lire un char sur l'entrée standard
+	 * 
+	 * @return char lu.
+	 */
 	public static String lireLettre()
 	{// lecture d'un double
 		String ligne_lue = lireString();
@@ -51,22 +90,78 @@ public class main
 		return result;
 	}
 
-	public static void menu()
+	/**
+	 * Affichage pour la choix des algorithmes
+	 * 
+	 * @throws Exception
+	 */
+	public static void menuExemples() throws Exception
 	{
 		System.out.println("********************");
-		System.out.println("*****GENUIS TASK****");
+		System.out.println("*****GENIUS TASK****");
 		System.out.println("********************");
-		System.out.println("Nom du fichier");
-		String adresse = main.lireString();
-		if (adresse.charAt(0) == '/')
-			fichier = adresse;
-		else
-			fichier += adresse;
-		//System.out.println("Merci pour" + fichier);
-		System.out.println("Choix de l'algorithme d'ordonancement");
-		System.out.println("Tapez r pour utiliser RM-BG ");
-		System.out.println("Tapez e pour utiliser EDF-TBS");
-		algo = main.lireLettre();
+		System.out.println("Tapez 1 pour RM BG");
+		System.out.println("Tapez 2 pour EDF-BG");
+		System.out.println("Tapez 3 pour TBS-BG");
+		exemple = main.lireInt();
+		switch (exemple)
+		{
+		case 1:
+			fichier="cours_RMBG.xml";
+			tm = new TasksManager(fichier); // TEST RM_BG
+			al = new Algorithms(tm,fichier);
+			al.RmBg();
+			break;
+		case 2:
+			fichier="cours_EDFBG.xml";
+			tm = new TasksManager(fichier); // TEST RM_BG
+			al = new Algorithms(tm,fichier);
+			al.EdfBg();
+			break;
+		//		case 3:
+		//			tm = new TasksManager("cours_EDFTBS.xml"); // TEST RM_BG
+		//			al = new Algorithms(tm);
+		//			al.EdfTbs(); //TODO
+		//			break;
+		default:
+			System.out.println("***Erreur de données Integer attendu***");
+			break;
+		}
+	}
+
+	public static void menu() throws Exception
+	{
+		System.out.println("********************");
+		System.out.println("*****GENIUS TASK****");
+		System.out.println("********************");
+		System.out.println("Tapez 1 pour une démonstration des différents algorithmes");
+		System.out.println("Tapez 2 pour une commencer par une génératio ndes tâches");
+		choix = main.lireInt();
+
+		switch (choix)
+		{
+		case 1:
+menuExemples();
+			break;
+		case 2:
+
+			System.out.println("Nom du fichier");
+			String adresse = main.lireString();
+			if (adresse.charAt(0) == '/')
+				fichier = adresse;
+			else
+				fichier += adresse;
+			//System.out.println("Merci pour" + fichier);
+			System.out.println("Choix de l'algorithme d'ordonancement");
+			System.out.println("Tapez r pour utiliser RM-BG ");
+			System.out.println("Tapez e pour utiliser EDF-TBS");
+			algo = main.lireLettre();
+
+			break;
+
+		default:
+			break;
+		}
 
 	}
 
@@ -76,14 +171,22 @@ public class main
 	 */
 	public static void main(String[] args) throws Exception
 	{
+<<<<<<< .mine
+//		TasksManager tm = new TasksManager("cours_RMBG.xml"); // TEST RM_BG
+//		Algorithms al = new Algorithms(tm);
+//		al.RmBg();
+		//		al.EdfBg();
+		//		al.EdfTbs(0.25);
+=======
 		TasksManager tm = new TasksManager("cours_RMBG.xml"); // TEST RM_BG
 		Algorithms al = new Algorithms(tm);
 	al.RmBg();
 //		al.EdfBg();
 //		al.EdfTbs(0.25);
 		
+>>>>>>> .r238
 
-		//		menu();
+				menu();
 		//
 		//		TasksManager tm = new TasksManager(mainGenerator.FileGenerator());
 		//		Algorithms al = new Algorithms(tm);
