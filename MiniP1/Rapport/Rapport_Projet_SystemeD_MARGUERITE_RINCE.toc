@@ -1,0 +1,22 @@
+\select@language {french}
+\contentsline {chapter}{Table des mati\`eres}{1}{section*.2}
+\contentsline {chapter}{\numberline {1}Cahier des charges}{2}{chapter.1}
+\contentsline {paragraph}{Introduction :}{2}{section*.3}
+\contentsline {section}{\numberline {1.1}Donn\IeC {\'e}es en entr\IeC {\'e}es}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Fonctionnement}{2}{section.1.2}
+\contentsline {chapter}{\numberline {2}Analyse et solutions du probl\IeC {\`e}me}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction et choix du langage}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Modelisation du probl\IeC {\`e}me}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}G\IeC {\'e}n\IeC {\'e}ration de t\IeC {\^a}ches dans un fichier}{4}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}D\IeC {\'e}tail dur la g\IeC {\'e}n\IeC {\'e}ration al\IeC {\'e}atoire}{6}{subsection.2.3.1}
+\contentsline {section}{\numberline {2.4}Algorithmes et structures mises en oeuvre}{6}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Premi\IeC {\`e}re Partie}{6}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Deuxi\IeC {\`e}me partie}{6}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Interface propos\IeC {\'e}e}{9}{section.2.5}
+\contentsline {chapter}{\numberline {3}Manuel utilisateur}{10}{chapter.3}
+\contentsline {chapter}{\numberline {4}Jeux d'essais}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Cas de RMBG}{11}{section.4.1}
+\contentsline {chapter}{\numberline {5}Bilan et conclusion}{13}{chapter.5}
+\contentsline {section}{\numberline {5.1}G\IeC {\'e}n\IeC {\'e}ration des t\IeC {\^a}ches}{13}{section.5.1}
+\contentsline {section}{\numberline {5.2}Mise en oeuvre des algorithmes}{13}{section.5.2}
+\contentsline {chapter}{Table des figures}{14}{section*.5}
