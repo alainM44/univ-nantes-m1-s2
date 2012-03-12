@@ -4,6 +4,7 @@ import genTache.AbstractTache;
 import genTache.TacheAperiodique;
 import genTache.TachePeriodique;
 
+import java.io.IOException;
 import java.lang.Thread.State;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -17,11 +18,14 @@ public class Algorithms
 	TasksManager tm;
 	Writer w;
 
-	public Algorithms(TasksManager tm)
+	public Algorithms(TasksManager tm,String filename)
 	{
 		super();
+		String kiwifile = filename.replace("xml", "ktr");
+		System.out.println(kiwifile);
+		
 		this.tm = tm;
-		this.w = new Writer("demo1.ktr", tm, tm.PPCM(tm.getTachesPeriodiques()));
+		this.w = new Writer(kiwifile, tm, tm.PPCM(tm.getTachesPeriodiques()));
 	}
 
 	public void EdfBg() throws Exception
@@ -370,7 +374,7 @@ public class Algorithms
 		w.generateFile();
 	}
 
-	public void EdfTbs(double Us)
+	public void EdfTbs(double Us) throws IOException
 	{
 		ArrayList<TachePeriodique> tabP = new ArrayList<TachePeriodique>();
 		ArrayList<TacheAperiodique> tabA = new ArrayList<TacheAperiodique>();
