@@ -175,15 +175,13 @@ public class mainGenerator
 
 			System.out.println(resteAp);
 		}
-		System.out.println("Entrez un nom de fichier : ");
-		in.nextLine();
-		filename = in.nextLine();
-		// Instanciation d'un fichier c:/temp/article.xml
-		File taches = new File("/comptes/E074862X/workspace/MiniP1/taches.xml");
+	
+
+		File taches = new File("taches.xml");
 		FileOutputStream fos = new FileOutputStream(taches);
 		xstream.toXML(tab, fos);
 		// xstream.toXML(taches, fos);
-		return filename;
+		return "taches.xml";
 	}
 
 	public static int PPCM(ArrayList<Integer> t)
@@ -229,18 +227,6 @@ public class mainGenerator
 	public static void main(String[] args) throws Exception
 	{
 		FileGenerator();
-
-		// menu();
-		//
-		// TasksManager tm = new TasksManager(mainGenerator.FileGenerator());
-		// Algorithms al = new Algorithms(tm);
-		// if (algo.equals("r"))
-		// al.RmBg();
-		//
-		// else if (algo.equals("e"))
-		// al.EdfTbs();
-		// else
-		// System.out.println("Error pas d'algorithme valide selectionné");
-
+		
 	}
 }

@@ -1,10 +1,11 @@
 package main;
 
+import genTache.mainGenerator;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 import sstr.Algorithms;
 import sstr.TasksManager;
 
@@ -31,8 +32,7 @@ public class main
 			InputStreamReader lecteur = new InputStreamReader(System.in);
 			BufferedReader entree = new BufferedReader(lecteur);
 			ligne_lue = entree.readLine();
-		}
-		catch (IOException err)
+		} catch (IOException err)
 		{
 			System.exit(0);
 		}
@@ -51,8 +51,7 @@ public class main
 		{
 			String ligne_lue = lireString();
 			x = Double.parseDouble(ligne_lue);
-		}
-		catch (NumberFormatException err)
+		} catch (NumberFormatException err)
 		{
 			System.out.println("***Erreur de données Double attendu***");
 			System.exit(0);
@@ -72,8 +71,7 @@ public class main
 		{
 			String ligne_lue = lireString();
 			x = Integer.parseInt(ligne_lue);
-		}
-		catch (NumberFormatException err)
+		} catch (NumberFormatException err)
 		{
 			System.out.println("***Erreur de données Integer attendu***");
 			System.exit(0);
@@ -138,10 +136,8 @@ public class main
 		System.out.println("********************");
 		System.out.println("*****GENIUS TASK****");
 		System.out.println("********************");
-		System.out
-				.println("Tapez 1 pour une démonstration des différents algorithmes");
-		System.out
-				.println("Tapez 2 pour une commencer par une génératio ndes tâches");
+		System.out.println("Tapez 1 pour une démonstration des différents algorithmes");
+		System.out.println("Tapez 2 pour une commencer par une génération des tâches");
 		choix = main.lireInt();
 
 		switch (choix)
@@ -151,19 +147,26 @@ public class main
 			break;
 		case 2:
 
-			System.out.println("Nom du fichier");
-			String adresse = main.lireString();
-			if (adresse.charAt(0) == '/')
-				fichier = adresse;
-			else
-				fichier += adresse;
-			// System.out.println("Merci pour" + fichier);
 			System.out.println("Choix de l'algorithme d'ordonancement");
 			System.out.println("Tapez 1 pour RM BG");
 			System.out.println("Tapez 2 pour EDF-BG");
 			System.out.println("Tapez 3 pour TBS-BG");
 			choix = main.lireInt();
-
+			tm = new TasksManager(mainGenerator.FileGenerator());
+			al = new Algorithms(tm, "output.ktr");
+			switch (choix)
+			{
+			case 1:
+				al.RmBg();
+				break;
+			case 2:
+				al.EdfBg();
+			case 3:
+				al.EdfTbs();
+			default:
+				System.out.println("erreur veuillez saisir 1 2 ou 3");
+				break;
+			}
 			break;
 
 		default:
@@ -178,23 +181,8 @@ public class main
 	 */
 	public static void main(String[] args) throws Exception
 	{
-		// TasksManager tm = new TasksManager("cours_RMBG.xml"); // TEST RM_BG
-		// Algorithms al = new Algorithms(tm);
-		// al.RmBg();
-		// al.EdfBg();
-		// al.EdfTbs(0.25);
 
 		menu();
-		//
-		// TasksManager tm = new TasksManager(mainGenerator.FileGenerator());
-		// Algorithms al = new Algorithms(tm);
-		// if (algo.equals("r"))
-		// al.RmBg();
-		//
-		// else if (algo.equals("e"))
-		// al.EdfTbs();
-		// else
-		// System.out.println("Error pas d'algorithme valide selectionné");
 
 	}
 

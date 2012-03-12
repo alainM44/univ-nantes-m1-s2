@@ -6,6 +6,15 @@ import genTache.TachePeriodique;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Classe permettant la création du fichier .ktr. L'objet instancié pourra être
+ * appellé au fur et à mesure des algortihmes d'ordonnancement pour écrire dans
+ * le fichier
+ * 
+ * @author E11A932Q
+ * 
+ */
+
 public class Writer
 {
 	private String filename;
@@ -13,9 +22,6 @@ public class Writer
 	private int DECIMAL_DIGITS;
 	private int DURATION;
 	private String lines;
-	// LINE_NAME 0 A
-	// LINE_NAME 1 B
-	// LINE_NAME 2 C
 	private String PALETTE;
 	private int ZOOM_X;
 	private int ZOOM_Y;
@@ -24,29 +30,22 @@ public class Writer
 	private String Events;
 	private int last_date;// savoir si on doit sauter une ligne entre deux dates
 
-	public Writer(String filename, TasksManager tm,int duree)
+	public Writer(String filename, TasksManager tm, int duree)
 	{
 		super();
-		
-
 		this.filename = filename;
 		this.DECIMAL_DIGITS = 0;
-		this.DURATION =duree;
-		// LINE_NAME 0 A
-		// LINE_NAME 1 B
-		// LINE_NAME 2 C
+		this.DURATION = duree;
 		this.PALETTE = "Rainbow";
 		this.ZOOM_X = 4;
 		this.ZOOM_Y = 16;
-		lines="";
+		lines = "";
 		for (TachePeriodique tache : tm.getTachesPeriodiques())
-			lines += "LINE_NAME" +" "+ tache.getId() + " " + tache.getId() + "\n";
+			lines += "LINE_NAME" + " " + tache.getId() + " " + tache.getId() + "\n";
 		for (TacheAperiodique tache : tm.getTachesAperiodiques())
-			lines += "LINE_NAME" +" "+ tache.getId() + " " + tache.getId() + "\n";
-		// COLOR EXEC-E 0 orchid4
-		System.out.println(lines);
-		this.DrawingOption = "DECIMAL_DIGITS 0" + "\n" + "DURATION " + this.DURATION + "\n" + lines+
-	
+			lines += "LINE_NAME" + " " + tache.getId() + " " + tache.getId() + "\n";
+		this.DrawingOption = "DECIMAL_DIGITS 0" + "\n" + "DURATION " + this.DURATION + "\n" + lines +
+
 		"PALETTE " + this.PALETTE + "\n" + "ZOOM_X " + this.ZOOM_X + "\n" + "ZOOM_Y " + this.ZOOM_Y + "\n" +
 		// COLOR EXEC-E 0 orchid4 ";
 		"\n";
@@ -54,6 +53,22 @@ public class Writer
 		this.last_date = 0;
 	}
 
+	/**
+	 * Ajout un événement dont les caractéristiques sont les parmètres suivants
+	 * 
+	 * 
+	 * @param Time
+	 *            date de l'évenement
+	 * @param Event_Type
+	 *            nature de l'évenement
+	 * @param Line
+	 *            tâche concernée
+	 * @param Text
+	 *            description de l'évenement
+	 * @param Color
+	 *            Couleur de l'évenement
+	 * 
+	 */
 	public void addEvent(int Time, String Event_Type, int Line, String Text,
 			String Color)
 	{
@@ -66,6 +81,20 @@ public class Writer
 
 	}
 
+	/**
+	 * Ajout un événement dont les caractéristiques sont les parmètres suivants:
+	 * 
+	 * 
+	 * @param Time
+	 *            date de l'évenement
+	 * @param Event_Type
+	 *            nature de l'évenement
+	 * @param Line
+	 *            tâche concernée
+	 * @param Color
+	 *            Couleur de l'évenement
+	 * 
+	 */
 	public void addEvent(int Time, String Event_Type, int Line, String Color)
 	{
 		if (last_date != Time)
@@ -75,7 +104,16 @@ public class Writer
 		}
 		this.Events += Integer.toString(Time) + " " + Event_Type + Integer.toString(Line) + " " + Color + "\n";
 	}
-
+	/**
+	 * Ajout un événement dont les caractéristiques sont les parmètres suivants:
+	 * 	
+	 * @param Time
+	 *            date de l'évenement
+	 * @param Event_Type
+	 *            nature de l'évenement
+	 * @param Line
+	 *            tâche concernée
+	 */
 	public void addEvent(int Time, String Event_Type, int Line)
 	{
 		if (last_date != Time)
@@ -85,7 +123,16 @@ public class Writer
 		}
 		this.Events += Integer.toString(Time) + " " + Event_Type + " " + Integer.toString(Line) + "\n";
 	}
-
+	/**
+	 * Ajout une ligne verticale avec les caractéristiques suivantes
+	 * 	
+	 * @param Time
+	 *            date de l'évenement
+	 * @param Event_Type
+	 *            nature de l'évenement
+	 * @param Line
+	 *            tâche concernée
+	 */
 	public void addVLINE(int Time, int Line, String Text, String Color)
 	{
 		if (last_date != Time)
@@ -124,7 +171,7 @@ public class Writer
 				}
 			}
 		}
-Runtime.getRuntime().exec("./kiwi/kiwi "+filename	);
+		Runtime.getRuntime().exec("./kiwi/kiwi " + filename);
 	}
 
 	public String getFilename()
