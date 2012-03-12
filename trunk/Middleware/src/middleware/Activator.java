@@ -1,5 +1,9 @@
 package middleware;
 
+import javax.imageio.spi.RegisterableService;
+
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.RegistryFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -19,6 +23,7 @@ public class Activator extends AbstractUIPlugin {
 	 * The constructor
 	 */
 	public Activator() {
+	
 	}
 
 	/*
@@ -57,5 +62,23 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+	
+	public void transform()
+	{
+		System.out.println("chat");
+		// TODO Auto-generated method stub
+		for(IConfigurationElement element: RegistryFactory.getRegistry().getConfigurationElementsFor("Middleware.Acquisition")){
+			System.out.println(element.getAttribute("Nom"));
+		}
+			for(IConfigurationElement element: RegistryFactory.getRegistry().getConfigurationElementsFor("Middleware.Analyse")){
+				System.out.println(element.getAttribute("Nom"));
+			/*for(String s:element.getAttributeNames()){
+				System.out.println("#"+s+"#");
+			}*/
+			
+		}
+		
+		
 	}
 }

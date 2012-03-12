@@ -2,5 +2,11 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="Analyse" name="Analyse" schema="schema/Analyse.exsd"/>
+   <extension
+         point="Middleware.Reasoning">
+      <AlerteElement
+            Alerte="reasoning.Alerte1">
+      </AlerteElement>
+   </extension>
 
 </plugin>

@@ -2,9 +2,9 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="Middleware.FluxVideo">
+         point="Middleware.Acquisition">
       <Flux
-            Nom="contrib 1"
+            Nom="ContributeurAcquisi"
             flux="acquisition.Acquisition">
       </Flux>
    </extension>
