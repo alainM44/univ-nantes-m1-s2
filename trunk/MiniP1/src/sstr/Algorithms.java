@@ -374,11 +374,12 @@ public class Algorithms
 		w.generateFile();
 	}
 
-	public void EdfTbs(double Us) throws IOException
+	public void EdfTbs() throws IOException
 	{
 		ArrayList<TachePeriodique> tabP = new ArrayList<TachePeriodique>();
 		ArrayList<TacheAperiodique> tabA = new ArrayList<TacheAperiodique>();
 		int hyperperiode = tm.PPCM(tm.getTachesPeriodiques());
+		double Us = tm.calculeUs();
 		int t = 0;
 		int nextReveil;
 		int preemptions = 0;

@@ -31,7 +31,8 @@ public class main
 			InputStreamReader lecteur = new InputStreamReader(System.in);
 			BufferedReader entree = new BufferedReader(lecteur);
 			ligne_lue = entree.readLine();
-		} catch (IOException err)
+		}
+		catch (IOException err)
 		{
 			System.exit(0);
 		}
@@ -50,7 +51,8 @@ public class main
 		{
 			String ligne_lue = lireString();
 			x = Double.parseDouble(ligne_lue);
-		} catch (NumberFormatException err)
+		}
+		catch (NumberFormatException err)
 		{
 			System.out.println("***Erreur de données Double attendu***");
 			System.exit(0);
@@ -70,7 +72,8 @@ public class main
 		{
 			String ligne_lue = lireString();
 			x = Integer.parseInt(ligne_lue);
-		} catch (NumberFormatException err)
+		}
+		catch (NumberFormatException err)
 		{
 			System.out.println("***Erreur de données Integer attendu***");
 			System.exit(0);
@@ -107,22 +110,23 @@ public class main
 		switch (exemple)
 		{
 		case 1:
-			fichier="cours_RMBG.xml";
+			fichier = "cours_RMBG.xml";
 			tm = new TasksManager(fichier); // TEST RM_BG
-			al = new Algorithms(tm,fichier);
+			al = new Algorithms(tm, fichier);
 			al.RmBg();
 			break;
 		case 2:
-			fichier="cours_EDFBG.xml";
+			fichier = "cours_EDFBG.xml";
 			tm = new TasksManager(fichier); // TEST RM_BG
-			al = new Algorithms(tm,fichier);
+			al = new Algorithms(tm, fichier);
 			al.EdfBg();
 			break;
-		//		case 3:
-		//			tm = new TasksManager("cours_EDFTBS.xml"); // TEST RM_BG
-		//			al = new Algorithms(tm);
-		//			al.EdfTbs(); //TODO
-		//			break;
+		case 3:
+			fichier = "cours_EDFTBS.xml";
+			tm = new TasksManager("cours_EDFTBS.xml"); // TEST RM_BG
+			al = new Algorithms(tm, fichier);
+			al.EdfTbs();
+			break;
 		default:
 			System.out.println("***Erreur de données Integer attendu***");
 			break;
@@ -134,14 +138,16 @@ public class main
 		System.out.println("********************");
 		System.out.println("*****GENIUS TASK****");
 		System.out.println("********************");
-		System.out.println("Tapez 1 pour une démonstration des différents algorithmes");
-		System.out.println("Tapez 2 pour une commencer par une génératio ndes tâches");
+		System.out
+				.println("Tapez 1 pour une démonstration des différents algorithmes");
+		System.out
+				.println("Tapez 2 pour une commencer par une génératio ndes tâches");
 		choix = main.lireInt();
 
 		switch (choix)
 		{
 		case 1:
-menuExemples();
+			menuExemples();
 			break;
 		case 2:
 
@@ -151,7 +157,7 @@ menuExemples();
 				fichier = adresse;
 			else
 				fichier += adresse;
-			//System.out.println("Merci pour" + fichier);
+			// System.out.println("Merci pour" + fichier);
 			System.out.println("Choix de l'algorithme d'ordonancement");
 			System.out.println("Tapez r pour utiliser RM-BG ");
 			System.out.println("Tapez e pour utiliser EDF-TBS");
@@ -171,32 +177,23 @@ menuExemples();
 	 */
 	public static void main(String[] args) throws Exception
 	{
-<<<<<<< .mine
-//		TasksManager tm = new TasksManager("cours_RMBG.xml"); // TEST RM_BG
-//		Algorithms al = new Algorithms(tm);
-//		al.RmBg();
-		//		al.EdfBg();
-		//		al.EdfTbs(0.25);
-=======
-		TasksManager tm = new TasksManager("cours_RMBG.xml"); // TEST RM_BG
-		Algorithms al = new Algorithms(tm);
-	al.RmBg();
-//		al.EdfBg();
-//		al.EdfTbs(0.25);
-		
->>>>>>> .r238
+		// TasksManager tm = new TasksManager("cours_RMBG.xml"); // TEST RM_BG
+		// Algorithms al = new Algorithms(tm);
+		// al.RmBg();
+		// al.EdfBg();
+		// al.EdfTbs(0.25);
 
-				menu();
+		menu();
 		//
-		//		TasksManager tm = new TasksManager(mainGenerator.FileGenerator());
-		//		Algorithms al = new Algorithms(tm);
-		//		if (algo.equals("r"))
-		//			al.RmBg();
+		// TasksManager tm = new TasksManager(mainGenerator.FileGenerator());
+		// Algorithms al = new Algorithms(tm);
+		// if (algo.equals("r"))
+		// al.RmBg();
 		//
-		//		else if (algo.equals("e"))
-		//			al.EdfTbs();
-		//		else
-		//			System.out.println("Error pas d'algorithme valide selectionné");
+		// else if (algo.equals("e"))
+		// al.EdfTbs();
+		// else
+		// System.out.println("Error pas d'algorithme valide selectionné");
 
 	}
 
