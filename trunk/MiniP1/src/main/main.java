@@ -159,9 +159,10 @@ public class main
 				fichier += adresse;
 			// System.out.println("Merci pour" + fichier);
 			System.out.println("Choix de l'algorithme d'ordonancement");
-			System.out.println("Tapez r pour utiliser RM-BG ");
-			System.out.println("Tapez e pour utiliser EDF-TBS");
-			algo = main.lireLettre();
+			System.out.println("Tapez 1 pour RM BG");
+			System.out.println("Tapez 2 pour EDF-BG");
+			System.out.println("Tapez 3 pour TBS-BG");
+			choix = main.lireInt();
 
 			break;
 
