@@ -72,7 +72,24 @@ Ci : durée d'exécution maximale.
 \item
 Di : délai critique.
 \end{itemize} 
-\subsection{Détail dur la génération aléatoire}
+
+
+\section{Algorithmes et structures mises en oeuvre}
+
+\sectionmark{Algorithmes}
+\subsection{Commentaires sur la première Partie}
+   \begin{figure}[htbp]
+  \centering
+  \includegraphics[scale=0.60]{img/packgen}
+  \caption{Package générateur de tâches temps réel}
+  \label{fig:gen}
+\end{figure}
+
+\paragraph{Calcul des tâches apériodiques} 
+Le calcul des tâches ap est effectué selon la formule suivante : $ U_a =  \frac{\sum_{i=1}^m C_i}{ppcm(P_i)}$. L'utilisateur entre la variable Uap  et le nombre de tâches apériodiques qu'il désire. 
+charge des ap sur une hyperpériode 
+
+\paragraph{Détail dur la génération aléatoire}
 Le cahier des charges spécifiait que la génération se devait d'offrir la possibilité de générer les taches aléatoirement ou bien en laissant l'utilisateur choisir les paramètres de chacune d'elle. Cependant la génération de taches aléatoires pose de nombreux problèmes.
 
 Le premier problème est de savoir qu'elle est la taille maximale que l'on peut attribué a un $Ci$ ou un $Pi$. Il aurait été possible de laisser le choix à l'utilisateur mais dès que le nombre de taches est grand ou que leur $Pi$ est grand, l'hyperpériode explose. L'objectif étant par la suite de pouvoir générer un fichier pour kiwi, il aurait pu se présenter le cas où les durées d'ordonnancements dépassent les possibilités des valeurs pour kiwi.
@@ -81,21 +98,6 @@ Un autre problème étant de savoir comment générer les taches pour offrir une
 
 Au final le programme de génération des taches aléatoires est peu sûr et laisse la possibilité, à l'utilistaeur, d'entrer des informations contradictoires qui peuvent, dans la majorité des cas, faire échouer la génération.
 Par exemple l'utilisateur peut rentrer un nombre de taches aléatoires non nulle mais mettre ensuite une utilisation processeur non nulle pour ces mêmes taches, ayant pour conséquence de retourner une erreur lors de la génération.
-
-
-\section{Algorithmes et structures mises en oeuvre}
-\sectionmark{Algorithmes}
-\subsection{Première Partie}
-   \begin{figure}[htbp]
-  \centering
-  \includegraphics[scale=0.60]{img/packgen}
-  \caption{Package générateur de tâches temps réel}
-  \label{fig:gen}
-\end{figure}
-
-Calcul des tâches ap  
-Le calcul des tâches ap est effectué selon la formule suivante : $ U_a =  \frac{\sum_{i=1}^m C_i}{ppcm(P_i)}$   ....  L'utilisateur entre la variable Uap  et le nombre de tache ap qu'il désire (m) les variables restantes 
-charge des ap sur une hyperpériode 
 
 \subsection{Deuxième partie}
 La deuxième partie du projet, consistait à partir du fichier de tâches (cf Première Partie), de creer un simulateur proposant  deux types de fonctionnalités :

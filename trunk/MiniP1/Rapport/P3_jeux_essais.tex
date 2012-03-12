@@ -8,6 +8,11 @@ L'utilisation de la combination des algorithmes Rate Monotonic et BackGround : d
   \label{fig:RMBG}
 \end{figure}
 On obtient les résultat suivants suivants : 
+\begin{verbatim}
+PPCM : 30
+Resultat du test de faisabilité : 0.73333335
+
+Déroulement de l'algorithme
 
 ****BILAN ET ANALYSE****
 Temps d'execution : 30
@@ -18,3 +23,30 @@ Nombre de préemptions :1
 Temps de réponse min : 4
 Temps de réponse max : 7
 Temps de réponse moy : 6.5
+\end{verbatim}
+\section{Cas de EDFBG}
+L'utilisation de la combination des algorithmes Earliest Deadline First et BackGround : donne  le fichier kiwi suivant : 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[scale=0.60]{img/EDFBG}
+  \caption{Résultat de l'appelle à EDFBG}
+  \label{fig:EDFBG}
+\end{figure}
+On obtient les résultat suivants suivants : 
+
+\begin{verbatim}
+Resutalt du test pour Ci<Pi selon EDF U= : 0
+U<=1 condition suffisante vérifiée
+
+Déroulement de l'algorithme
+
+****BILAN ET ANALYSE****
+Temps d'execution : 20
+Temps creux : 0
+Utilisation du processeur :100
+Nombre de préemptions :2
+****TacheAp****
+Temps de réponse min : 6
+Temps de réponse max : 8
+Temps de réponse moy : 8.0
+\end{verbatim}
