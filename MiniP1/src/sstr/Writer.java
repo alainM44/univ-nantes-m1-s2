@@ -97,7 +97,7 @@ public class Writer
 
 	}
 
-	public void generateFile()
+	public void generateFile() throws IOException
 	{
 		FileWriter writer = null;
 
@@ -124,7 +124,7 @@ public class Writer
 				}
 			}
 		}
-
+Runtime.getRuntime().exec("./kiwi/kiwi "+filename	);
 	}
 
 	public String getFilename()
