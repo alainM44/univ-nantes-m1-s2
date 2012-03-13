@@ -1,0 +1,13 @@
+// begin borrow(b:Book; u:User)
+{
+	Book b = bookSystem.getBook("${b}");
+	
+	assertTrue(  ( b.getCurrent_state() instanceof book.Reserved && b.has_res("${u}"))||b.getCurrent_state() instanceof book.Available);
+	
+	bookSystem.processCommand("${b} BORROW ${u}");
+	
+    assertFalse(b.has_res("${u}")) ;
+	assertTrue(b.getCurrent_state() instanceof book.Borrowed) ;
+
+}
+// end borrow(b:Book; u:User)

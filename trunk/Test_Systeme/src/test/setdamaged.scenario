@@ -1,0 +1,12 @@
+// begin setdamaged(b:Book)
+{
+	Book b = bookSystem.getBook("${b}");
+	assertFalse(b.isDamaged());
+	assertTrue(b.getCurrent_state() instanceof book.Borrowed);
+	bookSystem.processCommand("${b} SETDAMAGED");
+	assertTrue(b.isDamaged());
+
+}
+// end setdamaged(b:Book) 
+
+

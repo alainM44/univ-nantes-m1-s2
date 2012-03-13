@@ -1,0 +1,10 @@
+// begin return(b:Book; u:User)
+{
+ 	assertTrue(b.getCurrent_state() instanceof book.Borrowed);
+ 	assertTrue(u.has("${b}"); 
+	bookSystem.processCommand("${b} RETURN");
+
+	
+	
+}
+// end return(b:Book; u:User)

@@ -1,0 +1,7 @@
+// begin borrow(b:Book; u:User)
+{
+
+	bookSystem.processCommand("${b} BORROW ${u}");
+
+}
+// end borrow(b:Book; u:User)

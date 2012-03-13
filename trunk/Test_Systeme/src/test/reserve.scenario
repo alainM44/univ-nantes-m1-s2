@@ -1,0 +1,11 @@
+// begin reserve(b:Book; u:User)
+{
+	assertTrue(b.getCurrent_state() instanceof book.Available)
+	bookSystem.processCommand("${b} RESERVE ${u}");
+	assertTrue( (b.getCurrent_state() instanceof book.Available) &&   , (b.getCurrent_state() instanceof book.Rserved) 
+
+}
+// end reserve(b:Book; u:User)
+
+
+  post reserved(u, b) and { state(b)="available" } implies {state(b)="reserved"}

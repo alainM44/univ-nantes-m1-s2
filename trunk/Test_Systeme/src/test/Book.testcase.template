@@ -1,0 +1,40 @@
+
+import junit.framework.TestCase;
+import book.*;
+
+/** 
+ * Test case ${name} for Book system 
+ */
+
+public class ${name} extends TestCase {
+
+	protected BookSystem bookSystem;
+
+	// constructor
+	public ${name}(String name) {
+		super(name);
+	}
+	
+	// initialization
+	public void setUp() {
+		bookSystem = new BookSystem();
+		Book b = new Book("book1");
+		bookSystem.addBook(b);
+		b = new Book("book2");
+		bookSystem.addBook(b);
+	}
+	
+	// cleanup
+	public void tearDown() {
+		bookSystem = null;
+	}
+
+	public void test${name}() {
+${scenario}
+	}
+
+	public static void main(String[] args) {
+		junit.swingui.TestRunner.run(${name}.class);
+	}
+
+}
