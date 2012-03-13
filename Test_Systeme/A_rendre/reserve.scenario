@@ -1,0 +1,12 @@
+// begin reserve(b:Book; u:User)
+{
+	Book b = bookSystem.getBook("${b}");
+
+	assertFalse(b.has_res("${u}"));
+
+	bookSystem.processCommand("${b} RESERVE ${u}");
+	
+	assertTrue(b.has_res("${u}"));
+	assertTrue(!(b.getCurrent_state() instanceof book.Available) || b.getCurrent_state() instanceof book.Reserved) ;
+}
+// end reserve(b:Book; u:User)

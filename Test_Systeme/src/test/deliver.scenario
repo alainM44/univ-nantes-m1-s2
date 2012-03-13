@@ -1,0 +1,12 @@
+// begin deliver(b : Book)
+{
+	assertTrue((b.getCurrent_state() instanceof book.Ordered)||(b.getCurrent_state() instanceof book.BeingFixed));
+	bookSystem.processCommand("${b} DELIVER");
+	
+}
+// end deliver(b : Book)
+UC deliver(b:Book)
+  scenario "deliver.scenario"
+  pre state(b)="ordered" or state(b)="beingfixed"
+  post { exists(u:User) {reserved(u, b)} } implies { state(b)="reserved" } and
+          { not exists(u:User) {reserved(u, b)} } implies { state(b)="available" }

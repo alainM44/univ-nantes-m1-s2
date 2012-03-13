@@ -1,0 +1,14 @@
+// begin repair(b:Book)
+{
+	Book b = bookSystem.getBook("${b}");
+
+	assertTrue(b.getCurrent_state() instanceof book.Available);
+	assertTrue(b.isDamaged());
+	
+	bookSystem.processCommand("${b} FIX");
+	bookSystem.processCommand("${b} SETREPAIRED");
+	
+	assertFalse(b.isDamaged());
+	assertTrue(b.getCurrent_state() instanceof book.BeingFixed);
+}
+// end repair(b:Book)
