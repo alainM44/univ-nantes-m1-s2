@@ -6,7 +6,13 @@ Dans le cadre du module Systèmes Distribués, l'opportunité de  spécifier et 
  L'objectif est de définir un outil de simulation  d'ordonancement de tâche en temps réel.
 
 \section{Modelisation du problème}
-Le cahier des charges demandait une gestion de taches périodique et apériodiques. blah blah blah d'ordonancement
+Suite à l'étude du cahier des charges nous proposons l'architecture de l'outil suivante :
+   \begin{figure}[htbp]
+  \centering
+  \includegraphics[scale=0.70]{img/archi}
+  \caption{Architecture de l'outil}
+  \label{fig:archi}
+\end{figure}
 \section{Génération de tâches dans un fichier}
 \sectionmark{Génération fichier}
 La première partie du projet avait pour objectif d'obtenir un nombre n de taches périodiques et apériodiques pour de futurs traitements décrits dans la partie 2 : rajouter lien dym. \'A nouveau le choix du format d'un tel fichier nous était laissé. Nous avons choisis de générer un fichier xml (à nouveau pour des raisons  de simplicité) à la syntaxe suivante : 
@@ -87,8 +93,6 @@ Di : délai critique.
 
 \paragraph{Calcul des tâches apériodiques} 
 Le calcul des tâches ap est effectué selon la formule suivante : $ U_a =  \frac{\sum_{i=1}^m C_i}{ppcm(P_i)}$. L'utilisateur entre la variable Uap  et le nombre de tâches apériodiques qu'il désire. 
-charge des ap sur une hyperpériode 
-
 \paragraph{Détail dur la génération aléatoire}
 Le cahier des charges spécifiait que la génération se devait d'offrir la possibilité de générer les taches aléatoirement ou bien en laissant l'utilisateur choisir les paramètres de chacune d'elle. Cependant la génération de taches aléatoires pose de nombreux problèmes.
 
@@ -111,11 +115,11 @@ Le premier sujet de reflexion était donc dans quelles structures de donnée sto
 
    \begin{figure}[htbp]
   \centering
-  \includegraphics[scale=0.60]{img/packsstr}
+  \includegraphics[scale=0.55]{img/packsstr}
   \caption{Package : Simulateur de systèmes temps réel}
   \label{fig:sstr}
 \end{figure}
-\clearpage
+%\clearpage
 \section{Interface proposée}
 Toutes l'interface de l'outil est en ligne de commande. L'absence d'IHM graphique est due au manque de temps et au peu d'intêret que cela représentait pour le problème étudié. De même l'outil ne prend en compte aucune option. Même si cet aspect aurait apporté un certain confort à l'utilisateur, nous avons opté pour la solution de lui demandé au fur et à mesur de l'execution du programme les diverses options et paramètres requis. Nous avons regretté ce choix lors de la phase des test (la répétitions sans cesse des divers option est fastidieuse). Cependant nous avons gagné un temps de conceptio non négligeable. 
 
