@@ -4,21 +4,22 @@
 \contentsline {paragraph}{Introduction :}{2}{section*.3}
 \contentsline {section}{\numberline {1.1}Donn\IeC {\'e}es en entr\IeC {\'e}es}{2}{section.1.1}
 \contentsline {section}{\numberline {1.2}Fonctionnement}{2}{section.1.2}
-\contentsline {chapter}{\numberline {2}Analyse et solutions du probl\IeC {\`e}me}{4}{chapter.2}
+\contentsline {chapter}{\numberline {2}Analyse et solution du probl\IeC {\`e}me}{4}{chapter.2}
 \contentsline {section}{\numberline {2.1}Introduction et choix du langage}{4}{section.2.1}
 \contentsline {section}{\numberline {2.2}Modelisation du probl\IeC {\`e}me}{4}{section.2.2}
 \contentsline {section}{\numberline {2.3}G\IeC {\'e}n\IeC {\'e}ration de t\IeC {\^a}ches dans un fichier}{5}{section.2.3}
 \contentsline {section}{\numberline {2.4}Algorithmes et structures mises en oeuvre}{6}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Commentaires sur la premi\IeC {\`e}re Partie}{6}{subsection.2.4.1}
 \contentsline {paragraph}{Calcul des t\IeC {\^a}ches ap\IeC {\'e}riodiques}{7}{section*.4}
-\contentsline {paragraph}{D\IeC {\'e}tail dur la g\IeC {\'e}n\IeC {\'e}ration al\IeC {\'e}atoire}{7}{section*.5}
+\contentsline {paragraph}{D\IeC {\'e}tail sur la g\IeC {\'e}n\IeC {\'e}ration al\IeC {\'e}atoire}{7}{section*.5}
 \contentsline {subsection}{\numberline {2.4.2}Deuxi\IeC {\`e}me partie}{7}{subsection.2.4.2}
 \contentsline {section}{\numberline {2.5}Interface propos\IeC {\'e}e}{8}{section.2.5}
 \contentsline {chapter}{\numberline {3}Manuel utilisateur}{9}{chapter.3}
 \contentsline {chapter}{\numberline {4}Jeux d'essais}{10}{chapter.4}
 \contentsline {section}{\numberline {4.1}Cas de RMBG}{10}{section.4.1}
 \contentsline {section}{\numberline {4.2}Cas de EDFBG}{11}{section.4.2}
-\contentsline {chapter}{\numberline {5}Bilan et conclusion}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}G\IeC {\'e}n\IeC {\'e}ration des t\IeC {\^a}ches}{13}{section.5.1}
-\contentsline {section}{\numberline {5.2}Mise en oeuvre des algorithmes}{13}{section.5.2}
-\contentsline {chapter}{Table des figures}{14}{section*.7}
+\contentsline {section}{\numberline {4.3}Cas de EDF-TBS}{13}{section.4.3}
+\contentsline {chapter}{\numberline {5}Bilan et conclusion}{15}{chapter.5}
+\contentsline {section}{\numberline {5.1}G\IeC {\'e}n\IeC {\'e}ration des t\IeC {\^a}ches}{15}{section.5.1}
+\contentsline {section}{\numberline {5.2}Mise en oeuvre des algorithmes}{15}{section.5.2}
+\contentsline {chapter}{Table des figures}{16}{section*.7}
