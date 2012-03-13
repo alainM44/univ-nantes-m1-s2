@@ -7,6 +7,7 @@ import genTache.TachePeriodique;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class Algorithms
 {
@@ -439,7 +440,7 @@ public class Algorithms
 		int nbPremptions = 0;
 		int tempsCreux = 0;
 		int tempsExecution = 0;
-		ArrayList<Integer> tempAttenteTacheA = new ArrayList<Integer>();
+		HashMap<Integer, Integer> tempAttenteTacheA = new HashMap<Integer, Integer>();
 
 		int hyperperiode = tm.PPCM(tm.getTachesPeriodiques());
 		double Us = tm.calculeUs();
@@ -455,6 +456,7 @@ public class Algorithms
 			inverseU = 0;
 		tabP.addAll(tm.getTachesP(t, w));
 		tabA.addAll(tm.getTachesA(t, w));
+		calculeTempsAttenteAp(tempAttenteTacheA, tabA, t);
 		// On effectue l'ordonnancement jusqu'à l'hyperpériode
 		while (t < hyperperiode)
 		{
@@ -482,8 +484,9 @@ public class Algorithms
 			{
 				tabP.addAll(tm.getTachesP(nextReveil, w));
 				tabA.addAll(tm.getTachesA(nextReveil, w));
+				calculeTempsAttenteAp(tempAttenteTacheA, tabA, nextReveil);
 				candidate = plusGrandePrioritéTBS(inverseU, tabP, tabA);
-				//Si elle ne preempte pas on cherche le reveil suivant
+				// Si elle ne preempte pas on cherche le reveil suivant
 				if (candidate == courante)
 				{
 					courante.setCi(courante.getCi() - (nextReveil - t));
@@ -493,7 +496,9 @@ public class Algorithms
 					System.out.println(courante.getId()
 							+ " s'execute encore à t = " + t);
 				}
-				else//Si elle preempte, on change le booleen preempte pour sortir de la boucle
+				else
+				// Si elle preempte, on change le booleen preempte pour sortir
+				// de la boucle
 				{
 					preempte = true;
 					preemptions++;
@@ -507,7 +512,8 @@ public class Algorithms
 					nextReveil = tm.nextReveil(nextReveil);
 				}
 			}
-			//En sortant de la boucle, soit une tache à préempter soit la tache courante s'est terminée
+			// En sortant de la boucle, soit une tache à préempter soit la tache
+			// courante s'est terminée
 			if (!preempte)
 			{
 				w.addEvent(t + courante.getCi(), "EXEC-E", courante.getId());
@@ -516,28 +522,32 @@ public class Algorithms
 
 				tempsExecution += courante.getCi();
 				t += courante.getCi();
+				calculeTempsAttenteAp(tempAttenteTacheA, courante, t, true);
 
 				System.out.println(courante.getId() + " fini à t = " + (t));
 
 				tabP.addAll(tm.getTachesP(t, w));
 				tabA.addAll(tm.getTachesA(t, w));
+				calculeTempsAttenteAp(tempAttenteTacheA, tabA, t);
 				courante = plusGrandePrioritéTBS(inverseU, tabP, tabA);
-				//S'il n'y a plus de tache à executer.
+				// S'il n'y a plus de tache à executer.
 				if (courante == null)
 				{
-					tempsCreux += nextReveil -t;
+					tempsCreux += nextReveil - t;
 					t = nextReveil;
 					nextReveil = tm.nextReveil(nextReveil);
 					tabP.addAll(tm.getTachesP(t, w));
 					tabA.addAll(tm.getTachesA(t, w));
+					calculeTempsAttenteAp(tempAttenteTacheA, tabA, t);
 				}
 			}
 
 		}
-
+		ArrayList<Integer> tempAttenteA = new ArrayList<Integer>(
+				tempAttenteTacheA.values());
+		System.out.println(tempAttenteA);
 		System.out.println("Fin" + tabP);
-		affichageAnalyse(tempsExecution, tempsCreux, nbPremptions,
-				tempAttenteTacheA);
+		affichageAnalyse(tempsExecution, tempsCreux, nbPremptions, tempAttenteA);
 		w.generateFile();
 	}
 
@@ -622,7 +632,7 @@ public class Algorithms
 		{
 			moy += (float) tabTacheATemps.get(i);
 		}
-		moy = moy / (float) tabTacheATemps.size() + 1;
+		moy = moy / (float) tabTacheATemps.size() ;
 		Object min = Collections.min(tabTacheATemps);
 		Object max = Collections.max(tabTacheATemps);
 		// Object max = Collections.sum(tabTacheATemps);
@@ -855,17 +865,27 @@ public class Algorithms
 		}
 		return false;
 	}
-	
-//	public void calculeTempsAttenteAp(ArrayList<Integer> tempsAp, AbstractTache tache, int temps)
-//	{
-//		if( tache instanceof TacheAperiodique)
-//		{
-//			if (tempsAp.get(tache.getId() )== null)
-//				tempsAp.add(tache.getId(), temps);
-//			else
-//			{
-//				tempsAp.add(tache.getId(), tempsAp.get(tache.getId()) + temps);
-//			}
-//		}
-//	}
+
+	public void calculeTempsAttenteAp(HashMap<Integer, Integer> tempsAp,
+			AbstractTache tache, int t, boolean stop)
+	{
+		if (tache instanceof TacheAperiodique)
+		{
+			if (tempsAp.get(tache.getId()) == null)
+				tempsAp.put(tache.getId(), t);
+			else if (stop)
+			{
+				tempsAp.put(tache.getId(), t - tempsAp.get(tache.getId()));
+			}
+		}
+	}
+
+	public void calculeTempsAttenteAp(HashMap<Integer, Integer> tempsAp,
+			ArrayList<TacheAperiodique> tabAp, int t)
+	{
+		for (TacheAperiodique tache : tabAp)
+		{
+			calculeTempsAttenteAp(tempsAp, tache, t, false);
+		}
+	}
 }
