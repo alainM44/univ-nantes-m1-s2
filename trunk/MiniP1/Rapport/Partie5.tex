@@ -1,0 +1,27 @@
+\section{Utilisation par un terminal}
+\sectionmark{Terminal}
+\label{chap:useterm}
+
+\renewcommand{\labelitemi}{$\bullet$} %changer les puces pour cette page
+
+GT peut être utilisé uniquement en ligne de commande. Cette partie demandes des connaissances pré requises sur les commandes unix. En effet seul les fonctionalités de l'outil seront explicitées. La mecanisme des options est similaire à toute autres commandes unix. Pour plus de d'information sur les système \gls{unix}
+, nous recommandons l'ouvrage suivant : \cite{linux}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Utilisation basique}
+\label{sec:usebas}
+La simple commande suivante executera l'outil GC \verb+./GT+  vous donne la possibilité d'entez un nom de fichier. Vous avez alors deux possibilité : 
+\begin{itemize}
+\item
+\verb+circulaire+ Entrez un nom de fichier .xml  déjà éxistant dans le dossier courant. Le fichier .ktr sera crée à partir de ce fichier
+\item
+\verb+histogramme+ Entrez un nouveau nom et suivez les instruction pour la génération de tâches
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Génération manuelle des tâches}
+Il vous sera demandé successivement si vous souhaitez une génération automatique ou des nom des tâches périodiques. Dans le cas d'une génération automatique il est necessaire de renseignerle pourcentage d'utilisation maximale du processeur. Pour les tâches apériodiques il est aussi necessaire de fournir leur taux d'occupation du processeur (U\_a).
+Dans le cas d'une génération entièrement manuelle, il est demandé de fournir charque caractéristiques de la tâche. Pour plus de détails sur chaque attribut à fournir nous vous invitons à vous référer au document suivant : \cite{SD}
+ 
