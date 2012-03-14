@@ -3,7 +3,6 @@ package main;
 import genTache.mainGenerator;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import sstr.Algorithms;
@@ -179,7 +178,7 @@ public class main
 	 * @param args
 	 * @throws Exception
 	 */
-	public static void main(String[] args) throws Exception
+	public static void main(final String[] args) throws Exception
 	{
 
 		menu();
