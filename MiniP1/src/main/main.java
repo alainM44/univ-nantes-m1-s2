@@ -7,6 +7,14 @@ import java.io.InputStreamReader;
 import sstr.Algorithms;
 import sstr.TasksManager;
 
+/**
+ * Main
+ * 
+ * @author MARGUERITE alain
+ * @author RINCE Romain
+ * 
+ * 
+ */
 public class main
 {
 	static int choix;
@@ -113,13 +121,13 @@ public class main
 			break;
 		case 2:
 			fichier = "examples/cours_EDFBG.xml";
-			tm = new TasksManager(fichier); // TEST RM_BG
+			tm = new TasksManager(fichier); // TEST EDF_BG
 			al = new Algorithms(tm, fichier);
 			al.EdfBg();
 			break;
 		case 3:
-			fichier = "examples/cours_EDFTBS.xml";
-			tm = new TasksManager("cours_EDFTBS.xml"); // TEST RM_BG
+			fichier = "examples/cours_EDFTBS.xml"; // TEST EDFTBS
+			tm = new TasksManager(fichier);
 			al = new Algorithms(tm, fichier);
 			al.EdfTbs();
 			break;

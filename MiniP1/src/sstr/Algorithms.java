@@ -1,5 +1,11 @@
 package sstr;
 
+/**
+ * Algoritmes
+ * 
+ * @author MARGUERITE alain
+ * @author RINCE Romain
+ */
 import genTache.AbstractTache;
 import genTache.TacheAperiodique;
 import genTache.TachePeriodique;
