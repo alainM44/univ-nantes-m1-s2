@@ -1,5 +1,12 @@
 package genTache;
 
+/**
+ *  Définition d'une tâche périodique 
+ *  
+ * @author MARGUERITE alain 
+ * @author RINCE Romain
+ *
+ */
 public class TachePeriodique extends AbstractTache
 {
 	private int Pi;

@@ -1,5 +1,10 @@
 package genTache;
-
+/**
+ *  Définition d'une tâche périodique 
+ * @author MARGUERITE alain  
+ * @author RINCE Romain
+ *
+ */
 public class TacheAperiodique extends AbstractTache
 {
 
