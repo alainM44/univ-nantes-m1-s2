@@ -1,6 +1,11 @@
 package genTache;
 
-public interface ITache {
-
+/**
+ * 
+ * @author MARGUERITE alain
+ * @author RINCE Romain
+ */
+public interface ITache
+{
 
 }

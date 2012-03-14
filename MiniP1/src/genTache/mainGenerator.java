@@ -5,9 +5,16 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import com.thoughtworks.xstream.XStream;
 
+
+/**
+ *  Main de la génération des tâches. Appellé par le main principal 
+ *  
+ * @author MARGUERITE alain
+ * @author RINCE Romain
+ *
+ */
 public class mainGenerator
 {
 
