@@ -1,7 +1,6 @@
 package main;
 
 import genTache.mainGenerator;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -107,19 +106,19 @@ public class main
 		switch (exemple)
 		{
 		case 1:
-			fichier = "cours_RMBG.xml";
+			fichier = "examples/cours_RMBG.xml";
 			tm = new TasksManager(fichier); // TEST RM_BG
 			al = new Algorithms(tm, fichier);
 			al.RmBg();
 			break;
 		case 2:
-			fichier = "cours_EDFBG.xml";
+			fichier = "examples/cours_EDFBG.xml";
 			tm = new TasksManager(fichier); // TEST RM_BG
 			al = new Algorithms(tm, fichier);
 			al.EdfBg();
 			break;
 		case 3:
-			fichier = "cours_EDFTBS.xml";
+			fichier = "examples/cours_EDFTBS.xml";
 			tm = new TasksManager("cours_EDFTBS.xml"); // TEST RM_BG
 			al = new Algorithms(tm, fichier);
 			al.EdfTbs();

@@ -41,8 +41,7 @@ public class Writer
 			lines += "LINE_NAME" + " " + tache.getId() + " " + tache.getId() + "\n";
 		this.DrawingOption = "DECIMAL_DIGITS 0" + "\n" + "DURATION " + this.DURATION + "\n" + lines +
 
-		"PALETTE " + this.PALETTE + "\n" + "ZOOM_X " + this.ZOOM_X + "\n" + "ZOOM_Y " + this.ZOOM_Y + "\n" +
-		"\n";
+		"PALETTE " + this.PALETTE + "\n" + "ZOOM_X " + this.ZOOM_X + "\n" + "ZOOM_Y " + this.ZOOM_Y + "\n" + "\n";
 		this.Events = "";
 		this.last_date = 0;
 	}
@@ -172,7 +171,7 @@ public class Writer
 				}
 			}
 		}
-		Runtime.getRuntime().exec("./kiwi/kiwi " + filename);  // ouverture de kiwi avec le nouveau fichier généré.
+		Runtime.getRuntime().exec("./kiwi/kiwi " + filename); // ouverture de kiwi avec le nouveau fichier généré.
 	}
 
 	public String getFilename()

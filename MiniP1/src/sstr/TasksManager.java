@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
-
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
@@ -143,16 +141,7 @@ public class TasksManager
 		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
 		for (TachePeriodique tache : tachesPeriodiques)
 		{
-			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème
-			// si
-			// t
-			// =
-			// 0
-			// j'ai
-			// changé
-			// getRI
-			// et
-			// getPI
+			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème si t =0 j'ai changé getRI et getPI
 			{
 				result.add(new TachePeriodique(tache));
 
@@ -166,19 +155,9 @@ public class TasksManager
 		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
 		for (TachePeriodique tache : tachesPeriodiques)
 		{
-			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème
-			// si
-			// t
-			// =
-			// 0
-			// j'ai
-			// changé
-			// getRI
-			// et
-			// getPI
+			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème	 si	 t = 0j'ai changé getRI et	getPI
 			{
-				result.add(new TachePeriodique(tache.getId(), tache.getCi(),
-						tache.getDi() + t, tache.getPi()));
+				result.add(new TachePeriodique(tache.getId(), tache.getCi(), tache.getDi() + t, tache.getPi()));
 				w.addEvent(t, "START", tache.getId());
 			}
 		}
@@ -253,6 +232,14 @@ public class TasksManager
 
 	}
 
+	/**
+	 * Calcul du PPCM sur un tableau de tache périodiques
+	 * 
+	 * @param t
+	 *            un tableau de tache périodiques
+	 * @return
+	 */
+
 	protected int PPCM(ArrayList<TachePeriodique> t)
 	{
 		int i, x, y, z, NbArg;
@@ -301,8 +288,7 @@ public class TasksManager
 	{
 		float U = 0;
 		for (int i = 0; i <= tachesPeriodiques.size() - 1; i++)
-			U += (float) tachesPeriodiques.get(i).getCi()
-					/ tachesPeriodiques.get(i).getPi();
+			U += (float) tachesPeriodiques.get(i).getCi() / tachesPeriodiques.get(i).getPi();
 		return U;
 	}
 
@@ -315,8 +301,7 @@ public class TasksManager
 	{
 		int U = 0;
 		for (int i = 0; i <= tachesPeriodiques.size() - 1; i++)
-			U += tachesPeriodiques.get(i).getCi()
-					/ tachesPeriodiques.get(i).getDi();
+			U += tachesPeriodiques.get(i).getCi() / tachesPeriodiques.get(i).getDi();
 		return U;
 	}
 
@@ -331,11 +316,9 @@ public class TasksManager
 	protected void PrintRMTEST()
 	{
 		if (getRmCondNeccessaire() > 1)
-			System.out.println("Resultat du test de faisabilité : "
-					+ getRmCondNeccessaire() + ">1  on ne  rien conclure");
+			System.out.println("Resultat du test de faisabilité : " + getRmCondNeccessaire() + ">1  on ne  rien conclure");
 		else
-			System.out.println("Resultat du test de faisabilité : "
-					+ getRmCondNeccessaire());
+			System.out.println("Resultat du test de faisabilité : " + getRmCondNeccessaire());
 	}
 
 	/**
@@ -356,8 +339,7 @@ public class TasksManager
 		}
 		if (flag) /* Di=Pi */
 		{
-			System.out.println("Resutalt du test pour Ci=Pi selon EDF U= : "
-					+ getEDFCondSuffisanteDiEGALEhPi());
+			System.out.println("Resutalt du test pour Ci=Pi selon EDF U= : " + getEDFCondSuffisanteDiEGALEhPi());
 			if (getEDFCondSuffisanteDiEGALEhPi() <= 1)
 				System.out.println("U<=1 condition suffisante vérifiée");
 			else
@@ -366,8 +348,7 @@ public class TasksManager
 		else
 		/* Di<Pi */
 		{
-			System.out.println("Resutalt du test pour Ci<Pi selon EDF U= : "
-					+ getEDFCondSuffisanteDiINGPi());
+			System.out.println("Resutalt du test pour Ci<Pi selon EDF U= : " + getEDFCondSuffisanteDiINGPi());
 			if (getEDFCondSuffisanteDiINGPi() <= 1)
 				System.out.println("U<=1 condition suffisante vérifiée");
 			else
