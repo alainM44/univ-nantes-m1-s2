@@ -10,7 +10,8 @@ import java.io.IOException;
  * appellé au fur et à mesure des algortihmes d'ordonnancement pour écrire dans
  * le fichier
  * 
- * @author E11A932Q
+ * @author MARGUERITE alain
+ * @author RINCE Romain
  * 
  */
 

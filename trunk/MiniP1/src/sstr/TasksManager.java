@@ -1,5 +1,9 @@
 package sstr;
-
+/**
+ * Gestion des tâhces
+ * @author MARGUERITE alain
+ * @author RINCE Romain
+ */
 import genTache.AbstractTache;
 import genTache.TacheAperiodique;
 import genTache.TachePeriodique;
@@ -78,16 +82,7 @@ public class TasksManager
 		ArrayList<TachePeriodique> result = new ArrayList<TachePeriodique>();
 		for (TachePeriodique tache : tachesPeriodiques)
 		{
-			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème
-			// si
-			// t
-			// =
-			// 0
-			// j'ai
-			// changé
-			// getRI
-			// et
-			// getPI
+			if ((t == 0 && tache.getRi() == 0) || (t % tache.getPi()) == 0) // problème si t = 0 j'ai changé getRI et getPI
 			{
 				result.add(new TachePeriodique(tache));
 				w.addEvent(t, "START", tache.getId());
