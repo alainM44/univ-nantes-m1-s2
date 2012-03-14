@@ -1,10 +1,12 @@
 // begin return(b:Book; u:User)
 {
- 	assertTrue(b.getCurrent_state() instanceof book.Borrowed);
- 	assertTrue(u.has("${b}"); 
+	Book b = bookSystem.getBook("${b}");
+	
+	assertTrue(b.getCurrent_state() instanceof book.Borrowed);
+	
 	bookSystem.processCommand("${b} RETURN");
-
 	
-	
+	assertTrue(!(b.getNb_res() > 0) || b.getCurrent_state() instanceof book.Reserved) ;
+    assertTrue(b.getNb_res() > 0 || b.getCurrent_state() instanceof book.Available) ;
 }
 // end return(b:Book; u:User)

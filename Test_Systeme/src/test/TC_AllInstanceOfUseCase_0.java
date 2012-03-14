@@ -34,13 +34,27 @@ public class TC_AllInstanceOfUseCase_0 extends TestCase {
 	public void testTC_AllInstanceOfUseCase_0() {
 // begin deliver(b : Book)
 {
+	Book b = bookSystem.getBook("book2");
+	
+	assertTrue( (b.getCurrent_state() instanceof book.BeingFixed)||(b.getCurrent_state() instanceof book.Ordered) );
+	
 	bookSystem.processCommand("book2 DELIVER");
+	 assertTrue(b.getNb_res() > 0 || b.getCurrent_state() instanceof book.Available) ;
+	assertTrue(!(b.getNb_res() > 0) || b.getCurrent_state() instanceof book.Reserved) ;
+   
 }
 // end deliver(b : Book)
 
 // begin deliver(b : Book)
 {
+	Book b = bookSystem.getBook("book1");
+	
+	assertTrue( (b.getCurrent_state() instanceof book.BeingFixed)||(b.getCurrent_state() instanceof book.Ordered) );
+	
 	bookSystem.processCommand("book1 DELIVER");
+	 assertTrue(b.getNb_res() > 0 || b.getCurrent_state() instanceof book.Available) ;
+	assertTrue(!(b.getNb_res() > 0) || b.getCurrent_state() instanceof book.Reserved) ;
+   
 }
 // end deliver(b : Book)
 

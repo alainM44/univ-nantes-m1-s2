@@ -1,5 +1,6 @@
 package test;
 
+
 import junit.framework.TestCase;
 import book.*;
 
@@ -33,13 +34,27 @@ public class TC_AllInstanceOfUseCase_3 extends TestCase {
 	public void testTC_AllInstanceOfUseCase_3() {
 // begin reserve(b:Book; u:User)
 {
+	Book b = bookSystem.getBook("book1");
+
+	assertFalse(b.has_res("user2"));
+
 	bookSystem.processCommand("book1 RESERVE user2");
+	
+	assertTrue(b.has_res("user2"));
+	assertTrue(!(b.getCurrent_state() instanceof book.Available) || b.getCurrent_state() instanceof book.Reserved) ;
 }
 // end reserve(b:Book; u:User)
 
 // begin deliver(b : Book)
 {
+	Book b = bookSystem.getBook("book1");
+	
+	assertTrue( (b.getCurrent_state() instanceof book.BeingFixed)||(b.getCurrent_state() instanceof book.Ordered) );
+	
 	bookSystem.processCommand("book1 DELIVER");
+	 assertTrue(b.getNb_res() > 0 || b.getCurrent_state() instanceof book.Available) ;
+	assertTrue(!(b.getNb_res() > 0) || b.getCurrent_state() instanceof book.Reserved) ;
+   
 }
 // end deliver(b : Book)
 
