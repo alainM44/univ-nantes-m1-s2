@@ -3,6 +3,7 @@ package test;
 
 import junit.framework.TestCase;
 import book.*;
+
 /** 
  * Test case TC_AllInstanceOfUseCase_12 for Book system 
  */
@@ -33,21 +34,41 @@ public class TC_AllInstanceOfUseCase_12 extends TestCase {
 	public void testTC_AllInstanceOfUseCase_12() {
 // begin deliver(b : Book)
 {
+	Book b = bookSystem.getBook("book2");
+	
+	assertTrue( (b.getCurrent_state() instanceof book.BeingFixed)||(b.getCurrent_state() instanceof book.Ordered) );
+	
 	bookSystem.processCommand("book2 DELIVER");
+	 assertTrue(b.getNb_res() > 0 || b.getCurrent_state() instanceof book.Available) ;
+	assertTrue(!(b.getNb_res() > 0) || b.getCurrent_state() instanceof book.Reserved) ;
+   
 }
 // end deliver(b : Book)
 
 // begin borrow(b:Book; u:User)
 {
-
+	Book b = bookSystem.getBook("book2");
+	
+	assertTrue(  ( b.getCurrent_state() instanceof book.Reserved && b.has_res("user2"))||b.getCurrent_state() instanceof book.Available);
+	
 	bookSystem.processCommand("book2 BORROW user2");
+	
+    assertFalse(b.has_res("user2")) ;
+	assertTrue(b.getCurrent_state() instanceof book.Borrowed) ;
 
 }
 // end borrow(b:Book; u:User)
 
 // begin return(b:Book; u:User)
 {
+	Book b = bookSystem.getBook("book2");
+	
+	assertTrue(b.getCurrent_state() instanceof book.Borrowed);
+	
 	bookSystem.processCommand("book2 RETURN");
+	
+	assertTrue(!(b.getNb_res() > 0) || b.getCurrent_state() instanceof book.Reserved) ;
+    assertTrue(b.getNb_res() > 0 || b.getCurrent_state() instanceof book.Available) ;
 }
 // end return(b:Book; u:User)
 
