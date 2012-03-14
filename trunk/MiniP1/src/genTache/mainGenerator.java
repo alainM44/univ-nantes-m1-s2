@@ -55,13 +55,11 @@ public class mainGenerator
 		tab = new AbstractTache[nbTachesP + nbTachesAP];
 		if (tachep)
 		{
-			System.out
-					.println("Souhaitez vous une génération automatique pour les tâches périodiques ? (y/n)");
+			System.out.println("Souhaitez vous une génération automatique pour les tâches périodiques ? (y/n)");
 			genauto = in.next().equals("y");
 			if (genauto)
 			{
-				System.out
-						.println("Quel pourcentage d'utilisation maximale du processeur désirez-vous ?");
+				System.out.println("Quel pourcentage d'utilisation maximale du processeur désirez-vous ?");
 				pourcentage = in.nextInt();
 				pourAperiodique = (int) (temps - (temps * pourcentage) / 100.0);
 				U = (int) ((double) (U * pourcentage) / (double) 100);
@@ -80,10 +78,10 @@ public class mainGenerator
 						{
 							Pi = r.nextInt(temps) + 1;
 							Di = r.nextInt(Pi) + 1;
-							Ci = r.nextInt(Math.min(Di + 1, Pi
-									/ (nbTachesP - i + 1))) + 1;
+							Ci = r.nextInt(Math.min(Di + 1, Pi / (nbTachesP - i + 1))) + 1;
 							reste = ((int) ((((double) Ci) / ((double) Pi)) * temps)) + 1;
-						} while (U - reste < nbTachesP + nbTachesAP - i);
+						}
+						while (U - reste < nbTachesP + nbTachesAP - i);
 					}
 					U = U - reste;
 					tab[i - 1] = new TachePeriodique(i, Ci, Di, Pi);
@@ -97,11 +95,8 @@ public class mainGenerator
 			{
 				for (int i = 1; i < nbTachesP + 1; i++)
 				{
-					System.out.println("Vous avez " + U
-							+ " unités de temps disponibles");
-					System.out
-							.println("Merci d'entrer les valeurs pour les paramètres de la tache "
-									+ i);
+					System.out.println("Vous avez " + U + " unités de temps disponibles");
+					System.out.println("Merci d'entrer les valeurs pour les paramètres de la tache " + i);
 					System.out.println("Valeur pour Ci :");
 					Ci = in.nextInt();
 					System.out.println("Valeur pour Di :");
@@ -120,8 +115,7 @@ public class mainGenerator
 		}
 		if (tachea)
 		{
-			System.out
-					.println("Souhaitez vous une génération automatique pour les tâches apériodiques ? (y/n)");
+			System.out.println("Souhaitez vous une génération automatique pour les tâches apériodiques ? (y/n)");
 			genauto = in.next().equals("y");
 			if (genauto)
 			{
@@ -139,8 +133,7 @@ public class mainGenerator
 					{
 						ri = r.nextInt(ppcm);
 						// TODO : Di inutile
-						Ci = r.nextInt(Math.min(ppcm - ri, resteAp - nbTachesAP
-								+ i - nbTachesP)) + 1;
+						Ci = r.nextInt(Math.min(ppcm - ri, resteAp - nbTachesAP + i - nbTachesP)) + 1;
 					}
 					resteAp = resteAp - Ci;
 					tab[i - 1] = new TacheAperiodique(i, Ci, 0, ri);
@@ -153,11 +146,8 @@ public class mainGenerator
 				for (int i = nbTachesP + 1; i < nbTachesP + nbTachesAP + 1; i++)
 				{
 					resteAp = (int) (((double) reste / (double) temps) * ppcm);
-					System.out.println("Attention il ne vous reste que "
-							+ resteAp + " unités de temps disponibles");
-					System.out
-							.println("Merci d'entrer les valeurs pour les paramètres de la tache "
-									+ i);
+					System.out.println("Attention il ne vous reste que " + resteAp + " unités de temps disponibles");
+					System.out.println("Merci d'entrer les valeurs pour les paramètres de la tache " + i);
 					System.out.println("Valeur pour Ci :");
 					Ci = in.nextInt();
 					// System.out.println("Valeur pour Di :");
@@ -171,7 +161,6 @@ public class mainGenerator
 
 			System.out.println(resteAp);
 		}
-	
 
 		File taches = new File("taches.xml");
 		FileOutputStream fos = new FileOutputStream(taches);
@@ -223,6 +212,6 @@ public class mainGenerator
 	public static void main(String[] args) throws Exception
 	{
 		FileGenerator();
-		
+
 	}
 }
