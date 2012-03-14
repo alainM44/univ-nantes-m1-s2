@@ -4,11 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
-
-import sstr.Algorithms;
-import sstr.TasksManager;
 
 import com.thoughtworks.xstream.XStream;
 
