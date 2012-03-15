@@ -21,7 +21,7 @@ public class Ordered extends Book_State {
 	 */
 	public void deliver(Book b) {
 		if (b.getNb_res() > 0)
-			b.setCurrent_state(new Available());
+			b.setCurrent_state(new Reserved());
 		else
 			b.setCurrent_state(new Available());
 		
