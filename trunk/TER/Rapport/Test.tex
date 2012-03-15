@@ -68,7 +68,7 @@ Trois problèmes majeurs apparaissent dans la réalisation du logiciel de visual
 \subsection{Gestion des boites dans l'outil de visualisation : Quadtree}
 Une des solutions qui permettrait d'offrir une visualisation fluide du pavage en permettant aisément de répondre au cahier des spécifications serait de représenter le pavages sous une forme de quadtree pour deux dimensions ou octree pour trois dimensions.
 
-\paragraph{Le quadtree}consiste à découper un espace fini en deux dimensions en quatre parties égales puis itérer ce mécanisme sur chacun de ces fragments jusqu'a isolé spatialement les éléments recherchés.
+\paragraph{Le quadtree}consiste à découper un espace fini en deux dimensions en quatre parties égales chacune stocker dans un nœud puis itérer ce mécanisme sur chacun de ces nœuds jusqu'à isolé spatialement les éléments recherchés.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.30]{quadtree}
@@ -76,12 +76,15 @@ Une des solutions qui permettrait d'offrir une visualisation fluide du pavage en
 \end{figure}
 Cette strucure pourrait être utilisé pour déterminer la position des boites dans l'espace selon la méthode suivante :
 \begin{itemize}
-\item Si une des partie du quadtree n'est contenu dans aucune boite ou qu'elle est entièrement inclue dans un ensemble de boites alors il n'est plus nécessaire de la subdiviser. Cette partie contiendra donc une référence sur chacune de ces boites.
-\item \`A contratio si une partie du quatree contient une des bornes d'une des boites, alors il est nécessaire de subdiviser cette partie en quatre.
-\item On arrête aussi de diviser les parties lorsque l'on arrive à une précision inférieur à la précision du calcul de Realpaver.
+\item Si un des nœuds du quadtree ne contient aucune boite ou qu'il est entièrement inclus dans un ensemble de boites alors il n'est plus nécessaire de le subdiviser. Ce nœud contiendra donc une référence sur chacune de ces boites.
+\item \`A contrario si un nœud du quatree contient une des bornes d'une des boites, alors il est nécessaire de subdiviser ce nœud.
+\item On arrête aussi de diviser les nœuds lorsque l'on arrive à une précision inférieur à la précision du calcul de Realpaver.
 \end{itemize}
 L'octree repose sur le même principe mais étendu à trois dimensions. L'espace est donc découpé en huit parties à chaque fois.
 
-Cette structure est particulèrement intéressante pour la visualisation du pavage. En effet pour une fenêtre de visualisation donnée, il est très simple et rapide d'extraire la sous arborescence correspondant à l'espace visualisé et permet aussi de ne pas afficher les objets trop petits. Le problème de cette méthode est essentiellement à la construction puisque
+\paragraph{} Cette structure est particulièrement intéressante pour la visualisation du pavage. En effet pour une fenêtre de visualisation donnée, il est très simple et rapide d'extraire la sous-arborescence correspondante à l'espace visualisé et permet aussi de ne pas afficher les objets trop petits.
 
+Le problème de cette méthode est essentiellement à la construction puisque la structure devra découper en la plus petite feuille possible au niveau des bornes des boites ce qui va nécessairement entrainer la construction d'un grand nombre de feuilles. Ce problème est particulièrement gênant puisque si l'on cherche à localiser une boite de dimensions 1 sur 1 avec la précision donnée par défaut par Realpaver de $10^{-16}$, on se retrouve avec au moins $4 \times 10^{16}$ feuilles. On peut optimiser l'algorithme de construction en considérant que si un des nœuds contient l'intégralité ou une partie d'une seule boite, il n'est plus nécessaire de subdiviser ; la recherche d'une seule boite étant immédiate.
+
+Un autre problème
 \end{document}
