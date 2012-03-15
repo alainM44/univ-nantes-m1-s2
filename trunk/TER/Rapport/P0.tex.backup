@@ -1,9 +1,22 @@
 \chapter{Étude des structures de données}
-%Dans le cadre du module Initiation à la recherche,  
 
+
+%nombre de caractéristiques ?? de quels type 
+
+%Regarder JDK allocation d'une boite structure
+
+
+%lister toutes les possibilité - garder toutes les structures - reconstruire l'arbre.. refaire une passe sur le fichier
+
+%Comparaison arraylist tree map
+
+%correspondance id var : x est la variable numéro 4..
+
+%stockage des caractéristiques: 3map(id var ref) dans chque boite ? une map glogale
 \section{Introduction}
- blahblahblahblahblahblahblahblahblah
-\textbf{A FAIRE} : Définir d et n.
+L'objectif de ce document est de mener une études sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Les calculs de compléxité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème. RAJOUTER N nombre de boîtes du pavage
+
+
 \section{Définition de la boîte}
 C'est l'entité du pavage. Les accès à ses attributs sont donc cruciaux. On rappelle qu'une boîte est définie de la manière suivante : 
 \begin{itemize}
@@ -11,6 +24,8 @@ C'est l'entité du pavage. Les accès à ses attributs sont donc cruciaux. On ra
 Un identifiant : Une String respectant un format précis (c.f 1.1 du document de spécifications).
 \item
 Une liste de coordonnées. Une liste de d'intervalles de Double.
+\item
+Une Liste des caractéristiques, dans l'ordre et selon les types définis en entête
 \end{itemize}
 
 Ces données seront régulièrement requises durant les algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voir direct. Pour le cas de l'identifiant, s'agissant d'une simple string le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. Plusieurs possibilités sont alors envisageable : 
@@ -23,26 +38,44 @@ Une liste : Si l'accès à une coordonnée ne serait pas direct, les opérations
 \item
 Une hashmap : Coûteuse si la fonction de hashage n'est pas appropriée, la hashmap propose cependant un accès direct. Cependant même pour un petit nombre d'éléments, son occupation mémoire peut être conséquente. 
 \end{itemize}
-L'étude ci-dessus des trois structures de données, oriente notre choix vers le tableau. La création d'une boîte a alors une complexité en $O(d)$. De plus l'accès aux différents attributs de la boîte (identifiant, liste des coordonnées) sera en $O(1)$.
+L'étude ci-dessus des trois structures de données, oriente notre choix vers le tableau. Or une alternative serait une TreeMap \cite{Treemap}. 
+%http://docs.oracle.com/javase/1.4.2/docs/api/java/util/TreeMap.html
+Implémentation de base des arbres rouges noirs, cette map a la particularité de posséder des clefs triées. Ainsi les complexités de plusieurs opérations telle que l'accès en $\log{n}$. 
+
+La création d'une boîte a alors une complexité en $O(d)$. De plus l'accès aux différents attributs de la boîte (identifiant, liste des coordonnées) sera en $O(1)$.
 
 
-\section{Stockages des boîtes}
-L'outil de visualisation peut charger un fichier entrée de manière dynamique ou non. Nous nous plaçons ici dans le cadre où cette option de chargement dynamique n'est pas activée. L'outil va lire donc de façon séquentielle chaque ligne du fichier d'entrée. % Le création de structure de  données peut alors se faire de différentes  manières : 
+\section{Stockage du pavage }
+L'outil de visualisation peut charger un fichier entrée de manière dynamique ou non. Nous nous plaçons ici dans le cadre où cette option de chargement dynamique n'est pas activée. \\ L'outil va lire donc de façon séquentielle chaque ligne du fichier d'entrée. % Le création de structure de  données peut alors se faire de différentes  manières : 
 %Chaque boîte est crée de manière séquentielle selon l'ordre du fichier puis stockée dans la structure de donnée. Le trie de la structure aura lieu plus tard ., 
-Le nombre potentiellement très grand de boîtes éliminent d'emblée la possibilité de choisir  une table de hashage. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes sont pas appropriées ici. Une complexité en $n²$ pour un accès à une boîte n'est pas raisonnable. ou table de hashage pour le stockage des boîtes. Les arbres ont l'atout de pouvoir stocker et manipuler un grand nombre de d'entités. Les arbres de recherches sont des arborescences ordonnées permettant un accès en $\log(n)$. Dans le cas où la structure serait triée au fur et à mesure de sa construction. Les arbres de recherches proposent de bonnes performances. Par exemple l'utilisation d'un arbre binaire de recherche pour la création de n boîtes aurait une complexité au pire cas   
- 
+Le nombre potentiellement très grand de boîtes éliminent d'emblée la possibilité de choisir  une table de hashage. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes sont pas appropriées ici. Une complexité en $n²$ pour un accès à une boîte n'est pas raisonnable. Les arbres ont l'atout de pouvoir stocker et manipuler un grand nombre de d'entités. Les arbres de recherches sont des arborescences ordonnées permettant un accès en $\log(n)$. Dans le cas où la structure serait triée au fur et à mesure de sa construction. Les arbres de recherches proposent de bonnes performances.
 
-
-
-
-
-
-% Les algorithmes  de visualisation vont potentiellement avoir besoin d'accéder à ces différentes valeurs de cette liste. En revanche il est peu probable qu'ils opèrent des modifications (ajouts, suppressions) sur les valeurs de ces listes. Il faut donc privilégier le choix d'une structure concrète performante en terme de lecture comme par exemple un dictionnaire .
-
-
-
+\paragraph{Arbre binaire}
+Par exemple l'utilisation d'un arbre binaire de recherche pour la création de n boîtes aurait une complexité de $n²$ en pire cas. En effet il s'agit du cas où les boîtes arriveraient triées selon l'ordre inverse de celui que l'on souhaite. Il faudrait alors effecter $(p-1)$ comparaisons, pour chaque boîte :  $\sum_{p=2}^{n}(p-1)$  Soit $O(n)=\frac{1}{2}n²-\frac{1}{2}n$. Cependant dans le meilleur des cas cette opération a une complexité en $n\log{n}$.
+La création d'un pavage composé de n boîtes à d dimensions aurait alors une complexité égale à: $(n*d)*n\log(n)$ $\triangle$
+%http://www.enseignement.polytechnique.fr/profs/informatique/Luc.Maranget/421/poly/arbre-bin.html
+\clearpage
+\paragraph{Arbres a-b}
+Il s'agit d'un arbre de recherche avec les propriétés suivantes :
+\begin{itemize}
+\item
+$a\leq2$ et $b\leq 2a−1$ deux entiers
+\item
+La racine a au moins 2 fils (sauf si l'arbre ne possède qu'un noeud) et au plus b fils,
+\item 
+Les feuilles sont de même profondeur,
+\item
+les autres nœuds internes ont au moins a et au plus b fils
 \end{itemize}
-  
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[scale=0.40]{img/abtree}
+  \caption{a-b tree}
+  \label{fig:dnuages}
+\end{figure}
 
 
+L'avantage des arbres a-b est que leurs hauteurs sont sont comprises entres les valeurs suivantes : $ \dfrac{\log{n}}{\log{b}}   \leq h  < 1 + \dfrac{\log{n/2}}{\log{a}}$. Ainsi les opération d'insertions ne serait plus en $n\log{n}$ mais en $\log{n}$.
 
+La création d'un pavage composé de n boîtes à d dimensions aurait alors une complexité égale à: $(n*d)*\log(n)$ $\triangle$
