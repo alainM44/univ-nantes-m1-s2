@@ -53,7 +53,7 @@ public class TC_AllInstanceOfUseCase_3 extends TestCase {
 	
 	bookSystem.processCommand("book1 DELIVER");
 	 assertTrue(b.getNb_res() > 0 || b.getCurrent_state() instanceof book.Available) ;
-	assertTrue(!(b.getNb_res() > 0) || b.getCurrent_state() instanceof book.Reserved) ;
+	assertTrue(	!(b.getNb_res() > 0) || b.getCurrent_state() instanceof book.Reserved) ;
    
 }
 // end deliver(b : Book)

@@ -1,4 +1,1 @@
-On a reussi à trouver 4 erreurs lors de nos jeux de tests générés.
-Nous n'avons cependant pas eu le temps de trouver des corrections 
-efficaces à ses errerus soulevées par nos tests.
-
+TC_AllInstanceOfUseCase_3 nous a permis de trouver une erreur dans la methode deliver de la Classe Ordered. La méthode retourne toujours Available
