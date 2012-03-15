@@ -1,2 +1,3 @@
 \BOOKMARK [1][]{section.0.1}{Stockage des boites et visualisation}{}
-\BOOKMARK [2][]{subsection.0.1.1}{Gestion des boites dans l'outil de visualisation : Quadtree}{section.0.1}
+\BOOKMARK [2][]{subsection.0.1.1}{\311tude d'une solution possible : le Quadtree}{section.0.1}
+\BOOKMARK [2][]{subsection.0.1.2}{\311tude d'une seconde solution : le R-tree}{section.0.1}
