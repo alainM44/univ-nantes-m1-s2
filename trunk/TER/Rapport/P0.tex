@@ -32,13 +32,13 @@ Ces données seront régulièrement requises durant les algorithmes nécessaires
 
 \begin{itemize}
  \item
-Un tableau : L'accès à une coordonnée serait direct. Les opérations d'ajout et de suppression sont revanches coûteuses. Or il est peu probable que ce type d'opération intervienne.
+Un tableau : L'accès à une coordonnée serait direct. Les opérations d'ajout et de suppression sont revanches coûteuses. Or il est peu probable que ce type d'opération intervienne. 
 \item
 Une liste : Si l'accès à une coordonnée ne serait pas direct, les opérations d'ajouts de de suppressions sont en temps constant. Ces caractéristiques ne conviennent pas à notre problème.
 \item
 Une hashmap : Coûteuse si la fonction de hashage n'est pas appropriée, la HashMap propose cependant un accès direct. Cependant même pour un petit nombre d'éléments, son occupation mémoire peut être conséquente. 
 \end{itemize}
-L'étude ci-dessus des trois structures de données, oriente notre choix vers le tableau. Or une alternative serait une TreeMap \cite{TreeMap}. 
+L'étude ci-dessus des trois structures de données, oriente notre choix vers une ArrayList. Or une alternative serait une TreeMap \cite{TreeMap}. 
 %http://docs.oracle.com/javase/1.4.2/docs/api/java/util/TreeMap.html
 Implémentation de base des arbres rouges noirs, cette map a la particularité de posséder des clefs triées. Ainsi les complexités de plusieurs opérations telle que l'accès en $\log{n}$. Dans le cas d'un grand nombre de valeurs à stocker, il est plus performant de construire la TreeMap à partir d'une HashMap.
 
@@ -64,11 +64,13 @@ Seulement une map contenant des \verb+String+ stocke les différentes caractéri
 \end{itemize}
 
 
-\section{Stockage du pavage}
-L'outil de visualisation peut charger un fichier entrée de manière dynamique ou non. Nous nous plaçons ici dans le cadre où cette option de chargement dynamique n'est pas activée. \\ L'outil va lire donc de façon séquentielle chaque ligne du fichier d'entrée. 
+\section{Pavage}
+L'outil de visualisation peut charger un fichier entrée de manière dynamique ou non. Nous nous plaçons ici dans le cadre où cette option de chargement dynamique n'est pas activée. \\ L'outil va lire donc de manière  séquentielle chaque ligne du fichier d'entrée. Le cahier de spécification exige fréquement un listing de boîtes. Par exemple pour afficher la listres des boîtes concernées par un filtre. La structure du pavage doit être en mesure de répondre de manière efficaces, à des requêtes d'un séquence d'un nombre de  boîtes selon un ordre particulier. 
 % Le création de structure de  données peut alors se faire de différentes  manières : 
 % Chaque boîte est crée de manière séquentielle selon l'ordre du fichier puis stockée dans la structure de donnée. Le trie de la structure aura lieu plus tard ., 
-Le nombre potentiellement très grand de boîtes éliminent d'emblée la possibilité de choisir  une table de hashage. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes sont pas appropriées ici. Une complexité en $n²$ pour un accès à une boîte n'est pas raisonnable. Les arbres ont l'atout de pouvoir stocker et manipuler un grand nombre de d'entités. Les arbres de recherches sont des arborescences ordonnées permettant un accès en $\log(n)$. Dans le cas où la structure serait triée au fur et à mesure de sa construction. Les arbres de recherche proposent de bonnes performances.
+
+\subsection{Stockage du pavage}
+Le nombre potentiellement très grand de boîtes élimine d'emblée la possibilité de choisir une HashMap. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes sont pas appropriées ici. Une complexité en $n²$ pour un accès à une boîte n'est pas raisonnable. Les arbres ont l'atout de pouvoir stocker et manipuler un grand nombre de d'entités. Les arbres de recherches sont des arborescences ordonnées permettant un accès en $\log(n)$. Dans le cas où la structure serait triée au fur et à mesure de sa construction. Les arbres de recherche proposent de bonnes performances.
 
 
 
