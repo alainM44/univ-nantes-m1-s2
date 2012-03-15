@@ -1,0 +1,14 @@
+\begin{thebibliography}{Gut84}
+
+\bibitem[Gut84]{Guttman}
+Antonin Guttman.
+\newblock R-trees: A dynamic index structure for spatial searching.
+\newblock \url{http://www-db.deis.unibo.it/courses/SI-LS/papers/Gut84.pdf},
+  1984.
+
+\bibitem[Wik]{wiki}
+Wikipedia.
+\newblock R-tree.
+\newblock \url{http://en.wikipedia.org/wiki/R-tree}.
+
+\end{thebibliography}
