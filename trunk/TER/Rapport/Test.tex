@@ -93,14 +93,14 @@ On pourrait alors supposer une structure similaire $k$-dimensionnelle\footnote{$
 \paragraph{} Malgré le fait que le quadtree pouvait être une structure intéressante, le nombre de feuilles créées est bien trop important et ne peut donc pas être utilisé.
 
 \subsection{\'Etude d'une seconde solution : le R-tree}
-\paragraph{Le R-tree}est une structure de données utilisée pour stocker des informations $k$-dimensionnelles. Le principe est le suivant :
+\paragraph{Le R-tree} est une structure de données utilisée pour stocker des informations $k$-dimensionnelles. Le principe est le suivant :
 \begin{itemize}
  \item Toutes les boites solutions du pavages sont des feuilles de l'arbre.
  \item Les nœuds de l'arbre contiennent un $k$-tuple d'intervalles représentant les coordonnées et dimensions d'une boite englobant un ensemble non vide de boites solutions. Les fils de ces nœuds sont soit des nœuds de boites plus petites soit des feuilles.
  \item L'arbre est équilibré.
 \end{itemize}
 
-La figure suivante donne une bonne idée du principe des R-trees:
+La figure suivante donne une bonne idée du principe des R-trees\cite{wiki}:
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.50]{rtree}
@@ -108,5 +108,10 @@ La figure suivante donne une bonne idée du principe des R-trees:
 \label{fig:rtree}
 \end{figure}
 
+Pour plus de détails on pourra se référer à l'article de A. Guttman \cite{Guttman}
+
+\appendix
+\bibliographystyle{alpha}
+\bibliography{source.bib}
 
 \end{document}
