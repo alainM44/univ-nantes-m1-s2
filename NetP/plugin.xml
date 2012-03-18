@@ -4,7 +4,8 @@
    <extension
          point="Middleware.NetP">
       <Information
-            Information="netp.Information1">
+            class="mainPack.FM"
+            name="1ercontributeur pour post sur fb">
       </Information>
    </extension>
 

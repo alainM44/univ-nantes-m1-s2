@@ -49,7 +49,7 @@
 
    <element name="Information">
       <complexType>
-         <attribute name="Information" type="string" use="required">
+         <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
                   
