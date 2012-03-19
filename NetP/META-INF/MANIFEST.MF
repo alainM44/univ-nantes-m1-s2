@@ -5,3 +5,5 @@ Bundle-SymbolicName: NetP;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: Middleware
+Bundle-ClassPath: .,
+ src/mainPack/restfb-1.6.9.jar
