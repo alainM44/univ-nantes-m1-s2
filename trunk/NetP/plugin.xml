@@ -4,7 +4,7 @@
    <extension
          point="Middleware.NetP">
       <Information
-            class="mainPack.FM"
+            class="mainPack.FacebookManager"
             name="1ercontributeur pour post sur fb">
       </Information>
    </extension>
