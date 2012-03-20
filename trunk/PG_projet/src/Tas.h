@@ -37,7 +37,6 @@ class Tas
 			tas = std::vector<T>();
 		}
 
-
 		Tas(Tas& source) {
 			this.tas = source.tas;
 		}
@@ -52,8 +51,8 @@ class Tas
 			return &tas.at(pos);
 		}
 		T& extraire() {
-			T& feuille = tas.at(tas.size()-1); //!!
-			T& racine = tas.at(0);
+			T feuille; //!!
+			T racine;
 			if (tas.size() == 0)
 			{
 				throw;
@@ -63,20 +62,16 @@ class Tas
 				tas.pop_back();
 			} else
 			{
-				print();
-				racine = tas.at(0);
+				racine = T(tas.at(0));
 				feuille = tas.at(tas.size() - 1);
-				std::cout << tas.size();
-				std::cout << feuille;
-				std::cout << racine;
+				//				std::cout << tas.size();
+				//				std::cout << feuille;
+				//				std::cout << racine;
 
-				tas.at(0) = feuille;
+				tas.at(0) = T(feuille);
 
 				tas.pop_back();
-
 				tasser();
-
-				print();
 			}
 			return racine;
 
@@ -89,25 +84,22 @@ class Tas
 			int filsg = Tas<T>::filsG(element);
 			int filsd = Tas<T>::filsD(element);
 			int max;
-			T valTmp;
 
-			if(filsd< tas.size())
+			if (filsd < tas.size())
 			{
 				max = element;
-				if(filsg>max )
-					max =filsg;
-				else if (filsd>max)
+				if (tas.at(filsg) > tas.at(max))
+					max = filsg;
+				if (tas.at(filsd) > tas.at(max))
 					max = filsd;
-			}
-			else if(filsg< tas.size())
+			} else if (filsg < tas.size())
 			{
 				max = element;
-				if(filsg>max )
-					max =filsg;
-			}
-			else
+				if (tas.at(filsg) > tas.at(max))
+					max = filsg;
+			} else
 			{
-				max =element;
+				max = element;
 			}
 			if (filsg < tas.size() && tas.at(filsg) > tas.at(element))
 			{
@@ -116,18 +108,19 @@ class Tas
 			{
 				max = filsd;
 			}
-			if (max != tas.at(element))
+			if (max != element)
 			{
-				std::cout << "caht";
-				valTmp =tas.at(element);
-				std::cout << "caht";
-				A = tas.at(element);
-				A(tas.at(max));
-				std::cout << "caht";
-				tas.at(max)(valTmp);
-				std::cout << "caht";
+				swap(tas.at(element), tas.at(max));
 				Tas<T>::tasser(max);
 			}
+		}
+
+		void swap(T& a, T& b) {
+			T valTmp;
+			valTmp = T(a);
+			a = T(b);
+			b = valTmp;
+
 		}
 
 		bool index_in_range(int i) const {
@@ -135,16 +128,16 @@ class Tas
 		}
 		void ajouter(const T& element) {
 			int emplacementElement;
-			int ancetre, tmpValue;
-			bool changement = true;
+			int ancetre;
 			tas.push_back(element);
 			emplacementElement = tas.size() - 1;
 			ancetre = Pere(emplacementElement);
 			while (ancetre != -1 && tas.at(emplacementElement)
 					> tas.at(ancetre))
 			{
-				tas.at(emplacementElement) = tas.at(ancetre);
-				tas.at(ancetre) = element;
+				swap(tas.at(emplacementElement), tas.at(ancetre));
+				emplacementElement = ancetre;
+				ancetre = Pere(emplacementElement);
 			}
 
 		}
@@ -154,8 +147,8 @@ class Tas
 		void print() {
 			std::cout << "[";
 			for (int i = 0; i < tas.size(); i++)
-				std::cout<<tas.at(i);
-			std::cout << "]";
+				std::cout << tas.at(i);
+			std::cout << "]" << std::endl;
 		}
 		;
 
