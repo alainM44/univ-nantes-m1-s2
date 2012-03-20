@@ -166,7 +166,7 @@ class Tas
 };
 
 template<class T>
-class Iterator
+class Tas<T>::Iterator
 {
 		friend class Tas<T> ;
 		typedef Tas<T> tas_type;
