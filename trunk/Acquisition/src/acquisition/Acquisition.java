@@ -127,6 +127,6 @@ public class Acquisition implements ControllerListener
 	public static void main(String[] args) throws NoPlayerException,
 			IOException
 	{
-		new Acquisition("comptes/E074862X/workspace/Acquisition/chat.mpg");
+		new Acquisition("comptes/E074862X/workspace/Acquisition/darkcity.mov");
 	}
 }
