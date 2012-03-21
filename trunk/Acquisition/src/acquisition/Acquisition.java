@@ -95,6 +95,7 @@ public class Acquisition implements ControllerListener
 				/*
 				 * boucle de parcours des images de le média.
 				 */
+				fpc.skip(1);
 				while (player.getMediaTime().getNanoseconds()<=duration.getNanoseconds())
 				{
 
@@ -144,7 +145,7 @@ public class Acquisition implements ControllerListener
 	public static void main(String[] args) throws NoPlayerException,
 			IOException
 	{
-		new Acquisition("comptes/E074862X/workspace/Acquisition/lostinspace.mov", 1);
+		new Acquisition("comptes/E074862X/workspace/Acquisition/darkcity.mov", 1);
 	}
 	
 	public void creerImage(Image image, String adr){
