@@ -1,0 +1,85 @@
+\documentclass[11pt,a4paper,utf8x]{report}
+\usepackage [francais]{babel}
+\usepackage[utf8]{inputenc}  
+\usepackage[T1]{fontenc} 
+% Pour pouvoir utiliser 
+\usepackage{ucs}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{keystroke}
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usepackage{pifont}
+\usepackage{url} % Pour avoir de belles url
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage {listings}% Pour mettre du code source
+\lstset{language=sh}
+
+% Pour pouvoir passer en paysage
+\usepackage{lscape}
+
+% Pour pouvoir faire plusieurs colonnes
+\usepackage {multicol}
+
+\usepackage{makeidx}% Pour crééer un index
+\usepackage{graphicx} % Pour insérer des images (entres autres)
+
+\hypersetup{
+  backref=true,
+  %permet d'ajouter des liens dans...
+  pagebackref=true,%...les bibliographies
+  hyperindex=true, %ajoute des liens dans les index.
+  colorlinks=true, %colorise les liens
+  breaklinks=true, %permet le retour à la ligne dans les liens trop longs
+  urlcolor= blue, %couleur des hyperliens
+  bookmarks=true, %créé des signets pour Acrobat
+  bookmarksopen=true,
+  %si les signets Acrobat sont créés,
+  %les afficher complètement.
+  pdftitle={MiniP1_rapport}, %informations apparaissant dans
+  pdfauthor={MARGUERITE Alain\\ RINCE Romain},
+  %dans les informations du document
+  pdfsubject={LoCD}
+  %sous Acrobat.
+}
+%Entête pied de page
+%Définition des entêtes : 
+
+%\usepackage{pifont}
+\usepackage[cc]{titlepic}
+\usepackage{url} % Pour avoir de belles url
+\usepackage {geometry}
+
+% Pour mettre du code source
+\usepackage {listings}
+% Pour pouvoir passer en paysage
+\usepackage{lscape}
+
+% Pour pouvoir faire plusieurs colonnes
+\usepackage {multicol}
+% POur crééer un index
+\usepackage{makeidx}
+\usepackage{graphicx}
+
+% Pour l'interligne de 1.5
+\usepackage {setspace}
+% Pour les marges de la pag
+
+\begin{document}
+\chapter{Exercice 1}
+\section{Question 1}
+Chaque instance est un mail qui sera déterminé comme étant un spam ou non. Il y a 4601 instances. Pour déterminer si une instance est un spam, on étudie la fréquence d'un ensemble de mots, divers calculs sur la longueur des chaines de caractères n'étant que des lettres capitales et la fréquence de certains caractères.
+\section{Question 2}
+
+\section{Question 3}
+\begin{itemize}
+\item{OneR} 78.0917\% Correct, 477 mails classés spams, 531 spams passent, temps 0.17 seconds
+\item{NaiveBayes} 79.2871\% Correct, 865 mails classés spams, 88 spams passent, 0.12 seconds
+\item{J48} 92.9798\% Correct, 156 mails classés spams, 167 spams passent, temps 0.92 seconds
+\item{RandomForest} 94.8272\% Correct, 78 mails classés spams, 160 spam passent, temps 1.16 seconds
+\item{MultilayerPerceptron} 91.4366\% Correct, 192 mails classés spams, 202 spams passent, temps 95.83 seconds
+\item{SMO} 90.4151\% Correct, 134 mails classés spams, 307 spams passent, temps 0.63 seconds
+\end{itemize}
+RandomForest est relativement rapide et est le plus efficace sur les faux positifs
+\end{document}
