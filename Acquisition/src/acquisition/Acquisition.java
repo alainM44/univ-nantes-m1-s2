@@ -1,8 +1,15 @@
 package acquisition;
 
+import javax.imageio.ImageIO;
 import javax.media.*;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 
@@ -18,11 +25,18 @@ public class Acquisition implements ControllerListener
 	Image img = null;
 	BufferToImage btoi = null;
 	private Player player = null;
+	private Time timeCapture;
 
 	// Constructeur
-	public Acquisition(String a) throws NoPlayerException, IOException
+	/**
+	 * Classe récupérant des images du fichier fourni en paramètre.
+	 * @param a L'adresse du fichier à lire
+	 * @param delai Le temps en secondes qui s'ecoule entre chaque prise d'image.
+	 */
+	public Acquisition(String a, double delai) throws NoPlayerException, IOException
 	{
 		super();
+		timeCapture = new Time(delai);
 		URL u = new URL("file:///" + a);
 		System.out.println(u.getFile());
 		/* La création du lecteur et le chargement du fichier à lire. */
@@ -57,8 +71,7 @@ public class Acquisition implements ControllerListener
 		 */
 		if (ce instanceof RealizeCompleteEvent)
 		{
-			int NomImage = 1;
-			int dest;
+			int numImage = 1;
 			FramePositioningControl fpc;
 			FrameGrabbingControl fgc;
 			Time duration = player.getDuration();
@@ -76,28 +89,19 @@ public class Acquisition implements ControllerListener
 				 * On calcul le nombre d'images dans le média.
 				 */
 				totalFrames = fpc.mapTimeToFrame(duration);
-				System.out.println("Nombre total des images dans le média : "
+				System.out.println("Nombre total d'images dans le média : "
 						+ totalFrames);
 
 				/*
 				 * boucle de parcours des images de le média.
 				 */
-				while (NomImage <= totalFrames)
+				while (player.getMediaTime().getNanoseconds()<=duration.getNanoseconds())
 				{
-					/*
-					 * La fonction skip nous permet d'avancer dans les images
-					 * par exemple si le player pointe sur l'image 45 de le
-					 * média et on fait dest = fpc.skip(10); le player pointera
-					 * sur l'image 55. Pour la fonction seek on peut accéder
-					 * directement à l'image qu'on désire par exemple quelque
-					 * soit l'image sur laquelle pointe le player et on fait
-					 * dest = fpc.seek(10) le player pointera sur l'image 10.
-					 */
-					dest = fpc.skip(1);// avec dest = fpc.seek(NomImage); ça
-										// marche aussi.
+
 					/*
 					 * On capture l'image pointé par le player.
 					 */
+					
 					fgc = (FrameGrabbingControl) player
 							.getControl("javax.media.control.FrameGrabbingControl");
 					/*
@@ -109,13 +113,26 @@ public class Acquisition implements ControllerListener
 					 */
 					btoi = new BufferToImage((VideoFormat) buf.getFormat());
 					img = btoi.createImage(buf);
+					//creerImage(img, "captured"+numImage+".jpg");
+					
 					/*
 					 * Ici vous pouvez soit enregistrez l'image ou bien
 					 * l'afficher dans un JPanel ... je vous laisse e choix.
 					 */
 
-					System.out.println("Image " + NomImage + "extraite");
-					NomImage = NomImage + 1;
+					System.out.println("Image " + numImage + "extraite");
+					/*
+					 * La fonction skip nous permet d'avancer dans les images
+					 * par exemple si le player pointe sur l'image 45 de le
+					 * média et on fait dest = fpc.skip(10); le player pointera
+					 * sur l'image 55. Pour la fonction seek on peut accéder
+					 * directement à l'image qu'on désire par exemple quelque
+					 * soit l'image sur laquelle pointe le player et on fait
+					 * dest = fpc.seek(10) le player pointera sur l'image 10.
+					 */
+					fpc.skip(fpc.mapTimeToFrame(timeCapture));// avec dest = fpc.seek(NomImage); ça
+										// marche aussi.
+					numImage += fpc.mapTimeToFrame(timeCapture);
 				}
 			}
 		}
@@ -127,6 +144,25 @@ public class Acquisition implements ControllerListener
 	public static void main(String[] args) throws NoPlayerException,
 			IOException
 	{
-		new Acquisition("comptes/E074862X/workspace/Acquisition/darkcity.mov");
+		new Acquisition("comptes/E074862X/workspace/Acquisition/lostinspace.mov", 1);
 	}
+	
+	public void creerImage(Image image, String adr){
+		 try{
+			 System.out.println(image == null);
+		BufferedImage bufImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+		bufImage.getGraphics().drawImage(image, 0, 0, null);
+
+        ImageIO.write(bufImage, "jpg",new File(adr));
+
+
+    } catch (IOException e) {
+    	e.printStackTrace();
+    }
+    System.out.println("Done");
+ 
+    } 
 }
+
+ 
+
