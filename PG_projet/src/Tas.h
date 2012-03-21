@@ -5,271 +5,413 @@
  *      Author: E11A932Q
  */
 
+/*! \class Tas
+ *  \brief Arborescence générique sous forme de tas binaire
+ *  \author MARGUERITE RINCE
+ *  \version 1.0
+ *  \date   Mars 2012
+ */
+
 #ifndef TAS_H_
 #define TAS_H_
+
 #include <vector>
-#include <stack>
-#include <list>
 #include <ostream>
-#include <map>
+//#include "utile.h"
+
+/*! \class Tas
+ * \brief classe representant le tas bianire
+ *
+ *
+ *  La classe gere la lecture d'une liste de morceaux
+ */
+
+template<typename MatrixType1, typename MatrixType2>
+void transpose(const MatrixType1& A, MatrixType2& At);
+
 template<class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
 class Tas
-
 {
-	private:
-		std::vector<T> tas;
+		friend class Iterator;
 
-		int filsG(int pere) {
+	private:
+		std::vector<T, Alloc> tas; /*!<Structure conrète de l'arborescence*/
+
+		/*!
+		 * \fn int filsG(const int pere) {
+		 * \brief Fils gauche
+		 * \param[out] pere indice du père de l'enfant gauche recherché
+		 * \return indice du fils gauche dans la structure concrète
+		 */
+		int filsG(const int pere) {
 			return (2 * (pere + 1)) - 1;
 		}
-		int filsD(int pere) {
+		/*!
+		 * \fn int filsD(const int pere) {
+		 * \brief Fils droit
+		 * \param[out] pere indice du père de l'enfant droit recherché
+		 * \return indice du fils droit dans la structure concrète
+		 */
+		int filsD(const int pere) {
 			return (2 * (pere + 1));
 		}
-		int Pere(int fils) {
+
+		/*!
+		 * \fn int Pere(const int fils)
+		 * \brief Père
+		 * \param[out] fils indice du fils du père recherché
+		 * \return indice du fils droit dans la structure concrète
+		 */
+		int Pere(const int fils) {
 			if (fils == 0)
 				return -1;
 			else
 				return ((fils + 1) / 2) - 1;
-		}//a vérifier
+		}
 
 	public:
-		Tas() {
-			tas = std::vector<T>();
-		}
+		/*!
+		 * \fn Tas()
+		 * \brief Constructeur
+		 * Constructeur par défaut de la classe Tas
+		 */
+		Tas();
+		/*!
+		 * \fn Tas()
+		 * \brief Constructeur Recopie
+		 * \param[out] source Tas à recopier
+		 *
+		 * Constructeur par recopie de la classe Tas
+		 */
 
-		Tas(Tas& source) {
-			this.tas = source.tas;
-		}
+		Tas(Tas& source);
 
-		int size() {
-			return tas.size();
-		}
-		T& getMax() {
-			return &tas.at(0);
-		}
-		T& get(int pos) {
-			return &tas.at(pos);
-		}
-		T& extraire() {
-			T feuille; //!!
-			T racine;
-			if (tas.size() == 0)
-			{
-				throw;
-			} else if (tas.size() == 1)
-			{
-				racine = tas.at(0);
-				tas.pop_back();
-			} else
-			{
-				racine = T(tas.at(0));
-				feuille = tas.at(tas.size() - 1);
-				//				std::cout << tas.size();
-				//				std::cout << feuille;
-				//				std::cout << racine;
+		/*!
+		 * \fn int size()
+		 * \brief Taile
+		 * \return le nombre d'éléments du tas
+		 */
+		int size();
+		/*!
+		 * \fn T& get(int pos)
+		 * \brief Accès au tas
+		 * \param[out] indice dans la structure concrète de l'élément désiré.
+		 * \return une référence de l'objet à la position précisée en paramètre
+		 */
+		T& get(int pos);
 
-				tas.at(0) = T(feuille);
+		/*!
+		 * \fn T extraire()
+		 * \brief Extraire
+		 * \return racine du tas.
+		 */
+		T extraire();
 
-				tas.pop_back();
-				tasser();
-			}
-			return racine;
+		/*!
+		 * \fn void tasser();
+		 * \brief Tasser
+		 * Tasse un tas à partir de la racine
+		 */
+		void tasser();
+		/*!
+		 * \fn void tasser(int element);
+		 * \brief Tasser element
+		 * \param[out] element indice de l'élément à partir duqel on veut tasser.
+		 * Tasse un tas à partir de l'élément précisé
+		 */
+		void tasser(int element);
 
-		}
-		void tasser() {
-			//int filsg =filsG()
-			Tas::tasser(0);
-		}
-		void tasser(int element) {
-			int filsg = Tas<T>::filsG(element);
-			int filsd = Tas<T>::filsD(element);
-			int max;
 
-			if (filsd < tas.size())
-			{
-				max = element;
-				if (tas.at(filsg) > tas.at(max))
-					max = filsg;
-				if (tas.at(filsd) > tas.at(max))
-					max = filsd;
-			} else if (filsg < tas.size())
-			{
-				max = element;
-				if (tas.at(filsg) > tas.at(max))
-					max = filsg;
-			} else
-			{
-				max = element;
-			}
-			if (filsg < tas.size() && tas.at(filsg) > tas.at(element))
-			{
-				max = filsg;
-			} else if (filsd < tas.size() && tas.at(filsd) > tas.at(element))
-			{
-				max = filsd;
-			}
-			if (max != element)
-			{
-				swap(tas.at(element), tas.at(max));
-				Tas<T>::tasser(max);
-			}
-		}
 
-		void swap(T& a, T& b) {
-			T valTmp;
-			valTmp = T(a);
-			a = T(b);
-			b = valTmp;
+		/*!
+		 * \fn 	bool indice_valide(int i) const;
+		 * \brief Indice valide
+		 * \param[out] i indice à tester
+		 * \return vrai si l'indices est vrai faux sinon
+		 * Test si l'indice est dans le champs la taille du tableau moins un
+		 */
+		bool indice_valide(int i) const;
 
-		}
+		/*!
+		 * \fn 	void ajouter(const T& element)
+		 * \brief Ajouter
+		 * \param[out] element  à ajouter
+		 * Ajouter un élément dans le tas
+		 */
+		void ajouter(const T& element);
+		/*!
+		 * \fn 	virtual ~Tas()
+		 * \brief Destructeur
+		 * Déstructeur de la classe tas
+		 */
+		virtual ~Tas();
 
-		bool index_in_range(int i) const {
-			return i < (tas.size());
-		}
-		void ajouter(const T& element) {
-			int emplacementElement;
-			int ancetre;
-			tas.push_back(element);
-			emplacementElement = tas.size() - 1;
-			ancetre = Pere(emplacementElement);
-			while (ancetre != -1 && tas.at(emplacementElement)
-					> tas.at(ancetre))
-			{
-				swap(tas.at(emplacementElement), tas.at(ancetre));
-				emplacementElement = ancetre;
-				ancetre = Pere(emplacementElement);
-			}
-
-		}
-		virtual ~Tas() {
-		}
-
+		//TODO
 		void print() {
 			std::cout << "[";
-			for (int i = 0; i < tas.size(); i++)
+			for (int i = 0; i < (int)tas.size(); i++)
 				std::cout << tas.at(i);
 			std::cout << "]" << std::endl;
 		}
-		;
 
-		class Iterator;
 
+		class Iterator;//TODO doxy
+
+		/*!
+		 * \fn 	Iterator begin()
+		 * \brief Iterator début
+		 * \return instance d'un Iterator
+		 * Retourne un Iterator pointant sur le début du tas
+		 */
 		Iterator begin() {
 			return Iterator(this);
 		}
+		/*!
+		 * \fn Iterator end()
+		 * \brief Iterator fin
+		 * \return instance d'un Iterator
+		 * Retourne un Iterator pointant sur la fin du tas
+		 */
 		Iterator end() {
 			return Iterator(this, size());
 		}
 
-		//iterator end();
-
 };
-
-template<class T>
-class Tas<T>::Iterator
+/*! \class Iterator
+ * \brief classe d'itérateur de tas bianreisbianire
+ */
+template<class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
+class Tas<T, Compare, Alloc>::Iterator
 {
-		friend class Tas<T> ;
-		typedef Tas<T> tas_type;
-		//	typedef std::list<T&> pile_type;
-		typedef std::map<int, int> map_type;
-
-	public:
-
-		Iterator<T> (tas_type *t) {
-			t_ = t;
-			pos_ = 0;
-			fg_estVisite = false;
-			fd_estVisite = false;
-		}
-		//Iterator sale car mauvais utilisation du size pour permettre le end
-		Iterator<T> (tas_type *t, int size) {
-			t_ = t;
-			pos_ = size;
-			fg_estVisite = false;
-			fd_estVisite = false;
-		}
-		Tas<T>& operator*() {
-			if (pos_ < t_.size())
-				return *t_->tas[pos_]; //a vérifier
-			else
-				return NULL;
-		}
-
-		Iterator<T>* operator++() {
-			int fg = t_->filsG(pos_);
-			int fd = t_->filsD(pos_);
-			int pere = t_->pere(pos_);
-			int filsT = pos_;
-			//il y a un fils gauche
-			if (!fg_estVisite && t_->index_in_range(fg))
-			{
-				pos_ = fg;
-				return this;
-				//Fils gauche visité et il y a un fils droit
-			} else if (!fd_estVisite && t_->index_in_range(fd))
-			{
-				pos_ = fd;
-				return this;
-			} else
-			{
-				while (filsT != -1 && ((filsT == t_->filsD(pere)) || (filsT
-						== t_->filsG(pere) && !t_->index_in_range(t_->filsD(
-						pere)))))
-				{
-					filsT = pere;
-					pere = t_->pere(pere);
-				}
-				//On est à la racine c'est la fin du parcours
-				if (filsT == -1)
-				{
-					//TODO ajoute du cas filsT = -1 renvoi end
-					return NULL;
-					//On doit parcourir le fils droit de l'ancêtre
-				} else
-				{
-					pos_ = t_->filsD(pere);
-
-				}
-
-				return this;
-			}
-		}
 
 	private:
-		tas_type * t_;
-		int pos_;
-		bool fg_estVisite;
-		bool fd_estVisite;
-		//pile_type p_;
-		//map_type couleurs_noeuds;
-		//		Iterator<T> (tas_type * t) {
-		//			t_ = t;
-		//			p_ = pile_type();Tas<T>& operator*() {
-		//			pos_ = 0;
-		//			//tant que qu'en fin de liste on a pas la racine
-		//			//on enfile en queule a gauche tant que quil y a un filst gauche
-		//			visiter(t->tas[0]);
-		//
-		//		}
+		typedef Tas<T, Compare, Alloc> tas_type;
+		tas_type * t_;/*!<Pointeur sur le tas cible*/
+		int pos_;/*!<Pointeur sur le tas cible*/
+		bool fg_estVisite; /*!<Flag pour savoir si l'itérateur a déjà parcouru le fils gauche de la position courante */
+		bool fd_estVisite;/*!<Flag pour savoir si l'itérateur a déjà parcouru le fils droit de la position courante */
 
-		//		void visiter(int noeud) {
-		//			int fg = t_ > t_->filsG();
-		//			int fd = t_ > t_->filsD();
-		//
-		//			p_->push_back(noeud);
-		//			couleurs_noeuds[noeud] = 1; //marquage du sommet explore
-		//
-		//			if (t_->index_in_range(fg) && (couleurs_noeuds[fg] == 0))
-		//				visiter(fg);
-		//			if (t_->index_in_range(fd) && (couleurs_noeuds[fd] == 0))
-		//				visiter(fd);
-		//
-		//		}
+	public:
+		/*!
+		 * \fn Iterator()
+		 * \brief Constructeur
+		 * Constructeur par défaut de la classe Tas::Iterator
+		 */
+		Iterator();
+		/*!
+		 * \fn Iterator(tas_type*t)
+		 * \brief Constructeur à partir d'un pointeur du tas
+		 * \param[out] Pointeur du tas à recopier
+		 *
+		 */
+		Iterator(tas_type*t);
+		/*!
+		 * \fn Iterator(tas_type *t, int size)
+		 * \brief Constructeur à partir d'un pointeur du tas et d'un emplacement
+		 * \param[out] t Pointeur du tas à recopier
+		 * \param[out] pos indice de l'élément à pointer dans le tas
+		 */
+		Iterator(tas_type *t, int pos);
 
-		//		Tas<T>& operator*() {
-		//			assert(pos_ < t_.size());
-		//			return *t_->tas[p_.pop_front()]; //a vérifier
-		//		}
+		/*!
+		 * \fn T operator*()
+		 * Renvoit un l'element pointé
+		 */
+		T operator*() { // & or not & that is the question
+			//TODO test
+			return (t_->tas[pos_]); //TODOa vérifier
+
+		}
+
+		/*!
+		 * \fn Iterator operator++()
+		 * déplace d'une unité en "avant" selon DFS
+		 */
+		Iterator operator++();
+		/*!
+		 * \fn Iterator operator==()
+		 * \param I Iterator à tester
+		 *  Test l'égalité entre les deux  éléments pointés par deux itérateur
+		 */
+		bool operator==(const Iterator I);
+
+		/*!
+		 * \fn Iterator operator!=()
+		 * \param I Iterator à tester
+		 *  Test la différence  entre les deux  éléments pointés par deux itérateur
+		 */
+		bool operator!=(const Iterator I);
+
 };
+/**** DEFINITION DES CORPS DES FONCTIONS de TAS.h*****/
+template<class T, class Compare, class Alloc>
+inline Tas<T, Compare, Alloc>::Tas() {
+	tas = std::vector<T>();
+}
 
+template<class T, class Compare, class Alloc>
+inline Tas<T, Compare, Alloc>::Tas(Tas& source) {
+	this.tas = source.tas;
+}
+
+template<class T, class Compare, class Alloc>
+inline int Tas<T, Compare, Alloc>::size() {
+	return tas.size();
+}
+
+template<class T, class Compare, class Alloc>
+inline T& Tas<T, Compare, Alloc>::get(int pos) {
+	return &tas.at(pos);
+}
+template<class T, class Compare, class Alloc>
+inline T Tas<T, Compare, Alloc>::extraire() {
+	T feuille;
+	T racine;
+	if (tas.size() == 0)
+	{
+		throw; //TODO
+	} else if (tas.size() == 1)
+	{
+		racine = tas.at(0);
+		tas.pop_back();
+	} else
+	{
+		racine = T(tas.at(0));
+		feuille = tas.at(tas.size() - 1);
+		tas.at(0) = T(feuille);
+		tas.pop_back();
+		tasser();
+	}
+	return racine;
+
+}
+template<class T, class Compare, class Alloc>
+inline void Tas<T, Compare, Alloc>::tasser() {
+	Tas::tasser(0);
+}
+
+template<class T, class Compare, class Alloc>
+inline void Tas<T, Compare, Alloc>::tasser(int element) {
+	int filsg = Tas<T, Compare, Alloc>::filsG(element);
+	int filsd = Tas<T, Compare, Alloc>::filsD(element);
+	int max;
+	Compare c;
+	if (filsd < (int) tas.size())
+	{
+		max = element;
+		if (c(tas.at(max), tas.at(filsg)))
+			max = filsg;
+		if (c(tas.at(max), tas.at(filsd)))
+			max = filsd;
+	} else if (c(filsg, (int) tas.size()))
+	{
+		max = element;
+		if (c(tas.at(max), tas.at(filsg)))
+			max = filsg;
+	} else
+	{
+		max = element;
+	}
+	if (filsg < (int) tas.size() && c(tas.at(element), tas.at(filsg)))
+	{
+		max = filsg;
+	} else if (filsd < (int) tas.size() && c(tas.at(element), tas.at(filsd)))
+	{
+		max = filsd;
+	}
+	if (max != element)
+	{
+		swap(tas.at(element), tas.at(max));
+		cout << "tasser";
+		Tas<T, Compare, Alloc>::tasser(max);
+	}
+}
+template<class T, class Compare, class Alloc>
+inline bool Tas<T, Compare, Alloc>::indice_valide(int i) const {
+	return i < (int) (tas.size());
+}
+template<class T, class Compare, class Alloc>
+inline void Tas<T, Compare, Alloc>::ajouter(const T& element) {
+	int emplacementElement;
+	int ancetre;
+	Compare c;
+	tas.push_back(element);
+	emplacementElement = tas.size() - 1;
+	ancetre = Pere(emplacementElement);
+	while (ancetre != -1 && c(tas.at(ancetre), tas.at(emplacementElement)))
+	{
+		swap(tas.at(emplacementElement), tas.at(ancetre));
+		emplacementElement = ancetre;
+		ancetre = Pere(emplacementElement);
+	}
+
+}
+template<class T, class Compare, class Alloc>
+inline Tas<T, Compare, Alloc>::~Tas() {
+}
+
+/**** DEFINITION DES CORPS DES FONCTIONS de Tas::Iterator*****/
+template<class T, class Compare, class Alloc>
+inline Tas<T, Compare, Alloc>::Iterator::Iterator() {
+}
+template<class T, class Compare, class Alloc>
+inline Tas<T, Compare, Alloc>::Iterator::Iterator(tas_type* t) {
+}
+
+template<class T, class Compare, class Alloc>
+inline Tas<T, Compare, Alloc>::Iterator::Iterator(tas_type*t, int pos) {
+	t_ = t;
+	pos_ = pos;
+	fg_estVisite = false;
+	fd_estVisite = false;
+}
+template<class T, class Compare, class Alloc>
+inline typename Tas<T, Compare, Alloc>::Iterator Tas<T, Compare, Alloc>::Iterator::operator ++() {
+	int fg = t_->filsG(pos_);
+	int fd = t_->filsD(pos_);
+	int pere = t_->Pere(pos_);
+	int filsT = pos_;
+
+	if (!fg_estVisite && t_->indice_valide(fg)) /*!<il y a un fils gauche*/
+	{
+		pos_ = fg;
+		return (*this);
+
+	} else if (!fd_estVisite && t_->indice_valide(fd)) /*!<Fils gauche visité et il y a un fils droit*/
+	{
+		pos_ = fd;
+		return (*this);
+	} else
+	{
+		while (filsT != -1 && ((filsT == t_->filsD(pere)) || (filsT
+				== t_->filsG(pere) && !t_->indice_valide(t_->filsD(pere)))))
+		{
+			filsT = pere;
+			pere = t_->Pere(pere);
+		}
+
+		if (filsT == -1) /*!<On est à la racine c'est la fin du parcours*/
+		{
+
+			return NULL;
+
+		} else /*!</On doit parcourir le fils droit de l'ancêtre*/
+		{
+			pos_ = t_->filsD(pere);
+		}
+
+		return (*this);
+	}
+}
+
+template<class T, class Compare, class Alloc>
+inline bool Tas<T, Compare, Alloc>::Iterator::operator ==(const Iterator I) {
+
+	return pos_ == I.pos_ && I.t_ == t_;
+}
+template<class T, class Compare, class Alloc>
+inline bool Tas<T, Compare, Alloc>::Iterator::operator !=(const Iterator I) {
+
+	return pos_ == I.pos_ && I.t_ == t_;
+}
 #endif /* TAS_H_ */
