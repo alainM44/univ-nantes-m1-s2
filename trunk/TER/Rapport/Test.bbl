@@ -1,4 +1,10 @@
-\begin{thebibliography}{Gut84}
+\begin{thebibliography}{AdBJY04}
+
+\bibitem[AdBJY04]{PRTree}
+Lars Arge, Mark de~Berg, Herman J.Haverkort, and Ke~Yi.
+\newblock The priority r-tree: A practically efficient and worst-case optimal
+  r-tree.
+\newblock \url{http://daimi.au.dk/~large/Papers/prtreesigmod04.pdf}, 2004.
 
 \bibitem[Gut84]{Guttman}
 Antonin Guttman.
