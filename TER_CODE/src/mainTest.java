@@ -10,21 +10,49 @@ public class mainTest {
 	private static int n; // nombre de boîtes à tester
 
 	
-	public void fulling_box(Box b ,int nb_coord,int nb_cara){
-		b.setList_cara_interval(l)
+	public static void fulling_box_number(Box b ,int nb_coord,int nb_cara){
+		int i =0;
+		for(i=0;i<nb_coord;i++)
+			b.addCoord(i, new Interval(1.2, 1.3));
+		for(i=0;i<nb_cara;i++)
+			b.addCara(i, 1.3253564564);
+
+	}
+	
+	public static void fulling_box_string(Box b ,int nb_coord,int nb_cara){
+		int i =0;
+		for(i=0;i<nb_coord;i++)
+			b.addCoord(i, new Interval(1.2, 1.3));
+		for(i=0;i<nb_cara;i++)
+			b.addCara(i, "Une chaine de caractères");
+
+	}
+	
+	public static void fulling_box_interval(Box b ,int nb_coord,int nb_cara){
+		int i =0;
+		for(i=0;i<nb_coord;i++)
+			b.addCoord(i, new Interval(1.2, 1.3));
+		for(i=0;i<nb_cara;i++)
+			b.addCara(i, new Interval(1.2, 1.3));
+
 	}
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		n = Integer.valueOf(args[0]);
+		n = 1000000;
 		 start = System.nanoTime();
 		Box boxs[]= new Box[n];
+		Box b;
 		
 		//Box b;
 		//String name="box";
 		for(int i=0;i<n;i++)
-			boxs[i]=new Box(i);
+		{
+			b = new Box(i);
+			fulling_box_interval(b, 100, 20);
+			boxs[i]=b;
+		}
 		Runtime s_runtime = Runtime.getRuntime();
 		Used_memory = s_runtime.totalMemory() - s_runtime.freeMemory(); // bytes
 		elapsedTimeInSec = (System.nanoTime() - start) * 1.0e-9;
