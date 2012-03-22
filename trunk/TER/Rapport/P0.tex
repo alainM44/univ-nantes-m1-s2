@@ -10,7 +10,7 @@
 
 
 \section{Introduction}
-L'objectif de ce document est de mener une études sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Les calculs de compléxité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème. Le nombre de boîtes réelement utilisée dans le pavage est représenté par $N$.\textbf{Vérifier pour N}
+L'objectif de ce document est de mener une étude sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Les calculs de compléxité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème. Le nombre de boîtes réellement utilisées dans le pavage est représenté par $N$.\textbf{Vérifier pour N}
 
 
 \section{Définition de la boîte}
@@ -23,7 +23,7 @@ C'est l'entité du pavage. Les accès à ses attributs sont donc cruciaux. On ra
 \item
   Une liste des caractéristiques, dans l'ordre et selon les types définis en entête
 \end{itemize}
-Ces données seront régulièrement requises durant les algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voir direct. Pour le cas de l'identifiant, s'agissant d'une simple \verb+string+ le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. Plusieurs possibilités sont alors envisageables : 
+Ces données seront régulièrement requises durant les algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voir direct. Pour le cas de l'identifiant, s'agissant d'une simple \verb+String+ le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. Plusieurs possibilités sont alors envisageables : 
 
 \begin{itemize}
 \item
@@ -37,10 +37,10 @@ Ces données seront régulièrement requises durant les algorithmes nécessaires
 
 \end{itemize}
 
-La création d'une boîte a alors une complexité en $O(d)$. De plus l'accès aux différents attributs de la boîte (identifiant, liste des coordonnées) sera en $O(1)$.
+%La création d'une boîte a alors une complexité en $O(d)$. De plus l'accès aux différents attributs de la boîte (identifiant, liste des coordonnées) sera en $O(1)$.
 
 \subsection{Variables et identifiants}
-Il est nécessaire de faire le lien de manière efficace entre le nom d'une variable, et sa place dans la structure. En effet comment savoir que la valeur \verb+x+ se trouve à la position 4 dans la structure de données.
+Il est nécessaire de faire le lien de manière efficace entre le nom d'une variable, et sa place dans la structure. En effet comment savoir par exemple que la valeur \verb+x+ se trouve à la position 4 dans la structure de données.
 \begin{itemize}
 \item
   Selon le document de spécifications, les variables sont données dans un ordre précis, donné dans l'entête du fichier d'entrée. On peut alors utiliser une map «gobale» renseignant la position de chaque variable. Si cette méthode permet de gagner de l'espace mémoire au sein d'une boîte, le nombre d'accès à cette map risque d'être élevé.
@@ -49,13 +49,15 @@ Il est nécessaire de faire le lien de manière efficace entre le nom d'une vari
 \end{itemize} 
 
 \subsection{Généricité des caractéristiques}
-Un problème majeur apparaît pour l'instanciation des boîtes. Elles ont en effet chacune un nombre de caractéristiques potentiellement différents. De plus, on rappelle qu'une caractéristique a plusieurs types. Plusieurs solutions sont envisageables : 
+Un problème majeur apparaît pour l'instanciation des boîtes. On rappelle qu'une caractéristique a plusieurs types (\verb+String+, \verb+Number+ ou \verb+Interval+). Plusieurs solutions sont envisageables : 
 \begin{itemize}
 \item 
-  Chaque boîte possède trois maps pour ces trois types de caractéristiques. Cette solution à l'inconveinient d'être coûteuse si par exemple une boîte ne possède que des caractéristiques de type \verb+String+ et aucunes de types \verb+Number+ ou \verb+Interval+. 
+  Chaque boîte possède trois maps pour ces trois types de caractéristiques. Cette solution à l'inconvénient d'être coûteuse si par exemple une boîte ne possède que des caractéristiques de type \verb+String+ et aucunes de types \verb+Number+ ou \verb+Interval+. 
 \item
   Une map unique contenant des \verb+String+ stocke les différentes caractéristiques de la boîte. On aura casté les attributs \verb+Number+ ou \verb+Interval+ en \verb+String+.
-\item \huge{IL MANQUE UN CAS}
+\item 
+Trois tableaux (un pour chaque type) au sein d'une boîte. Trois maps (une pour chaque type) «générales» au niveau du pavage. La clef d'une map est l'id de la caractéristique et la valeur de la map son indice dans le tableau concret. La boîte retrouve l'indice au sein d'une caractéristique son tableau .
+
 \end{itemize}
 
 
@@ -77,7 +79,7 @@ L'outil de visualisation peut charger un fichier entrée de manière dynamique o
   % Chaque boîte est crée de manière séquentielle selon l'ordre du fichier puis stockée dans la structure de donnée. Le trie de la structure aura lieu plus tard ., 
 \end{itemize}
 \subsection{Stockage du pavage}
-Le nombre potentiellement très grand de boîtes élimine d'emblée la possibilité de choisir une HashMap. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes sont pas appropriées ici. Une complexité en $n²$ pour un accès à une boîte n'est pas raisonnable. Les arbres ont l'atout de pouvoir stocker et manipuler un grand nombre de d'entités. Les arbres de recherches sont des arborescences ordonnées permettant un accès en $\log(n)$. Dans le cas où la structure serait triée au fur et à mesure de sa construction. Les arbres de recherche proposent de bonnes performances.
+Le nombre potentiellement très grand de boîtes élimine d'emblée la possibilité de choisir une HashMap. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes ne sont pas appropriées ici. Une complexité en $n²$ pour un accès à une boîte n'est pas raisonnable. Les arbres ont l'atout de pouvoir stocker et manipuler un grand nombre de d'entités. Les arbres de recherches sont des arborescences ordonnées permettant un accès en $\log(n)$. Dans le cas où la structure serait triée au fur et à mesure de sa construction. Les arbres de recherche proposent de bonnes performances.
 
 
 
