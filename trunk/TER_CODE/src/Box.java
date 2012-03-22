@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
 
@@ -24,6 +23,7 @@ public class Box {
 	public Box(int i) {
 		super();
 		id=i;
+		list_coords = new HashMap<Integer, Interval>();
 		list_cara_string = new HashMap<Integer, String>();
 		list_cara_number = new HashMap<Integer, Number>();
 		list_cara_interval = new HashMap<Integer, Interval>();
@@ -37,38 +37,29 @@ public class Box {
 		this.id = id;
 	}
 
-	public HashMap<Integer, Interval> getList_coords() {
-		return list_coords;
-	}
 
-	public void setList_coords(HashMap<Integer, Interval> listCoords) {
-		list_coords = listCoords;
+
+	
+	public void addCara(int id, Number cara)
+	{
+		list_cara_number.put(id, cara);
 	}
 	
-
-	public HashMap<Integer, String> getList_cara_string() {
-		return list_cara_string;
-	}
-
-	public void setList_cara_string(HashMap<Integer, String> listCaraString) {
-		list_cara_string = listCaraString;
-	}
-
-	public HashMap<Integer, Number> getList_cara_number() {
-		return list_cara_number;
-	}
-
-	public void setList_cara_number(HashMap<Integer, Number> listCaraNumber) {
-		list_cara_number = listCaraNumber;
-	}
-
-	public HashMap<Integer, Interval> getList_cara_interval() {
-		return list_cara_interval;
-	}
-
-	public void setList_cara_interval(HashMap<Integer, Interval> listCaraInterval) {
-		list_cara_interval = listCaraInterval;
+	public void addCara(int id, String cara)
+	{
+		list_cara_string.put(id, cara);
 	}
 	
+	public void addCara(int id, Interval cara)
+	{
+		list_cara_interval.put(id, cara);
+	}
+	
+	public void addCoord(int id, Interval coord)
+	{
+		list_coords.put(id, coord);
+
+	}
+
 	
 }
