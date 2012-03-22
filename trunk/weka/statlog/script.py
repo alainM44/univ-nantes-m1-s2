@@ -24,7 +24,7 @@ dest.write("@attribute Attribute20 REAL\n")
 dest.write("@attribute Attribute21 REAL\n")
 dest.write("@attribute Attribute22 REAL\n")
 dest.write("@attribute Attribute23 REAL\n")
-dest.write("@attribute Attribute24 REAL\n")
+dest.write("@attribute class {1,2}\n")
 dest.write("@data\n")
 for ligne in source:
     dest.write(ligne.replace("   ", ",").replace("  ", ",")[1:])
