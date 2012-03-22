@@ -45,11 +45,9 @@
 
 
 \usepackage{graphicx}
-\date{}
+
 
 \begin{document}
-\maketitle
-\renewcommand{\labelitemi}{\textbullet}
 \section{Exercice 1}
 \subsection{Question 1}
 Chaque instance est un mail qui sera déterminé comme étant un spam ou non. Il y a 4601 instances. Pour déterminer si une instance est un spam, on étudie la fréquence d'un ensemble de mots, divers calculs sur la longueur des chaines de caractères n'étant que des lettres capitales et la fréquence de certains caractères.
@@ -57,14 +55,13 @@ Chaque instance est un mail qui sera déterminé comme étant un spam ou non. Il
 Reorder réorganise l'ordre d'études des attributs.
 Standardize va "décaler" les valeurs numériques pour que leurs moyennes soient à 0.
 \subsection{Question 3}
-Voici les résultats obtenus pour les différents algorithmes : 
 \begin{itemize}
-\item{OneR} 78.0917\% Correct, 477 mails classés spams, 531 spams passent, temps 0.17 secondes
-\item{NaiveBayes} 79.2871\% Correct, 865 mails classés spams, 88 spams passent, 0.12 secondes
-\item{J48} 92.9798\% Correct, 156 mails classés spams, 167 spams passent, temps 0.92 secondes
-\item{RandomForest} 94.8272\% Correct, 78 mails classés spams, 160 spam passent, temps 1.16 secondes
-\item{MultilayerPerceptron} 91.4366\% Correct, 192 mails classés spams, 202 spams passent, temps 95.83 secondes
-\item{SMO} 90.4151\% Correct, 134 mails classés spams, 307 spams passent, temps 0.63 secondes
+\item{OneR} 78.0917\% Correct, 477 mails classés spams, 531 spams passent, temps 0.17 seconds
+\item{NaiveBayes} 79.2871\% Correct, 865 mails classés spams, 88 spams passent, 0.12 seconds
+\item{J48} 92.9798\% Correct, 156 mails classés spams, 167 spams passent, temps 0.92 seconds
+\item{RandomForest} 94.8272\% Correct, 78 mails classés spams, 160 spam passent, temps 1.16 seconds
+\item{MultilayerPerceptron} 91.4366\% Correct, 192 mails classés spams, 202 spams passent, temps 95.83 seconds
+\item{SMO} 90.4151\% Correct, 134 mails classés spams, 307 spams passent, temps 0.63 seconds
 \end{itemize}
 RandomForest est relativement rapide et est le plus efficace sur les vrais négatifs (C'est à dire les mails classés comme spams).
 \section{Exercice 2}
