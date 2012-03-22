@@ -6,3 +6,4 @@
 \contentsline {paragraph}{}{3}{section*.4}
 \contentsline {subsection}{\numberline {1.2}\'Etude d'une seconde solution : le R-tree}{3}{subsection.0.1.2}
 \contentsline {paragraph}{Le R-tree}{3}{section*.5}
+\contentsline {paragraph}{}{3}{section*.6}
