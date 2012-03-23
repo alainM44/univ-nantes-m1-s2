@@ -1,0 +1,102 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/mman.h>
+#include <string.h>
+#include <native/task.h>
+#include <native/sem.h>
+#include <native/mutex.h>
+#include <native/timer.h>
+#include <native/queue.h>
+
+//Definition de la periode de la tache Ecriture_File
+#define TIMERTICKS 100000000 //(100ms)
+//file de message
+#define RT_QUEUE maFile;
+//declaration du semaphore de synchro
+#define RT_SEM semSynchro;
+//Declaration semaphore exclusion
+#define RT_MUTEX mutex;
+
+
+
+//Code de la tache periodique Ecriture_File
+static void codeEcritureFile(void* arg){
+	int i = 0;
+	int compteur = 1;
+	char buf[10];
+	//verrouillage
+	mlockall(MCL_CURRENT | MCL_FUTURE);
+	//rendre la tache periodique
+	if(rt_task_set_periodic(NULL,TM_NOW,TIMERTICKS) != 0){
+		printf("Erreur rt_task_set_periodic()");
+		return -1;
+	}
+	//boucle de traitement
+	while(1){
+		for(i = 0; i<=100; i++){
+			sprintf(buf,"%d",i);
+			rt_mutex_acquire(&mutex, TM_INFINITE);
+			rt_queue_write(&maFile, &buf, strlen(buf),Q_NORMAL);
+			rt_mutex_release(&mutex);
+		}
+		if(compteur == 5){
+			//envoie de la sémaphore
+			rt_sem_v(&semSynchro);
+			compteur = 0;
+		}
+		compteur++;
+		rt_task_wait_period(NULL);
+	}
+}
+
+static void codeLectureFILE(void*arg){
+	char buf[10];
+	//verrouillage
+	mlockall(MCL_CURRENT | MCL_FUTURE);
+	while(1){
+		//en attente de la tacheP
+		rt_sem_p(&semSynchro, TM_INFINITE);
+		//demande d'accès a la file
+		rt_mutex_require(&mutex, TM_INFINITE); /*en attente pour une durée infinie*/
+		rt_queue_read(&maFile, &buf, sizeof(buf), TM_INFINITE);
+		//liberation
+		rt_mutex_release(&mutex);
+		//affichage des données
+		printf("Données lues : %s \n",buf);
+	}
+}
+
+int main(int arg, char[] argv){
+	RT_TASK Ecriture_File,Lecture_File;
+	if(rt_sem_create(& semSynchro, "semSynchro", 0, S_FIFO) != 0){
+	//&semSynchro = descripteur
+	// 0 : lecture file bloqué
+		printf("Impossible de créer le sémaphore de synchronisation");
+		return 1;
+	}
+	rt_mutex_create(&mutex, "mutex") != 0){
+		//initialisé par défaut à 1
+		printf("Impossible de créer le sémaphore d'exclusion mutuelle");
+		return 1;
+	}
+
+	//initialisation de la file
+	if(rt_queue_create(&maFile, "maFile", 2000, Q_UNLIMITED, Q_FIFO) != 0){
+		printf("Impossible de créer la file");
+		return 1;			
+	}
+
+	//Il vaut mieux lancer l'apériodique en premier
+	if(rt_task_spawn(&Lecture_File, "LectureFile", 2000, 98, T_JOINABLE, &codeLectureFile, NULL) != 0){
+		printf("Impossible de créer la tache apériodique");
+		return 1;
+	}
+	if(rt_task_spawn(&Ecriture_File, "EcritureFile", 2000, 99, T_JOINABLE, codeEcriteFile(), NULL) != 0){
+		printf("Impossible de créer la tache périodique");
+		return 1;
+	}
+
+	rt_task_join(&Lecture_File);
+	rt_task_join(&Ecriture_File);
+	return 0;
+}
