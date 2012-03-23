@@ -1,7 +1,7 @@
 ###### CONFIGURATION ######
 
 ### List of applications to be build
-APPLICATIONS = nom-de-l-appli-a-compiler-sans-extension # exemple : APPLICATIONS = test_TachePer
+APPLICATIONS = TD8exo2 # exemple : APPLICATIONS = test_TachePer
 
 ###### USER SPACE BUILD (no change required normally) ######
 ifeq ($(KERNELRELEASE),)
