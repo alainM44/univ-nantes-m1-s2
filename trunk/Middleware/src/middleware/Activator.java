@@ -19,7 +19,7 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 	private static IInformation fbm;
-
+	private static IAlerte Raisoning;
 	/**
 	 * The constructor
 	 */
@@ -83,9 +83,20 @@ public class Activator extends AbstractUIPlugin {
 		}
 		for (IConfigurationElement element : RegistryFactory.getRegistry()
 				.getConfigurationElementsFor("Middleware.Reasoning")) {
-			System.out.println(element.getAttribute("Reasoning" + "Alerte"));
+			try {
+				Raisoning=(IAlerte)element.createExecutableExtension("class");
+				System.out.println(ia.existAlerte());
+			} catch (CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-	
+		
+		if (Raisoning==null){
+			
+		}
+		
+		
 		for (IConfigurationElement elem : RegistryFactory.getRegistry()
 				.getConfigurationElementsFor("Middleware.NetP")) {
 			System.out.println("NetP   " + elem.getAttribute("class"));
