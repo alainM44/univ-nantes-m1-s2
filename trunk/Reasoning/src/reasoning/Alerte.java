@@ -16,7 +16,7 @@ public class Alerte implements IReasoning {
 				.getConfigurationElementsFor("Reasoning.ReasoningPExAn")) {
 			try {
 				IAnalyse an=(IAnalyse)element.createExecutableExtension("class");
-				if(an!=null) System.out.println("Analyseur bien crée");
+				if(an!=null) an.makeAnalyse(null);
 			} catch (CoreException e) {
 				// TODO Auto-generated catch block
 				System.out.println("Analyseur non crée");
@@ -26,6 +26,7 @@ public class Alerte implements IReasoning {
 
 	@Override
 	public IEvent happenEvenement() {
+		System.out.println("Hello je suis resonnig");
 		IEvent e = (IEvent) new Event();
 		return e;
 	}
