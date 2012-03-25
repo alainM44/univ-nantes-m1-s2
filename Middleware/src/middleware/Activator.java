@@ -19,7 +19,7 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 	private static IInformation fbm;
-	private static IAlerte Raisoning;
+	private static IReasoning Raisoning;
 	/**
 	 * The constructor
 	 */
@@ -84,16 +84,15 @@ public class Activator extends AbstractUIPlugin {
 		for (IConfigurationElement element : RegistryFactory.getRegistry()
 				.getConfigurationElementsFor("Middleware.Reasoning")) {
 			try {
-				Raisoning=(IAlerte)element.createExecutableExtension("class");
-				System.out.println(ia.existAlerte());
+				Raisoning=(IReasoning)element.createExecutableExtension("class");
 			} catch (CoreException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		
-		if (Raisoning==null){
-			
+		if (Raisoning!=null){
+			System.out.println(Raisoning.happenEvenement().getMessage());
 		}
 		
 		
@@ -102,20 +101,20 @@ public class Activator extends AbstractUIPlugin {
 			System.out.println("NetP   " + elem.getAttribute("class"));
 			try {
 				System.out.println("yes1");
-				fbm = (IInformation) elem.createExecutableExtension("class");
+				//fbm = (IInformation) elem.createExecutableExtension("class");
 				System.out.println("yes12");
 
 				// fbm.postMessage(ev);
-			} catch (CoreException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 		}
 	//	System.out.println(fbm);
-		fbm.setAccessToken("AAAEqzYLDMcIBABXntYsSIheJiZC2AEZBwZCqfagmidbZB4ftiB0HQDjEhVuUn18jMdxZAlC95QoiZCezq8Hz88ujZBZCR7aZBu9cYJ82IiHNb2iDVkhFxeFP0");
+		//fbm.setAccessToken("AAAEqzYLDMcIBABXntYsSIheJiZC2AEZBwZCqfagmidbZB4ftiB0HQDjEhVuUn18jMdxZAlC95QoiZCezq8Hz88ujZBZCR7aZBu9cYJ82IiHNb2iDVkhFxeFP0");
 	
-		fbm.postMessage(ev);
+		//fbm.postMessage(ev);
 		System.out.println("yes2");
 	}
 
