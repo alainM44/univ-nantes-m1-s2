@@ -122,13 +122,7 @@ public class Activator extends AbstractUIPlugin {
 		//fbm.postMessage(ev);
 		traitement();
 	}
-	/**
-	 * Fonction permettant de faire la liaison entre les pluf
-	 * 
-	 * @param f
-	 * @param r
-	 * @param i
-	 */
+	
 	private void traitement(){
 		double freq=1;//j'ai mis 1 au hasard
 		Acquisition.setFrequence(freq);
