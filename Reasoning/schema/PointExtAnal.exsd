@@ -54,7 +54,7 @@
 
    <element name="PointExtAnalyse">
       <complexType>
-         <attribute name="Analyse" type="string">
+         <attribute name="class" type="string">
             <annotation>
                <documentation>
                   

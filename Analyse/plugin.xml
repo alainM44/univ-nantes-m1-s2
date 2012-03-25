@@ -2,8 +2,11 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         id="AnalyseID"
          point="Reasoning.ReasoningPExAn">
-      <PointExtAnalyse></PointExtAnalyse>
+      <PointExtAnalyse
+            class="Analyse">
+      </PointExtAnalyse>
    </extension>
 
 </plugin>

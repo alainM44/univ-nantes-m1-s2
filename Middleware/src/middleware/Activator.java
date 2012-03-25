@@ -84,8 +84,9 @@ public class Activator extends AbstractUIPlugin {
 		for (IConfigurationElement element : RegistryFactory.getRegistry()
 				.getConfigurationElementsFor("Middleware.Reasoning")) {
 			try {
+				System.out.println(element.getAttribute("class"));
 				Raisoning=(IReasoning)element.createExecutableExtension("class");
-			} catch (CoreException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
