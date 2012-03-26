@@ -3,10 +3,9 @@
 <plugin>
    <extension
          point="Middleware.Acquisition">
-      <Flux
-            Nom="ContributeurAcquisi"
-            flux="acquisition.Acquisition">
-      </Flux>
+      <FluxVideo
+            class="acquisition.Acquisition">
+      </FluxVideo>
    </extension>
 
 </plugin>

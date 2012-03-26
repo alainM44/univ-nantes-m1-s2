@@ -21,18 +21,22 @@ public class Activator extends AbstractUIPlugin
 	private static IEvent currentEventFactory;
 	private static IInformation currentInformationFactory;
 	private static IReasoning Raisoning;
+	private static IFlux flux;
 	private static Activator plugin;
 
 	public void setInformationInstance()
 	{
-		for (IConfigurationElement elem : RegistryFactory.getRegistry().getConfigurationElementsFor("Middleware.NetP"))
+		for (IConfigurationElement elem : RegistryFactory.getRegistry()
+				.getConfigurationElementsFor("Middleware.NetP"))
 		{
 			try
 			{
-				currentInformationFactory = (IInformation) elem.createExecutableExtension("class");
-				
+				currentInformationFactory = (IInformation) elem
+						.createExecutableExtension("class");
+
 				System.out.println("instance crée");
-			} catch (CoreException e1)
+			}
+			catch (CoreException e1)
 			{
 
 				e1.printStackTrace();
@@ -44,11 +48,40 @@ public class Activator extends AbstractUIPlugin
 	public void postMessage(EventfaceB evFB, String token)
 	{
 		if (currentInformationFactory == null)
-					setInformationInstance();
-		
-			currentInformationFactory.setAccessToken(token);
-			currentInformationFactory.postMessage(evFB);
-		
+			setInformationInstance();
+
+		currentInformationFactory.setAccessToken(token);
+		currentInformationFactory.postMessage(evFB);
+
+	}
+
+	public void setFluxInstance()
+	{
+		for (IConfigurationElement elem : RegistryFactory.getRegistry()
+				.getConfigurationElementsFor("Middleware.Acquisition"))
+		{
+			try
+			{
+				flux = (IFlux) elem.createExecutableExtension("class");
+				System.out.println("instance crée");
+			}
+			catch (CoreException e1)
+			{
+				e1.printStackTrace();
+			}
+		}
+
+	}
+
+	public void lireVideo(String token)
+	{
+		if (flux == null)
+			setFluxInstance();
+
+		flux.setFile(token);
+		flux.setFrequence(1);
+		flux.start();
+
 	}
 
 	/**
@@ -108,50 +141,50 @@ public class Activator extends AbstractUIPlugin
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 
-	//	public void transform() {
-	//		System.out.println("chat");
-	//		// IInformation fbm;
-	//		EventfaceB ev = new EventfaceB(1, "restFB Test3");
-	//		// TODO Auto-generated method stub
-	//		for (IConfigurationElement element : RegistryFactory.getRegistry()
-	//				.getConfigurationElementsFor("Middleware.Acquisition")) {
-	//			System.out.println("Acquistion" + element.getAttribute("Nom"));
-	//		}
-	//		for (IConfigurationElement element : RegistryFactory.getRegistry()
-	//				.getConfigurationElementsFor("Middleware.Reasoning")) {
-	//			try {
-	//				Raisoning=(IReasoning)element.createExecutableExtension("class");
-	//			} catch (CoreException e) {
-	//				// TODO Auto-generated catch block
-	//				e.printStackTrace();
-	//			}
-	//		}
+	// public void transform() {
+	// System.out.println("chat");
+	// // IInformation fbm;
+	// EventfaceB ev = new EventfaceB(1, "restFB Test3");
+	// // TODO Auto-generated method stub
+	// for (IConfigurationElement element : RegistryFactory.getRegistry()
+	// .getConfigurationElementsFor("Middleware.Acquisition")) {
+	// System.out.println("Acquistion" + element.getAttribute("Nom"));
+	// }
+	// for (IConfigurationElement element : RegistryFactory.getRegistry()
+	// .getConfigurationElementsFor("Middleware.Reasoning")) {
+	// try {
+	// Raisoning=(IReasoning)element.createExecutableExtension("class");
+	// } catch (CoreException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// }
 	//		
-	//		if (Raisoning!=null){
-	//			System.out.println(Raisoning.happenEvenement().getMessage());
-	//		}
+	// if (Raisoning!=null){
+	// System.out.println(Raisoning.happenEvenement().getMessage());
+	// }
 	//		
 	//		
-	//		for (IConfigurationElement elem : RegistryFactory.getRegistry()
-	//				.getConfigurationElementsFor("Middleware.NetP")) {
-	//			System.out.println("NetP   " + elem.getAttribute("class"));
-	//			try {
-	//				System.out.println("yes1");
-	//				//fbm = (IInformation) elem.createExecutableExtension("class");
-	//				System.out.println("yes12");
+	// for (IConfigurationElement elem : RegistryFactory.getRegistry()
+	// .getConfigurationElementsFor("Middleware.NetP")) {
+	// System.out.println("NetP   " + elem.getAttribute("class"));
+	// try {
+	// System.out.println("yes1");
+	// //fbm = (IInformation) elem.createExecutableExtension("class");
+	// System.out.println("yes12");
 	//
-	//				// fbm.postMessage(ev);
-	//			} catch (Exception e) {
-	//				// TODO Auto-generated catch block
-	//				e.printStackTrace();
-	//			}
+	// // fbm.postMessage(ev);
+	// } catch (Exception e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
 	//
-	//		}
-	//	//	System.out.println(fbm);
-	//		//fbm.setAccessToken("AAAEqzYLDMcIBABXntYsSIheJiZC2AEZBwZCqfagmidbZB4ftiB0HQDjEhVuUn18jMdxZAlC95QoiZCezq8Hz88ujZBZCR7aZBu9cYJ82IiHNb2iDVkhFxeFP0");
+	// }
+	// // System.out.println(fbm);
+	// //fbm.setAccessToken("AAAEqzYLDMcIBABXntYsSIheJiZC2AEZBwZCqfagmidbZB4ftiB0HQDjEhVuUn18jMdxZAlC95QoiZCezq8Hz88ujZBZCR7aZBu9cYJ82IiHNb2iDVkhFxeFP0");
 	//	
-	//		//fbm.postMessage(ev);
-	//		System.out.println("yes2");
-	//	}
+	// //fbm.postMessage(ev);
+	// System.out.println("yes2");
+	// }
 
 }

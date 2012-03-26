@@ -112,11 +112,11 @@ public class Acquisition implements ControllerListener, IFlux
 	public BufferedImage next()
 	{
 		buf = fgc.grabFrame();
-		btoi = new BufferToImage( (VideoFormat) buf.getFormat());
-        img = btoi.createImage(buf);
-        BufferedImage bufImage = new BufferedImage(img.getWidth(null),
-        		 img.getHeight(null), BufferedImage.TYPE_INT_RGB);
-        fpc.skip(fpc.mapTimeToFrame(timeFrequence));
+		btoi = new BufferToImage((VideoFormat) buf.getFormat());
+		img = btoi.createImage(buf);
+		BufferedImage bufImage = new BufferedImage(img.getWidth(null), img
+				.getHeight(null), BufferedImage.TYPE_INT_RGB);
+		fpc.skip(fpc.mapTimeToFrame(timeFrequence));
 		int currentFrame = fpc.mapTimeToFrame(player.getMediaTime());
 		if (currentFrame != FramePositioningControl.FRAME_UNKNOWN)
 			System.err.println("Current frame: " + currentFrame);
@@ -138,6 +138,7 @@ public class Acquisition implements ControllerListener, IFlux
 	@Override
 	public void setFile(String file)
 	{
+		System.out.println(file);
 		try
 		{
 			u = new URL("file:///" + file);
@@ -152,7 +153,6 @@ public class Acquisition implements ControllerListener, IFlux
 	public boolean open(DataSource ds)
 	{
 		System.err.println("create player for: " + ds.getContentType());
-
 		try
 		{
 			player = Manager.createPlayer(ds);
@@ -177,8 +177,9 @@ public class Acquisition implements ControllerListener, IFlux
 		// Try to retrieve a FramePositioningControl from the player.
 		fpc = (FramePositioningControl) player
 				.getControl("javax.media.control.FramePositioningControl");
-		fgc = (FrameGrabbingControl) player.getControl("javax.media.control.FrameGrabbingControl");
-		
+		fgc = (FrameGrabbingControl) player
+				.getControl("javax.media.control.FrameGrabbingControl");
+
 		if (fpc == null)
 		{
 			System.err
@@ -192,7 +193,7 @@ public class Acquisition implements ControllerListener, IFlux
 					.println("The player does not support FrameGrabbingControl.");
 			return false;
 		}
-		
+
 		Time duration = player.getDuration();
 
 		if (duration != Duration.DURATION_UNKNOWN)
