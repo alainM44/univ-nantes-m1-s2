@@ -63,7 +63,7 @@ public class MiddlewareView extends ViewPart
 		loadButton.setFocus();
 		videoTF = new Text(parent, SWT.NONE);
 		videoTF.setText("Enter video_file");
-		videoTF.addFocusListener(new TextFieldFocusListener());
+	//	videoTF.addFocusListener(new TextFieldFocusListener());
 
 		choose_analyseButton = new Button(parent, SWT.NONE);
 		choose_analyseButton.setEnabled(false);
@@ -118,10 +118,11 @@ public class MiddlewareView extends ViewPart
 			// TODO Chargement de acquisition
 			//isLoaded = true;
 			loadButton.setEnabled(false);
-			acces_token = acces_token_t.getText();
+			videoFile = videoTF.getText();
 			videoTF.setEnabled(false);
 			choose_analyseButton.setEnabled(true);
 			choose_analyseButton.setFocus();
+			Activator.getDefault().lireVideo(videoFile);
 
 		}
 	}
