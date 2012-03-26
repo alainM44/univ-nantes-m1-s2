@@ -182,7 +182,7 @@ public class MiddlewareView extends ViewPart
 			System.out.println("AccesT:"+acces_token);
 			acces_token_t.setEnabled(false);
 		
-			Activator.getDefault().postMessage(new EventfaceB(1,"coucou"));
+			Activator.getDefault().postMessage(new EventfaceB(1,"coucou"),acces_token);
 
 			System.out.println(acces_token);
 			//currentInformationFactory.postMessage(currentEventFactory);

@@ -25,12 +25,12 @@ public class Activator extends AbstractUIPlugin
 
 	public void setInformationInstance()
 	{
-		System.out.println("eee");
 		for (IConfigurationElement elem : RegistryFactory.getRegistry().getConfigurationElementsFor("Middleware.NetP"))
 		{
 			try
 			{
 				currentInformationFactory = (IInformation) elem.createExecutableExtension("class");
+				
 				System.out.println("instance crée");
 			} catch (CoreException e1)
 			{
@@ -41,18 +41,14 @@ public class Activator extends AbstractUIPlugin
 
 	}
 
-	public void postMessage(EventfaceB evFB)
+	public void postMessage(EventfaceB evFB, String token)
 	{
-		if (currentInformationFactory != null)
-		{
-				currentInformationFactory.postMessage(evFB);
-		}
-		else
-		{
-	
-			setInformationInstance();
+		if (currentInformationFactory == null)
+					setInformationInstance();
+		
+			currentInformationFactory.setAccessToken(token);
 			currentInformationFactory.postMessage(evFB);
-		}
+		
 	}
 
 	/**
