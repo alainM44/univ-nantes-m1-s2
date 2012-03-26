@@ -12,7 +12,7 @@ public interface IReasoning
 	/**
 	 * 
 	 * @param im un image
-	 * @param freq en seconde
+	 * @param time en seconde
 	 */
-	public void reasonedOnImame(BufferedImage im, double freq); 
+	public void reasonedOnImame(BufferedImage im, int time); 
 }
