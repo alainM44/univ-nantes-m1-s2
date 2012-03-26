@@ -11,19 +11,55 @@ import middleware.IInformation;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class Activator extends AbstractUIPlugin
+{
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "Middleware";
 
 	// The shared instance
-	private static Activator plugin;
-	private static IInformation fbm;
+	private static IEvent currentEventFactory;
+	private static IInformation currentInformationFactory;
 	private static IReasoning Raisoning;
+	private static Activator plugin;
+
+	public void setInformationInstance()
+	{
+		System.out.println("eee");
+		for (IConfigurationElement elem : RegistryFactory.getRegistry().getConfigurationElementsFor("Middleware.NetP"))
+		{
+			try
+			{
+				currentInformationFactory = (IInformation) elem.createExecutableExtension("class");
+				System.out.println("instance crée");
+			} catch (CoreException e1)
+			{
+
+				e1.printStackTrace();
+			}
+		}
+
+	}
+
+	public void postMessage(EventfaceB evFB)
+	{
+		if (currentInformationFactory != null)
+		{
+				currentInformationFactory.postMessage(evFB);
+		}
+		else
+		{
+	
+			setInformationInstance();
+			currentInformationFactory.postMessage(evFB);
+		}
+	}
+
 	/**
 	 * The constructor
 	 */
-	public Activator() {
+	public Activator()
+	{
 
 	}
 
@@ -34,7 +70,8 @@ public class Activator extends AbstractUIPlugin {
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
 	 * )
 	 */
-	public void start(BundleContext context) throws Exception {
+	public void start(BundleContext context) throws Exception
+	{
 		super.start(context);
 		plugin = this;
 	}
@@ -46,7 +83,8 @@ public class Activator extends AbstractUIPlugin {
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
 	 * )
 	 */
-	public void stop(BundleContext context) throws Exception {
+	public void stop(BundleContext context) throws Exception
+	{
 		plugin = null;
 		super.stop(context);
 	}
@@ -56,7 +94,8 @@ public class Activator extends AbstractUIPlugin {
 	 * 
 	 * @return the shared instance
 	 */
-	public static Activator getDefault() {
+	public static Activator getDefault()
+	{
 		return plugin;
 	}
 
@@ -68,54 +107,55 @@ public class Activator extends AbstractUIPlugin {
 	 *            the path
 	 * @return the image descriptor
 	 */
-	public static ImageDescriptor getImageDescriptor(String path) {
+	public static ImageDescriptor getImageDescriptor(String path)
+	{
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 
-//	public void transform() {
-//		System.out.println("chat");
-//		// IInformation fbm;
-//		EventfaceB ev = new EventfaceB(1, "restFB Test3");
-//		// TODO Auto-generated method stub
-//		for (IConfigurationElement element : RegistryFactory.getRegistry()
-//				.getConfigurationElementsFor("Middleware.Acquisition")) {
-//			System.out.println("Acquistion" + element.getAttribute("Nom"));
-//		}
-//		for (IConfigurationElement element : RegistryFactory.getRegistry()
-//				.getConfigurationElementsFor("Middleware.Reasoning")) {
-//			try {
-//				Raisoning=(IReasoning)element.createExecutableExtension("class");
-//			} catch (CoreException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//		if (Raisoning!=null){
-//			System.out.println(Raisoning.happenEvenement().getMessage());
-//		}
-//		
-//		
-//		for (IConfigurationElement elem : RegistryFactory.getRegistry()
-//				.getConfigurationElementsFor("Middleware.NetP")) {
-//			System.out.println("NetP   " + elem.getAttribute("class"));
-//			try {
-//				System.out.println("yes1");
-//				//fbm = (IInformation) elem.createExecutableExtension("class");
-//				System.out.println("yes12");
-//
-//				// fbm.postMessage(ev);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//
-//		}
-//	//	System.out.println(fbm);
-//		//fbm.setAccessToken("AAAEqzYLDMcIBABXntYsSIheJiZC2AEZBwZCqfagmidbZB4ftiB0HQDjEhVuUn18jMdxZAlC95QoiZCezq8Hz88ujZBZCR7aZBu9cYJ82IiHNb2iDVkhFxeFP0");
-//	
-//		//fbm.postMessage(ev);
-//		System.out.println("yes2");
-//	}
+	//	public void transform() {
+	//		System.out.println("chat");
+	//		// IInformation fbm;
+	//		EventfaceB ev = new EventfaceB(1, "restFB Test3");
+	//		// TODO Auto-generated method stub
+	//		for (IConfigurationElement element : RegistryFactory.getRegistry()
+	//				.getConfigurationElementsFor("Middleware.Acquisition")) {
+	//			System.out.println("Acquistion" + element.getAttribute("Nom"));
+	//		}
+	//		for (IConfigurationElement element : RegistryFactory.getRegistry()
+	//				.getConfigurationElementsFor("Middleware.Reasoning")) {
+	//			try {
+	//				Raisoning=(IReasoning)element.createExecutableExtension("class");
+	//			} catch (CoreException e) {
+	//				// TODO Auto-generated catch block
+	//				e.printStackTrace();
+	//			}
+	//		}
+	//		
+	//		if (Raisoning!=null){
+	//			System.out.println(Raisoning.happenEvenement().getMessage());
+	//		}
+	//		
+	//		
+	//		for (IConfigurationElement elem : RegistryFactory.getRegistry()
+	//				.getConfigurationElementsFor("Middleware.NetP")) {
+	//			System.out.println("NetP   " + elem.getAttribute("class"));
+	//			try {
+	//				System.out.println("yes1");
+	//				//fbm = (IInformation) elem.createExecutableExtension("class");
+	//				System.out.println("yes12");
+	//
+	//				// fbm.postMessage(ev);
+	//			} catch (Exception e) {
+	//				// TODO Auto-generated catch block
+	//				e.printStackTrace();
+	//			}
+	//
+	//		}
+	//	//	System.out.println(fbm);
+	//		//fbm.setAccessToken("AAAEqzYLDMcIBABXntYsSIheJiZC2AEZBwZCqfagmidbZB4ftiB0HQDjEhVuUn18jMdxZAlC95QoiZCezq8Hz88ujZBZCR7aZBu9cYJ82IiHNb2iDVkhFxeFP0");
+	//	
+	//		//fbm.postMessage(ev);
+	//		System.out.println("yes2");
+	//	}
 
 }
