@@ -1,8 +1,5 @@
 package middleware;
 
-import java.awt.image.BufferedImage;
-import java.nio.Buffer;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.RegistryFactory;
@@ -21,9 +18,8 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
-	private static IFlux Acquisition;
 	private static IInformation fbm;
-	private static IReasoning Reasoning;
+	private static IReasoning Raisoning;
 	/**
 	 * The constructor
 	 */
@@ -63,7 +59,7 @@ public class Activator extends AbstractUIPlugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
-	
+
 	/**
 	 * Returns an image descriptor for the image file at the given plug-in
 	 * relative path
@@ -76,65 +72,50 @@ public class Activator extends AbstractUIPlugin {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 
-	public void transform() {
-		System.out.println("chat");
-		// IInformation fbm;
-		EventfaceB ev = new EventfaceB(1, "restFB Test3");
-		// TODO Auto-generated method stub
-		for (IConfigurationElement element : RegistryFactory.getRegistry()
-				.getConfigurationElementsFor("Middleware.Acquisition")) {
-			System.out.println("Acquistion" + element.getAttribute("Nom"));
-		}
-		for (IConfigurationElement element : RegistryFactory.getRegistry()
-				.getConfigurationElementsFor("Middleware.Reasoning")) {
-			try {
-				System.out.println(element.getAttribute("class"));
-				Reasoning=(IReasoning)element.createExecutableExtension("class");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		if (Reasoning!=null){
-			System.out.println(Reasoning.happenEvenement().getMessage());
-		}
-		
-		
-		for (IConfigurationElement elem : RegistryFactory.getRegistry()
-				.getConfigurationElementsFor("Middleware.NetP")) {
-			System.out.println("NetP   " + elem.getAttribute("class"));
-			try {
-				System.out.println("yes1");
-				//fbm = (IInformation) elem.createExecutableExtension("class");
-				System.out.println("yes12");
+//	public void transform() {
+//		System.out.println("chat");
+//		// IInformation fbm;
+//		EventfaceB ev = new EventfaceB(1, "restFB Test3");
+//		// TODO Auto-generated method stub
+//		for (IConfigurationElement element : RegistryFactory.getRegistry()
+//				.getConfigurationElementsFor("Middleware.Acquisition")) {
+//			System.out.println("Acquistion" + element.getAttribute("Nom"));
+//		}
+//		for (IConfigurationElement element : RegistryFactory.getRegistry()
+//				.getConfigurationElementsFor("Middleware.Reasoning")) {
+//			try {
+//				Raisoning=(IReasoning)element.createExecutableExtension("class");
+//			} catch (CoreException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//		
+//		if (Raisoning!=null){
+//			System.out.println(Raisoning.happenEvenement().getMessage());
+//		}
+//		
+//		
+//		for (IConfigurationElement elem : RegistryFactory.getRegistry()
+//				.getConfigurationElementsFor("Middleware.NetP")) {
+//			System.out.println("NetP   " + elem.getAttribute("class"));
+//			try {
+//				System.out.println("yes1");
+//				//fbm = (IInformation) elem.createExecutableExtension("class");
+//				System.out.println("yes12");
+//
+//				// fbm.postMessage(ev);
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//		}
+//	//	System.out.println(fbm);
+//		//fbm.setAccessToken("AAAEqzYLDMcIBABXntYsSIheJiZC2AEZBwZCqfagmidbZB4ftiB0HQDjEhVuUn18jMdxZAlC95QoiZCezq8Hz88ujZBZCR7aZBu9cYJ82IiHNb2iDVkhFxeFP0");
+//	
+//		//fbm.postMessage(ev);
+//		System.out.println("yes2");
+//	}
 
-				// fbm.postMessage(ev);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
-	//	System.out.println(fbm);
-		//fbm.setAccessToken("AAAEqzYLDMcIBABXntYsSIheJiZC2AEZBwZCqfagmidbZB4ftiB0HQDjEhVuUn18jMdxZAlC95QoiZCezq8Hz88ujZBZCR7aZBu9cYJ82IiHNb2iDVkhFxeFP0");
-	
-		//fbm.postMessage(ev);
-		traitement();
-	}
-	
-	private void traitement(){
-		double freq=1;//j'ai mis 1 au hasard
-		Acquisition.setFrequence(freq);
-		Acquisition.start();
-		IEvent ev=null;
-		BufferedImage itIm =Acquisition.next() ;
-		while(itIm!=null && ev==null){
-			Reasoning.reasonedOnImame(itIm,freq );
-			ev=Reasoning.happenEvenement();
-		}
-		if (ev!=null){
-			fbm.postMessage(ev);
-		}
-	}
 }
