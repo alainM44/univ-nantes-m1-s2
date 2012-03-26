@@ -20,6 +20,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
+
+import middleware.Activator;
 import middleware.EventfaceB;
 import middleware.IEvent;
 import middleware.IInformation;
@@ -42,8 +44,6 @@ public class MiddlewareView extends ViewPart
 	private Label label_post_result;
 	
 	
-	private static IEvent currentEventFactory;
-	private static IInformation currentInformationFactory;
 
 	public MiddlewareView()
 	{
@@ -181,25 +181,11 @@ public class MiddlewareView extends ViewPart
 			acces_token = acces_token_t.getText();
 			System.out.println("AccesT:"+acces_token);
 			acces_token_t.setEnabled(false);
-			//			System.out.println("yes1: " + RegistryFactory.getRegistry().getConfigurationElementsFor("toa_project.NetP").length);
-			for (IConfigurationElement elem : RegistryFactory.getRegistry().getConfigurationElementsFor("toa_project.NetP"))
-			{
+		
+			Activator.getDefault().postMessage(new EventfaceB(1,"coucou"));
 
-				try
-				{
-					currentInformationFactory = (IInformation) elem.createExecutableExtension("class");
-				} catch (CoreException e1)
-				{
-
-					e1.printStackTrace();
-				}
-
-			}
-
-			currentEventFactory = new EventfaceB(1, "restFB Test3");
-			currentInformationFactory.setAccessToken(acces_token);
 			System.out.println(acces_token);
-			currentInformationFactory.postMessage(currentEventFactory);
+			//currentInformationFactory.postMessage(currentEventFactory);
 			System.out.println("yes3");
 			label_post_result.setVisible(true);
 		}
