@@ -17,7 +17,7 @@ public interface IFlux
 	void setFrequence(double t);
 
 	/**
-	 * Défini le fichier à étudier
+	 * Défini le fichier à étudier. Obligatoire !
 	 * @param file L'adresse du fichier à étudier.
 	 */
 	void setFile(String file);
