@@ -2,17 +2,21 @@ package middleware;
 
 import java.awt.image.BufferedImage;
 
-public interface IReasoning
-{
+public interface IReasoning {
 	/**
 	 * 
 	 * @return null s'il n'y pas d'evenement
 	 */
-	public  IEvent happenEvenement();
+	public IEvent getEvenement();
+
 	/**
 	 * 
-	 * @param im un image
-	 * @param time en seconde
+	 * @param im
+	 *            un image
+	 * @param time
+	 *            en seconde
 	 */
-	public void reasonedOnImame(BufferedImage im, int time); 
+	public void reasonedOnImage(BufferedImage im);
+
+	public void setFrequence(int freq);
 }
