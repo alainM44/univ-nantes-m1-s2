@@ -122,7 +122,7 @@ public class MiddlewareView extends ViewPart
 			videoTF.setEnabled(false);
 			choose_analyseButton.setEnabled(true);
 			choose_analyseButton.setFocus();
-			Activator.getDefault().lireVideo(videoFile);
+			Activator.getDefault().intialiserFlux(videoFile);
 
 		}
 	}
@@ -139,7 +139,7 @@ public class MiddlewareView extends ViewPart
 		public void widgetDefaultSelected(SelectionEvent e)
 		{
 			// TODO Auto-generated method stub
-
+			
 		}
 
 		@Override
@@ -151,10 +151,10 @@ public class MiddlewareView extends ViewPart
 			postOnWebButton.setEnabled(true);
 			postOnWebButton.setFocus();
 			acces_token_t.setEnabled(true);
-
+			Activator.getDefault().intialiserReasoning();
 			
 			
-
+			
 		}
 	}
 
