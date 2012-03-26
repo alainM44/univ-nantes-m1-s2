@@ -3,7 +3,11 @@ package acquisition;
 import javax.imageio.ImageIO;
 import javax.media.*;
 
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Component;
 import java.awt.Image;
+import java.awt.Panel;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +17,7 @@ import java.net.URL;
 import javax.media.control.FrameGrabbingControl;
 import javax.media.control.FramePositioningControl;
 import javax.media.format.VideoFormat;
+import javax.media.protocol.DataSource;
 import javax.media.util.BufferToImage;
 
 import middleware.IFlux;
@@ -31,6 +36,9 @@ public class Acquisition implements ControllerListener, IFlux
 	private URL u;
 	private double debut;
 	MediaLocator mrl;
+	Object waitSync = new Object();
+	boolean stateTransitionOK = true;
+	int totalFrames = FramePositioningControl.FRAME_UNKNOWN;
 
 	// Constructeur
 	/**
@@ -60,90 +68,35 @@ public class Acquisition implements ControllerListener, IFlux
 	 * On implimente la fonction controllerUpdate de la classe
 	 * ControllerListener qui nous permet de gérer les évenemnts du player.
 	 */
-	public void controllerUpdate(ControllerEvent ce)
+	public void controllerUpdate(ControllerEvent evt)
 	{
-		Time duration = player.getDuration();
-		/*
-		 * une fois les ressources et les informations nécessaires pour le média
-		 * sont reconnus on passe au traitement.
-		 */
-		if (ce instanceof RealizeCompleteEvent)
+		if (evt instanceof ConfigureCompleteEvent
+				|| evt instanceof RealizeCompleteEvent
+				|| evt instanceof PrefetchCompleteEvent)
 		{
-
-			if (fpc == null)
+			synchronized (waitSync)
 			{
-				System.out
-						.println("Le média ne supporte pas les FramePositioningControl.");
-			}
-			else
-			{
-
-				/*
-				 * boucle de parcours des images de le média.
-				 */
-				if (player.getMediaTime().getNanoseconds() <= duration
-						.getNanoseconds())
-				{
-
-					/*
-					 * On capture l'image pointé par le player.
-					 */
-
-					fgc = (FrameGrabbingControl) player
-							.getControl("javax.media.control.FrameGrabbingControl");
-					/*
-					 * On met l'image dans un buffer.
-					 */
-					buf = fgc.grabFrame();
-					/*
-					 * On convertit l'image dans le buffer.
-					 */
-					btoi = new BufferToImage((VideoFormat) buf.getFormat());
-					img = btoi.createImage(buf);
-					bufImage = new BufferedImage(img.getWidth(null), img
-							.getHeight(null), BufferedImage.TYPE_INT_RGB);
-					/*
-					 * Ici vous pouvez soit enregistrez l'image ou bien
-					 * l'afficher dans un JPanel ... je vous laisse e choix.
-					 */
-					/*
-					 * La fonction skip nous permet d'avancer dans les images
-					 * par exemple si le player pointe sur l'image 45 de le
-					 * média et on fait dest = fpc.skip(10); le player pointera
-					 * sur l'image 55. Pour la fonction seek on peut accéder
-					 * directement à l'image qu'on désire par exemple quelque
-					 * soit l'image sur laquelle pointe le player et on fait
-					 * dest = fpc.seek(10) le player pointera sur l'image 10.
-					 */
-					fpc.skip(fpc.mapTimeToFrame(timeFrequence));// avec dest =
-					// fpc.seek(NomImage);
-					// ça
-					// marche aussi.
-				}
-				else
-					bufImage = null;
+				stateTransitionOK = true;
+				waitSync.notifyAll();
 			}
 		}
-	}
-
-
-	public void creerImage(Image image, String adr)
-	{
-		try
+		else if (evt instanceof ResourceUnavailableEvent)
 		{
-			BufferedImage bufImage = new BufferedImage(image.getWidth(null),
-					image.getHeight(null), BufferedImage.TYPE_INT_RGB);
-			bufImage.getGraphics().drawImage(image, 0, 0, null);
-
-			ImageIO.write(bufImage, "jpg", new File(adr));
-
+			synchronized (waitSync)
+			{
+				stateTransitionOK = false;
+				waitSync.notifyAll();
+			}
 		}
-		catch (IOException e)
+		else if (evt instanceof EndOfMediaEvent)
 		{
-			e.printStackTrace();
+			player.setMediaTime(new Time(0));
+			// p.start();
+			// p.close();
+			// System.exit(0);
 		}
-		System.out.println("Done");
-
+		else if (evt instanceof SizeChangeEvent)
+		{}
 	}
 
 	@Override
@@ -158,7 +111,15 @@ public class Acquisition implements ControllerListener, IFlux
 	@Override
 	public BufferedImage next()
 	{
-		player.realize();
+		buf = fgc.grabFrame();
+		btoi = new BufferToImage( (VideoFormat) buf.getFormat());
+        img = btoi.createImage(buf);
+        BufferedImage bufImage = new BufferedImage(img.getWidth(null),
+        		 img.getHeight(null), BufferedImage.TYPE_INT_RGB);
+        fpc.skip(fpc.mapTimeToFrame(timeFrequence));
+		int currentFrame = fpc.mapTimeToFrame(player.getMediaTime());
+		if (currentFrame != FramePositioningControl.FRAME_UNKNOWN)
+			System.err.println("Current frame: " + currentFrame);
 		return bufImage;
 	}
 
@@ -185,42 +146,139 @@ public class Acquisition implements ControllerListener, IFlux
 		{
 			e.printStackTrace();
 		}
-		/* La création du lecteur et le chargement du fichier à lire. */
-		mrl = new MediaLocator("file:///" + file);
 
+	}
+
+	public boolean open(DataSource ds)
+	{
+		System.err.println("create player for: " + ds.getContentType());
+
+		try
+		{
+			player = Manager.createPlayer(ds);
+		}
+		catch (Exception e)
+		{
+			System.err
+					.println("Failed to create a player from the given DataSource: "
+							+ e);
+			return false;
+		}
+
+		player.addControllerListener(this);
+
+		player.realize();
+		if (!waitForState(player.Realized))
+		{
+			System.err.println("Failed to realize the player.");
+			return false;
+		}
+
+		// Try to retrieve a FramePositioningControl from the player.
+		fpc = (FramePositioningControl) player
+				.getControl("javax.media.control.FramePositioningControl");
+		fgc = (FrameGrabbingControl) player.getControl("javax.media.control.FrameGrabbingControl");
+		
+		if (fpc == null)
+		{
+			System.err
+					.println("The player does not support FramePositioningControl.");
+			return false;
+		}
+
+		if (fgc == null)
+		{
+			System.err
+					.println("The player does not support FrameGrabbingControl.");
+			return false;
+		}
+		
+		Time duration = player.getDuration();
+
+		if (duration != Duration.DURATION_UNKNOWN)
+		{
+			System.err.println("Movie duration: " + duration.getSeconds());
+
+			totalFrames = fpc.mapTimeToFrame(duration);
+			if (totalFrames != FramePositioningControl.FRAME_UNKNOWN)
+				System.err.println("Total # of video frames in the movies: "
+						+ totalFrames);
+			else
+				System.err
+						.println("The FramePositiongControl does not support mapTimeToFrame.");
+
+		}
+		else
+		{
+			System.err.println("Movie duration: unknown");
+		}
+
+		// Prefetch the player.
+		player.prefetch();
+		if (!waitForState(player.Prefetched))
+		{
+			System.err.println("Failed to prefetch the player.");
+			return false;
+		}
+
+		// Define the beginning of the analyse
+		fpc.seek(fpc.mapTimeToFrame(new Time(debut)));
+		return true;
+	}
+
+	boolean waitForState(int state)
+	{
+		synchronized (waitSync)
+		{
+			try
+			{
+				while (player.getState() < state && stateTransitionOK)
+					waitSync.wait();
+			}
+			catch (Exception e)
+			{}
+		}
+		return stateTransitionOK;
 	}
 
 	@Override
 	public void start()
 	{
+
+		if (u == null)
+		{
+			prUsage();
+			System.exit(0);
+		}
+
+		MediaLocator ml;
+
+		if ((ml = new MediaLocator(u)) == null)
+		{
+			System.err.println("Cannot build media locator from: " + u);
+			prUsage();
+			System.exit(0);
+		}
+
+		DataSource ds = null;
+
+		// Create a DataSource given the media locator.
 		try
 		{
-			Manager.createPlayer(u);
-			player = Manager.createPlayer(mrl);
+			ds = Manager.createDataSource(ml);
 		}
-		catch (NoPlayerException e)
+		catch (Exception e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("Cannot create DataSource from: " + ml);
+			System.exit(0);
 		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		/*
-		 * L'ajout d'un écouteur sur le player pour pouvoir gérer les évenements
-		 * de ce dernier
-		 */
-		player.addControllerListener(this);
-		/*
-		 * Cette fonction permet au player d'acquérir toutes les informations et
-		 * toutes les ressources qui lui sont nécessaires sur le média
-		 */
-		fpc = (FramePositioningControl) player
-				.getControl("javax.media.control.FramePositioningControl");
-	//	fpc.skip(fpc.mapTimeToFrame(new Time(debut)));
 
+		if (!open(ds))
+			System.exit(0);
 	}
 
+	static void prUsage()
+	{
+		System.err.println("Usage: java Acquisition <url>");
+	}
 }
