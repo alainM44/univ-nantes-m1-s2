@@ -106,7 +106,6 @@ public class Acquisition implements ControllerListener, IFlux
 					 * Ici vous pouvez soit enregistrez l'image ou bien
 					 * l'afficher dans un JPanel ... je vous laisse e choix.
 					 */
-
 					/*
 					 * La fonction skip nous permet d'avancer dans les images
 					 * par exemple si le player pointe sur l'image 45 de le
@@ -127,19 +126,6 @@ public class Acquisition implements ControllerListener, IFlux
 		}
 	}
 
-	/*
-	 * La fonction main. N'oubliez pas de changer le chemin de la video.
-	 */
-	public static void main(String[] args) throws NoPlayerException,
-			IOException
-	{
-		Acquisition a = new Acquisition();
-		a.setDebut(0);
-		a.setFile("comptes/E074862X/workspace/Acquisition/lostinspace.mov");
-		a.setFrequence(5);
-		a.start();
-//		System.out.println(a.next().getHeight());
-	}
 
 	public void creerImage(Image image, String adr)
 	{
