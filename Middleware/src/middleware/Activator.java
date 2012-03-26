@@ -18,72 +18,12 @@ public class Activator extends AbstractUIPlugin
 	public static final String PLUGIN_ID = "Middleware";
 
 	// The shared instance
-	private static IEvent currentEventFactory;
 	private static IInformation currentInformationFactory;
-	private static IReasoning Raisoning;
+	private static IReasoning Reasoning;
 	private static IFlux flux;
 	private static Activator plugin;
 
-	public void setInformationInstance()
-	{
-		for (IConfigurationElement elem : RegistryFactory.getRegistry()
-				.getConfigurationElementsFor("Middleware.NetP"))
-		{
-			try
-			{
-				currentInformationFactory = (IInformation) elem
-						.createExecutableExtension("class");
-
-				System.out.println("instance crée");
-			}
-			catch (CoreException e1)
-			{
-
-				e1.printStackTrace();
-			}
-		}
-
-	}
-
-	public void postMessage(EventfaceB evFB, String token)
-	{
-		if (currentInformationFactory == null)
-			setInformationInstance();
-
-		currentInformationFactory.setAccessToken(token);
-		currentInformationFactory.postMessage(evFB);
-
-	}
-
-	public void setFluxInstance()
-	{
-		for (IConfigurationElement elem : RegistryFactory.getRegistry()
-				.getConfigurationElementsFor("Middleware.Acquisition"))
-		{
-			try
-			{
-				flux = (IFlux) elem.createExecutableExtension("class");
-				System.out.println("instance crée");
-			}
-			catch (CoreException e1)
-			{
-				e1.printStackTrace();
-			}
-		}
-
-	}
-
-	public void lireVideo(String token)
-	{
-		if (flux == null)
-			setFluxInstance();
-
-		flux.setFile(token);
-		flux.setFrequence(1);
-		flux.start();
-
-	}
-
+	
 	/**
 	 * The constructor
 	 */
@@ -134,11 +74,92 @@ public class Activator extends AbstractUIPlugin
 	 * 
 	 * @param path
 	 *            the path
-	 * @return the image descriptor
+	 * @return the image descriptnstance or
 	 */
 	public static ImageDescriptor getImageDescriptor(String path)
 	{
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+	
+	public void setInformationInstance()
+	{
+		for (IConfigurationElement elem : RegistryFactory.getRegistry()
+				.getConfigurationElementsFor("Middleware.NetP"))
+		{
+			try
+			{
+				currentInformationFactory = (IInformation) elem
+						.createExecutableExtension("class");
+
+				System.out.println("instance crée");
+			}
+			catch (CoreException e1)
+			{
+
+				e1.printStackTrace();
+			}
+		}
+
+	}
+
+	public void postMessage(EventfaceB evFB, String token)
+	{
+		if (currentInformationFactory == null)
+			setInformationInstance();
+
+		currentInformationFactory.setAccessToken(token);
+		currentInformationFactory.postMessage(evFB);
+
+	}
+
+	public void setFluxInstance()
+	{
+		for (IConfigurationElement elem : RegistryFactory.getRegistry()
+				.getConfigurationElementsFor("Middleware.Acquisition"))
+		{
+			try
+			{
+				flux = (IFlux) elem.createExecutableExtension("class");
+				System.out.println("instance crée");
+			}
+			catch (CoreException e1)
+			{
+				e1.printStackTrace();
+			}
+		}
+
+	}
+
+	public void intialiserReasoning()
+	{
+		if (Reasoning == null)
+			setReasoningInstance();
+	}
+	public void intialiserFlux(String token)
+	{
+		if (Reasoning == null)
+			setFluxInstance();
+	}
+	
+	public void setReasoningInstance(){
+		for (IConfigurationElement elem : RegistryFactory.getRegistry()
+				.getConfigurationElementsFor("Middleware.Reasoning"))
+		{
+			try
+			{
+				Reasoning = (IReasoning) elem.createExecutableExtension("class");
+				System.out.println("instance crée");
+			}
+			catch (CoreException e1)
+			{
+				e1.printStackTrace();
+			}
+		}
+	}
+		
+	public void SendFluxToReasoning() {
+		
+		
 	}
 
 	// public void transform() {

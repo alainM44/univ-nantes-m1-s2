@@ -2,12 +2,12 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="ReasoningPExAn" name="ReasoningPointExtAnalyse" schema="schema/PointExtAnal.exsd"/>
-
    <extension
          point="Middleware.Reasoning">
       <AlerteElement
             class="reasoning.Alerte">
       </AlerteElement>
    </extension>
+
 
 </plugin>
