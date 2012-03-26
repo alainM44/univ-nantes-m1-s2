@@ -21,7 +21,6 @@ public class Alerte implements IReasoning {
 				.getConfigurationElementsFor("Reasoning.ReasoningPExAn")) {
 				 analyse=(IAnalyse)element.createExecutableExtension("class");
 		}
-		detection=false;
 	}
 	
 	public void setFrequence(int freq){
