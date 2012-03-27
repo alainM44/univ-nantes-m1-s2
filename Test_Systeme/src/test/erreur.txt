@@ -1,1 +1,0 @@
-TC_AllInstanceOfUseCase_3 nous a permis de trouver une erreur dans la methode deliver de la Classe Ordered. La méthode retourne toujours Available

@@ -1,4 +1,0 @@
-On a reussi à trouver 4 erreurs lors de nos jeux de tests générés.
-Nous n'avons cependant pas eu le temps de trouver des corrections 
-efficaces à ses errerus soulevées par nos tests.
-
