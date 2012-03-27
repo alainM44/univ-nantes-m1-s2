@@ -1,10 +1,10 @@
 %\chapter{Cas concret : Tas binaire}
 \chapter[Concrète]{Choix de la structure concrète%
 \chaptermark{Concrète}}
-\chapternmark{Concrète}
 
 
-Nous avons recherché la structure concrète la plus performante dans l'ensemble des opérations. Ne pouvant savoir quelle serait la nature de l'utilisation de cette classe, la structure ayant les une moyenne des performance la plus forte sur l'ensemble des candidates, semblait un bon compromis.
+
+Nous avons recherché la structure concrète la plus performante dans l'ensemble des opérations. Ne pouvant savoir quelle serait la nature de l'utilisation de cette classe, nous avons opté pour une structure offrant les meilleures performances pour l'implémentation du tas.
 Plusieurs solutions se présentaient pour une implémentation de tas binaire :
 \begin{description}
 \item
@@ -12,7 +12,7 @@ Plusieurs solutions se présentaient pour une implémentation de tas binaire :
 \item[Une liste d'adjacence] Un noeud étant un élément  (étiquette, père, liste des fils) de la liste. Ses perfomances sont dégradées lors d'opération comme la supression ($O(n)$ pour un tas binaire ) ou l'accès à un noeud à partir de son étiquette ($O(n)$). Dans le cas d'une utilisation où les opérations principales aurait été l'ajout d'un fils par exemple, cette solution aurait pu être retenue.
 \item[Liste de fratrie]  Un noeud étant un élément (étiquette, père, liste des frères, premier fils)  de la liste.
 \item[Tableau modulaire]
-\textbf{definition manquante} Structure présentant les meilleurs compléxités pour l'ensemble des opérations. Cette solution répond le mieux aux contraintes que nous avons exposés précedement. C'est donc elle que nous avons retenue. 
+\textbf{definition manquante} Structure présentant les meilleurs complexités pour l'ensemble des opérations. Cette solution répond le mieux aux contraintes que nous avons exposés précedement. C'est donc elle que nous avons retenue. 
 \end{description} 
 
 
@@ -21,7 +21,7 @@ Plusieurs solutions se présentaient pour une implémentation de tas binaire :
 \sectionmark{Developpement}
 
 %\section{Developpement du tas binaire}
-Une fois la selection de la structure faite. Nous avons au cours des semaines adopté le plan de developpement suivant : 
+Une fois la sélection de la structure faite. Nous avons au cours des semaines adopté le plan de développement suivant : 
 \begin{enumerate}
 \item
 Définition des prototypes des méthodes
@@ -34,5 +34,8 @@ Rajout de l'allocateur et du comparator
 \item
 Debug
 \end{enumerate}
-Cette démarche nous a permis d'avancer rapidément au cours des première semaine. Les cours d'algorithmiques du 1\up{er} semestre encore en tête. Nous avons rapidement déployées les méthodes principales du tas binaire (Extraire, Tasser, Insérer\dots), sans trop nous soucier de la syntaxe C++ (nouvelle pour notre bînome). Nous avons amèrement regretté notre insoucience de ne jamais tester nos méthodes avant la 5\up{ème} ou 6\up{ème} semaine. Nous avons passé un temps très long à débuguer un nombre de d'erreurs de syntaxe conséquent. 
+Cette démarche nous a permis d'avancer rapidément au cours des première semaine. Les cours d'algorithmiques du 1\up{er} semestre encore en tête. Nous avons rapidement déployées les méthodes principales du tas binaire (Extraire, Tasser, Insérer\dots), sans trop nous soucier de la syntaxe C++ (nouvelle pour notre bînome).
+Nous avons amèrement regretté notre insoucience de ne jamais tester nos méthodes avant la 5\up{ème} ou 6\up{ème} semaine. Nous avons donc passé un temps important à débuguer un nombre de d'erreurs de syntaxe conséquent.
 
+La création d'un itérateur a été un réel frein dans le développement du projet.\\Notre premier objectif était de construire un itérateur permettant de parcourir les valeurs dans un ordre trié dépendant de la classe \verb+Compare+. Cependant un tel itérateur nécessitait de maintenir une structure de taille égale à celle du tas, ce qui s'avérait coûteux en mémoire.
+Nous avons donc décidé de nous orienter vers un itérateur \verb+DFS+ plus classique. Malgré tout nous avons eu du mal a maitriser la syntaxe C++ lié aux itérateurs et ils nous a fallu malgré tout un certain temps.
