@@ -1,8 +1,6 @@
 /*
  * Tas.h
  *
- *  Created on: 24 janv. 2012
- *      Author: E11A932Q
  */
 
 /*! \class Tas
@@ -17,17 +15,12 @@
 
 #include <vector>
 #include <ostream>
-//#include "utile.h"
+#include "utile.h"
 
 /*! \class Tas
  * \brief classe representant le tas bianire
  *
- *
- *  La classe gere la lecture d'une liste de morceaux
  */
-
-template<typename MatrixType1, typename MatrixType2>
-void transpose(const MatrixType1& A, MatrixType2& At);
 
 template<class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
 class Tas
@@ -121,8 +114,6 @@ class Tas
 		 */
 		void tasser(int element);
 
-
-
 		/*!
 		 * \fn 	bool indice_valide(int i) const;
 		 * \brief Indice valide
@@ -149,11 +140,11 @@ class Tas
 		//TODO
 		void print() {
 			std::cout << "[";
-			for (int i = 0; i < (int)tas.size(); i++)
+			for (int i = 0; i < (int) tas.size(); i++)
 				std::cout << tas.at(i);
 			std::cout << "]" << std::endl;
-		}
 
+		}
 
 		class Iterator;//TODO doxy
 
@@ -217,12 +208,7 @@ class Tas<T, Compare, Alloc>::Iterator
 		 * \fn T operator*()
 		 * Renvoit un l'element pointé
 		 */
-		T operator*() { // & or not & that is the question
-			//TODO test
-			return (t_->tas[pos_]); //TODOa vérifier
-
-		}
-
+		T operator*();
 		/*!
 		 * \fn Iterator operator++()
 		 * déplace d'une unité en "avant" selon DFS
@@ -322,7 +308,6 @@ inline void Tas<T, Compare, Alloc>::tasser(int element) {
 	if (max != element)
 	{
 		swap(tas.at(element), tas.at(max));
-		cout << "tasser";
 		Tas<T, Compare, Alloc>::tasser(max);
 	}
 }
@@ -356,6 +341,8 @@ inline Tas<T, Compare, Alloc>::Iterator::Iterator() {
 }
 template<class T, class Compare, class Alloc>
 inline Tas<T, Compare, Alloc>::Iterator::Iterator(tas_type* t) {
+	t_ = t;
+	pos_ = 0;
 }
 
 template<class T, class Compare, class Alloc>
@@ -405,13 +392,21 @@ inline typename Tas<T, Compare, Alloc>::Iterator Tas<T, Compare, Alloc>::Iterato
 }
 
 template<class T, class Compare, class Alloc>
-inline bool Tas<T, Compare, Alloc>::Iterator::operator ==(const Iterator I) {
+inline T Tas<T, Compare, Alloc>::Iterator::operator*() {
+	//TODO test
+	return (t_->tas[pos_]); //TODOa vérifier
+
+}
+
+template<class T, class Compare, class Alloc>
+inline bool Tas<T, Compare, Alloc>::Iterator::operator==(const Iterator I) {
 
 	return pos_ == I.pos_ && I.t_ == t_;
 }
 template<class T, class Compare, class Alloc>
-inline bool Tas<T, Compare, Alloc>::Iterator::operator !=(const Iterator I) {
+inline bool Tas<T, Compare, Alloc>::Iterator::operator!=(const Iterator I) {
 
 	return pos_ == I.pos_ && I.t_ == t_;
 }
+
 #endif /* TAS_H_ */
