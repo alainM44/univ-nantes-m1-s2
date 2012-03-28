@@ -22,7 +22,7 @@ import com.restfb.types.FacebookType;
  * </ul>
  * </p>
  * 
- * @authors Bizet Chaline Marguerite Rince
+ * @author Bizet Chaline Marguerite Rince
  * 
  * @version 1.0
  */
