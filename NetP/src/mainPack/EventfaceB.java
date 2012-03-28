@@ -8,7 +8,7 @@ import middleware.IEvent;
  * Classe décrivant une action à poster sur facebook destiné à être posté sur
  * facebook
  * 
- * @authors Bizet Chaline Marguerite Rince
+ * @author Bizet Chaline Marguerite Rince
  * 
  */
 public class EventfaceB implements IEvent
