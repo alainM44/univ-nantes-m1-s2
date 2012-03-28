@@ -13,7 +13,8 @@ import middleware.IInformation;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class Activator extends AbstractUIPlugin
+{
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "Middleware";
@@ -24,11 +25,13 @@ public class Activator extends AbstractUIPlugin {
 	private static IFlux flux;
 	private static Activator plugin;
 	private IEvent event;
+
 	/**
 	 * The constructor
 	 */
-	public Activator() {
-		
+	public Activator()
+	{
+
 	}
 
 	/*
@@ -38,19 +41,21 @@ public class Activator extends AbstractUIPlugin {
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
 	 * )
 	 */
-	public void start(BundleContext context) throws Exception {
+	public void start(BundleContext context) throws Exception
+	{
 		super.start(context);
 		plugin = this;
 	}
 
-	/*false
-	 * (non-Javadoc)
+	/*
+	 * false (non-Javadoc)
 	 * 
 	 * @see
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
 	 * )
 	 */
-	public void stop(BundleContext context) throws Exception {
+	public void stop(BundleContext context) throws Exception
+	{
 		plugin = null;
 		super.stop(context);
 	}
@@ -60,10 +65,11 @@ public class Activator extends AbstractUIPlugin {
 	 * 
 	 * @return the shared instance
 	 */
-	public static Activator getDefault() {
+	public static Activator getDefault()
+	{
 		return plugin;
 	}
-	
+
 	/**
 	 * Returns an image descriptor for the image file at the given plug-in
 	 * relative path
@@ -72,19 +78,23 @@ public class Activator extends AbstractUIPlugin {
 	 *            the path
 	 * @return the image descriptnstance or
 	 */
-	public static ImageDescriptor getImageDescriptor(String path) {
+	public static ImageDescriptor getImageDescriptor(String path)
+	{
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 
-	public void setInformationInstance() {
+	public void setInformationInstance()
+	{
 		for (IConfigurationElement elem : RegistryFactory.getRegistry()
-				.getConfigurationElementsFor("Middleware.NetP")) {
-			try {
+				.getConfigurationElementsFor("Middleware.NetP"))
+		{
+			try
+			{
 				currentInformationFactory = (IInformation) elem
 						.createExecutableExtension("class");
-
-				System.out.println("instance crée");
-			} catch (CoreException e1) {
+			}
+			catch (CoreException e1)
+			{
 
 				e1.printStackTrace();
 			}
@@ -92,34 +102,45 @@ public class Activator extends AbstractUIPlugin {
 
 	}
 
-	public void postMessage(String token) {
+	public void postMessage(String token)
+	{
 		if (currentInformationFactory == null)
 			setInformationInstance();
-
+		System.out.println("avant setacces");
 		currentInformationFactory.setAccessToken(token);
+		System.out.println("nouveau message");
+		if(event.equals(null))
+			System.err.println("nullllllll");
 		currentInformationFactory.postMessage(event);
 
 	}
 
-	public void setFluxInstance() {
+	public void setFluxInstance()
+	{
 		for (IConfigurationElement elem : RegistryFactory.getRegistry()
-				.getConfigurationElementsFor("Middleware.Acquisition")) {
-			try {
+				.getConfigurationElementsFor("Middleware.Acquisition"))
+		{
+			try
+			{
 				flux = (IFlux) elem.createExecutableExtension("class");
 				System.out.println("instance crée");
-			} catch (CoreException e1) {
+			}
+			catch (CoreException e1)
+			{
 				e1.printStackTrace();
 			}
 		}
 
 	}
 
-	public void intialiserReasoning() {
+	public void intialiserReasoning()
+	{
 		if (Reasoning == null)
 			setReasoningInstance();
 	}
 
-	public void intialiserFlux(String token) {
+	public void intialiserFlux(String token)
+	{
 		if (Reasoning == null)
 			setFluxInstance();
 		System.out.println("Flux init");
@@ -127,33 +148,45 @@ public class Activator extends AbstractUIPlugin {
 		flux.start();
 	}
 
-	public void setReasoningInstance() {
+	public void setReasoningInstance()
+	{
 		for (IConfigurationElement elem : RegistryFactory.getRegistry()
-				.getConfigurationElementsFor("Middleware.Reasoning")) {
-			try {
+				.getConfigurationElementsFor("Middleware.Reasoning"))
+		{
+			try
+			{
 				Reasoning = (IReasoning) elem
 						.createExecutableExtension("class");
 				System.out.println("instance crée");
-			} catch (CoreException e1) {
+			}
+			catch (CoreException e1)
+			{
 				e1.printStackTrace();
 			}
 			double freq = 1;// j'ai mis 1 au hasard
 		}
 	}
-	void setEvent(IEvent e){
-		event=e;
+
+	void setEvent(IEvent e)
+	{
+		event = e;
 	}
-	public void SendFluxToReasoning() {
+
+	public void SendFluxToReasoning()
+	{
 		System.out.println("toto a une image");
 		IEvent ev = null;
 		BufferedImage itIm = flux.next();
-		while (itIm != null && ev == null) {
+		while (itIm != null && ev == null)
+		{
 			Reasoning.reasonedOnImage(itIm);
 			ev = Reasoning.getEvenement();
 			itIm = flux.next();
 		}
-		if (ev != null) {
-			event= ev;
+		if (ev != null)
+		{
+			event = ev;
+			System.out.println("zeee");
 		}
 	}
 
