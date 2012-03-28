@@ -82,7 +82,9 @@ public class Activator extends AbstractUIPlugin
 	{
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
-
+	/**
+	 * Fonction qui permet de charger le plugin NetP
+	 */
 	public void setInformationInstance()
 	{
 		for (IConfigurationElement elem : RegistryFactory.getRegistry()
@@ -101,7 +103,11 @@ public class Activator extends AbstractUIPlugin
 		}
 
 	}
-
+	/**
+	 * Fonction qui permet de poster un message d'alerte par l'intermediaire du plugin NetP
+	 * 
+	 * @param token 
+	 */
 	public void postMessage(String token)
 	{
 		if (currentInformationFactory == null)
@@ -109,12 +115,15 @@ public class Activator extends AbstractUIPlugin
 		System.out.println("avant setacces");
 		currentInformationFactory.setAccessToken(token);
 		System.out.println("nouveau message");
-		if(event.equals(null))
+		if(event==null)
 			System.err.println("nullllllll");
 		currentInformationFactory.postMessage(event);
 
 	}
-
+	
+	/**
+	 * Fonction qui permet de charger un plugin d'acquisition d'image 
+	 */
 	public void setFluxInstance()
 	{
 		for (IConfigurationElement elem : RegistryFactory.getRegistry()
@@ -132,22 +141,30 @@ public class Activator extends AbstractUIPlugin
 		}
 
 	}
-
+	/**
+	 * Fonction qui permet de charger le plugin reasoning
+	 */
 	public void intialiserReasoning()
 	{
 		if (Reasoning == null)
 			setReasoningInstance();
 	}
-
-	public void intialiserFlux(String token)
+/**
+ * Fonction qui permet d'initialiser le plugin d'acquisition
+ * @param path
+ */
+	public void intialiserFlux(String path)
 	{
 		if (Reasoning == null)
 			setFluxInstance();
 		System.out.println("Flux init");
-		flux.setFile(token);
+		flux.setFile(path);
 		flux.start();
 	}
 
+	/**
+	 * Fonction qui permet de charger le plugin Reasoning
+	 */
 	public void setReasoningInstance()
 	{
 		for (IConfigurationElement elem : RegistryFactory.getRegistry()
@@ -163,20 +180,18 @@ public class Activator extends AbstractUIPlugin
 			{
 				e1.printStackTrace();
 			}
-			double freq = 1;// j'ai mis 1 au hasard
 		}
 	}
-
-	void setEvent(IEvent e)
-	{
-		event = e;
-	}
-
-	public void SendFluxToReasoning()
+	/**
+	 * Fonction qui permet de faire transiter les images
+	 *  du plugin d'aquisition au plugin de raisonnement
+	 */
+	public void sendFluxToReasoning()
 	{
 		System.out.println("toto a une image");
 		IEvent ev = null;
 		BufferedImage itIm = flux.next();
+		System.out.println(itIm);
 		while (itIm != null && ev == null)
 		{
 			Reasoning.reasonedOnImage(itIm);
