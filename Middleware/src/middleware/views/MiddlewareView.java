@@ -154,16 +154,12 @@ public class MiddlewareView extends ViewPart
 			postOnWebButton.setFocus();
 			acces_token_t.setEnabled(true);
 			Activator.getDefault().intialiserReasoning();
+			Activator.getDefault().SendFluxToReasoning();
 			
 			
 			
 		}
 
-		private void makeAnalyse() {
-			
-			Activator.getDefault().SendFluxToReasoning();
-			
-		}
 	}
 
 	/**
