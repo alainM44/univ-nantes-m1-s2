@@ -31,6 +31,7 @@ public class Alerte implements IReasoning {
 	public IEvent getEvenement() {
 		if (compteurSombre == nbImagesombre){
 			compteurSombre = 0;
+			e=new Event();
 			e.setaMessage("Il fait nuit");
 		}
 		return e;
@@ -47,6 +48,7 @@ public class Alerte implements IReasoning {
 
 		} else {
 			e= new Event();
+			e.setaMessage("Il ne s'est rien passé");
 		}
 
 	}
