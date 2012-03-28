@@ -28,6 +28,9 @@ public class Alerte implements IReasoning {
 
 
 	@Override
+	/*
+	 * Fonction qui renvois un evenement
+	 */
 	public IEvent getEvenement() {
 		if (compteurSombre == nbImagesombre){
 			compteurSombre = 0;
@@ -36,7 +39,10 @@ public class Alerte implements IReasoning {
 		}
 		return e;
 	}
-
+	/**
+	 * Fonction qui permet d'analyser un image
+	 * @param im image a analyser 
+	 */
 	public void reasonedOnImage(BufferedImage im) {
 		System.out.println(" ya un image");
 		if (im != null) {//fin de l'annalyse
