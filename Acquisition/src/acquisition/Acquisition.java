@@ -15,6 +15,11 @@ import javax.media.util.BufferToImage;
 
 import middleware.IFlux;
 
+/**
+ * Plugin d'acquisition d'une image dans un fichier video.
+ * @author E074862X
+ *
+ */
 public class Acquisition implements ControllerListener, IFlux
 {
 
@@ -151,8 +156,9 @@ public class Acquisition implements ControllerListener, IFlux
 	 * Méthode d'initialisation de l'analyse
 	 * @param ds Les données d'analyses contenant l'url du fichier
 	 * @return Retourne true si l'initialisation s'est correctement déroulé, false sinon
+	 * @throws InterruptedException 
 	 */
-	public boolean open(DataSource ds)
+	public boolean open(DataSource ds) throws InterruptedException
 	{
 		System.err.println("create player for: " + ds.getContentType());
 		try
@@ -170,6 +176,7 @@ public class Acquisition implements ControllerListener, IFlux
 		player.addControllerListener(this);
 
 		player.realize();
+		//Permet d'attendre que player soit prêt
 		if (!waitForState(player.Realized))
 		{
 			System.err.println("Failed to realize the player.");
@@ -234,17 +241,18 @@ public class Acquisition implements ControllerListener, IFlux
 		return true;
 	}
 
-	boolean waitForState(int state)
+	/**
+	 * Attend que le player soit prêt
+	 * @param state L'état attendu pour le player
+	 * @return true quand le player est synchro
+	 * @throws InterruptedException 
+	 */
+	boolean waitForState(int state) throws InterruptedException
 	{
 		synchronized (waitSync)
 		{
-			try
-			{
 				while (player.getState() < state && stateTransitionOK)
 					waitSync.wait();
-			}
-			catch (Exception e)
-			{}
 		}
 		return stateTransitionOK;
 	}
@@ -281,8 +289,16 @@ public class Acquisition implements ControllerListener, IFlux
 			System.exit(0);
 		}
 
-		if (!open(ds))
-			System.exit(0);
+		try
+		{
+			if (!open(ds))
+				System.exit(0);
+		}
+		catch (InterruptedException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	static void prUsage()

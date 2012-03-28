@@ -12,8 +12,8 @@ public class main
 		
 		a.setFile("/comptes/E074862X/workspace/Acquisition/darkcity.mov");
 		a.start();
-a.next();
-a.next();
+//a.next();
+//a.next();
 
 	}
 
