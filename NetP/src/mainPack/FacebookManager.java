@@ -48,16 +48,22 @@ public class FacebookManager implements IInformation
 
 	public void setAccessToken(String accessToken)
 	{
+		System.setProperty("http.proxyHost","proxy.ensinfo.sciences.univ-nantes.prive");
+		System.setProperty("http.proxyPort", "3128");
+		System.setProperty("https.proxyHost","proxy.ensinfo.sciences.univ-nantes.prive");
+		System.setProperty("https.proxyPort", "3128");
+
 		AccessToken = accessToken;
-		System.out.println(AccessToken);
+
 		ClientFB = new DefaultFacebookClient(AccessToken);
+
 	}
 
 	@Override
 	public void postMessage(IEvent evFB)
 	{
 		System.out.println("AT: "+AccessToken);
-		FacebookType publishMessageResponse = ClientFB.publish("me/feed", FacebookType.class, Parameter.with("message", "salut licia"));
+		FacebookType publishMessageResponse = ClientFB.publish("me/feed", FacebookType.class, Parameter.with("message","salut"));
 		System.out.println("Published message ID: " + publishMessageResponse.getId());
 	}
 
@@ -67,12 +73,7 @@ public class FacebookManager implements IInformation
 		return this.AccessToken;
 	}
 
-	@Override
-	public void postMessage(IEvent evFB)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public void postPicture(IEvent evFB)
