@@ -142,6 +142,8 @@ public class Acquisition implements ControllerListener, IFlux
 	public void setFrequence(double t)
 	{
 		temporaryTime = t;
+		if(fpc != null)
+			frameFrequence = fpc.mapTimeToFrame(new Time(temporaryTime));
 	}
 
 	@Override
