@@ -184,13 +184,12 @@ public class MiddlewareView extends ViewPart
 
 			postOnWebButton.setEnabled(false);
 			acces_token = acces_token_t.getText();
-			System.out.println("AccesT:"+acces_token);
-			acces_token_t.setEnabled(false);
+						acces_token_t.setEnabled(false);
 		
 			Activator.getDefault().postMessage(acces_token);
 
-			System.out.println(acces_token);
-			//currentInformationFactory.postMessage(currentEventFactory);
+
+
 			
 			label_post_result.setVisible(true);
 		}
