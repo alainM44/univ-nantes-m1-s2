@@ -144,12 +144,13 @@ public class Activator extends AbstractUIPlugin {
 		event=e;
 	}
 	public void SendFluxToReasoning() {
-
+		System.out.println("toto a une image");
 		IEvent ev = null;
 		BufferedImage itIm = flux.next();
 		while (itIm != null && ev == null) {
 			Reasoning.reasonedOnImage(itIm);
 			ev = Reasoning.getEvenement();
+			itIm = flux.next();
 		}
 		if (ev != null) {
 			event= ev;

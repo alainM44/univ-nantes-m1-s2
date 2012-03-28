@@ -37,6 +37,7 @@ public class Alerte implements IReasoning {
 	}
 
 	public void reasonedOnImage(BufferedImage im) {
+		System.out.println(" ya un image");
 		if (im != null) {//fin de l'annalyse
 			if (analyse.makeAnalyse(im)) {
 				compteurSombre++;
