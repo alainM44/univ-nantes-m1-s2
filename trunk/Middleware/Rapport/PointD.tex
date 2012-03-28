@@ -18,7 +18,30 @@ dsqdqs
 \paragraph{Architecture}
 qsdqs
 \paragraph{Acquisition}
-dqsdsq
+Le plugin Acquisition consiste à récupérer un fichier vidéo et en extraire une image périodiquement. Le plugin répond aux spécifications fournies par l'interface \verb+IFlux+ (cf. Fig \ref{fig:IFlux}).
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[scale=0.50]{img/IFlux}
+  \caption{Interface IFlux}
+  \label{fig:IFlux}
+\end{figure}
+
+Pour pouvoir lancer le plugin il est nécessaire d'appeler au minimum les méthodes suivantes dans cet ordre :
+\begin{enumerate}
+\item{\verb+setFile(file)+} pour fournir le fichier vidéo à analyser.
+\item{\verb+start()+} Cette méthode permet de paramètrer l'aquisition et de charger un player. 
+\item{\verb+next()+} renvoie un \verb+BufferedImage+ et avance dans la vidéo.
+\end{enumerate}
+
+Les autres méthodes de l'interface IFlux sont :
+\begin{itemize}
+\item{\verb+setDebut(tEnSecondes)+} pour donner l'instant à partir duquel la vidéo sera analysée. Cette méthode doit être lancée avant \verb+start()+ ou alors \verb+start+ est relancée
+\item{\verb+setFrequence(tEnSecondes)+} Le nom de la méthode est trompeuse mais elle permet de donner la période en secondes à laquelle le plugin récupère un image dans la vidéo. La période peut être changée avant ou en cours d'acquisition. Cependant le pointeur sur la prochaine image à acquérir étant déjà défini, le changement de période ne sera effectif qu'à partir du second \verb+next()+
+\item{\verb+getDurée()+} renvoie un le temps en secondes de la vidéo. \verb+start()+ doit avoir été déja lancée.
+\end{itemize}
+
+Pour effectuer l'acquisition le plugin utilise la librairie JMF qui est malheureusement peu pratique puisqu'elle ne gère qu'un faible nombre de formats vidéo. De plus nous avons pu constater un bug au niveau de la méthode qui renvoie la durée de la vidéo \verb+Player.duration()+; en effet celle-ci renvoie une valeur bien trop grande par rapport à la longueur réelle de la vidéo.
+
 \paragraph{Reasoning}
 sdqsd
 \paragraph{NetP}

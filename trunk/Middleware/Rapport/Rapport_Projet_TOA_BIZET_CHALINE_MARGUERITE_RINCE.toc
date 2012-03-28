@@ -1,10 +1,18 @@
 \select@language {french}
 \contentsline {chapter}{Table des mati\`eres}{1}{section*.2}
-\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
-\contentsline {chapter}{\numberline {2}Architecture}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Acquisition}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Reasoning}{3}{section.2.2}
-\contentsline {section}{\numberline {2.3}NetP}{3}{section.2.3}
-\contentsline {chapter}{\numberline {3}Documentation}{4}{chapter.3}
-\contentsline {chapter}{Table des figures}{5}{section*.4}
-\contentsline {chapter}{Bibliographie}{6}{section*.6}
+\contentsline {chapter}{\numberline {1}Point de vue Utilisateur}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Plugins developp\IeC {\'e}s}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Installation et prise en main}{2}{section.1.2}
+\contentsline {chapter}{\numberline {2}Point de vue developpeur}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Documentation}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Conception}{4}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Architecture}{4}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Classes}{4}{subsection.2.2.2}
+\contentsline {paragraph}{Architecture}{4}{section*.3}
+\contentsline {paragraph}{Acquisition}{4}{section*.4}
+\contentsline {paragraph}{Reasoning}{5}{section*.5}
+\contentsline {paragraph}{NetP}{5}{section*.6}
+\contentsline {section}{\numberline {2.3}Robustesse}{6}{section.2.3}
+\contentsline {section}{\numberline {2.4}Qualit\IeC {\'e} du code}{6}{section.2.4}
+\contentsline {section}{\numberline {2.5}Facilit\IeC {\'e} de mise en oeuvre des extension}{6}{section.2.5}
+\contentsline {chapter}{Table des figures}{7}{section*.8}
