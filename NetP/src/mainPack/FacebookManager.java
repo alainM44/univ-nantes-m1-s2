@@ -1,7 +1,9 @@
 package mainPack;
 
-import toa_project.IEvent;
-import toa_project.IInformation;
+
+
+import middleware.IEvent;
+import middleware.IInformation;
 
 import com.restfb.BinaryAttachment;
 import com.restfb.DefaultFacebookClient;
@@ -63,6 +65,27 @@ public class FacebookManager implements IInformation
 	public String toString()
 	{
 		return this.AccessToken;
+	}
+
+	@Override
+	public void postMessage(IEvent evFB)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void postPicture(IEvent evFB)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void postVideo(IEvent ecVF)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }
