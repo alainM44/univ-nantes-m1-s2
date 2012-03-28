@@ -113,16 +113,23 @@ public class Acquisition implements ControllerListener, IFlux
 	@Override
 	public BufferedImage next()
 	{
+		if(player.getMediaNanoseconds() < player.getDuration().getNanoseconds() )
+		{
 		buf = fgc.grabFrame();
 		btoi = new BufferToImage((VideoFormat) buf.getFormat());
 		img = btoi.createImage(buf);
 		BufferedImage bufImage = new BufferedImage(img.getWidth(null), img
 				.getHeight(null), BufferedImage.TYPE_INT_RGB);
+		//On teste que des frames sont passées
 		fpc.skip(frameFrequence);
 		int currentFrame = fpc.mapTimeToFrame(player.getMediaTime());
 		if (currentFrame != FramePositioningControl.FRAME_UNKNOWN)
 			System.err.println("Current frame: " + currentFrame);
+
 		return bufImage;
+		}
+		else
+			return null;
 	}
 
 	@Override
@@ -236,6 +243,9 @@ public class Acquisition implements ControllerListener, IFlux
 		{
 			frameFrequence = fpc.mapTimeToFrame(new Time(temporaryTime));
 		}
+		
+		if(frameFrequence == 0)
+			frameFrequence = 1;
 		// Definie le début d'analyse
 		fpc.seek(fpc.mapTimeToFrame(new Time(debut)));
 		return true;

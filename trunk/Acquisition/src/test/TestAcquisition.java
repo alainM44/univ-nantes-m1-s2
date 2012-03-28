@@ -39,6 +39,22 @@ public class TestAcquisition
 		assertNotNull("L'image obtenu est null", b);
 		b = a.next();
 		assertNotNull("L'image obtenu est null", b);
+
+	}
+	
+	@Test
+	public void endOfFile()
+	{
+		a.setFrequence(1);
+		a.setDebut(135);
+		a.start();
+		BufferedImage b = a.next();
+		assertNotNull("L'image obtenu est null", b);
+		b = a.next();
+		assertNull("L'image obtenu n'est pas null", b);
+		
+
+
 	}
 
 }
