@@ -6,6 +6,7 @@ public class Event implements IEvent {
 
 	private int seconde;
 	private String aMessage;
+	private boolean postable;
 	public Event() {
 		seconde=0;
 		aMessage="";
@@ -20,11 +21,20 @@ public class Event implements IEvent {
 	public int getSeconde() {
 		return seconde;
 	}
+	
 	public void setaMessage(String aMessage) {
 		this.aMessage = aMessage;
 	}
+	
 	public String getaMessage() {
 		return aMessage;
 	}
-
+	public void setPostable(boolean b){
+		postable=b;
+	}
+	@Override
+	public boolean postable() {
+		return postable;
+	}
+	
 }
