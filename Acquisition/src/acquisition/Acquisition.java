@@ -1,16 +1,9 @@
 package acquisition;
 
-import javax.imageio.ImageIO;
 import javax.media.*;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Component;
 import java.awt.Image;
-import java.awt.Panel;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -29,7 +22,7 @@ public class Acquisition implements ControllerListener, IFlux
 	private Image img;
 	private BufferToImage btoi;
 	private Player player;
-	private Time timeFrequence;
+	private int frameFrequence;
 	private FramePositioningControl fpc;
 	private FrameGrabbingControl fgc;
 	private BufferedImage bufImage;
@@ -39,6 +32,9 @@ public class Acquisition implements ControllerListener, IFlux
 	Object waitSync = new Object();
 	boolean stateTransitionOK = true;
 	int totalFrames = FramePositioningControl.FRAME_UNKNOWN;
+	
+	//Permet de stocker le temps jusqu'à l'appel de la méthode start
+	double temporaryTime;
 
 	// Constructeur
 	/**
@@ -55,18 +51,19 @@ public class Acquisition implements ControllerListener, IFlux
 		img = null;
 		btoi = null;
 		player = null;
-		timeFrequence = new Time(1);
+		frameFrequence = 1;
 		fpc = null;
 		fgc = null;
 		bufImage = null;
 		u = null;
 		debut = 0;
 		mrl = null;
+		temporaryTime = 0;
 	}
 
 	/*
 	 * On implimente la fonction controllerUpdate de la classe
-	 * ControllerListener qui nous permet de gérer les évenemnts du player.
+	 * ControllerListener qui nous permet de gérer les évenements du player.
 	 */
 	public void controllerUpdate(ControllerEvent evt)
 	{
@@ -116,7 +113,7 @@ public class Acquisition implements ControllerListener, IFlux
 		img = btoi.createImage(buf);
 		BufferedImage bufImage = new BufferedImage(img.getWidth(null), img
 				.getHeight(null), BufferedImage.TYPE_INT_RGB);
-		fpc.skip(fpc.mapTimeToFrame(timeFrequence));
+		fpc.skip(frameFrequence);
 		int currentFrame = fpc.mapTimeToFrame(player.getMediaTime());
 		if (currentFrame != FramePositioningControl.FRAME_UNKNOWN)
 			System.err.println("Current frame: " + currentFrame);
@@ -132,7 +129,7 @@ public class Acquisition implements ControllerListener, IFlux
 	@Override
 	public void setFrequence(double t)
 	{
-		timeFrequence = new Time(t);
+		temporaryTime = t;
 	}
 
 	@Override
@@ -150,6 +147,11 @@ public class Acquisition implements ControllerListener, IFlux
 
 	}
 
+	/**
+	 * Méthode d'initialisation de l'analyse
+	 * @param ds Les données d'analyses contenant l'url du fichier
+	 * @return Retourne true si l'initialisation s'est correctement déroulé, false sinon
+	 */
 	public boolean open(DataSource ds)
 	{
 		System.err.println("create player for: " + ds.getContentType());
@@ -174,7 +176,7 @@ public class Acquisition implements ControllerListener, IFlux
 			return false;
 		}
 
-		// Try to retrieve a FramePositioningControl from the player.
+		// Ajout des controlleurs
 		fpc = (FramePositioningControl) player
 				.getControl("javax.media.control.FramePositioningControl");
 		fgc = (FrameGrabbingControl) player
@@ -222,7 +224,12 @@ public class Acquisition implements ControllerListener, IFlux
 			return false;
 		}
 
-		// Define the beginning of the analyse
+		//change la frequence d'analyse
+		if (temporaryTime!=0)
+		{
+			frameFrequence = fpc.mapTimeToFrame(new Time(temporaryTime));
+		}
+		// Definie le début d'analyse
 		fpc.seek(fpc.mapTimeToFrame(new Time(debut)));
 		return true;
 	}

@@ -12,5 +12,6 @@
 	<classpathentry kind="lib" path="/comptes/E074862X/workspace/Acquisition/lib/JMF-2.1.1e/lib/mediaplayer.jar"/>
 	<classpathentry kind="lib" path="/comptes/E074862X/workspace/Acquisition/lib/JMF-2.1.1e/lib/multiplayer.jar"/>
 	<classpathentry kind="lib" path="/comptes/E074862X/workspace/Acquisition/lib/jai_linux-i586.jar"/>
+	<classpathentry kind="lib" path="/comptes/E074862X/workspace/junit-4.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
