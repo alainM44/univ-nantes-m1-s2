@@ -11,41 +11,44 @@ import middleware.IReasoning;
 import middleware.IEvent;
 
 public class Alerte implements IReasoning {
-	private final int nbseconde=3;
+	private final int nbseconde = 3;
 	private IAnalyse analyse;
-	private int compteurSombre=0;
+	private int compteurSombre = 0;
 	private int frequence;
+	private boolean finAnalyse;
+
 	public Alerte() throws CoreException {
 		// TODO Auto-generated constructor stub
 		for (IConfigurationElement element : RegistryFactory.getRegistry()
 				.getConfigurationElementsFor("Reasoning.ReasoningPExAn")) {
-				 analyse=(IAnalyse)element.createExecutableExtension("class");
+			analyse = (IAnalyse) element.createExecutableExtension("class");
 		}
 	}
-	
-	public void setFrequence(int freq){
-		frequence=freq;
+
+	public void setFrequence(int freq) {
+		frequence = freq;
 	}
-	
+
 	@Override
 	public IEvent getEvenement() {
-		IEvent e=null;
-		if (compteurSombre==frequence*nbseconde){
-			e = (IEvent) new Event();
-			compteurSombre=0;
+		Event e;
+		if (compteurSombre == frequence * nbseconde) {
+			e = new Event();
+			compteurSombre = 0;
 		}
-		return e;
+		return null;
 	}
 
 	public void reasonedOnImage(BufferedImage im) {
-		if( analyse.makeAnalyse(im)){
-			compteurSombre++;
-		}
-		else{
-			compteurSombre=0;
-		}
-		
-	}
+		if (im != null) {
+			if (analyse.makeAnalyse(im)) {
+				compteurSombre++;
+			} else {
+				compteurSombre = 0;
+			}
 
-	
+		} else {
+		}
+
+	}
 }

@@ -6,6 +6,9 @@ package middleware.views;
  * Class implémentant une view eclipse.
  * Permet un chagemeent lazy des différents pluggin du projet
  */
+import java.awt.image.BufferedImage;
+import java.nio.Buffer;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.RegistryFactory;
@@ -154,6 +157,12 @@ public class MiddlewareView extends ViewPart
 			Activator.getDefault().intialiserReasoning();
 			
 			
+			
+		}
+
+		private void makeAnalyse() {
+			
+			Activator.getDefault().SendFluxToReasoning();
 			
 		}
 	}
