@@ -110,19 +110,36 @@ public class FacebookManager implements IInformation
 	@Override
 	public void postMessage(IEvent evFB)
 	{
-		System.out.println("salut");
+//		System.out.println("salut");
+		System.setProperty("http.proxyHost","proxy.ensinfo.sciences.univ-nantes.prive");
+		System.setProperty("http.proxyPort", "3128");
+		System.setProperty("https.proxyHost","proxy.ensinfo.sciences.univ-nantes.prive");
+		System.setProperty("https.proxyPort", "3128");
+
+
 		FacebookType publishMessageResponse = ClientFB.publish("me/feed", FacebookType.class, Parameter.with("message", evFB.getMessage()));
 		System.out.println("Published message ID: " + publishMessageResponse.getId());
 	}
 
+	/**
+	 * Implémentation de la méthode de IIformation.
+	 * 
+	 * @see IInformation#postVideo(IEvent)
+	 */
 
 	@Override
-	public void postPicture(IEvent evFB) {
+	public void postPicture(IEvent evFB)
+	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
-
+	/**
+	 * Implémentation de la méthode de IIformation.
+	 * 
+	 * @see IInformation#postVideo(IEvent)
+	 */
+	@Override
 	public void postVideo(IEvent ecVF)
 	{
 		// TODO Auto-generated method stub
