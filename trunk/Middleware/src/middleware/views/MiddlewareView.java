@@ -195,7 +195,7 @@ public class MiddlewareView extends ViewPart
 
 			System.out.println(acces_token);
 			//currentInformationFactory.postMessage(currentEventFactory);
-			System.out.println("yes3");
+			
 			label_post_result.setVisible(true);
 		}
 		
