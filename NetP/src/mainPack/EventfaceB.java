@@ -1,25 +1,27 @@
 package mainPack;
 
-
 import java.awt.image.BufferedImage;
 
 import middleware.IEvent;
-
-
 
 /**
  * Classe décrivant une action à poster sur facebook destiné à être posté sur
  * facebook
  * 
- * @authors Bizet Marguerite Rince  nom de famille ???
+ * @authors Bizet Chaline Marguerite Rince
  * 
  */
 public class EventfaceB implements IEvent
 {
+	/**
+	 * Un événement est composé d'un Id et du message à poster
+	 */
 	private Integer id;
 	private String message;
-	private BufferedImage image;
 
+	/**
+	 * Constructeur par défaut
+	 */
 	public EventfaceB()
 	{
 		super();
@@ -27,39 +29,33 @@ public class EventfaceB implements IEvent
 	}
 
 	/**
-	 * Evenement facebook avec image 
+	 * Evenement facebook avec image
 	 * 
 	 * @param id
 	 *            id de l'événement
 	 * @param message
 	 *            texte à poster sur Facebook
-	 * @param image
-	 *            image relative à l'événement
 	 */
 	public EventfaceB(Integer id, String message, BufferedImage image)
 	{
 		super();
 		this.id = id;
 		this.message = message;
-		this.image = image;
 	}
-	
+
 	/**
-	 * Evenement facebook sans  image 
+	 * Evenement facebook sans image
 	 * 
 	 * @param id
 	 *            id de l'événement
 	 * @param message
 	 *            texte à poster sur Facebook
-	 * @param image
-	 *            image relative à l'événement
 	 */
 	public EventfaceB(Integer id, String message)
 	{
 		super();
 		this.id = id;
 		this.message = message;
-		this.image = null;
 	}
 
 	/**
@@ -71,6 +67,7 @@ public class EventfaceB implements IEvent
 	{
 		return id;
 	}
+
 	public void setId(Integer id)
 	{
 		this.id = id;
@@ -84,16 +81,6 @@ public class EventfaceB implements IEvent
 	public void setMessage(String message)
 	{
 		this.message = message;
-	}
-
-	public BufferedImage getImage()
-	{
-		return image;
-	}
-
-	public void setImage(BufferedImage image)
-	{
-		this.image = image;
 	}
 
 }

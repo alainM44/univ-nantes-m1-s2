@@ -1,60 +1,132 @@
 package mainPack;
 
+import java.io.InputStream;
+
 import middleware.IEvent;
 import middleware.IInformation;
+
+import com.restfb.BinaryAttachment;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
 import com.restfb.types.FacebookType;
 
-public class FacebookManager implements IInformation {
+/**
+ * <b>FacebookManager est la classe proposée implémentant IIformation proposée
+ * par le contributeur NetP<b>
+ * <p>
+ * FacebookManager contient les attributs suivants :
+ * <ul>
+ * <li>Un FacebookClient, représentant le titulaire du compte Facebook.</li>
+ * <li>Un AccessToken, clef de sécurité temporaire.</li>
+ * </ul>
+ * </p>
+ * 
+ * @authors Bizet Chaline Marguerite Rince
+ * 
+ * @version 1.0
+ */
+
+public class FacebookManager implements IInformation
+{
+
+	/**
+	 * Le compte Facebook à utiliser.
+	 */
 
 	private FacebookClient ClientFB;
+	/**
+	 * Clef de sécurité temporaire à fournir par le propriétaire
+	 */
 	private String AccessToken;
 
-	public FacebookManager() {
+	/**
+	 * Constructeur par défaut.
+	 */
+	public FacebookManager()
+	{
 		super();
 		AccessToken = "";
 		ClientFB = new DefaultFacebookClient();
 	}
 
-	public FacebookManager(String accessToken) {
+	/**
+	 * Constructeur de la classe FacebookManager
+	 * 
+	 * @param accessToken
+	 *            clef de sécurité temporaire
+	 */
+	public FacebookManager(String accessToken)
+	{
 		super();
 		AccessToken = accessToken;
 		ClientFB = new DefaultFacebookClient(accessToken);
 	}
 
-	public FacebookClient getClientFB() {
+	/**
+	 * Retourne le client facebook
+	 * 
+	 * @return l'instance courante du compte client utilisé
+	 * @see FacebookManager#ClientFB
+	 */
+	public FacebookClient getClientFB()
+	{
 		return ClientFB;
 	}
 
-	public void setClientFB(FacebookClient clientFB) {
+	/**
+	 * Setteur de ClientFB
+	 * 
+	 * @param clientFB
+	 *            nouvelle valeur pour ClientFb
+	 * @see FacebookManager#ClientFB
+	 */
+	public void setClientFB(FacebookClient clientFB)
+	{
 		ClientFB = new DefaultFacebookClient(AccessToken);
 	}
 
-	public String getAccessToken() {
+	/**
+	 * 
+	 * @return l'acces token sous la forme d'une chaîne de caractère
+	 * @see FacebookManager#AccessToken
+	 */
+	public String getAccessToken()
+	{
 		return AccessToken;
 	}
 
-	public void setAccessToken(String accessToken) {
+	public void setAccessToken(String accessToken)
+	{
 		AccessToken = accessToken;
 		ClientFB = new DefaultFacebookClient(AccessToken);
 	}
 
+	/**
+	 * Implémentation de la méthode de IIformation.
+	 * 
+	 * @see IInformation#postMessage(IEvent)
+	 */
 	@Override
-	public void postMessage(IEvent evFB) {
-		System.out.println("debut possssst");
-		FacebookType publishMessageResponse = ClientFB.publish("me/feed",
-				FacebookType.class, Parameter.with("message", "salur"));
-		System.out.println("Published message ID: "
-				+ publishMessageResponse.getId());
-		System.out.println("fin post");
+	public void postMessage(IEvent evFB)
+	{
+		System.out.println("salut");
+		FacebookType publishMessageResponse = ClientFB.publish("me/feed", FacebookType.class, Parameter.with("message", evFB.getMessage()));
+		System.out.println("Published message ID: " + publishMessageResponse.getId());
+	}
+
+	@Override
+	public void postPicture(IEvent evFB)
+	{
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public String toString() {
-		return this.AccessToken;
+	public void postVideo(IEvent ecVF)
+	{
+		// TODO Auto-generated method stub
+
 	}
 
 }
