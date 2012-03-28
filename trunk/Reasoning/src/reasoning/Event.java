@@ -32,9 +32,6 @@ public class Event implements IEvent {
 	public void setPostable(boolean b){
 		postable=b;
 	}
-	@Override
-	public boolean postable() {
-		return postable;
-	}
+	
 	
 }

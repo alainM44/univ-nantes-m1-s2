@@ -63,7 +63,7 @@ public class Activator extends AbstractUIPlugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
-
+	
 	/**
 	 * Returns an image descriptor for the image file at the given plug-in
 	 * relative path
@@ -92,12 +92,12 @@ public class Activator extends AbstractUIPlugin {
 
 	}
 
-	public void postMessage(EventfaceB evFB, String token) {
+	public void postMessage(String token) {
 		if (currentInformationFactory == null)
 			setInformationInstance();
 
 		currentInformationFactory.setAccessToken(token);
-		currentInformationFactory.postMessage(evFB);
+		currentInformationFactory.postMessage(event);
 
 	}
 
@@ -137,13 +137,13 @@ public class Activator extends AbstractUIPlugin {
 			} catch (CoreException e1) {
 				e1.printStackTrace();
 			}
+			double freq = 1;// j'ai mis 1 au hasard
 		}
 	}
 	void setEvent(IEvent e){
 		event=e;
 	}
 	public void SendFluxToReasoning() {
-		double freq = 1;// j'ai mis 1 au hasard
 
 		IEvent ev = null;
 		BufferedImage itIm = flux.next();
@@ -152,7 +152,7 @@ public class Activator extends AbstractUIPlugin {
 			ev = Reasoning.getEvenement();
 		}
 		if (ev != null) {
-			
+			event= ev;
 		}
 	}
 
