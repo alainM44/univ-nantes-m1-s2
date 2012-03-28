@@ -17,6 +17,4 @@ public interface IReasoning {
 	 *            en seconde
 	 */
 	public void reasonedOnImage(BufferedImage im);
-
-	public void setFrequence(int freq);
 }

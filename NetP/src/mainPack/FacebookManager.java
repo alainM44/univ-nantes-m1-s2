@@ -115,14 +115,14 @@ public class FacebookManager implements IInformation
 		System.out.println("Published message ID: " + publishMessageResponse.getId());
 	}
 
-	@Override
-	public void postPicture(IEvent evFB)
-	{
-		// TODO Auto-generated method stub
 
+	@Override
+	public void postPicture(IEvent evFB) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	@Override
+
 	public void postVideo(IEvent ecVF)
 	{
 		// TODO Auto-generated method stub
