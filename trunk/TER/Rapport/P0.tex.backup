@@ -25,7 +25,7 @@ Un identifiant : Une String respectant un format précis (c.f 1.1 du document de
 \item
 Une liste de coordonnées. Une liste de d'intervalles de Double.
 \item
-Une Liste des caractéristiques, dans l'ordre et selon les types définis en entête
+Une liste des caractéristiques, dans l'ordre et selon les types définis en entête
 \end{itemize}
 
 Ces données seront régulièrement requises durant les algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voir direct. Pour le cas de l'identifiant, s'agissant d'une simple string le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. Plusieurs possibilités sont alors envisageable : 
@@ -40,10 +40,13 @@ Une hashmap : Coûteuse si la fonction de hashage n'est pas appropriée, la hash
 \end{itemize}
 L'étude ci-dessus des trois structures de données, oriente notre choix vers le tableau. Or une alternative serait une TreeMap \cite{Treemap}. 
 %http://docs.oracle.com/javase/1.4.2/docs/api/java/util/TreeMap.html
-Implémentation de base des arbres rouges noirs, cette map a la particularité de posséder des clefs triées. Ainsi les complexités de plusieurs opérations telle que l'accès en $\log{n}$. 
+Implémentation de base des arbres rouges noirs, cette map a la particularité de posséder des clefs triées. Ainsi les complexités de plusieurs opérations telle que l'accès en $\log{n}$. Dans le cas d'un grand nombre de valeurs à stocker, il est plus performant de construire la TreeMap à partir d'une HashMap.
 
 La création d'une boîte a alors une complexité en $O(d)$. De plus l'accès aux différents attributs de la boîte (identifiant, liste des coordonnées) sera en $O(1)$.
 
+
+\subsection{Généricité des caractéristiques}
+Un problème majeur apparaît pour l'instanciation des boîtes. Elles ont en effet chacune un nombre de caractéristiques potentiellement différentent.
 
 \section{Stockage du pavage }
 L'outil de visualisation peut charger un fichier entrée de manière dynamique ou non. Nous nous plaçons ici dans le cadre où cette option de chargement dynamique n'est pas activée. \\ L'outil va lire donc de façon séquentielle chaque ligne du fichier d'entrée. % Le création de structure de  données peut alors se faire de différentes  manières : 

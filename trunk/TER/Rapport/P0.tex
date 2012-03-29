@@ -79,13 +79,21 @@ L'outil de visualisation peut charger un fichier entrée de manière dynamique o
   % Chaque boîte est crée de manière séquentielle selon l'ordre du fichier puis stockée dans la structure de donnée. Le trie de la structure aura lieu plus tard ., 
 \end{itemize}
 \subsection{Stockage du pavage}
-Le nombre potentiellement très grand de boîtes élimine d'emblée la possibilité de choisir une HashMap. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes ne sont pas appropriées ici. Une complexité en $n²$ pour un accès à une boîte n'est pas raisonnable. Les arbres ont l'atout de pouvoir stocker et manipuler un grand nombre de d'entités. Les arbres de recherches sont des arborescences ordonnées permettant un accès en $\log(n)$. Dans le cas où la structure serait triée au fur et à mesure de sa construction. Les arbres de recherche proposent de bonnes performances.
+Le nombre potentiellement très grand de boîtes élimine d'emblée la possibilité de choisir une HashMap. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes ne sont pas  appropriées ici. Une complexité en $n²$ pour un accès à une boîte n'est pas raisonnable. Les arbres ont l'atout de pouvoir stocker et manipuler un grand nombre de d'entités. Les arbres de recherches sont des arborescences ordonnées permettant un accès en $\log(n)$. Dans le cas où la structure serait triée au fur et à mesure de sa construction. Les arbres de recherche proposent de bonnes performances. Nous developperons pourquoi à travers des cas d'exemples dans les prochains paragraphes : 
 
 
 
 \paragraph{Arbre binaire}
 Par exemple l'utilisation d'un arbre binaire de recherche pour la création de n boîtes aurait une complexité de $n²$ en pire cas. En effet il s'agit du cas où les boîtes arriveraient triées selon l'ordre inverse de celui que l'on souhaite. Il faudrait alors effecter $(p-1)$ comparaisons, pour chaque boîte :  $\sum_{p=2}^{n}(p-1)$  Soit $O(n)=\frac{1}{2}n²-\frac{1}{2}n$. Cependant dans le meilleur des cas cette opération a une complexité en $n\log{n}$.
 La création d'un pavage composé de n boîtes à d dimensions aurait alors une complexité égale à: $(n*d)*n\log(n)$ $\triangle$
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[scale=0.60]{img/binTree}
+  \caption{a-b tree}
+  \label{fig:dnuages}
+\end{figure}
+
 %http://www.enseignement.polytechnique.fr/profs/informatique/Luc.Maranget/421/poly/arbre-bin.html
 \clearpage
 \paragraph{Arbres a-b}
@@ -111,6 +119,6 @@ Il s'agit d'un arbre de recherche avec les propriétés suivantes :
 
 L'avantage des arbres a-b est que leurs hauteurs sont sont comprises entres les valeurs suivantes : $ \dfrac{\log{n}}{\log{b}}   \leq h  < 1 + \dfrac{\log{n/2}}{\log{a}}$. Ainsi les opération d'insertions ne serait plus en $n\log{n}$ mais en $\log{n}$.
 
-La création d'un pavage composé de n boîtes à d dimensions aurait alors une complexité égale à: $(n*d)*\log(n)$ $\triangle$
+La création d'un pavage composé de n boîtes à d dimensions aurait alors une complexité égale à: $(n\times d)\times\log(n)$ $\triangle$
 
 
