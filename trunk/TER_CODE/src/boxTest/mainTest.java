@@ -108,6 +108,17 @@ public class mainTest {
 			a.put(i, 2 * nb_cara / 3);
 
 	}
+	
+	public static void constructGlobalMapType(Map<Integer,String>a, int nb_cara) {
+		int i = 0;
+		for (i = 0; i < nb_cara / 3; i++)
+			a.put(i, "Interval");
+		for (i = nb_cara / 3 ; i < 2 * nb_cara / 3; i++)
+			a.put(i, "String");
+		for (i = 2 * nb_cara / 3 ; i < nb_cara; i++)
+			a.put(i, "Number");
+
+	}
 	public static void each_cara_in_box_with_global_array(IBox b, int nb_coord, int nb_cara,Map<Integer, Integer> globale) {
 		int i = 0;
 		for (i = 0; i < nb_coord; i++)
@@ -132,13 +143,13 @@ public class mainTest {
 		start = System.nanoTime();
 		IBox boxs[] = new IBox[n];
 		IBox b;
-		TreeMap<Integer,Integer> globale = new TreeMap<Integer,Integer>();
+		TreeMap<Integer,String> globale = new TreeMap<Integer,String>();
 
 		// Box b;
 		// String name="box";
-//		constructGlobalMap(globale, nbCarac);
+		constructGlobalMapType(globale, nbCarac);
 		for (int i = 0; i < n; i++) {
-			b = new BoxTreeMap(i);
+			b = new BoxUniqueTreeMap(i);
 			each_cara_in_box(b, nbCoord, nbCarac);
 			boxs[i] = b;
 		}
