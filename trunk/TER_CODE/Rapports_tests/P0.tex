@@ -57,6 +57,33 @@ Pour les structures liste et tableau l'organisation des structures de données e
 Les résultats obtenus sont indiqués dans la table \ref{tab:arraylist} et \ref{tab:linkedlist}
 
 
+\section{Maps globales}
+Les boîtes sont composées  de 4 ArrayLists : 
+\begin{itemize}
+  \item Une ArrayList pour l'ensemble des intervalles coordonnées.
+  \item Une ArrayList pour les caractéristiques de type String.
+  \item Une ArrayList pour les caractéristiques de type Interval.
+  \item Une ArrayList pour les caractéristiques de type Number.
+\end{itemize}
+Il faut cependant savoir à quels indices se trouves les différents élément pour effecter des accès directs. Pour cela, on dispose ici de quatres Maps globales :
+\begin{itemize}
+  \item Une Map pour l'ensemble des intervalles coordonnées.
+  \item Une Map pour les caractéristiques de type String
+  \item Une Map pour les caractéristiques de type Interval
+  \item Une Map pour les caractéristiques de type Number
+\end{itemize}\\
+La composition de chacune de ces maps est la suivante :  
+\begin{description}
+ \item[Clef :]
+ID de la coordonée ou de la variable.
+\item[Valeur :]
+Indice de l'objet dans le tableau de la boîte.
+\end{description}
+
+
+\paragraph{Observations :}
+
+
 \appendix
 
 \chapter{Annexes}
@@ -168,7 +195,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \caption{Étude de performances avec des TreeMap seconde structure}
 \label{tab:treemap2}
 \end{table}
-
+\clearpage
 \section{Études de performance avec des Tableaux et des Listes}
 
 \begin{table}[h]
@@ -189,7 +216,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \hline
 \end{tabular}
 \caption{Étude de performances avec des ArrayList}
-\label{tab:arraylist}
+ 
 \end{table}
 
 \begin{table}[htbp]
@@ -212,8 +239,8 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \caption{Étude de performances avec des LinkedList}
 \label{tab:linkedlist}
 \end{table}
-
-\section{Annexe Alain}
+\clearpage
+\section{Études de performance avec des maps globales}
 %hashmap
 \begin{table}[h]
   \centering
@@ -232,7 +259,8 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 1000000 & \multicolumn{4}{|c|}{Out of memory}\\
 \hline
 \end{tabular}
-\caption{4 HashMap globales, 4 ArrayList sans initialisation}
+\caption{Étude de performances avec des HashMap globales avec initialisation} 
+\label{tab:hashmapglobal}
 \end{table}
 
 
@@ -253,11 +281,9 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 1000000 & \multicolumn{4}{|c|}{Out of memory}\\
 \hline
 \end{tabular}
-\caption{4 HashMap globales, 4 ArrayList avec  initialisation}
+\caption{Étude de performances avec des HashMap globales sans initialisation}
+\label{tab:hashmapglobalInit}
 \end{table}
-
-
-
 
 
 
@@ -285,7 +311,8 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 1000000 & \multicolumn{4}{|c|}{Out of memory}\\
 \hline
 \end{tabular}
-\caption{4 HashMap globales, 4 ArrayList sans initialisation}
+\caption{Étude de performances avec des TreeMaps globales sans initialisation} 
+\label{tab:treemapglobal}
 \end{table}
 
 \begin{table}[h]
@@ -305,7 +332,8 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 1000000 & \multicolumn{4}{|c|}{Out of memory}\\
 \hline
 \end{tabular}
-\caption{4 HashMap globales, 4 ArrayList avec initialisation}
+\caption{Étude de performances avec des TreeMaps globales avec initialisation}
+\label{tab:treemapglobalInit}
 \end{table}
 
 
@@ -331,7 +359,8 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 1000000 & \multicolumn{4}{|c|}{Out of memory}\\
 \hline
 \end{tabular}
-\caption{4 HashMap globales, 4 ArrayList sans initialisation}
+\caption{Étude de performances avec des TreeMaps construites à partir de HashMaps globales sans initialisation} 
+\label{tab:treehashmapglobal}
 \end{table}
 
 \begin{table}[h]
@@ -351,5 +380,6 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 1000000 & \multicolumn{4}{|c|}{Out of memory}\\
 \hline
 \end{tabular}
-\caption{4 HashMap globales, 4 ArrayList avec initialisation}
+\caption{Étude de performances avec des TreeMaps construites à partir de HashMaps globales avec initialisation} 
+\label{tab:treehashmapglobalInit}
 \end{table}
