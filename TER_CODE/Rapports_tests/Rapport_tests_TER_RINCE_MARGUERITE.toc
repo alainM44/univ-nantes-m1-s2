@@ -9,4 +9,5 @@
 \contentsline {section}{\numberline {2}Liste et Tableau}{3}{section.1.2}
 \contentsline {chapter}{\numberline {A}Annexes}{4}{appendix.A}
 \contentsline {section}{\numberline {1}\IeC {\'E}tudes de performance avec des Maps}{4}{section.A.1}
-\contentsline {section}{\numberline {2}\IeC {\'E}tudes de performance avec des Tableaux et des Listes}{4}{section.A.2}
+\contentsline {section}{\numberline {2}\IeC {\'E}tudes de performance avec des Tableaux et des Listes}{5}{section.A.2}
+\contentsline {section}{\numberline {3}Annexe Alain}{5}{section.A.3}
