@@ -2,6 +2,8 @@
 \contentsline {chapter}{\numberline {1}\IeC {\'E}tude des structures de donn\IeC {\'e}es}{2}{chapter.1}
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1.1}
 \contentsline {section}{\numberline {2}D\IeC {\'e}finition de la bo\IeC {\^\i }te}{2}{section.1.2}
-\contentsline {section}{\numberline {3}Stockage du pavage }{3}{section.1.3}
-\contentsline {paragraph}{Arbre binaire}{3}{section*.2}
-\contentsline {paragraph}{Arbres a-b}{4}{section*.3}
+\contentsline {subsection}{\numberline {2.1}Variables et identifiants}{3}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {2.2}G\IeC {\'e}n\IeC {\'e}ricit\IeC {\'e} des caract\IeC {\'e}ristiques}{3}{subsection.1.2.2}
+\contentsline {section}{\numberline {3}Stockage du pavage}{3}{section.1.3}
+\contentsline {paragraph}{Arbre binaire}{4}{section*.2}
+\contentsline {paragraph}{Arbres a-b}{5}{section*.3}
