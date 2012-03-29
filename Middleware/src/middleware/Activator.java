@@ -112,11 +112,9 @@ public class Activator extends AbstractUIPlugin
 	{
 		if (currentInformationFactory == null)
 			setInformationInstance();
-		System.out.println("avant setacces");
 		currentInformationFactory.setAccessToken(token);
-		System.out.println("nouveau message");
 		if(event==null)
-			System.err.println("nullllllll");
+			System.err.println("null");
 		currentInformationFactory.postMessage(event);
 
 	}
@@ -132,7 +130,6 @@ public class Activator extends AbstractUIPlugin
 			try
 			{
 				flux = (IFlux) elem.createExecutableExtension("class");
-				System.out.println("instance crée");
 			}
 			catch (CoreException e1)
 			{
@@ -157,7 +154,6 @@ public class Activator extends AbstractUIPlugin
 	{
 		if (Reasoning == null)
 			setFluxInstance();
-		System.out.println("Flux init");
 		flux.setFile(path);
 		flux.start();
 	}
@@ -174,7 +170,6 @@ public class Activator extends AbstractUIPlugin
 			{
 				Reasoning = (IReasoning) elem
 						.createExecutableExtension("class");
-				System.out.println("instance crée");
 			}
 			catch (CoreException e1)
 			{
@@ -191,7 +186,6 @@ public class Activator extends AbstractUIPlugin
 		System.out.println("toto a une image");
 		IEvent ev = null;
 		BufferedImage itIm = flux.next();
-		System.out.println(itIm);
 		while (itIm != null && ev == null)
 		{
 			Reasoning.reasonedOnImage(itIm);
@@ -201,7 +195,6 @@ public class Activator extends AbstractUIPlugin
 		if (ev != null)
 		{
 			event = ev;
-			System.out.println("zeee");
 		}
 	}
 

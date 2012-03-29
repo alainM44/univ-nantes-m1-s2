@@ -169,7 +169,6 @@ public class Acquisition implements ControllerListener, IFlux
 	@Override
 	public void setFile(String file)
 	{
-		System.out.println(file);
 		try
 		{
 			u = new URL("file:///" + file);
@@ -189,7 +188,6 @@ public class Acquisition implements ControllerListener, IFlux
 	 */
 	public boolean open(DataSource ds) throws InterruptedException
 	{
-		System.err.println("create player for: " + ds.getContentType());
 		try
 		{
 			player = Manager.createPlayer(ds);
@@ -236,8 +234,6 @@ public class Acquisition implements ControllerListener, IFlux
 
 		if (duration != Duration.DURATION_UNKNOWN)
 		{
-			System.err.println("Movie duration: " + duration.getSeconds());
-
 			totalFrames = fpc.mapTimeToFrame(duration);
 			if (totalFrames != FramePositioningControl.FRAME_UNKNOWN)
 				System.err.println("Total # of video frames in the movies: "
