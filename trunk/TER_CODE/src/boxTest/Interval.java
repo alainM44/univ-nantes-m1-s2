@@ -1,3 +1,5 @@
+package boxTest;
+
 
 public class Interval {
 	

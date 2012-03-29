@@ -1,0 +1,2 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}G\IeC {\'e}n\IeC {\'e}ration de bo\IeC {\^\i }tes}{2}{chapter.1}

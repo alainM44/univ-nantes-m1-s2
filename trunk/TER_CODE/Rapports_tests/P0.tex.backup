@@ -1,0 +1,19 @@
+\chapter{Génération de boîtes}
+
+\begin{figure}[h]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.01782 & 0.05s & 52Mo & 1Mo\\
+\hline
+1000 & 0.04105 & 0.07s & 52Mo & 8Mo\\
+\hline
+10000 & 0.43105 & 0.16s & 133Mo & 74Mo\\
+\hline
+100000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\end{figure}
+

@@ -1,5 +1,9 @@
+package boxTest;
+import interfaces.IBox;
+
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
+
 
 public class mainTest {
 
@@ -10,7 +14,7 @@ public class mainTest {
 	private static int n; // nombre de boîtes à tester
 
 	
-	public static void fulling_box_number(Box b ,int nb_coord,int nb_cara){
+	public static void fulling_box_number(IBox b ,int nb_coord,int nb_cara){
 		int i =0;
 		for(i=0;i<nb_coord;i++)
 			b.addCoord(i, new Interval(1.2, 1.3));
@@ -19,7 +23,7 @@ public class mainTest {
 
 	}
 	
-	public static void fulling_box_string(Box b ,int nb_coord,int nb_cara){
+	public static void fulling_box_string(IBox b ,int nb_coord,int nb_cara){
 		int i =0;
 		for(i=0;i<nb_coord;i++)
 			b.addCoord(i, new Interval(1.2, 1.3));
@@ -28,7 +32,7 @@ public class mainTest {
 
 	}
 	
-	public static void fulling_box_interval(Box b ,int nb_coord,int nb_cara){
+	public static void fulling_box_interval(IBox b ,int nb_coord,int nb_cara){
 		int i =0;
 		for(i=0;i<nb_coord;i++)
 			b.addCoord(i, new Interval(1.2, 1.3));
@@ -42,14 +46,14 @@ public class mainTest {
 	public static void main(String[] args) {
 		n = 1000000;
 		 start = System.nanoTime();
-		Box boxs[]= new Box[n];
-		Box b;
+		 IBox boxs[]= new IBox[n];
+		 IBox b;
 		
 		//Box b;
 		//String name="box";
 		for(int i=0;i<n;i++)
 		{
-			b = new Box(i);
+			b = new BoxArrayList(i);
 			fulling_box_interval(b, 100, 20);
 			boxs[i]=b;
 		}
