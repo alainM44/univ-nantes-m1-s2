@@ -1,5 +1,5 @@
 \chapter{Génération de boîtes}
-Génération où le nombre de caractéristique est fixé à 20 et la dimension du pavage à 100
+Pour la génération dees boîtes le nombre de caractéristique est fixé à 20 et la dimension du pavage à 100.
 
 \section{Map}
 
@@ -17,16 +17,11 @@ Pour les map l'organisation des structures de données est la suivante :
 \end{itemize}
 
 \subsubsection{Map sans valeur d'initialisation}
-Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap1}
-
-
-
-
-
+Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap1} et \ref{tab:treemap1}
 
 
 \subsubsection{Map avec valeur d'initialisation}
-
+Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap2}
 
 
 Un TreeMap ne peut avoir de paramètre de taille fourni à l'initialisation.
@@ -44,6 +39,8 @@ Pour les map, une autre organisation des structures de données possible est la 
 \end{itemize}
 \end{itemize}
 
+Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap3} et \ref{tab:treemap2}
+
 
 
 \section{Liste et Tableau}
@@ -57,6 +54,8 @@ Pour les structures liste et tableau l'organisation des structures de données e
 \end{itemize}
 \end{itemize}
 
+Les résultats obtenus sont indiqués dans la table \ref{tab:arraylist} et \ref{tab:linkedlist}
+
 
 \appendix
 
@@ -64,7 +63,6 @@ Pour les structures liste et tableau l'organisation des structures de données e
 \section{Études de performance avec des Maps}
 
 \begin{table}[htpb]
-\label{tab:hashmap1}
   \centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -82,6 +80,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \hline
 \end{tabular}
 \caption{Étude de performances avec des HashMap sans initialisation}
+\label{tab:hashmap1}
 \end{table}
 
 \begin{table}[htbp]
@@ -102,6 +101,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \hline
 \end{tabular}
 \caption{Étude de performances avec des TreeMap sans initialisation}
+\label{tab:treemap1}
 \end{table}
 
 \begin{table}[htbp]
@@ -122,6 +122,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \hline
 \end{tabular}
 \caption{Étude de performances avec des HashMap avec initialisation}
+\label{tab:hashmap2}
 \end{table}
 
 \begin{table}[htbp]
@@ -142,6 +143,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \hline
 \end{tabular}
 \caption{Étude de performances avec des HashMap seconde structure}
+\label{tab:hashmap3}
 \end{table}
 
 
@@ -164,6 +166,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \hline
 \end{tabular}
 \caption{Étude de performances avec des TreeMap seconde structure}
+\label{tab:treemap2}
 \end{table}
 
 \section{Études de performance avec des Tableaux et des Listes}
@@ -186,6 +189,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \hline
 \end{tabular}
 \caption{Étude de performances avec des ArrayList}
+\label{tab:arraylist}
 \end{table}
 
 \begin{table}[htbp]
@@ -206,6 +210,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \hline
 \end{tabular}
 \caption{Étude de performances avec des LinkedList}
+\label{tab:linkedlist}
 \end{table}
 
 \section{Annexe Alain}
