@@ -13,3 +13,19 @@ Le plugin en charge de poster sur un blog ou un réseau social est appelé.
 \end{description}
  
 \section{Installation et prise en main}
+
+Eclipse est aujourd'hui LA plateforme de développement Java. Cependant, elle ne lui est en rien dédiée. En effet, le coeur d'Eclipse comprend simplement tous les mécanismes nécessaires à l'affichage et à la manipulation de différentes entités (vues, éditeurs, perspectives, outline, etc.). C'est ainsi que dans sa version de base, c'est-à-dire sans les JDT (Java Development Tools) et sans le PDE (Plug-in Development Environment), Eclipse ne propose qu'un seul éditeur, l'éditeur de ressources. 
+
+ Malgré cela, tous les mécanismes nécessaires à son extension sont déjà présents. On peut donc décrire Eclipse comme un ensemble de plug-ins liés par un robuste framework. 
+
+Vous devez disposer du Eclipse SDK pour pouvoir développer des plug-ins (c'est particulièrement le plug-in PDE qui nous est utile car il permet une manipulation plus simple des différents éléments composant un plug-in eclipse). Pour savoir si c'est du SDK que vous diposez, allez tout simplement dans "Help/About Eclipse Platform" et cliquez sur Plug-in details si "Eclipse Plug-in Development Environment" apparait dans la liste "Plug-in Name", vous avez tout ce qu'il faut.
+
+Le premier fichier intéressant est plugin.xml, il contient les métainformations sur le plug-in (notamment celles que nous avons saisies lors de la création du projet). Ouvrez le en double cliquant dessus (si ce n'est pas déjà fait), un éditeur dédié s'affiche (il présente les différentes options sous forme d'interface graphique). La fenêtre est composée de 7 ou 8 onglets (en bas) selon que vous avez sélectionné la création d'un MANIFEST OSGi ou non. 
+
+Le premier onglet, "Overview" (aperçu), reprend certaines informations saisies lors de la création du plug-in, vous pouvez toujours les modifier ici si vous vous êtes trompé. La partie Testing vous permet de lancer un eclipse avec le plug-in en cours de création (nous l'utiliserons très bientôt). "Deploying" permet d'exporter le plug-in pour le diffuser ;
+Le second onglet, "Dependencies", référence les dépendances du plug-in par rapport à d'autres plug-ins ;
+"Runtime" vous permet d'indiquer les bibliothèques nécessaires au fonctionnement du plug-in. La seconde partie est grisée si vous n'avez pas créé de fichier MANIFEST ;
+"Extensions" référence toutes les extensions offertes par le plug-in. C'est dans cet onglet que l'on va indiquer où se "greffe" le plug-in dans l'environnement Eclipse ;
+"Extension points" permet d'indiquer les points d'extension offerts par le plug-in, c'est-à-dire les endroits où l'on va pouvoir greffer de nouvelles fonctionnalités ;
+"Build" permet de configurer les éléments qui doivent se trouver dans les différentes options de compilation (binary ou source) en plus du fichier jar contenant les binaires ;
+Enfin, "MANIFEST.MF" (présent si vous avez sélectionné sa création), "plugin.xml" et "build.properties" permettent de consulter les fichiers générés à partir des informations saisies dans les autres onglets.	 Lorsque vous effectuez des opérations de refactoring, notamment des renommages/déplacement de classes ou de package, n'oubliez pas de cocher la case "Update fully qualified name in non-Java files (forces preview)" et d'indiquer plugin.xml (ou * ou *.xml) dans le "File name patterns" pour mettre à jour les références dans les méta-informations. Dans le cas contraire, si la classe était référencée par le descripteur du plug-in, celui-ci ne fonctionnera plus.
