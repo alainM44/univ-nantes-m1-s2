@@ -22,7 +22,7 @@ public class TestAcquisition
 	}
 	
 	/**
-	 * Test
+	 * Test verifiant que les BufferedImage renvoyés ne son pas null
 	 */
 	@Test
 	public void simpleNext()
@@ -33,7 +33,9 @@ public class TestAcquisition
 		b = a.next();
 		assertNotNull("L'image obtenu est null", b);
 	}
-	
+	/**
+	 * Test vérifiant l'abscence de plantage avec une période modifiée
+	 */
 	@Test
 	public void frequencySettedNext()
 	{
@@ -45,7 +47,9 @@ public class TestAcquisition
 		assertNotNull("L'image obtenu est null", b);
 
 	}
-	
+	/**
+	 * Test vérifiant que la dernière image d'un fichier renvoie null
+	 */
 	@Test
 	public void endOfFile()
 	{
