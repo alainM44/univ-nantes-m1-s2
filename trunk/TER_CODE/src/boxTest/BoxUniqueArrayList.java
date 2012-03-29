@@ -39,7 +39,7 @@ public class BoxUniqueArrayList implements IBox {
 
 	@Override
 	public void addCara(int id, Number cara) {
-		list_cara.add(id,cara);
+		list_cara.add(cara);
 	}
 
 	@Override
