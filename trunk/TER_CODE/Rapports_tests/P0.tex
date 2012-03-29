@@ -1,41 +1,343 @@
 \chapter{Génération de boîtes}
 Génération où le nombre de caractéristique est fixé à 20 et la dimension du pavage à 100
-\begin{figure}[h]
+
+\section{Map}
+
+\subsection{Une première proposition de structure}
+Pour les map l'organisation des structures de données est la suivante :
+\begin{itemize}
+\item Il n'y a aucune structure de données globale, tout est stocké au niveau de la boîte
+ \item Chaque boite contient quatre Maps contenant les différentes informations :
+\begin{itemize}
+ \item Une map pour l'ensemble des intervalles coordonnées.
+\item Une map pour les caractéristiques de type String
+\item Une map pour les caractéristiques de type Interval
+\item Une map pour les caractéristiques de type Number
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Map sans valeur d'initialisation}
+
+
+
+
+
+
+
+
+\subsubsection{Map avec valeur d'initialisation}
+
+
+
+Un TreeMap ne peut avoir de paramètre de taille fourni à l'initialisation.
+
+\paragraph{} On peut observer que l'initialisation des Maps n'influence pas sur leur temps de construction ou leur taille.
+
+\subsection{Une seconde proposition de structure}
+Pour les map, une autre organisation des structures de données possible est la suivante :
+\begin{itemize}
+\item Il y a un TreeMap globale contenant le type de chaque caractéristique.
+ \item Chaque boite contient deux Maps contenant les différentes informations :
+\begin{itemize}
+ \item Une map pour l'ensemble des intervalles coordonnées.
+\item Une liste pour l'ensemble des caractéristiques de la boîte stockées sous la forme d'Objects
+\end{itemize}
+\end{itemize}
+
+
+
+\section{Liste et Tableau}
+Pour les structures liste et tableau l'organisation des structures de données est la suivante :
+\begin{itemize}
+\item Il y a un TreeMap globale contenant le type de chaque caractéristique.
+ \item Chaque boite contient deux listes (ou tableaux) :
+\begin{itemize}
+ \item Une liste pour l'ensemble des intervalles coordonnées.
+\item Une liste pour l'ensemble des caractéristiques de la boîte stockées sous la forme d'Objects
+\end{itemize}
+\end{itemize}
+
+
+\appendix
+
+\chapter{Annexes}
+\section{Études de performance avec des Maps}
+
+\begin{table}[htpb]
   \centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
 \hline
-100 & 0.01782 & 0.05s & 52Mo & 1Mo\\
+100 & 0.02687s & 0.05s & 52Mo & 1Mo\\
 \hline
-1000 & 0.04105 & 0.07s & 52Mo & 8Mo\\
+1000 & 0.05415s & 0.09s & 52Mo & 7Mo\\
 \hline
-10000 & 0.43105 & 0.16s & 133Mo & 74Mo\\
+10000 & 0.36794s & 0.16s & 119Mo & 70Mo\\
 \hline
-100000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des HashMap}
-\end{figure}
-
-
-
-\begin{figure}[h]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.03127 & 0.06s & 52Mo & 0Mo\\
-\hline
-1000 & 0.04656 & 0.07s & 52Mo & 6Mo\\
-\hline
-10000 & 0.49772 & 0.16s & 138Mo & 66Mo\\
-\hline
-100000 & 7.6311 & 0.84s & 776Mo & 664Mo\\
+100000 & 10.50770s & 0.86s & 776Mo & 667Mo\\
 \hline
 1000000 & \multicolumn{4}{|c|}{Out of memory}\\
 \hline
 \end{tabular}
-\caption{Étude de performances avec des TreeMap}
-\end{figure}
+\caption{Étude de performances avec des HashMap sans initialisation}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.02873s & 0.06s & 52Mo & 1Mo\\
+\hline
+1000 & 0.05472s & 0.07s & 52Mo & 6Mo\\
+\hline
+10000 & 0.48741s & 0.16s & 138Mo & 64Mo\\
+\hline
+100000 & 7.47501s & 0.84s & 776Mo & 635Mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{Étude de performances avec des TreeMap sans initialisation}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.02125s & 0.06s & 52Mo & 1Mo\\
+\hline
+1000 & 0.04448s & 0.07s & 52Mo & 7Mo\\
+\hline
+10000 & 0.38182s & 0.15s & 123Mo & 69Mo\\
+\hline
+100000 & 10.61614s & 0.81s & 776Mo & 667Mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{Étude de performances avec des HashMap avec initialisation}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.02201s & 0.06s & 52Mo & 1Mo\\
+\hline
+1000 & 0.04329s & 0.08s & 52Mo & 7Mo\\
+\hline
+10000 & 0.35066s & 0.13s & 118Mo & 69Mo\\
+\hline
+100000 & 9.99475s & 0.84s & 776Mo & 655Mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{Étude de performances avec des HashMap seconde structure}
+\end{table}
+
+
+
+\begin{table}[htbp]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.02792s & 0.07s & 52Mo & 1Mo\\
+\hline
+1000 & 0.05299s & 0.08s & 52Mo & 6Mo\\
+\hline
+10000 & 0.50868s & 0.15s & 138Mo & 64Mo\\
+\hline
+100000 & 7.54041s & 0.88s & 776Mo & 633Mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{Étude de performances avec des TreeMap seconde structure}
+\end{table}
+
+\section{Études de performance avec des Tableaux et des Listes}
+
+\begin{table}[h]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.018991s & 0.05s & 52Mo & <1Mo\\
+\hline
+1000 & 0.03237s & 0.06s & 52Mo & 4Mo\\
+\hline
+10000 & 0.11064s & 0.09s & 66Mo & 37Mo\\
+\hline
+100000 & 1.85945s & 0.30s & 408Mo & 342Mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{Étude de performances avec des ArrayList}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.02318s & 0.05s & 52Mo & 1Mo\\
+\hline
+1000 & 0.05196s & 0.08s & 52Mo & 5Mo\\
+\hline
+10000 & 0.21947s & 0.1s & 88Mo & 54Mo\\
+\hline
+100000 & 6.12441s & 0.30s & 776Mo & 542Mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{Étude de performances avec des LinkedList}
+\end{table}
+
+\section{Annexe Alain}
+%hashmap
+\begin{figure}[h]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.00646& 0.05s & 52Mo & 0Mo\\
+\hline
+1000 & 0.04284 & 0.07s & 52Mo & 4Mo\\
+\hline
+10000 & 0.146819 & 0.1s & 66Mo & 38Mo\\
+\hline
+100000 &2.071468 & 0.34s & 424Mo & 351Mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{4 HashMap globales, 4 ArrayList sans initialisation}
+
+
+\begin{figure}[h]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.00237& 0.05s & 52Mo & 0Mo\\
+\hline
+1000 & 0.03380 & 0.07s & 52Mo & 3Mo\\
+\hline
+10000 & 0.19556 & 0.09s & 89mo & 32mo\\
+\hline
+100000 & 2.0883 & 0.25s & 480mo & 312mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{4 HashMap globales, 4 ArrayList avec  initialisation}
+
+
+
+
+
+
+
+
+
+
+
+
+%TreeMap
+\begin{figure}[h]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & .0074534& 0.05s & 52Mo & 0Mo\\
+\hline
+1000 & 0.05651 & 0.06s & 52Mo & 4mo\\
+\hline
+10000 & 0.14486s & 0.11s 66mo & 38mo\\
+\hline
+100000 & 2.10083s & 0.38s 422mo & 350mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{4 HashMap globales, 4 ArrayList sans initialisation}
+
+\begin{figure}[h]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.008355 & 0.05s & 52Mo & 7Mo\\
+\hline
+1000 & 0.03096 & 0.06s & 52Mo & 6mo\\
+\hline
+10000 & 0.181671s & 0.13s & 89Mo & 32Mo\\
+\hline
+100000 & 2.130028 & 0.30s & 481mo & 318Mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{4 HashMap globales, 4 ArrayList avec initialisation}
+
+
+
+
+
+
+%TreeMap a partir de Hashmap
+\begin{figure}[h]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.0085 & 0.05s & 52Mo & 0Mo\\
+\hline
+1000 & 0.05201 & 0.06s & 52Mo & 4mo\\
+\hline
+10000 & 0.126349s & 0.11s 66mo & 38mo\\
+\hline
+100000 & 2.07826 & 0.39s 420mo & 350mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{4 HashMap globales, 4 ArrayList sans initialisation}
+
+\begin{figure}[h]
+  \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+\hline
+100 & 0.008646 & 0.05s & 52Mo & 0Mo\\
+\hline
+1000 & 0.0.04127 & 0.07s & 52Mo & 6mo\\
+\hline
+10000 & 0.18813s & 0.10s & 89Mo & 32Mo\\
+\hline
+100000 & 22.12998599 & 0.29s & 482mo & 317Mo\\
+\hline
+1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+\hline
+\end{tabular}
+\caption{4 HashMap globales, 4 ArrayList avec initialisation}

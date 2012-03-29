@@ -22,14 +22,13 @@
 \usepackage {listings}
 % Pour pouvoir passer en paysage
 \usepackage{lscape}	
-
 % Pour pouvoir faire plusieurs colonnes
 \usepackage {multicol}
-
 % POur crééer un index
 \usepackage{makeidx}
-
 \usepackage{graphicx}
+%Pour faire une annexe
+\usepackage[toc,page]{appendix} 
 
 \hypersetup{
 backref=true,
@@ -77,6 +76,9 @@ pdfsubject={Doc}
     \vskip 40\p@
   }}
 \makeatother
+
+\widowpenalty=1000
+\clubpenalty=1000
 %%%% fin macro %%%%
 
 %Couverture 
@@ -88,6 +90,9 @@ pdfsubject={Doc}
 \titlepic{\includegraphics[scale=0.80]{img/logolina}     \hspace{2cm} \includegraphics[scale=0.80]{img/logouniv}}
 \author{MARGUERITE Alain\\ RINCE Romain}
 \date{Université de Nantes \\ 2 rue de la Houssinière, BP92208, F-44322 Nantes cedex 03, FRANCE}
+
+\hyphenation{cons-truc-tion}
+\hyphenation{sui-vante}
 
 \begin{document}
 
