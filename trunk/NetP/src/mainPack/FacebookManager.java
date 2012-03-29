@@ -63,7 +63,7 @@ public class FacebookManager implements IInformation
 	public void postMessage(IEvent evFB)
 	{
 		System.out.println("AT: "+AccessToken);
-		FacebookType publishMessageResponse = ClientFB.publish("me/feed", FacebookType.class, Parameter.with("message","salut"));
+		FacebookType publishMessageResponse = ClientFB.publish("me/feed", FacebookType.class, Parameter.with("message",evFB.getMessage()));
 		System.out.println("Published message ID: " + publishMessageResponse.getId());
 	}
 
