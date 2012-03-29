@@ -14,6 +14,7 @@ import javax.media.protocol.DataSource;
 import javax.media.util.BufferToImage;
 
 import middleware.IFlux;
+import middleware.views.MiddlewareView;
 
 /**
  * Plugin d'acquisition d'une image dans un fichier video.
@@ -44,11 +45,7 @@ public class Acquisition implements ControllerListener, IFlux
 	// Constructeur
 	/**
 	 * Classe récupérant des images du fichier fourni en paramètre.
-	 * 
-	 * @param a
-	 *            L'adresse du fichier à lire
-	 * @param delai
-	 *            Le temps en secondes qui s'ecoule entre chaque prise d'image.
+	 *            
 	 */
 	public Acquisition()
 	{
@@ -66,9 +63,9 @@ public class Acquisition implements ControllerListener, IFlux
 		temporaryTime = 0;
 	}
 
-	/*
-	 * On implimente la fonction controllerUpdate de la classe
-	 * ControllerListener qui nous permet de gérer les évenements du player.
+	/**
+	 * 
+	 * ControllerListener nous permet de gérer les évenements du player.
 	 */
 	public void controllerUpdate(ControllerEvent evt)
 	{
@@ -100,7 +97,13 @@ public class Acquisition implements ControllerListener, IFlux
 		else if (evt instanceof SizeChangeEvent)
 		{}
 	}
-
+	
+	/**
+	 * Donne la durée de la vidéo en secondes.
+	 * 
+	 * @return Le temps de la vidéo en secondes.
+	 * @see middleware.IFlux
+	 */
 	@Override
 	public double getDuree()
 	{
@@ -109,7 +112,12 @@ public class Acquisition implements ControllerListener, IFlux
 		else
 			return 0;
 	}
-
+	/**
+	 * Permet d'obtenir l'image capturé.
+	 * 
+	 * @return Un BufferedImage contenant l'image capturée.
+	 * @see middleware.IFlux
+	 */
 	@Override
 	public BufferedImage next()
 	{
@@ -131,13 +139,21 @@ public class Acquisition implements ControllerListener, IFlux
 		else
 			return null;
 	}
-
+	/**
+	 * Défini le moment où commence l'acquisition 
+	 * @param t Temps de début d'acquisition en secondes
+	 * @see middleware.IFlux
+	 */
 	@Override
 	public void setDebut(double t)
 	{
 		debut = t;
 	}
-
+	/**
+	 * Défini la frequence d'acquisition
+	 * @param t Temps entre chaque d'acquisition en secondes
+	 * @see middleware.IFlux
+	 */
 	@Override
 	public void setFrequence(double t)
 	{
@@ -145,7 +161,11 @@ public class Acquisition implements ControllerListener, IFlux
 		if(fpc != null)
 			frameFrequence = fpc.mapTimeToFrame(new Time(temporaryTime));
 	}
-
+	/**
+	 * Défini le fichier à étudier. Obligatoire !
+	 * @param file L'adresse du fichier à étudier.
+	 * @see middleware.IFlux
+	 */
 	@Override
 	public void setFile(String file)
 	{
@@ -268,7 +288,10 @@ public class Acquisition implements ControllerListener, IFlux
 		}
 		return stateTransitionOK;
 	}
-
+	/**
+	 * Permet de dire au plugin de lancer la saisie et que les paramètres ont été spécifiés.
+	 * @see middleware.IFlux
+	 */
 	@Override
 	public void start()
 	{

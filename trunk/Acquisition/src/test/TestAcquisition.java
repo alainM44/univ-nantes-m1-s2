@@ -12,6 +12,7 @@ public class TestAcquisition
 {
 
 	Acquisition a;
+
 	@Before
 	public void setUp() throws Exception
 	{
@@ -20,6 +21,9 @@ public class TestAcquisition
 		a.setFile("/comptes/E074862X/workspace/Acquisition/darkcity.mov");
 	}
 	
+	/**
+	 * Test
+	 */
 	@Test
 	public void simpleNext()
 	{
