@@ -1,9 +1,9 @@
 package middleware;
 
 /**
- * <b>IIformation est l'interface définissant les «comportements» que doit
- * impérativement fournir les contributeurs du point d'extension NetP.<b>
- * <p>
+ * IIformation est l'interface définissant les «comportements» que doit
+ * impérativement fournir les contributeurs du point d'extension NetP.
+ * 
  * 
  * @author Bizet Chaline Marguerite Rince
  * 
