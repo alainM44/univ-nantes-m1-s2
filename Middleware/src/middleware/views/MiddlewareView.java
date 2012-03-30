@@ -43,30 +43,28 @@ public class MiddlewareView extends ViewPart
 	private Button postOnWebButton;
 	private Text acces_token_t;
 	private String acces_token;
-	private Label label_post_result;
-	
-	
 
 	public MiddlewareView()
 	{
 	}
 
 	/**
-	 * IHM de la vue 
+	 * IHM de la vue
 	 */
 	public void createPartControl(Composite parent)
 	{
+		/* Définition du Layout de la vue */
 		GridLayout layout = new GridLayout(2, false);
 		parent.setLayout(layout);
+		/* Acquisition */
 		loadButton = new Button(parent, SWT.NONE);
-
 		loadButton.addSelectionListener(new LoadButtonSelectinoListener());
 		loadButton.setText("Load video");
 		loadButton.setFocus();
 		videoTF = new Text(parent, SWT.NONE);
 		videoTF.setText("Enter video_file");
-	//	videoTF.addFocusListener(new TextFieldFocusListener());
 
+		/* Analyse */
 		choose_analyseButton = new Button(parent, SWT.NONE);
 		choose_analyseButton.setEnabled(false);
 		label_choose_analyse = new Label(parent, SWT.None);
@@ -75,19 +73,15 @@ public class MiddlewareView extends ViewPart
 		choose_analyseButton.addSelectionListener(new AnalyseButtonSelectinoListener());
 		choose_analyseButton.setText("Lancer Analyse");
 
+		/* Post online */
 		postOnWebButton = new Button(parent, SWT.NONE);
 		postOnWebButton.addSelectionListener(new PostButtonSelectinoListener());
 		postOnWebButton.setEnabled(false);
 		postOnWebButton.setText("Poster sur FB");
 
-		acces_token="";
+		acces_token = "";
 		acces_token_t = new Text(parent, SWT.None);
 		acces_token_t.setEnabled(false);
-//		acces_token_t.setText("Enter Acces Token");
-//		acces_token_t.addFocusListener(new TextFieldFocusListener());
-		label_post_result = new Label(parent, SWT.NONE);
-		label_post_result.setVisible(false);
-		label_post_result.setText("Post terminé");
 
 	}
 
@@ -141,7 +135,7 @@ public class MiddlewareView extends ViewPart
 		public void widgetDefaultSelected(SelectionEvent e)
 		{
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
@@ -155,9 +149,7 @@ public class MiddlewareView extends ViewPart
 			acces_token_t.setEnabled(true);
 			Activator.getDefault().intialiserReasoning();
 			Activator.getDefault().sendFluxToReasoning();
-			
-			
-			
+
 		}
 
 	}
@@ -184,16 +176,13 @@ public class MiddlewareView extends ViewPart
 
 			postOnWebButton.setEnabled(false);
 			acces_token = acces_token_t.getText();
-						acces_token_t.setEnabled(false);
-		
+			acces_token_t.setEnabled(false);
+
 			Activator.getDefault().postMessage(acces_token);
 
-
-
-			
-			label_post_result.setVisible(true);
+	
 		}
-		
+
 	}
 
 	/**
@@ -214,7 +203,7 @@ public class MiddlewareView extends ViewPart
 
 		@Override
 		public void focusLost(FocusEvent e)
-		{	// TODO Auto-generated method stub
+		{ // TODO Auto-generated method stub
 
 		}
 
