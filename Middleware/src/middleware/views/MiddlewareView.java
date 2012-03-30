@@ -1,17 +1,6 @@
 package middleware.views;
 
-/**
- * @authors Bizet Chaline Marguerite Rince 
- * 
- * Class implémentant une view eclipse.
- * Permet un chagemeent lazy des différents pluggin du projet
- */
-import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.RegistryFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
@@ -25,9 +14,12 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
 import middleware.Activator;
-import middleware.IEvent;
-import middleware.IInformation;
-
+/**
+ * @authors Bizet Chaline Marguerite Rince 
+ * 
+ * Class implémentant une view eclipse.
+ * Permet un chagemeent lazy des différents pluggin du projet
+ */
 public class MiddlewareView extends ViewPart
 {
 	/* Partie Aquisition */
