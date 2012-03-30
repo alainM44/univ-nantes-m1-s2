@@ -1,16 +1,15 @@
 package middleware;
 
+
+import java.awt.image.BufferedImage;
 /**
- * 
- *
  * IFlux est l'interface définissant les «comportements» que doit
  * impérativement fournir les contributeurs du point d'extension AcquisitionP.
+ * 
  * @author Bizet Chaline Marguerite Rince
  * 
  * @version 1.0
  */
-import java.awt.image.BufferedImage;
-
 public interface IFlux
 {
 	/**
