@@ -380,7 +380,7 @@ File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
 \Gread@gobject=\count92
 ))
 \Gin@req@height=\dimen106
@@ -495,7 +495,8 @@ Package ifvtex Info: VTeX not detected.
 \Gm@odd@mp=\dimen119
 \Gm@even@mp=\dimen120
 \Gm@dimlist=\toks26
-)
+
+(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
 (/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
@@ -888,7 +889,7 @@ Package ucs Warning: ***************************
 (/usr/share/texmf-texlive/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 )
-(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+(/usr/share/texmf/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count139
 \scratchdimen=\dimen148
@@ -987,7 +988,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 153.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<img/logouniv.png, id=58, 141.8901pt x 79.7379pt>
+<img/logouniv.png, id=46, 141.8901pt x 79.7379pt>
 File: img/logouniv.png Graphic file (type png)
  <use img/logouniv.png>
 [1
@@ -1024,7 +1025,7 @@ Chapitre 2.
 ] <img/archi.png, id=104, 713.66624pt x 422.57875pt>
 File: img/archi.png Graphic file (type png)
  <use img/archi.png>
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 21.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 22.
 
 (/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -1081,11 +1082,29 @@ the glossaries will not be updated.
 Package glossaries Warning: No \printglossary or \printglossaries found.
 This document will not have a glossary.
 
+
+! LaTeX Error: \begin{onehalfspace} on input line 163 ended by \end{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.184 \end{document}
+                    
+? 
 (./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
- ) 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(\end occurred inside a group at level 2)
+
+### semi simple group (level 2) entered at line 163 (\begingroup)
+### semi simple group (level 1) entered at line 163 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
  11090 strings out of 495061
  155744 string characters out of 1182622
