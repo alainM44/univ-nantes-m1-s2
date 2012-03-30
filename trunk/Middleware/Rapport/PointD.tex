@@ -1,11 +1,11 @@
 \chapter{Point de vue developpeur}
 
 \section{Documentation}
-	Nous vous recommendons notre JavaDoc, très détaillé.
+Notre Javadoc des différents plugins est disponible ici \textbf{lien}
 \clearpage
 
 \section{Conception}
-	\subsection{Architecture}
+	\subsection{Architecture et classes}
 	Dans cette partie nous détaillerons l'architecture de notre application, à travers ses différents points d'extensions.
 	\begin{figure}[!htbp]
 	  \centering
@@ -14,8 +14,7 @@
 	  \label{fig:archi}
 	\end{figure}
 
-	\subsection{Classes}
-	dsqdqs
+
 		\paragraph{Architecture}
 		qsdqs
 		\paragraph{Acquisition}
@@ -46,7 +45,7 @@
 		\paragraph{Reasoning}
 			\subparagraph{Analyseur d'image}
 				Afin de détecter des situations dites "interessantes" telles que la nuit, la présence d'une ou plusieurs personnes, un mouvement particulier, nous proposons un couple de plugin : Reasoning et Analyse. Le plugin Reasoning utilise des informations formelles pour en déduire une situation. Si l'image est sombre pendant un certain temps, il peut en conclure qu'il fait nuit et qu'il n'y a pas de lumières d'allumée. Si une personne se déplace la nuit, c'est peut-être un voleur. Des horaires pourraient être ajoutés pour signaler des déplacements normaux, par exemple un gardien, et tout mouvement non prévu serait signalé.
-	Les informations formelles sont détectés par le plugin d'analyse, qui essait de trouver certaines propriétés dans une image. Par exemple, pour affirmer qu'une image est sombre, les canaux de couleurs de chaque pixels sont analysés, et si l'un d'entre eux correspond à une couleur sombre, le pixel est considéré comme sombre. Si 50% des pixels sont sombres, l'algorithme signal que l'image possède cette propriété.
+	Les informations formelles sont détectés par le plugin d'analyse, qui essait de trouver certaines propriétés dans une image. Par exemple, pour affirmer qu'une image est sombre, les canaux de couleurs de chaque pixels sont analysés, et si l'un d'entre eux correspond à une couleur sombre, le pixel est considéré comme sombre. Si 50 des pixels sont sombres, l'algorithme signal que l'image possède cette propriété.
 	
 	000000 => FFFFFF : RRGGBB => 8 bit pour chaque couleur
 			\subparagraph{Image sombre}
@@ -84,7 +83,7 @@
 			
 				\begin{figure}[!h]
 					\centering
-					\includegraphics{img/reasoningVisages.png
+					\includegraphics{img/reasoningVisages.png}
 					\caption{Image de départ d'une résolution X*Y, elle est passé en X/2 * Y/2 et en nuance de gris, les visages sont detectés, et l'algorithme détermine sur l'image original où sont les visages}
 					\label{divisionRGB}
 				\end{figure}
