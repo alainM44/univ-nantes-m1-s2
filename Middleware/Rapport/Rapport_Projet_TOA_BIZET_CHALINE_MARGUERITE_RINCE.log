@@ -1,6 +1,5 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.6.9)  28 MAR 2012 16:09
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.6.9)  30 MAR 2012 18:00
 entering extended mode
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.tex
 (./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.tex
@@ -833,34 +832,37 @@ Package: `setspace' 6.7 <2000/12/01>
 LaTeX Warning: Unused global option(s):
     [utf8x].
 
-(./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.aux)
+(./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.aux
+
+LaTeX Warning: Label `divisionRGB' multiply defined.
+
+)
 \openout1 = `Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 152.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 152.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 151.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 151.
 
-
-(/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
+ (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Info: Redefining \degres on input line 152.
-LaTeX Info: Redefining \dots on input line 152.
-LaTeX Info: Redefining \up on input line 152.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Info: Redefining \degres on input line 151.
+LaTeX Info: Redefining \dots on input line 151.
+LaTeX Info: Redefining \up on input line 151.
 
 (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
@@ -881,7 +883,7 @@ Package ucs Warning: ***************************
 (ucs)                ***************************
 (ucs)                Activating compatibility mode.
 (ucs)                ***************************
-(ucs)                 on input line 152.
+(ucs)                 on input line 151.
 
 (/usr/share/texmf-texlive/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
@@ -948,7 +950,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-Package hyperref Info: Link coloring ON on input line 152.
+Package hyperref Info: Link coloring ON on input line 151.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -958,8 +960,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count144
 )
-LaTeX Info: Redefining \ref on input line 152.
-LaTeX Info: Redefining \pageref on input line 152.
+LaTeX Info: Redefining \ref on input line 151.
+LaTeX Info: Redefining \pageref on input line 151.
 
 (./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.out)
 (./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.out)
@@ -975,12 +977,12 @@ Dictionary: glossaries-dictionary, Language: English
 ) (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 154.
+LaTeX Font Info:    Try loading font information for U+msa on input line 153.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 154.
+LaTeX Font Info:    Try loading font information for U+msb on input line 153.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -990,15 +992,8 @@ File: img/logouniv.png Graphic file (type png)
  <use img/logouniv.png>
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[2 <./img/logouniv.png (PNG copy)>]
-(./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.toc)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/logouniv.png (PNG co
+py)>] (./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.toc)
 \tf@toc=\write6
 \openout6 = `Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.toc'.
 
@@ -1006,25 +1001,27 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.160 \clearpage
+l.159 \clearpage
                  [1
 
 
 ] (./PointU.tex
 Chapitre 1.
-) (./PointD.texpdfTeX warning (ext4): destination with the same identifier (nam
-e{page.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1 \chapter
-            {Point de vue developpeur} [2
+[2
 
 
-]
+]) (./PointD.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[3]
 Chapitre 2.
-[3
+[4
 
-] <img/archi.png, id=99, 742.775pt x 568.1225pt>
+] <img/archi.png, id=104, 713.66624pt x 422.57875pt>
 File: img/archi.png Graphic file (type png)
  <use img/archi.png>
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 21.
@@ -1032,27 +1029,48 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 21.
 (/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-<img/IFlux.png, id=101, 191.71625pt x 139.52126pt>
+<img/IFlux.png, id=106, 191.71625pt x 139.52126pt>
 File: img/IFlux.png Graphic file (type png)
- <use img/IFlux.png> [4
+ <use img/IFlux.png> [5
 
- <./img/archi.png (PNG copy)>]
-<img/iinterface.png, id=114, 320.19624pt x 122.4575pt>
+ <./img/archi.png (PNG copy)> <./img/IFlux.png (PNG copy)>] [6]
+Underfull \hbox (badness 2837) in paragraph at lines 54--55
+[]\T1/cmr/m/n/10.95 Pour chaque pixel, obtenir la valeur des trois canaux avec 
+Buffered-Im-
+ []
+
+<img/reasoningRGB.png, id=128, 365.11406pt x 145.29282pt>
+File: img/reasoningRGB.png Graphic file (type png)
+
+<use img/reasoningRGB.png> [7 <./img/reasoningRGB.png>]
+<img/reasoningVisages.png, id=141, 659.46375pt x 508.90125pt>
+File: img/reasoningVisages.png Graphic file (type png)
+
+<use img/reasoningVisages.png>
+Overfull \hbox (241.20845pt too wide) in paragraph at lines 86--87
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<img/iinterface.png, id=142, 320.19624pt x 122.4575pt>
 File: img/iinterface.png Graphic file (type png)
 
-<use img/iinterface.png>
+<use img/iinterface.png> [8]
 
-LaTeX Warning: Citation `restFB' on page 5 undefined on input line 56.
+LaTeX Warning: Text page 9 contains only floats.
 
-[5 <./img/IFlux.png (PNG copy)>]) [6 <./img/iinterface.png>]
+[9 <./img/reasoningVisages.png>]) [10 <./img/iinterface.png>]
 (./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.lof)
 \tf@lof=\write7
 \openout7 = `Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.lof'.
 
 
 No file Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.ind.
-No file Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.bbl.
-[7
+(./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.bbl [11
+
+]) [12
 
 ]
 
@@ -1065,33 +1083,33 @@ This document will not have a glossary.
 
 (./Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.aux)
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11054 strings out of 495061
- 155192 string characters out of 1182622
- 264828 words of memory out of 3000000
- 13918 multiletter control sequences out of 15000+50000
+ 11090 strings out of 495061
+ 155744 string characters out of 1182622
+ 265828 words of memory out of 3000000
+ 13928 multiletter control sequences out of 15000+50000
  19273 words of font info for 51 fonts, out of 3000000 for 9000
  29 hyphenation exceptions out of 8191
  38i,11n,66p,1110b,607s stack positions out of 5000i,500n,10000p,200000b,50000s
  </comptes/E074862X/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </
-comptes/E074862X/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1095.600pk> </compt
-es/E074862X/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </comptes/E0
-74862X/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1095.600pk> </comptes/E074862
-X/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </comptes/E074862X/.te
-xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </comptes/E074862X/.texmf-v
-ar/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </comptes/E074862X/.texmf-var/fo
+comptes/E074862X/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </compt
+es/E074862X/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1095.600pk> </comptes/E0
+74862X/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </comptes/E074862
+X/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </comptes/E074862X/.te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </comptes/E074862X/.texmf-v
+ar/fonts/pk/ljfour/jknappen/ec/eccc1095.600pk> </comptes/E074862X/.texmf-var/fo
 nts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </comptes/E074862X/.texmf-var/fonts/p
 k/ljfour/jknappen/ec/eccc1200.600pk> </comptes/E074862X/.texmf-var/fonts/pk/ljf
 our/jknappen/ec/ecrm2488.600pk> </comptes/E074862X/.texmf-var/fonts/pk/ljfour/j
 knappen/ec/ecrm1095.600pk></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb>
-Output written on Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.pdf (9 page
-s, 223484 bytes).
+Output written on Rapport_Projet_TOA_BIZET_CHALINE_MARGUERITE_RINCE.pdf (13 pag
+es, 402994 bytes).
 PDF statistics:
- 477 PDF objects out of 1000 (max. 8388607)
- 33 named destinations out of 1000 (max. 500000)
- 140 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 583 PDF objects out of 1000 (max. 8388607)
+ 55 named destinations out of 1000 (max. 500000)
+ 150 words of extra memory for PDF output out of 10000 (max. 10000000)
 

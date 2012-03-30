@@ -4,7 +4,7 @@
    <extension
          point="Reasoning.ReasoningPExAn">
       <PointExtAnalyse
-            class="Analyse">
+            class="analyse.Analyse">
       </PointExtAnalyse>
    </extension>
 

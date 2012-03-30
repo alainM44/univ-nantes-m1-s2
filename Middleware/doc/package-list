@@ -1,4 +1,8 @@
 acquisition
+analyse
 mainPack
+middleware
 middleware.views
+reasoning
+reasoning.actions
 test

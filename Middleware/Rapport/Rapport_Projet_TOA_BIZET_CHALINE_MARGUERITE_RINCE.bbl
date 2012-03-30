@@ -1,0 +1,13 @@
+\begin{thebibliography}{doc}
+
+\bibitem[doc]{doc}
+Documentation du projet.
+\newblock
+  \url{http://code.google.com/p/univ-nantes-m1-s2/downloads/detail?name=Middle%
+ware_doc.tar.gz&can=2&q=#makechanges}.
+
+\bibitem[res]{restFB}
+Restfb library.
+\newblock \url{http://restfb.com/}.
+
+\end{thebibliography}
