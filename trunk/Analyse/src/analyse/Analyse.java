@@ -1,3 +1,4 @@
+package analyse;
 import java.awt.image.BufferedImage;
 import reasoning.IAnalyse;
 

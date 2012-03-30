@@ -1,6 +1,12 @@
-import middleware.IEvent;
+package middleware;
 
-
+/**
+ * 
+ * 
+ * Class implémentant IEvent
+ * @author Bizet Chaline Marguerite Rince 
+ * @see IEvent
+ */
 public class Evenement implements IEvent {
 	
 	@Override
