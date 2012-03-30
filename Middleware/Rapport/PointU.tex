@@ -1,7 +1,15 @@
 \chapter{Point de vue Utilisateur}
+\chaptermark{Utilisateur}
 
-\section{Plugins developpés}
-Middleware qui est notre plugin principal propose la vue Eclipse suivante : \textbf{image manquante}. 
+\section{Plugins développés}
+\sectionmark{Plugins}
+Middleware qui est notre plugin principal propose la vue Eclipse suivante : 
+  \begin{figure}[h]
+	  \centering
+	  \includegraphics[scale=0.50]{img/Capture}
+	  \caption{Vue du plugin}
+	  \label{fig:vue}
+\end{figure} 
 \begin{description}
 \item[Load Video]
 L'utilisateur doit au préalable avoir renseigné le chemin de la vidéo à analyser. Le plugin Acquisition est sollicité au déclenchement de ce bouton. 
@@ -12,25 +20,37 @@ L'utilisateur doit au préalable avoir renseigné l'acces token nécessaire pour
 Le plugin en charge de poster sur un blog ou un réseau social est appelé.
 \end{description}
  
-\section{Lancement du plugin et manuel d'utlisation}
-
+ \clearpage
+ 
+\section{Lancement et manuel}
 Pour lancer le plugin suivez les étape suivante:
 
 \begin{enumerate}
  \item Cliquer dans le menu sur \og Run \fg, puis et cliquer sur \og Run configuration \fg, 
-afin d'offrir un fenêtre de configuration (cf\label{fig:fenetreConfg} ).
-  \begin{figure}
+afin d'offrir un fenêtre de configuration (cf : \ref{fig:fenetreConfg} ).
+  \item Un fois la fenêtre ouverte cliquer sur l'onglet plugin et cocher les laber:
+  \begin{enumerate}
+      \item Acquisition
+      \item Middleware
+      \item NetP
+      \item Reasoning
+      \end{enumerate}
+      \item Une fois les paramètres configurés cliquer sur \verb+Run+.
+      \item Attendez que \emph{Eclipse} se lance. Lorsqu'\emph{Eclipse} sera lancé, allez dans \verb+Window+ $\rightarrow$ \verb+Show View+ $\rightarrow$ \verb+Other+\dots
+      \item Choisissez \verb+middleware_view+ puis la vue \verb+Middleware+ (cf : \ref{fig:ShowView})
+\end{enumerate}
+  \begin{figure}[h]
 	  \centering
-	  \includegraphics[scale=0.50]{img/tuto}
+	  \includegraphics[scale=0.40]{img/tuto}
 	  \caption{Fenêtre de configuration}
 	  \label{fig:fenetreConfg}
 \end{figure}
+  \begin{figure}
+	  \centering
+	  \includegraphics[scale=0.50]{img/ShowView}
+	  \caption{Fenêtre Show View}
+	  \label{fig:ShowView}
+\end{figure}
 
-  \item Un fois la fenêtre ouverte cliquer sur l'onglet plugin et cocher les laber:
-      \subitem Acquisition
-      \subitem Middleware
-      \subitem NetP
-      \subitem Reasoning
-\end{enumerate}
 
 

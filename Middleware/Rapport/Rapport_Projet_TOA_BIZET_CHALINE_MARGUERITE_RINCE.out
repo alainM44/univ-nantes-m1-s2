@@ -1,13 +1,11 @@
 \BOOKMARK [0][]{section*.2}{Table des mati\350res}{}
 \BOOKMARK [0][]{chapter.1}{Point de vue Utilisateur}{}
-\BOOKMARK [1][]{section.1.1}{Plugins developp\351s}{chapter.1}
-\BOOKMARK [1][]{section.1.2}{Lancement du plugin et manuel d'utlisation}{chapter.1}
-\BOOKMARK [0][]{chapter.2}{Point de vue developpeur}{}
+\BOOKMARK [1][]{section.1.1}{Plugins d\351velopp\351s}{chapter.1}
+\BOOKMARK [1][]{section.1.2}{Lancement et manuel}{chapter.1}
+\BOOKMARK [0][]{chapter.2}{Point de vue d\351veloppeur}{}
 \BOOKMARK [1][]{section.2.1}{Documentation}{chapter.2}
 \BOOKMARK [1][]{section.2.2}{Conception}{chapter.2}
 \BOOKMARK [2][]{subsection.2.2.1}{Architecture et classes}{section.2.2}
-\BOOKMARK [1][]{section.2.3}{Robustesse}{chapter.2}
-\BOOKMARK [1][]{section.2.4}{Qualit\351 du code}{chapter.2}
-\BOOKMARK [1][]{section.2.5}{Facilit\351 de mise en oeuvre des extension}{chapter.2}
-\BOOKMARK [0][]{section*.14}{Table des figures}{}
-\BOOKMARK [0][]{section*.16}{Bibliographie}{}
+\BOOKMARK [2][]{subsection.2.2.2}{Robustesse}{section.2.2}
+\BOOKMARK [0][]{section*.13}{Table des figures}{}
+\BOOKMARK [0][]{section*.15}{Bibliographie}{}

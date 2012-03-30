@@ -1,8 +1,7 @@
-\chapter{Point de vue developpeur}
+\chapter{Point de vue développeur}
 
 \section{Documentation}
-Notre Javadoc des différents plugins est disponible ici \cite{doc}
-\clearpage
+Notre Javadoc des différents plugins est disponible ici \cite{doc} et nos plugins sont accessibles ici \cite{plug}
 
 \section{Conception}
 	\subsection{Architecture et classes}
@@ -15,8 +14,6 @@ Notre Javadoc des différents plugins est disponible ici \cite{doc}
 	\end{figure}
 
 
-		\paragraph{Architecture}
-		qsdqs
 		\paragraph{Acquisition}
 		Le plugin Acquisition consiste à récupérer un fichier vidéo et en extraire une image périodiquement. Le plugin répond aux spécifications fournies par l'interface \verb+IFlux+ (cf. Fig \ref{fig:IFlux}).
 		\begin{figure}[htbp]
@@ -83,7 +80,7 @@ Notre Javadoc des différents plugins est disponible ici \cite{doc}
 			
 				\begin{figure}[!h]
 					\centering
-					\includegraphics{img/reasoningVisages.png}
+					\includegraphics[scale=0.50]{img/reasoningVisages.png}
 					\caption{Image de départ d'une résolution X*Y, elle est passé en X/2 * Y/2 et en nuance de gris, les visages sont detectés, et l'algorithme détermine sur l'image original où sont les visages}
 					\label{divisionRGB}
 				\end{figure}
@@ -101,11 +98,6 @@ Notre Javadoc des différents plugins est disponible ici \cite{doc}
 
 			Le contributeur que nous avons implémenté propose d'utiliser le réseau social Facebook et utilise la librairie suivante \cite{restFB}.
 
-\section{Robustesse}
-	Bah comme on a mit du JUnit, on est over protected. Et au pire on appelle l'Agence tout risque.
-	
-\section{Qualité du code}
-	Tip top nickel crome. On a tout optimisé a fond, plein de commentaire pour que ce soit compréhensible, bien aéré, bref, perfect.
-	
-\section{Facilité de mise en oeuvre des extension}
+\subsection{Robustesse}
+	De nombreux tests \emph{JUnit} ont été effectués permettant de valider chaque plugin indépendamment les uns des autres. 
 	
