@@ -15,10 +15,11 @@ import org.eclipse.ui.part.ViewPart;
 
 import middleware.Activator;
 /**
- * @authors Bizet Chaline Marguerite Rince 
- * 
+ *
  * Class implémentant une view eclipse.
  * Permet un chagemeent lazy des différents pluggin du projet
+ * @author Bizet Chaline Marguerite Rince 
+ * 
  */
 public class MiddlewareView extends ViewPart
 {
@@ -86,7 +87,7 @@ public class MiddlewareView extends ViewPart
 
 	/**
 	 * 
-	 *@authors Bizet Chaline Marguerite Rince Class Listener décrivant les
+	 *@author Bizet Chaline Marguerite Rince Class Listener décrivant les
 	 *          actions à effectuer lors de l'enclanchement du bouton de
 	 *          chargement.
 	 */
@@ -117,7 +118,7 @@ public class MiddlewareView extends ViewPart
 
 	/**
 	 * 
-	 *@authors Bizet Chaline Marguerite Rince Class Listener décrivant les
+	 *@author Bizet Chaline Marguerite Rince Class Listener décrivant les
 	 *          actions à effectuer lors de l'enclanchement du bouton d'analyse.
 	 */
 	public class AnalyseButtonSelectinoListener implements SelectionListener
@@ -148,7 +149,7 @@ public class MiddlewareView extends ViewPart
 
 	/**
 	 * 
-	 *@authors Bizet Chaline Marguerite Rince Class Listener décrivant les
+	 *@author Bizet Chaline Marguerite Rince Class Listener décrivant les
 	 *          actions à effectuer lors de l'enclanchement du bouton de post
 	 *          online.
 	 */
@@ -179,7 +180,7 @@ public class MiddlewareView extends ViewPart
 
 	/**
 	 * 
-	 *@authors Bizet Chaline Marguerite Rince Class Listener permettant
+	 *@author Bizet Chaline Marguerite Rince Class Listener permettant
 	 *          d'efface le contenu des champs texts à leur selection
 	 * 
 	 */

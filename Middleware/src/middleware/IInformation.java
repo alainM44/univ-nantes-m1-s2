@@ -25,7 +25,7 @@ public interface IInformation
 	/**
 	 * Poster une photo avec texte ou non sur un mur de compte facebook.
 	 * 
-	 * @param ecVF
+	 * @param evFB
 	 *            Evenement contenant les informations à poster (ici le contenu
 	 *            du message.
 	 * @see IEvent
@@ -35,7 +35,7 @@ public interface IInformation
 	/**
 	 * Poster une vidéo sur un mur de compte facebook.
 	 * 
-	 * @param ecVF
+	 * @param evFB
 	 *            Evenement contenant les informations à poster (ici le contenu
 	 *            du message.
 	 * @see IEvent
