@@ -13,7 +13,7 @@
 \contentsline {subparagraph}{Image sombre}{7}{section*.6}
 \contentsline {subparagraph}{Composition de l'image}{8}{section*.7}
 \contentsline {subparagraph}{Detecteur de presence : Utilisation d'OpenCV}{8}{section*.8}
-\contentsline {subparagraph}{Diff\IeC {\'e}rence de performance}{8}{section*.9}
+\contentsline {subparagraph}{Diff\IeC {\'e}rences de performance}{8}{section*.9}
 \contentsline {subparagraph}{Optimisation}{9}{section*.10}
 \contentsline {paragraph}{NetP}{9}{section*.11}
 \contentsline {subsection}{\numberline {2.2.2}Robustesse}{10}{subsection.2.2.2}

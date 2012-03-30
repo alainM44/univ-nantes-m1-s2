@@ -1,8 +1,9 @@
 \select@language {french}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Vue du plugin}}{2}{figure.1.1}
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Fen\IeC {\^e}tre de configuration}}{3}{figure.1.2}
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Fen\IeC {\^e}tre Show View}}{4}{figure.1.3}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Message sur Facebook}}{3}{figure.1.2}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Fen\IeC {\^e}tre de configuration}}{4}{figure.1.3}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Fen\IeC {\^e}tre Show View}}{4}{figure.1.4}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Architecture de l'outil}}{5}{figure.2.1}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Interface IFlux}}{6}{figure.2.2}
