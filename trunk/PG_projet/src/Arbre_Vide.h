@@ -1,5 +1,5 @@
 /*! \class Arbre_Vide
- *  \brief Exception levée lorque l'on tente extraire dans un arbre bide
+ *  \brief Exception levée lorque l'on tente extraire dans un arbre vide.
  *  \author MARGUERITE RINCE
  *  \version 1.0
  *  \date   Mars 2012

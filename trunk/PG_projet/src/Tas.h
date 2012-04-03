@@ -1,8 +1,3 @@
-/*
- * Tas.h
- *
- */
-
 /*! \class Tas
  *  \brief Arborescence générique sous forme de tas binaire
  *  \author MARGUERITE RINCE
@@ -16,11 +11,17 @@
 #include <vector>
 #include <ostream>
 #include "utile.h"
+#include "Arbre_Vide.h"
 
 /*! \class Tas
  * \brief classe representant le tas bianire
  *
+ *
+ *  La classe gere la lecture d'une liste de morceaux
  */
+
+template<typename MatrixType1, typename MatrixType2>
+void transpose(const MatrixType1& A, MatrixType2& At);
 
 template<class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
 class Tas
@@ -137,16 +138,22 @@ class Tas
 		 */
 		virtual ~Tas();
 
-		//TODO
-		void print() {
-			std::cout << "[";
-			for (int i = 0; i < (int) tas.size(); i++)
-				std::cout << tas.at(i);
-			std::cout << "]" << std::endl;
+		//non documentation pratique pour le débug
+		//		void print() {
+		//			std::cout << "[";
+		//			for (int i = 0; i < (int)tas.size(); i++)
+		//				std::cout << tas.at(i);
+		//			std::cout << "]" << std::endl;
+		//		}
 
-		}
+		/*! \class Iterator
+		 *  \brief iterator DFS de la class Tas
+		 *  \author MARGUERITE RINCE
+		 *  \version 1.0
+		 *  \date   Mars 2012
+		 */
 
-		class Iterator;//TODO doxy
+		class Iterator;
 
 		/*!
 		 * \fn 	Iterator begin()
@@ -208,7 +215,12 @@ class Tas<T, Compare, Alloc>::Iterator
 		 * \fn T operator*()
 		 * Renvoit un l'element pointé
 		 */
-		T operator*();
+		T operator*() { // & or not & that is the question
+
+			return (t_->tas[pos_]);
+
+		}
+
 		/*!
 		 * \fn Iterator operator++()
 		 * déplace d'une unité en "avant" selon DFS
@@ -255,7 +267,7 @@ inline T Tas<T, Compare, Alloc>::extraire() {
 	T racine;
 	if (tas.size() == 0)
 	{
-		throw; //TODO
+		throw;// Arbre_Vide();
 	} else if (tas.size() == 1)
 	{
 		racine = tas.at(0);
@@ -308,6 +320,7 @@ inline void Tas<T, Compare, Alloc>::tasser(int element) {
 	if (max != element)
 	{
 		swap(tas.at(element), tas.at(max));
+		cout << "tasser";
 		Tas<T, Compare, Alloc>::tasser(max);
 	}
 }
@@ -341,8 +354,6 @@ inline Tas<T, Compare, Alloc>::Iterator::Iterator() {
 }
 template<class T, class Compare, class Alloc>
 inline Tas<T, Compare, Alloc>::Iterator::Iterator(tas_type* t) {
-	t_ = t;
-	pos_ = 0;
 }
 
 template<class T, class Compare, class Alloc>
@@ -392,21 +403,13 @@ inline typename Tas<T, Compare, Alloc>::Iterator Tas<T, Compare, Alloc>::Iterato
 }
 
 template<class T, class Compare, class Alloc>
-inline T Tas<T, Compare, Alloc>::Iterator::operator*() {
-	//TODO test
-	return (t_->tas[pos_]); //TODOa vérifier
-
-}
-
-template<class T, class Compare, class Alloc>
-inline bool Tas<T, Compare, Alloc>::Iterator::operator==(const Iterator I) {
+inline bool Tas<T, Compare, Alloc>::Iterator::operator ==(const Iterator I) {
 
 	return pos_ == I.pos_ && I.t_ == t_;
 }
 template<class T, class Compare, class Alloc>
-inline bool Tas<T, Compare, Alloc>::Iterator::operator!=(const Iterator I) {
+inline bool Tas<T, Compare, Alloc>::Iterator::operator !=(const Iterator I) {
 
 	return pos_ == I.pos_ && I.t_ == t_;
 }
-
 #endif /* TAS_H_ */

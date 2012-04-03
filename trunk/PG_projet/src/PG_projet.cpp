@@ -55,6 +55,6 @@ cout << (it!=it2);
 
 cout << t1.extraire();
 	cout << t1.extraire();
-t1.print();
+//t1.print();
 	return 0;
 }
