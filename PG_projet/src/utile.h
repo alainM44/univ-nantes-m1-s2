@@ -1,8 +1,8 @@
-/*
- * utile.h
- *
- *  Created on: 21 mars 2012
- *      Author: E11A932Q
+/*! \class Utile
+ *  \brief Fournies de outils généraux (non terminée).
+ *  \author MARGUERITE RINCE
+ *  \version 1.0
+ *  \date   Mars 2012
  */
 
 #ifndef UTILE_H_
@@ -11,10 +11,17 @@ template<class T>
 class utile
 {
 	public:
-		utile();
-		virtual ~utile();
 
-		void swap(T& a, T& b);
+		/*!
+		 * \brief Swap
+		 *
+		 * Echange de valeur entre de vartiable de type T
+		 *
+		 * \param a : première valeur à échanger
+		 * \param b : deuxième valeur à échanger
+		 *
+		 */
+		void static swap(T& a, T& b);
 
 };
 
