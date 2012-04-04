@@ -1,6 +1,6 @@
 %\chapter{Cas concret : Tas binaire}
-\chapter[Concrète]{Choix de la structure concrète%
-\chaptermark{Concrète}}
+\chapter[Structure concrète]{Choix de la structure concrète%
+\chaptermark{Structure concrète}}
 
 
 
@@ -9,16 +9,16 @@ Plusieurs solutions se présentaient pour une implémentation de tas binaire :
 \begin{description}
 \item
 [Tableau des pères] Non approprié (dédié aux arborescence non-ordonnées).
-\item[Une liste d'adjacence] Un noeud étant un élément  (étiquette, père, liste des fils) de la liste. Ses perfomances sont dégradées lors d'opération comme la supression ($O(n)$ pour un tas binaire ) ou l'accès à un noeud à partir de son étiquette ($O(n)$). Dans le cas d'une utilisation où les opérations principales aurait été l'ajout d'un fils par exemple, cette solution aurait pu être retenue.
+\item[Une liste d'adjacence] Un noeud étant un élément  (étiquette, père, liste des fils) de la liste. Ses performances sont dégradées lors d'opération comme la suppression ($O(n)$ pour un tas binaire ) ou l'accès à un noeud à partir de son étiquette ($O(n)$). Dans le cas d'une utilisation où les opérations principales aurait été l'ajout d'un fils par exemple, cette solution aurait pu être retenue.
 \item[Liste de fratrie]  Un noeud étant un élément (étiquette, père, liste des frères, premier fils)  de la liste.
 \item[Tableau modulaire]
 \textbf{definition manquante} Structure présentant les meilleurs complexités pour l'ensemble des opérations. Cette solution répond le mieux aux contraintes que nous avons exposés précedement. C'est donc elle que nous avons retenue. 
 \end{description} 
 
 
-\section[Developpement]{Developpement du tas binaire%
-\sectionmark{Developpement}}
-\sectionmark{Developpement}
+\section[Développement]{Développement du tas binaire%
+\sectionmark{Développement}}
+\sectionmark{Développement}
 
 %\section{Developpement du tas binaire}
 Une fois la sélection de la structure faite. Nous avons au cours des semaines adopté le plan de développement suivant : 
