@@ -10,7 +10,7 @@
 
 
 \section{Introduction}
-L'objectif de ce document est de mener une étude sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Il s'appuie sur le document de spécification (cf : annexe).!!!!!!!!!!!!!!!!Ce document sur Les calculs de complexité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème. Le nombre de boîtes réellement utilisées dans le pavage est représenté par $N$. 
+L'objectif de ce document est de mener une étude sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Nous nous intéresserons en particulier à l'opération d'accès à une caractéristique ou d'une données d'une boîte ainsi qu'à l'occupation mémoire de cette dernière. Il s'appuie sur le document de spécification (cf : annexe).!!!!!!!!!!!!!!!!Ce document sur Les calculs de complexité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème. Le nombre de boîtes réellement utilisées dans le pavage est représenté par $N$. 
 
 
 \section{Définition de la boîte}
@@ -23,15 +23,22 @@ C'est l'entité atomique du pavage. Les accès à ses attributs sont donc crucia
 \item
   Une liste des caractéristiques, dans l'ordre et selon les types définis en entête.
 \end{itemize}
-Ces données seront régulièrement requises lors de la mise en \oe uvre des algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voire directs. Pour le cas de l'identifiant, s'agissant d'une simple \verb+String+ le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. Plusieurs possibilités sont alors envisageables : 
+Ces données seront régulièrement requises lors de la mise en œuvre des algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voire directs. Pour le cas de l'identifiant, s'agissant d'une simple \verb+String+ le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. Plusieurs possibilités sont alors envisageables : 
 
 \begin{itemize}
 \item
-  Un tableau : L'accès à une coordonnée serait direct. Les opérations d'ajout et de suppression sont en revanches coûteuses. Or il est peu probable que ce type d'opération intervienne. 
+  Un tableau : L'accès à une coordonnée est direct. Les opérations d'ajout et de suppression sont en revanches coûteuses pour les tableaux dynamiques ($O(n)$).
 \item
-  Une liste : Si l'accès à une coordonnée ne serait pas direct, les opérations d'ajout et de suppression sont en temps constant. Ces caractéristiques ne conviennent pas à notre problème.
+  Une liste : Si l'accès à une coordonnée n'est pas direct ($O(n)$), les opérations d'ajout et de suppression sont en temps constant.
 \item
-  Une Table de hachage : Coûteuse si la fonction de hachage n'est pas appropriée, une table de hachage propose cependant un accès en $O(1)$.  Cependant le phénomène de collisions (mauvaise répartition des clefs entrainant un conflit entre deux valeurs) est à prendre en considération. \textbf{a compléter}. Ainsi même pour un petit nombre d'éléments, son occupation mémoire peut être conséquente.
+  Une table de hachage : Coûteuse si la fonction de hachage n'est pas appropriée, une table de hachage propose cependant un accès en $O(1)$.  Cependant le phénomène de collisions (mauvaise répartition des clefs entrainant un conflit entre deux valeurs) est à prendre en considération :
+
+\begin{description}
+\item[Implémentation avec un tableau dynamique] Une telle structure permet de garantir un accès en temps constant. Cependant chaque collision va doubler l'occupation mémoire du tableau. Or même si la fonction de hachage est bonne, il est possible d'avoir au moins une collision, ce qui aurait pour conséquence une perte de l'espace mémoire qui se répercuterait sur chaque boîte.
+\item[Gestion des collisions avec chaînage] Contrairement à la structure précédente, cette méthode permet de ne pas occuper trop d'espace en chainant les éléments entrants en collision. Malheureusement la complexité en pire cas des opérations d'accès passe en $O(n)$. En revanche, grâce à une bonne fonction de hachage, on accèdera généralement en temps constant sans contre coût mémoire. 
+\end{description}
+
+Le passage en revue de ces différentes structures écarte la liste et la table de hachage implémentée par un tableau dynamique. En effet les performances des opérations d'accès de la liste ne sont pas raisonnables. De même l'implémentation d'une table de hachage par un tableau dynamique risque d'entrainer une perte de mémoire trop importante.
 %\item
  % Une TreeMap \cite{TreeMap}. Implémentation de base des arbres rouges noirs, cette map a la particularité de posséder des clefs triées. Ainsi les complexités de plusieurs opérations telle que l'accès en $O(\log{n})$. Dans le cas d'un grand nombre de valeurs à stocker, il est plus performant de construire la TreeMap à partir d'une HashMap.
 
@@ -52,7 +59,7 @@ Il est nécessaire de faire le lien de manière efficace entre le nom d'une vari
 Un problème majeur apparaît pour l'instanciation des boîtes. On rappelle qu'une caractéristique à plusieurs types (\verb+String+, \verb+Number+ ou \verb+Interval+). Plusieurs solutions sont envisageables : 
 \begin{itemize}
 \item 
-  Chaque boîte possède trois Maps pour ces trois types de caractéristiques. Cette solution à l'inconvénient en terme de performances de rajouter un test lors d'un accès  à une caractéristique (dans quelle Map regarder?) dans l'hypothèse d'un très nombre d'accès l'ajout d'un facteur 3 n'est pas négligeable. Au niveau de l'allocation mémoire, il important de prendre en compte le nombre de caractéristiques de chaque type à la création des Maps.  $\triangle$ l'o au coût de la recherche dans la Map  (si par exemple une boîte ne possède que des caractéristiques de type \verb+String+ et aucunes de types \verb+Number+ ou \verb+Interval+. 
+  Chaque boîte possède trois Maps pour ces trois types de caractéristiques. Cette solution à l'inconvénient en terme de performances de rajouter un test lors d'un accès  à une caractéristique (dans quelle Map regarder?) dans l'hypothèse d'un très nombre d'accès l'ajout d'un facteur 3 n'est pas négligeable. Au niveau de l'allocation mémoire, il important de prendre en compte le nombre de caractéristiques de chaque type à la création des Maps.  $\triangle$ l'o au coût de la recherche dans la Map  (si par exemple une boîte ne possède que des caractéristiques de type \verb+String+ et aucune de types \verb+Number+ ou \verb+Interval+. 
 \item
   Une Map unique contenant des \verb+String+ stocke les différentes caractéristiques de la boîte. On aura casté les attributs \verb+Number+ ou \verb+Interval+ en \verb+String+.
 \item 
