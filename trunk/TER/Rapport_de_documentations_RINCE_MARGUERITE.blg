@@ -2,44 +2,44 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: Rapport_de_documentations_RINCE_MARGUERITE.aux
 The style file: alpha.bst
 Database file #1: biblio.bib.bib
-You've used 4 entries,
+You've used 5 entries,
             2543 wiz_defined-function locations,
-            585 strings with 5060 characters,
-and the built_in function-call counts, 1121 in all, are:
-= -- 107
-> -- 36
-< -- 4
-+ -- 9
-- -- 9
-* -- 67
-:= -- 208
-add.period$ -- 12
-call.type$ -- 4
-change.case$ -- 17
-chr.to.int$ -- 4
-cite$ -- 4
-duplicate$ -- 57
-empty$ -- 84
-format.name$ -- 17
-if$ -- 215
+            589 strings with 5221 characters,
+and the built_in function-call counts, 1375 in all, are:
+= -- 129
+> -- 44
+< -- 5
++ -- 11
+- -- 11
+* -- 77
+:= -- 248
+add.period$ -- 14
+call.type$ -- 5
+change.case$ -- 22
+chr.to.int$ -- 5
+cite$ -- 5
+duplicate$ -- 68
+empty$ -- 109
+format.name$ -- 21
+if$ -- 268
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 1
-newline$ -- 23
-num.names$ -- 14
-pop$ -- 21
+newline$ -- 27
+num.names$ -- 17
+pop$ -- 31
 preamble$ -- 1
-purify$ -- 24
+purify$ -- 30
 quote$ -- 0
-skip$ -- 41
+skip$ -- 53
 stack$ -- 0
-substring$ -- 28
-swap$ -- 5
-text.length$ -- 4
-text.prefix$ -- 4
+substring$ -- 35
+swap$ -- 6
+text.length$ -- 5
+text.prefix$ -- 5
 top$ -- 0
-type$ -- 32
+type$ -- 40
 warning$ -- 0
-while$ -- 9
-width$ -- 6
-write$ -- 53
+while$ -- 11
+width$ -- 8
+write$ -- 62
