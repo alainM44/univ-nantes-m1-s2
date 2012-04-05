@@ -3,13 +3,15 @@
 \contentsline {section}{\numberline {2}Pr\IeC {\'e}sentation du probl\IeC {\`e}me}{2}{section.0.2}
 \contentsline {subsection}{\numberline {2.1}D\IeC {\'e}finition du contexte}{2}{subsection.0.2.1}
 \contentsline {subsection}{\numberline {2.2}Exemple}{2}{subsection.0.2.2}
-\contentsline {section}{\numberline {3}M\IeC {\'e}thodes de calculs}{3}{section.0.3}
+\contentsline {section}{\numberline {3}M\IeC {\'e}thodes de calculs}{2}{section.0.3}
 \contentsline {subsection}{\numberline {3.1}M\IeC {\'e}thodes formelles}{3}{subsection.0.3.1}
-\contentsline {subsection}{\numberline {3.2}M\IeC {\'e}thodes num\IeC {\'e}riques}{3}{subsection.0.3.2}
+\contentsline {subsection}{\numberline {3.2}M\IeC {\'e}thodes num\IeC {\'e}riques}{4}{subsection.0.3.2}
 \contentsline {section}{\numberline {4}R\IeC {\'e}solution par Intervalles}{4}{section.0.4}
 \contentsline {subsection}{\numberline {4.1}L'Arithm\IeC {\'e}tique des intervalles}{4}{subsection.0.4.1}
 \contentsline {subsection}{\numberline {4.2}Utilisation des intervalles pour la notion de contraintes}{4}{subsection.0.4.2}
 \contentsline {subsection}{\numberline {4.3}Exemples d'application}{5}{subsection.0.4.3}
 \contentsline {section}{\numberline {5}Mise en \IeC {\oe }uvre de la m\IeC {\'e}thode de r\IeC {\'e}solution par intervalles}{5}{section.0.5}
 \contentsline {subsection}{\numberline {5.1}Algorithmes}{5}{subsection.0.5.1}
-\contentsline {subsection}{\numberline {5.2}Donn\IeC {\'e}es en sortie}{5}{subsection.0.5.2}
+\contentsline {paragraph}{Branch :}{5}{section*.2}
+\contentsline {paragraph}{Prune :}{6}{section*.3}
+\contentsline {subsection}{\numberline {5.2}Donn\IeC {\'e}es en sortie}{7}{subsection.0.5.2}

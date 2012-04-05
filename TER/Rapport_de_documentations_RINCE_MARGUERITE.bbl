@@ -2,16 +2,16 @@
 
 \bibitem[C.J02]{Jermann}
 C.Jermann.
-\newblock {\em Résolution de contraintes géométriques par rigidification
-  récursive et propagation d'intervalles}.
-\newblock PhD thesis, Université de Nice-SOPHIA ANTIPOLIS UFR SCIENCES,
+\newblock {\em R{\'e}solution de contraintes g{\'e}om{\'e}triques par
+  rigidification r{\'e}cursive et propagation d'intervalles}.
+\newblock PhD thesis, Universit{\'e} de Nice-SOPHIA ANTIPOLIS UFR SCIENCES,
   Decembre 2002.
 
 \bibitem[F.G00]{Goualard}
 F.Goualard.
 \newblock {\em Langage et environnements en programmation par contraintes
   d'intervalles}.
-\newblock PhD thesis, Université de Nantes, Juillet 2000.
+\newblock PhD thesis, Universit{\'e} de Nantes, Juillet 2000.
 
 \bibitem[Neu04]{Neumaier}
 Arnold Neumaier.
@@ -23,5 +23,11 @@ Arnold Neumaier.
 Hermann Schichl.
 \newblock {\em Mathematical Modeling and Global Optimization}.
 \newblock PhD thesis, University of Vienna, November 2003.
+
+\bibitem[Wik]{Conditionnement}
+Wikipédia.
+\newblock
+  \href{http://fr.wikipedia.org/wiki/Conditionnement_(analyse_numérique)}{Con%
+ditionnement d'une matrice}.
 
 \end{thebibliography}
