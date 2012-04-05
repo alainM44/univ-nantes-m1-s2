@@ -46,25 +46,15 @@ Le passage en revue de ces différentes structures écarte la liste et la table 
 
 %La création d'une boîte a alors une complexité en $O(d)$. De plus l'accès aux différents attributs de la boîte (identifiant, liste des coordonnées) sera en $O(1)$.
 
-\subsection{Variables et identifiants}
-Il est nécessaire de faire le lien de manière efficace entre le nom d'une variable, et sa place dans la structure. En effet comment savoir par exemple que la valeur \verb+x+ se trouve à la position 4 dans la structure de données.
-\begin{itemize}
-\item
-  Selon le document de spécifications, les variables sont données dans un ordre précis, donné dans l'entête du fichier d'entrée. On peut alors utiliser une map «globale» renseignant la position de chaque variable. Si cette méthode permet de gagner de l'espace mémoire au sein d'une boîte, le nombre d'accès à cette Map risque d'être élevé : $k \times \log{n}$ où $k$ est potentiellement très grand. $\triangle$
-%\item
-%  Utiliser une TreeMap (la clef étant le nom de la variable).
-\end{itemize} 
-
 \subsection{Généricité des caractéristiques}
 Un problème majeur apparaît pour l'instanciation des boîtes. On rappelle qu'une caractéristique à plusieurs types (\verb+String+, \verb+Number+ ou \verb+Interval+). Plusieurs solutions sont envisageables : 
 \begin{itemize}
-\item 
-  Chaque boîte possède trois Maps pour ces trois types de caractéristiques. Cette solution à l'inconvénient en terme de performances de rajouter un test lors d'un accès  à une caractéristique (dans quelle Map regarder?) dans l'hypothèse d'un très nombre d'accès l'ajout d'un facteur 3 n'est pas négligeable. Au niveau de l'allocation mémoire, il important de prendre en compte le nombre de caractéristiques de chaque type à la création des Maps.  $\triangle$ l'o au coût de la recherche dans la Map  (si par exemple une boîte ne possède que des caractéristiques de type \verb+String+ et aucune de types \verb+Number+ ou \verb+Interval+. 
 \item
-  Une Map unique contenant des \verb+String+ stocke les différentes caractéristiques de la boîte. On aura casté les attributs \verb+Number+ ou \verb+Interval+ en \verb+String+.
+  Une Map unique contenant des \verb+String+ stocke les différentes caractéristiques de la boîte. On aura casté les attributs \verb+Number+ ou \verb+Interval+ en \verb+String+. Il sera alors nécessaire, pour chaque futurs accès, d'effectuer un cast dynamique. On rajoute alors une constante supplémentaire à la complexité de cette opération. 
 \item 
-Trois tableaux (un pour chaque type) au sein d'une boîte. Trois Maps (une pour chaque type) «générales» au niveau du pavage. La clef d'une map est l'id de la caractéristique et la valeur de la map son indice dans le tableau concret. La boîte retrouve l'indice au sein d'une caractéristique son tableau .
-
+Trois tableaux (un pour chaque type) au sein d'une boîte. Trois Maps (une pour chaque type) «générales» au niveau du pavage. La clef d'une map est l'id de la caractéristique et la valeur de la map son indice dans le tableau concret. La boîte peut alors retrouver la valeur de la caractéristique au sein de son tableau.
+\item 
+  Chaque boîte possède trois Maps pour ces trois types de caractéristiques. 
 \end{itemize}
 
 

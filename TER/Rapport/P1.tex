@@ -12,7 +12,11 @@ Trois problèmes majeurs apparaissent dans la réalisation du logiciel de visual
 \end{figure}
 Cette strucure pourrait être utilisée pour déterminer la position des boîtes dans l'espace selon la méthode suivante :
 \begin{itemize}
-\item Si un des nœuds du quadtree ne contient aucune boîte ou qu'il est entièrement inclus dans un ensemble de boîtes alors il n'est plus nécessaire de le subdiviser. Ce nœud contiendra donc une référence sur chacune de ces boîtes.
+\item []Si un des nœuds du quadtree ne contient aucune boîte ou qu'il est entièrement inclus dans un ensemble de boîtes alors il n'est plus nécessaire de le subdiviser. Ce nœud contiendra donc une référence sur chacune de ces boîtes.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.20]{img/QT1}
+\end{figure}
 \item \`A contrario si un nœud du QuadTree contient une des bornes d'une des boîtes, alors il est nécessaire de subdiviser ce nœud.
 \item On arrête aussi de diviser les nœuds lorsque l'on arrive à une précision inférieur à la précision d'affichage (taille d'un pixel).
 \end{itemize}
