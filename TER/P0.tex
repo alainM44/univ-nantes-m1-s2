@@ -14,22 +14,26 @@ Un domaine de valeurs pour chaque variable. Chaque valeur du domaine $D_i$ assoc
 Un ensemble de contraintes (relations) $\mathbf{C}$ restreignant les variables de $\mathbf{V}$ défini ci-dessus :  $\mathbf{C} = \left\{c_1,...,cm\right\}$. 
 \end{itemize}
 
+
+
 \subsection{Exemple}
 
-Une représentation simple de ce type de problèmes est la recherche des intersections de deux cercles dans un plan :
+Une représentation simple de ce type de problèmes est la recherche des intersections de deux cercles dans un plan : 
 \begin{figure}[h] %on ouvre l'environnement figure
   \center
-  \bf \Huge Image absente
+\includegraphics[scale=0.43]{img/circle-circle}
   \caption{Intersection de deux cercles} %la légende
  \label{fig:Deuxcerlces} %la légende
 \end{figure} %on ferme l'environnement figure
-
+\clearpage
 Dans le cadre de la recherche des intersections de deux cercles tels que : 
 Définissons deux cercles respectivement de rayons  $r_1$ et $r_2$ et de centres : $(x_1,y_1)$ et $(x_2,y_2)$.
 On peut alors fixer les données en entrées du problème :
+
 \begin{itemize}
 \item
 Un ensemble de variables $x$ et $y$ telles que  dans $\mathbb{R}$.
+
 \item
 Un domaine de valeurs pour chaque variable. La valeur du rayon de chaque cercle est située dans  $\mathbb{R⁺}$. Les coordonnées sont elles situées dans  $\mathbb{R}$.
 \item
@@ -41,8 +45,11 @@ L'ensemble des contrainte est composé par les équations des cercles :
 \end{cases}
 \end{equation}
 
-\end{itemize}
 
+
+
+\end{itemize}
+%\clearpage
 
 
 \section{Méthodes de calculs}
