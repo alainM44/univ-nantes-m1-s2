@@ -12,11 +12,6 @@ Antonin Guttman.
 \newblock \url{http://www-db.deis.unibo.it/courses/SI-LS/papers/Gut84.pdf},
   1984.
 
-\bibitem[Tre]{TreeMap}
-Class treemap.
-\newblock
-  \url{http://docs.oracle.com/javase/1.4.2/docs/api/java/util/TreeMap.html }.
-
 \bibitem[Wik]{wiki}
 Wikipedia.
 \newblock R-tree.
