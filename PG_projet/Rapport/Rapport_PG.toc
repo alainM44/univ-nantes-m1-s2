@@ -10,9 +10,10 @@
 \contentsline {subsection}{\numberline {3.2.1}M\IeC {\'e}thodologie et choix de structure}{7}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}M\IeC {\'e}thode de recherche}{7}{subsection.3.2.2}
 \contentsline {paragraph}{Algorithme}{8}{section*.3}
-\contentsline {chapter}{\numberline {4}Librairie d'arbres}{9}{chapter.4}
-\contentsline {section}{\numberline {4.1}Une possible hi\IeC {\'e}rarchie sur les arbres}{9}{section.4.1}
-\contentsline {paragraph}{Introduction}{9}{section*.4}
-\contentsline {paragraph}{Justification du mod\IeC {\`e}le}{11}{section*.5}
-\contentsline {chapter}{Table des figures}{12}{section*.7}
-\contentsline {chapter}{Bibliographie}{13}{section*.9}
+\contentsline {subsection}{\numberline {3.2.3}M\IeC {\'e}thode d\IeC {\textquoteright }insertion}{8}{subsection.3.2.3}
+\contentsline {chapter}{\numberline {4}Librairie d'arbres}{10}{chapter.4}
+\contentsline {section}{\numberline {4.1}Une possible hi\IeC {\'e}rarchie sur les arbres}{10}{section.4.1}
+\contentsline {paragraph}{Introduction}{10}{section*.4}
+\contentsline {paragraph}{Justification du mod\IeC {\`e}le}{12}{section*.5}
+\contentsline {chapter}{Table des figures}{13}{section*.7}
+\contentsline {chapter}{Bibliographie}{14}{section*.9}
