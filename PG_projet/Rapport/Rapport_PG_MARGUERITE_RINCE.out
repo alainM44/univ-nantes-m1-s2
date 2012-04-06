@@ -1,6 +1,14 @@
 \BOOKMARK [0][]{section*.2}{Table des mati\350res}{}
-\BOOKMARK [0][]{chapter.1}{Structure concr\350te}{}
-\BOOKMARK [1][]{section.1.1}{D\351veloppement}{chapter.1}
-\BOOKMARK [0][]{chapter.2}{Librairie d'arbres}{}
-\BOOKMARK [1][]{section.2.1}{Une possible hi\351rarchie sur les arbres}{chapter.2}
-\BOOKMARK [0][]{section*.6}{Table des figures}{}
+\BOOKMARK [0][]{chapter.1}{Introduction}{}
+\BOOKMARK [0][]{chapter.2}{Tas}{}
+\BOOKMARK [1][]{section.2.1}{Structure concr\350te}{chapter.2}
+\BOOKMARK [1][]{section.2.2}{D\351veloppement}{chapter.2}
+\BOOKMARK [0][]{chapter.3}{B-arbres}{}
+\BOOKMARK [1][]{section.3.1}{D\351finitions}{chapter.3}
+\BOOKMARK [1][]{section.3.2}{Impl\351mentations}{chapter.3}
+\BOOKMARK [2][]{subsection.3.2.1}{M\351thodologie et choix de structure}{section.3.2}
+\BOOKMARK [2][]{subsection.3.2.2}{M\351thode de recherche}{section.3.2}
+\BOOKMARK [0][]{chapter.4}{Librairie d'arbres}{}
+\BOOKMARK [1][]{section.4.1}{Une possible hi\351rarchie sur les arbres}{chapter.4}
+\BOOKMARK [0][]{section*.7}{Table des figures}{}
+\BOOKMARK [0][]{section*.9}{Bibliographie}{}
