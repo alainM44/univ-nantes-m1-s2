@@ -64,8 +64,24 @@ Pour chercher une clé $k$ dans le B-arbre, l'algorithme récursif a été imagi
 
 A partir de la racine et pour chaque noeud, on examine :
 \begin{itemize}
-\item {si la clé est présente}    succès
-\item {si K<K1} recherche dans P_0
-\item {si K>Kn} recherche dans P_k
+\item \emph{si la clé est présente} \\ succès
+\item \emph{si $K<K_1$} \\recherche dans $P_0$
+\item \emph{si $K>K_n$}\\ recherche dans $P_k$
+\item \emph{si $K_i < k < K_{i+1}$}\\ recherche dans $P_i$
 \end{itemize}
 
+\subsection{Méthode d’insertion}
+L’insertion se déroule globalement de la manière suivante :
+\begin{itemize}
+\item Recherche de la feuille d’insertion
+\item Si la feuille n’est pas pleine
+\begin{itemize}
+\item Alors insérer la feuille à sa place
+\end{itemize}
+\item Sinon (la feuille est pleine: $2 \times k$ clés)
+\begin{itemize}
+\item Laisser les $k$ plus petites clés dans le noeud
+\item Allouer un nouveau noeud et y placer les k plus grandes clés
+\item Remonter la clé médiane au noeud père
+\end{itemize}
+\end{itemize}
