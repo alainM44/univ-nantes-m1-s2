@@ -1,41 +1,52 @@
-%\chapter{Cas concret : Tas binaire}
-\chapter[Structure concrète]{Choix de la structure concrète%
-\chaptermark{Structure concrète}}
+\chapter[B-arbres]{Cas concret : B-arbres%
+\chaptermark{B-arbres}}
+\section{Définitions}
+Un B-arbre est une structure de données en arbre équilibré. Le principe général de cette structure est la minimisation de la taille des arbres en permettant aux noeuds la possession de plusieurs clés. Un B-arbre est donc caractérisé par les propriétés suivantes :
+\begin{itemize}
+\item Un ordre $m$
+\item Chaque noeud contient $k$ clés triées avec :
+\begin{itemize}
+\item pour le noeud racine : $m \leq k \leq 2m$
+\item pour un noeud non racine : $1 \leq k \leq 2m$
+\end{itemize}
+\item Un noeud est soit :
+\begin{itemize}
+\item Terminal et donc est une feuille.
+\item Non terminal et possède alors $k+1$ fils. Les clés du $i$\up{ème} fils ont des valeurs comprises entre les valeurs des $(i-1)$\up{ème} et $i$\up{ème} clés du père.
+\end{itemize}
+\item Chaque chemin de la racine à une feuille est de même longueur $h$ (hauteur).
+\end{itemize}
 
+\begin{figure}[h]
+	\centering
+%	\includegraphics[scale=0.5]{Hierarchie_arbres}
+	\caption{Une hiérarchie sur les arbres}
+	\label{fig:hierarchie}
+\end{figure}
 
-
-Nous avons recherché la structure concrète la plus performante dans l'ensemble des opérations. Ne pouvant savoir quelle serait la nature de l'utilisation de cette classe, nous avons opté pour une structure offrant les meilleures performances pour l'implémentation du tas.
-Plusieurs solutions se présentaient pour une implémentation de tas binaire :
-\begin{description}
-\item
-[Tableau des pères] Non approprié (dédié aux arborescence non-ordonnées).
-\item[Une liste d'adjacence] Un noeud étant un élément  (étiquette, père, liste des fils) de la liste. Ses performances sont dégradées lors d'opération comme la suppression ($O(n)$ pour un tas binaire ) ou l'accès à un noeud à partir de son étiquette ($O(n)$). Dans le cas d'une utilisation où les opérations principales aurait été l'ajout d'un fils par exemple, cette solution aurait pu être retenue.
-\item[Liste de fratrie]  Un noeud étant un élément (étiquette, père, liste des frères, premier fils)  de la liste.
-\item[Tableau modulaire]
-\textbf{definition manquante} Structure présentant les meilleurs complexités pour l'ensemble des opérations. Cette solution répond le mieux aux contraintes que nous avons exposés précedement. C'est donc elle que nous avons retenue. 
-\end{description} 
-
-
-\section[Développement]{Développement du tas binaire%
-\sectionmark{Développement}}
-\sectionmark{Développement}
-
-%\section{Developpement du tas binaire}
-Une fois la sélection de la structure faite. Nous avons au cours des semaines adopté le plan de développement suivant : 
+Étant donné la forme dont sont stockées les données dans les B-arbres (tri) et l'exécution des opérations d'insertion et de suppression en temps amorti logarithmique, cette structure est principalement mise en œuvre dans les mécanismes de gestion des bases de données et des systèmes de fichiers.
+\section{Implémentations}
+\subsection{Méthodologie et choix de structure}
+En considérant les propriétés des B-arbres décrites précédemment, nous avons procédé dans la construction de nos structures/algorithmes de la manière suivante : 
 \begin{enumerate}
-\item
-Définition des prototypes des méthodes
-\item
-Implémentation des méthodes
-\item
-Rajout de l'itérateur 
-\item
-Rajout de l'allocateur et du comparator
-\item
-Debug
+\item Mise en place de classes génériques en utilisant le principe des “templates”: L’objectif de cette approche est de générer le code spécifique à chaque type à partir d'un modèle générique. L’intérêt de cette technique est double : nous disposons d’un code optimisé pour chaque type et le code source n'est pas dupliqué car il écrit un méta-code à partir duquel sont générés les codes spécifiques. Nous avons donc paramétré nos arbres par le type de données à stocker et nous avons choisi de fixer l’ordre du B-Arbre.
+\begin{lstlisting}
+template<class T,short k>
+\end{lstlisting}
+\item     Mise en place de la structure de noeud "\verb+BTreeItem+": Cette structure comporte les éléments suivants :
+\begin{itemize}
+\item     Deux variables \verb+k+ et \verb+nCount+ de types entier court représentant respectivement l'ordre de l'arbre et le nombre de clés stockés dans un noeud.
+\item     Un tableau \verb+data+ de $2 \times K$ clés rangées dans l'ordre croissant.
+\item     Un tableau \verb+subItems+ de $2\times k+1$ pointeurs vers les enfants du noeud lorsque celui-ci n'est pas une feuille.
+\end{itemize}
+Cette structure possède également deux fonctions qui nous serviront dans la méthode d’insertion dans le B-arbre :
+\begin{itemize}
+\item     Une fonction de recherche dichotomique\cite{dichotomie} \verb+searchInNode+.
+\item         Une fonction de "découpage" de noeud \verb+SplitNode+.   
+\end{itemize}
+\item     Mise en place de la structure d’arbre complète \verb+BTree+ : cette structure comporte les fonctions nécessaires pour la recherche d’un élément dans l’arbre, la suppression ainsi que l’ajout. Nous verrons ces fonctionnalités plus en détails dans les parties qui suivent.
 \end{enumerate}
-Cette démarche nous a permis d'avancer rapidément au cours des première semaine. Les cours d'algorithmiques du 1\up{er} semestre encore en tête. Nous avons rapidement déployées les méthodes principales du tas binaire (Extraire, Tasser, Insérer\dots), sans trop nous soucier de la syntaxe C++ (nouvelle pour notre bînome).
-Nous avons amèrement regretté notre insoucience de ne jamais tester nos méthodes avant la 5\up{ème} ou 6\up{ème} semaine. Nous avons donc passé un temps important à débuguer un nombre de d'erreurs de syntaxe conséquent.
 
-La création d'un itérateur a été un réel frein dans le développement du projet.\\Notre premier objectif était de construire un itérateur permettant de parcourir les valeurs dans un ordre trié dépendant de la classe \verb+Compare+. Cependant un tel itérateur nécessitait de maintenir une structure de taille égale à celle du tas, ce qui s'avérait coûteux en mémoire.
-Nous avons donc décidé de nous orienter vers un itérateur \verb+DFS+ plus classique. Malgré tout nous avons eu du mal a maitriser la syntaxe C++ lié aux itérateurs et ils nous a fallu malgré tout un certain temps.
+\subsection{Méthode de recherche}
+La recherche est effectuée de la même manière que dans un arbre binaire de recherche, d'où l'utilisation de la fonction de recherche dichotomique citée précedemment. Partant de la racine, nous parcourons récursivement l’arbre. À chaque nœud, nous choisissons le sous-arbre fils dont les clés sont comprises entre les mêmes bornes que celles de la clé recherchée.
+\paragraph{Algorithme}
