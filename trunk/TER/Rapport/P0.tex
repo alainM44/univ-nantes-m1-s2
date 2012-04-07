@@ -59,25 +59,34 @@ Trois tableaux (un pour chaque type) au sein d'une boîte. Trois Maps (une pour 
 
 
 \section{Pavage}
-L'outil de visualisation peut charger un fichier entrée de manière dynamique ou non. Nous nous plaçons ici dans le cadre où cette option de chargement dynamique n'est pas activée. \\ L'outil va lire séquentiellement chaque ligne du fichier d'entrée. Le cahier de spécification exige fréquemment un listing de boîtes. Par exemple pour afficher la liste des boîtes concernées par un filtre. La structure du pavage doit être en mesure de répondre de manière efficace à des requêtes d'une séquence d'un nombre de  boîtes selon un ordre particulier. La structure du pavage doit être aussi en mesure de répondre efficacement à la structure  de visualisation graphique (cf :  \ref{par:QT}). On peut d'emblée envisager plusieurs stratégies pour le stockage du pavage :
+\subsection{Problématique}
+%L'outil de visualisation peut charger un fichier entrée de manière dynamique ou non. Nous nous plaçons ici dans le cadre où cette option de chargement dynamique n'est pas activée. \\ 
+%L'outil va lire séquentiellement chaque ligne du fichier d'entrée.
+Le cahier de spécification exige de l'outil la capacité à charger un pavage de taille non déterminée. Si le nombre de boîtes sera en pratique necessairement borné (limite mémoire de la machine), il faut cependant répondre à cette attente en proposant une structure de stockage capable de supporter un très grand nombre de boîtes. De plus l'outil doit être en mesure de fournir régulièrement des listing spéfiques de boîtes. Par exemple pour afficher la liste de celles concernées par un filtre. La structure du pavage doit être en mesure de répondre de manière efficace à des requêtes de séquences de boîtes selon un ordre particulier. La structure du pavage doit être aussi en mesure de répondre efficacement à la structure  de visualisation graphique (founir rapidement les nouvelles boîtes dans le champs de visualisation, lors d'une rotation de caméra par exemple). Quelles structures de données et quelles stratégies choisir face à de telles exigences ?  %Ce chapitre débute par de le passage en revue de différentes structures de données potentielles. % La création de la structure de stockage débute par la lecture séquentielle du fichier d'entrée (cf section 1  du document de spécification). Plusieurs options apparaissent à cette étape, faut-il par exemple :
 
-\begin{itemize}
-\item
-  Le fichier d'entrée est lu une unique fois. Les méthodes de structures dans laquelle les boîtes sont stockées sont suffisamment performantes pour répondre à toutes les spécifications. On peut alors se poser la question s'il faut :
-  \begin{itemize}
-  \item
-    Insérer les boîtes dans la structure puis la trier plus tard.
-  \item
-    Utiliser un tri par insertion.
-  \end{itemize}
-\item
-  Il est possible que refaire des «passes» sur le fichier d'entrée soit une solution. Dans les cas où les opérations de tris et/ou de recherches seraient trop coûteuses pour la structure du pavage (par exemple lors d'une demande de listing de certaines boîtes). On aurait une complexité en pire cas en $O(n)$. 
+
+%  Le fichier d'entrée est lu une unique fois. Les méthodes de structures dans laquelle les boîtes sont stockées sont suffisamment performantes pour répondre à toutes les spécifications. On peut alors se poser la question s'il faut :
+
+
+%\begin{enumerate}
+ % \item
+ %   Insérer les boîtes dans la structure puis la trier plus tard ?
+ % \item
+ %   Utiliser un tri par insertion ?
+%\end{enumerate}
+
+
+ % Il est possible que refaire des «passes» sur le fichier d'entrée soit une solution. Dans les cas où les opérations de tris et/ou de recherches seraient trop coûteuses pour la structure du pavage (par exemple lors d'une demande de listing de certaines boîtes). On aurait une complexité en pire cas en $O(n)$. 
   % Le création de structure de  données peut alors se faire de différentes  manières : 
-  % Chaque boîte est crée de manière séquentielle selon l'ordre du fichier puis stockée dans la structure de donnée. Le trie de la structure aura lieu plus tard ., 
-\end{itemize}
-\subsection{Stockage du pavage}
-Le nombre potentiellement très grand de boîtes élimine d'emblée la possibilité de choisir une HashMap. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes ne sont pas  appropriées ici. Une complexité en $O(n²)$ pour un accès à une boîte n'est pas raisonnable. Les arbres ont l'atout de pouvoir stocker et manipuler un grand nombre de d'entités. Les arbres de recherches sont des arborescences ordonnées permettant un accès en $O(\log(n))$. Dans le cas où la structure serait triée au fur et à mesure de sa construction. Les arbres de recherche proposent de bonnes performances. Nous développerons pourquoi à travers des cas d'exemples dans les prochains paragraphes : 
 
+\subsection{\'Etude de structures}
+
+\paragraph{Vector :} Collection de données à accès direct par indice. Le nombre de boîte étant donné dans l'entête du fichier d'entrée, une implémenation par un tableau statique proposerait une complexité en $O(n)$ pour l'opération de stockage du pavage. Si l'accès à une boîte à partir de son indice serait direct, l'opération de recherche en revanche aurait une complexité en $O(n)$. 
+
+\paragraph{Dictionnaire :} Collection de données à accès direct par clef. Dans l'hypothèse de posséder une fonction de hachage ne provoquant pas de collisions, une implémentation par une fonction de hachage propose une complexité en $O(n)$ (à nouveau grâce à la connaissance du nombre de boîtes dans l'entête du fichier d'entrée).
+
+
+%Le nombre potentiellement très grand de boîtes élimine d'emblée la possibilité de choisir une HashMap. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes ne sont pas  appropriées ici. Une complexité en $O(n²)$ pour un accès à une boîte n'est pas raisonnable. Les arbres ont l'atout de pouvoir stocker et manipuler un grand nombre de d'entités. Les arbres de recherches sont des arborescences ordonnées permettant un accès en $O(\log(n))$. Dans le cas où la structure serait triée au fur et à mesure de sa construction. Les arbres de recherche proposent de bonnes performances. Nous développerons pourquoi à travers des cas d'exemples dans les prochains paragraphes : 
 
 
 \paragraph{Arbre binaire}
@@ -86,9 +95,12 @@ Par exemple l'utilisation d'un arbre binaire de recherche pour la création de n
 \begin{figure}[htbp]
   \centering
   \includegraphics[scale=0.60]{img/binTree}
-  \caption{a-b tree}
-  \label{fig:dnuages}
+  \caption{arbre binaire}
+  \label{fig:abtree}
 \end{figure}
+L'arbre binaire était équilibré par définition, la compléxité de son opération de recherche est en $O(log_2 n)$ (hauteur de l'arbre).
+   
+
 
 %http://www.enseignement.polytechnique.fr/profs/informatique/Luc.Maranget/421/poly/arbre-bin.html
 \clearpage
@@ -96,24 +108,20 @@ Par exemple l'utilisation d'un arbre binaire de recherche pour la création de n
 Il s'agit d'un arbre de recherche avec les propriétés suivantes :
 \begin{itemize}
 \item
-  $a\leq2$ et $b\leq 2a−1$ deux entiers
+  $a\leq2$ et $b\leq 2a−1$ deux entiers.
 \item
-  La racine a au moins 2 fils (sauf si l'arbre ne possède qu'un nœud) et au plus b fils,
-\item 
-  Les feuilles sont de même profondeur,
+  La racine a au moins 2 fils (sauf si l'arbre ne possède qu'un nœud) et au plus b fils.
+  Les feuilles sont de même profondeur.
 \item
-  les autres nœuds internes ont au moins a et au plus b fils
+  Les autres nœuds internes ont au moins a et au plus b fils.
 \end{itemize}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[scale=0.40]{img/abtree}
-  \caption{a-b tree}
-  \label{fig:dnuages}
+  \caption{a-b arbre}
+  \label{fig:abtree}
 \end{figure}
 
-
-L'avantage des arbres a-b est que leurs hauteurs  sont comprises entres les valeurs suivantes : $ \dfrac{\log{n}}{\log{b}}   \leq h  < 1 + \dfrac{\log{n/2}}{\log{a}}$. Ainsi les opérations d'insertion ne seraient plus en $O(n\log{n})$ mais en $O(\log{n})$.
-
-La création d'un pavage composé de $n$ boîtes à $d$ dimensions aurait alors une complexité en $O((n\times d)\log(n))$.
+L'avantage des arbres a-b est que leurs hauteurs  sont comprises entres les valeurs suivantes : $ \dfrac{\log{n}}{\log{b}}   \leq h  < 1 + \dfrac{\log{n/2}}{\log{a}}$. Ainsi les opérations d'insertion ne seraient plus en $O(n\log{n})$ mais en $O(\log{n})$. La création d'un pavage composé de $n$ boîtes à $d$ dimensions aurait alors une complexité en $O((n\times d)\log(n))$. La recherche d'un boîte quant à elle aurait une compléxité en $O(\log{n})$.
 
