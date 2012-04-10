@@ -1,0 +1,136 @@
+% PPRumbc4.sty -- a style option for the prosper documentclass
+%                 idea stolen from a Powerpoint design
+%
+% The options colorBG/nocolorBG have not been implemented.
+%
+% This style defines the following user-accessible command:
+% \umbclogo		% draw UMBC logo
+% 
+% Author:
+% Rouben Rostamian <rostamian@umbc.edu>
+% September 2002
+% Revised: January 2003
+
+% Slide dimensions (aspect ratio: 13.6/10.2 = 4/3):
+%
+%      ---    --   +-------+----------------------------------------------+
+%       ^      ^   |       |                                              |
+%       |      |   |       |                    x <-- (anchor of NewSlideStyle)
+%       |      |   |       |                    |                         |
+%       |      |   |     <-|--------------------+-------------------->    |
+%       |      |   |       |  slide width (opt arg of NewSlideStyle)      |
+%       |  8.9 |   |       |                                              |
+%       |      |   |       |                                              |
+%  10.2 |      |   |       x-- NewSlideStyle relative to this             |
+%       |      |   |       |                                              |
+%       |      |   |       |  _____ origin for frames and logo            |
+%       |      |   |       | /                                            |
+%       |      v   |       |/                                             |
+%       |     ---  +-------X----------------------------------------------+
+%       |      ^   |       |                                              |
+%       |  1.3 |   |       |                                              |
+%       v      v   |       |                                              |
+%      ---    --   +-------+----------------------------------------------+
+%
+%                  |<----->|<-------------------------------------------->|
+%                     1.9                       11.7
+%
+%                  |<---------------------------------------------------->|
+%                                         13.6
+%
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{PPRumbc4}[2002/09/28]
+\typeout{UMBC style for Prosper -- (c) 2002 Rouben Rostamian, UMBC}
+
+\RequirePackage{pstcol}
+
+\IfFileExists{pst-grad}{\RequirePackage{pst-grad}}{\RequirePackage{gradient}}
+
+%\RequirePackage{avantgar}	% Avant Garde Postscript font
+\renewcommand{\rmdefault}{pag}	% same as above; works on older systems
+
+% colC:	used for title, subtitle and slide title
+% colD:	used for one of the decorative color rectangles and 3rd level bullets
+\definecolor{colC}{rgb}{0.49,0.15,0.80}	% purple3
+\definecolor{colD}{rgb}{1.00,0.70,0.00}	% sort of gold
+
+\FontTitle{\Large\color{colC}}{\Large\black}
+\FontSubtitle{\large\sl\color{colC}}{\large\sl\black}
+\FontText{\black}{\black}
+\ColorFoot{\black}
+
+% Slide title position
+\newcommand{\slidetitle}[1]{\rput[lb](-0.3,4.0){%
+	\parbox{10cm}{\fontTitle{\sl#1}}%
+}}
+
+% Logo default position
+\LogoPosition{-1.5,-1.08}
+\input{umbclogo-2003-01}
+
+% Define custumized bullets if the tribullet.sty package is available.
+\IfFileExists{tribullet.sty}{
+	\RequirePackage{tribullet}
+	\myitem{1}{\raisebox{0.60ex}{\tribullet[1.40ex]{red}}}
+	\myitem{2}{\raisebox{0.55ex}{\tribullet[1.30ex]{blue}}}
+	\myitem{3}{\raisebox{0.50ex}{\tribullet[1.25ex]{colD}}}
+}{}
+
+\newcommand{\UMBCFrame}[1]{%
+
+	% I don't understand, this, but without this no-op(?) command,
+	% acroread v5 messes up slide colors -- RR
+	\psline(-1.0,7.0)(-1.0,7.0)
+
+	\psframe[%
+		fillstyle=gradient,
+		gradangle=90,
+		gradbegin=colD,
+		gradend=white,%
+		gradmidpoint=1.0,
+		linestyle=none]
+			(-1.4,7.7)(-0.6,8.3)
+
+	\psframe[%
+		fillstyle=gradient,
+		gradangle=90,
+		gradbegin=blue,
+		gradend=white,
+		gradmidpoint=1.0,
+		linestyle=none]
+			(-1.2,7.1)(-0.4,7.7)
+
+	\psframe[%
+		fillstyle=gradient,
+		gradangle=-45,
+		gradbegin=red,
+		gradend=white,
+		gradmidpoint=1.0,
+		linestyle=none]
+			(-1.6,7.3)(-0.8,7.9)
+
+	\psframe[%
+		fillstyle=gradient,
+		gradangle=90,
+		gradbegin=black,
+		gradend=white,
+		gradmidpoint=1.0,
+		linestyle=none]
+			(-1.5,7.45)(9.0,7.51)
+
+	\psline(-1.0,7.0)(-1.0,8.5)
+
+  	\PutLogo % required
+	{#1}%
+}
+
+\NewSlideStyle[11cm]{t}{5.2,3.5}{UMBCFrame}
+
+%\PDFCroppingBox{0 0 595 842}	% A4 dimensions in pts
+%\PDFCroppingBox{0 0 594 773}	% Letter aspect
+%\PDFCroppingBox{0 0 594 792}	% 4/3 aspect, width=letter
+\PDFCroppingBox{0 0 603 804}	% 4/3 aspect -- as above plus add (9,12)
+				% for extra right/top margins
+
+\endinput
