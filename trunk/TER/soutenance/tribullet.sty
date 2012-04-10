@@ -1,0 +1,58 @@
+% tribullet.sty
+%
+% LaTeX/PStricks macro for making triangular bullets with shadows.
+% 
+% Defines the command:
+% 
+%      \tribullet[height]{color}
+% 
+% The triangle's forward tip lies on the baseline.
+% The default height is 2.0ex corresponding the the ex-height of the current
+% font.  The color argument is a color name as defined in PStricks.  Color
+% names white, black, red, green, blue, magenta, cyan, yellow are predefined
+% in PStricks.  Additional colors may be defined as in:
+% 
+%    \newrgbcolor{gold}{1.00 0.84 0.00}
+%
+% Usage examples:
+%
+%     Testing \raisebox{2mm}{\tribullet[6mm]{red}} Testing
+% 
+%     {\Huge Testing \raisebox{0.7ex}{\tribullet{red}} Testing}
+%
+% Note:
+% The shadow effect could have been achieved with pstricks' pst-blur style.
+% 
+% Author:
+% Rouben Rostamian <rostamian@umbc.edu>
+% October 2002
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{tribullet}[2002/09/28]
+\typeout{Triangular bullets -- (c) 2002 Rouben Rostamian, UMBC}
+
+\RequirePackage{pstricks}
+
+\newcommand{\RR@filledTriangle}[1]{%
+	\pspolygon[fillstyle=solid,fillcolor=#1,linestyle=none]%
+		(1,0)(0,1)(0,-1)%
+}
+
+\newgray{RR@shadowDark}{0.2}
+\newgray{RR@shadowLight}{0.7}
+
+% arg1 (optional) is object height (default=2ex corresponding to current font)
+% arg2 (required) is object color
+% The empty [] argument of \pspicture sets the triangle's forward top on the
+% baseline.
+\newcommand{\tribullet}[2][2ex]{%
+	\scaleboxto(0,#1){%
+	\pspicture[](0.00,-1.28)(1.12,1.00)%
+	\rput(0.14,-0.28){\RR@filledTriangle{RR@shadowLight}}%
+	\rput(0.06,-0.12){\RR@filledTriangle{RR@shadowDark}}%
+	\rput(0,0){\RR@filledTriangle{#2}}%
+	\endpspicture%
+}}
+
+\endinput
+
