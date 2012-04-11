@@ -4,14 +4,19 @@
 \contentsline {section}{\numberline {2}D\IeC {\'e}finition de la bo\IeC {\^\i }te}{2}{section.1.2}
 \contentsline {subsection}{\numberline {2.1}G\IeC {\'e}n\IeC {\'e}ricit\IeC {\'e} des caract\IeC {\'e}ristiques}{3}{subsection.1.2.1}
 \contentsline {section}{\numberline {3}Pavage}{3}{section.1.3}
-\contentsline {subsection}{\numberline {3.1}Stockage du pavage}{4}{subsection.1.3.1}
-\contentsline {paragraph}{Arbre binaire}{4}{section*.2}
-\contentsline {paragraph}{Arbres a-b}{6}{section*.3}
-\contentsline {chapter}{\numberline {2}Stockage des bo\IeC {\^\i }tes et visualisation}{7}{chapter.2}
-\contentsline {section}{\numberline {1}\'Etude d'une solution possible : le QuadTree}{7}{section.2.1}
-\contentsline {paragraph}{}{7}{section*.4}
-\contentsline {paragraph}{Le QuadTree}{7}{section*.5}
-\contentsline {paragraph}{}{8}{section*.6}
+\contentsline {subsection}{\numberline {3.1}Probl\IeC {\'e}matique}{3}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {3.2}\'Etude de structures}{4}{subsection.1.3.2}
+\contentsline {paragraph}{Vector :}{4}{section*.2}
+\contentsline {paragraph}{Dictionnaire :}{4}{section*.3}
+\contentsline {paragraph}{Arbre binaire}{4}{section*.4}
+\contentsline {paragraph}{Arbres a-b}{5}{section*.5}
+\contentsline {chapter}{\numberline {2}Stockage des bo\IeC {\^\i }tes et visualisation}{6}{chapter.2}
+\contentsline {section}{\numberline {1}\'Etude d'une solution possible : le QuadTree}{6}{section.2.1}
+\contentsline {paragraph}{}{6}{section*.6}
+\contentsline {paragraph}{}{6}{section*.7}
+\contentsline {paragraph}{Avantage de cette m\IeC {\'e}thode}{7}{section*.8}
+\contentsline {paragraph}{Inconv\IeC {\'e}nient de cette m\IeC {\'e}thode}{8}{section*.9}
+\contentsline {paragraph}{Br\IeC {\`e}ve conclusion}{8}{section*.10}
 \contentsline {section}{\numberline {2}\'Etude d'une seconde solution : le R-tree}{9}{section.2.2}
-\contentsline {paragraph}{Le R-tree}{9}{section*.7}
-\contentsline {paragraph}{}{9}{section*.8}
+\contentsline {paragraph}{Le R-tree}{9}{section*.11}
+\contentsline {paragraph}{}{9}{section*.12}
