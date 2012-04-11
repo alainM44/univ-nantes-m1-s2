@@ -1,37 +1,77 @@
 \chapter{Stockage des boîtes et visualisation}
-Trois problèmes majeurs apparaissent dans la réalisation du logiciel de visualisation. La première est bien entendu la gestion d'une très grande quantité de boîtes lors de l'affichage. Il est en effet nécessaire d'offrir un accès rapide aux informations des boîtes dans la fenêtre. La seconde est la gestion des filtres sur ces mêmes boîtes. Et le troisième apparait lors du changement des variables étudiées (changement des dimensions visualisées).
+Trois difficultés majeures apparaissent dans la réalisation du logiciel de visualisation. La première est bien entendu la gestion d'une très grande quantité de boîtes lors de l'affichage. Il est en effet nécessaire d'offrir un accès rapide aux informations des boîtes dans la fenêtre. La seconde est la gestion des filtres sur ces mêmes boîtes. Et le troisième apparait lors du changement des variables étudiées (changement des dimensions visualisées). Dans cette section, nous chercherons d'avantage à apporter une solution pour les problèmes de temps d'accès et de changement de variables. Il est en effet probable que la gestion des filtres soit effectuée par une structure différente.
 
 \section{\'Etude d'une solution possible : le QuadTree}
-\paragraph{}Une des solutions qui permettrait d'offrir une visualisation fluide du pavage tout en répondant aisément au document de spécifications serait de représenter le pavages sous une forme de quadtree pour deux dimensions ou octree pour trois dimensions.
-
-\paragraph{Le QuadTree}\label{par:QT}consiste à découper récursivement un espace fini en deux dimensions en quatre parties égales. Chacune de ces parties sont stockées dans un nœud. On itère ce mécanisme sur chacun de ces nœuds jusqu'à isoler spatialement les éléments recherchés.
+\paragraph{}Une des solutions qui pourrait permettre une visualisation fluide du pavage tout en répondant au document de spécifications serait de représenter le pavages sous une forme de quadtree pour deux dimensions ou octree pour trois dimensions.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.50]{quadtree}
 \caption{Représentation d'un quadtree}
 \end{figure}
-Cette strucure pourrait être utilisée pour déterminer la position des boîtes dans l'espace selon la méthode suivante :
+
+Le QuadTree consiste à découper récursivement un espace fini en deux dimensions en quatre parties égales. Chacune de ces parties sont stockées dans un nœud. On itère ce mécanisme sur chacun de ces nœuds jusqu'à isoler spatialement les éléments recherchés.
+
+Cette structure pourrait être utilisée pour déterminer la position des boîtes dans l'espace.
+
+\paragraph{}L'algorithme permettant de partitionner est récursif. Dans le cas récursif, l'algorithme divise l'espace en quatre et itère sur chaque sous-espace. Dans le cas d'arrêt on ne subdivise plus. Nous décrivons par la suite l'ensemble des cas de récursions et d'arrêts pour la division d'un espace donné. Les images jointes au texte sont des représentations des différents cas dans lesquels les cadres rouges sont des boîtes solutions et les cadres noirs un espace fourni à l'algorithme. Vous trouverez une classification visuelle dans la table \ref{tab:algo}.
 \begin{itemize}
-\item []Si un des nœuds du quadtree ne contient aucune boîte ou qu'il est entièrement inclus dans un ensemble de boîtes alors il n'est plus nécessaire de le subdiviser. Ce nœud contiendra donc une référence sur chacune de ces boîtes.
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.20]{img/QT1}
-\end{figure}
-\item \`A contrario si un nœud du QuadTree contient une des bornes d'une des boîtes, alors il est nécessaire de subdiviser ce nœud.
-\item On arrête aussi de diviser les nœuds lorsque l'on arrive à une précision inférieur à la précision d'affichage (taille d'un pixel).
+\item Cas d'arrêts : 
+\begin{itemize}
+\item L'espace fourni est entièrement inclus dans une boîte \includegraphics[scale=0.20]{img/QT1}.
+\item L'espace fourni contient entièrement une seule boîte \includegraphics[scale=0.20]{img/QT2}.
+\item L'espace fourni contient en partie une seule boîte \includegraphics[scale=0.20]{img/QT3}.
+\item L'espace fourni n'intersecte aucune boîte \includegraphics[scale=0.30]{img/QT6}.
+\item L'espace fourni ne peux plus être subdivisé car on a fourni une taille minimale pour un espace donné.
 \end{itemize}
+\item cas de récursions :
+\begin{itemize}
+\item L'espace fourni intersecte plusieurs boîtes \includegraphics[scale=0.20]{img/QT4} ou encore \includegraphics[scale=0.20]{img/QT5}.
+\end{itemize}
+\end{itemize}
+
+\begin{table}[htbp]
+\centering
+ \begin{tabular}{|c|cccc|}
+  \hline
+  Cas de récursion &  \includegraphics[scale=0.20]{img/QT4}&  \includegraphics[scale=0.20]{img/QT5}& &\\
+  \hline
+  Cas d'arrêt&  \includegraphics[scale=0.20]{img/QT1}&  \includegraphics[scale=0.20]{img/QT2}&  \includegraphics[scale=0.20]{img/QT3}&  \includegraphics[scale=0.30]{img/QT6}\\
+  \hline
+ \end{tabular}
+ \caption{Classification visuelle des cas d'arrêts et de récursions}
+\label{tab:algo}
+\end{table}
+
 
 L'octree repose sur le même principe mais étendu à trois dimensions. L'espace est donc découpé en huit parties à chaque fois.
 
-Cette structure est particulièrement intéressante pour la visualisation du pavage. En effet pour une fenêtre de visualisation donnée, il est très simple et rapide d'extraire la sous-arborescence correspondante à l'espace visualisé et permet aussi de ne pas afficher les objets trop petits.
+\paragraph{Avantage de cette méthode}Cette structure est particulièrement intéressante pour la visualisation du pavage. En effet pour une fenêtre de visualisation donnée, il est très simple et rapide d'extraire la sous-arborescence correspondante à l'espace visualisé et permet aussi de ne pas afficher les objets trop petits. 
 
-Le problème de cette méthode est essentiellement du à la construction. La structure devra découper en la plus petite feuille possible au niveau des bornes des boîtes ce qui va nécessairement entrainer la construction d'un grand nombre de feuilles. Ce problème est particulièrement gênant puisque si l'on cherche à localiser une boîte de dimensions 1 sur 1 avec la précision donnée par défaut par Realpaver de $10^{-16}$, on se retrouve avec au moins $4 \times 10^{16}$ feuilles. On peut optimiser l'algorithme de construction en considérant que si un des nœuds contient l'intégralité ou une partie d'une seule boîte, il n'est plus nécessaire de subdiviser. La recherche d'une seule boîte étant immédiate.
+De plus il serait possible de créer une structure reposant sur le même principe que le quadtree mais étant $k$-dimensionnelle\footnote{$k$ étant la dimension du problème fourni à Realpaver.}. Chaque espace peut alors être potentiellement subdivisé en $2^k$ sous-espaces. Cette structure permettrait d'éviter de recalculer l'arbre à chaque changement de variables de visualisation. On évite par ailleurs le cas de superposition de boîtes pour lequel l'algorithme n'est plus efficace (cf : figure \ref{fig:superpos}).
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.30]{img/QT8}
+\caption{Superposition de boîtes}
+\label{fig:superpos}
+\end{figure}
 
-Un autre problème apparait lorsque l'utilisateur souhaite changer les variables visualisées dans l'outil. Si l'on reste sur une structure du type QuadTree ou octree, il sera nécessaire de recalculer entièrement l'arbre.
+\paragraph{Inconvénient de cette méthode}Le problème majeur de cette méthode se présente lorsque des boîtes sont côte à côte (cf : figure \ref{fig:frontiere}).
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.40]{img/QT7}
+\caption{Superposition de boîtes 1}
+\label{fig:frontiere}
+\end{figure}
+Dans une telle situation chaque division va entrainé la création d'un espace dans la même configuration. L'algorithme ne s'arrêtera donc pas avant d'avoir atteint la taille minimale d'un espace. Nous nous retrouvons donc avec un grand nombre de boîtes au niveau de ces \og frontières\fg{} (cf : figure \ref{fig:frontiere2}).
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.40]{img/QT9}
+\caption{Superposition de boîtes 2}
+\label{fig:frontiere2}
+\end{figure}
+Ainsi sachant que la précision maximale par défaut de \emph{Realpaver} est de $10^{-16}$, cela implique qu'il est nécessaire d'au moins égaler cette précision pour l'arbre de visualisation. Ainsi pour une sortie de \emph{Realpaver} contenant un total $l$ de longueurs de \og frontières \fg{}  cumulées et $p$ la précision du modèle, on a un nombre d'espaces à créer supérieur à $\frac{l}{p}$ avec $p$ très petit. Par exemple pour une sortie de \emph{Realpaver} comportant une \og frontière \fg{} de taille $1$, il faudra au moins $10^{16}$ espaces pour la contenir. 
 
-On pourrait alors supposer une structure similaire $k$-dimensionnelle\footnote{$k$ étant la dimension du problème fourni à Realpaver.} où chaque nœud possède $2^k$ nœuds. L'avantage d'une telle structure est que lorsque l'on désire changer les variables de visualisation, le calcul est déjà effectué.
-
-\paragraph{} Malgré le fait que le QuadTree pouvait être une structure intéressante, le nombre de feuilles créées est bien trop important et ne peut donc pas être utilisé.
+\paragraph{Brève conclusion} Le quadtree est une structure intéressante pour la visualisation mais si un nœud de l'arbre a un coût en mémoire non nul, alors l'espace mémoire de la structure va exploser. Elle semble donc, pour le moment, inappropriée.
 
 \section{\'Etude d'une seconde solution : le R-tree}
 \paragraph{Le R-tree} est une structure de données utilisée pour stocker des informations $k$-dimensionnelles. Le principe est le suivant :
