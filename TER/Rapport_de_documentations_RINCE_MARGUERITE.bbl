@@ -1,4 +1,7 @@
-\begin{thebibliography}{Neu04}
+\begin{thebibliography}{F.G00}
+
+\bibitem[cho99]{choco}
+\href{http://www.emn.fr/z-info/choco-solver/}{Librairie CHOCO }, 1999.
 
 \bibitem[C.J02]{Jermann}
 C.Jermann.
@@ -13,11 +16,15 @@ F.Goualard.
   d'intervalles}.
 \newblock PhD thesis, Universit{\'e} de Nantes, Juillet 2000.
 
-\bibitem[Neu04]{Neumaier}
-Arnold Neumaier.
-\newblock Complete search in continuous global optimization and constraint
-  satisfaction.
-\newblock In A.~Iserles, editor, {\em Acta Numerica}, 2004.
+\bibitem[GB06]{realpaver}
+L.~Granvilliers and F.~Benhamou.
+\newblock
+  \href{http://pagesperso.lina.univ-nantes.fr/~granvilliers-l/papers/toms_2006%
+.pdf}{Algorithm 852: Realpaver: an Interval Solver using Constraint
+  Satisfaction Techniques}, 2006.
+
+\bibitem[ort11]{ortools}
+\href{http://code.google.com/p/or-tools/}{Google or-tools}, 2011.
 
 \bibitem[Sch03]{Schichl}
 Hermann Schichl.
