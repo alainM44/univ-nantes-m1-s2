@@ -1,16 +1,16 @@
-\begin{thebibliography}{AdBJY04}
-
-\bibitem[AdBJY04]{PRTree}
-Lars Arge, Mark de~Berg, Herman J.Haverkort, and Ke~Yi.
-\newblock The priority r-tree: A practically efficient and worst-case optimal
-  r-tree.
-\newblock \url{http://daimi.au.dk/~large/Papers/prtreesigmod04.pdf}, 2004.
+\begin{thebibliography}{MNPT06}
 
 \bibitem[Gut84]{Guttman}
 Antonin Guttman.
 \newblock R-trees: A dynamic index structure for spatial searching.
 \newblock \url{http://www-db.deis.unibo.it/courses/SI-LS/papers/Gut84.pdf},
   1984.
+
+\bibitem[MNPT06]{poulos}
+Yannis Manolopoulos, Alexandros Nanopoulos, Apostolos~N. Papadopoulos, and
+  Yannis Theodoridis.
+\newblock {\em R-Trees: Theory and Applications}.
+\newblock Springer, 2006.
 
 \bibitem[Wik]{wiki}
 Wikipedia.
