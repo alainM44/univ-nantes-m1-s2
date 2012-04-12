@@ -4,42 +4,42 @@ The style file: alpha.bst
 Database file #1: biblio.bib.bib
 You've used 3 entries,
             2543 wiz_defined-function locations,
-            575 strings with 4915 characters,
-and the built_in function-call counts, 967 in all, are:
-= -- 89
+            573 strings with 4846 characters,
+and the built_in function-call counts, 964 in all, are:
+= -- 86
 > -- 47
 < -- 2
-+ -- 17
++ -- 16
 - -- 16
-* -- 51
-:= -- 169
+* -- 53
+:= -- 170
 add.period$ -- 9
 call.type$ -- 3
-change.case$ -- 18
+change.case$ -- 17
 chr.to.int$ -- 3
 cite$ -- 3
-duplicate$ -- 32
+duplicate$ -- 37
 empty$ -- 76
 format.name$ -- 21
-if$ -- 195
+if$ -- 193
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 0
+missing$ -- 2
 newline$ -- 18
 num.names$ -- 9
-pop$ -- 28
+pop$ -- 29
 preamble$ -- 1
 purify$ -- 21
 quote$ -- 0
-skip$ -- 35
+skip$ -- 34
 stack$ -- 0
-substring$ -- 22
+substring$ -- 21
 swap$ -- 3
 text.length$ -- 2
 text.prefix$ -- 2
 top$ -- 0
-type$ -- 24
+type$ -- 20
 warning$ -- 0
 while$ -- 7
-width$ -- 6
+width$ -- 5
 write$ -- 37

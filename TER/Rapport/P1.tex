@@ -74,23 +74,32 @@ Ainsi sachant que la précision maximale par défaut de \emph{Realpaver} est de 
 \paragraph{Brève conclusion} Le QuadTree est une structure intéressante pour la visualisation mais si un nœud de l'arbre a un coût en mémoire non nul, alors l'espace mémoire de la structure va exploser. Elle semble donc, pour le moment, inappropriée.
 
 \section{\'Etude d'une seconde solution : le R-tree}
-\paragraph{Le R-tree} est une structure de données utilisée pour stocker des informations $k$-dimensionnelles. Le principe est le suivant :
+\paragraph{}Bien que le QuadTree soit une structure intéressante pour permettre l'indexation et la recherche de points dans un espace, celui-ci l'est beaucoup moins pour la gestion de données à dimensions non nulles. Le R-tree est une structure proposé en 1984 par Antonin \textsc{Guttman} permettant l'indexation et la recherche d'éléments dans $k$ dimensions\cite{Guttman}.
+
+\paragraph{}Le R-tree est une variante équilibré de l'arbre B, sa structure est la suivante :
 \begin{itemize}
- \item Un noeud de l'arbre correspond à une boîte non-solution du pavage.
+ \item Un noeud de l'arbre correspond à une boîte non-solution du pavage ( généralement appelé \og page \fg{}).
  \item Chaque boîte peut contenir entre $m$ et $M$ sous-boîtes entièrement incluses. Avec $m\leq \frac{M}{2}$.
  \item Une feuille de l'arbre est une boîte ne contenant que des boîtes solution du pavage.
- \item L'arbre est équilibré.
 \end{itemize}
 
-La figure \ref{fig:rtree} donne une bonne idée du principe des R-trees\cite{wiki}:
+La figure \ref{fig:rtree} donne une bonne idée de l'organisation des R-trees:
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.50]{rtree}
-\caption{Représentation d'un R-tree}
+\caption{Représentation d'un R-tree\cite{wiki}}
 \label{fig:rtree}
 \end{figure}
 
-Pour plus de détails sur le R-tree on pourra se référer à l'article de A. Guttman \cite{Guttman}
+Les algorithmes permettant la recherche et la création du R-tree sont qu'en à eux décrient dans l'article de \textsc{A. Guttman} dans la section \textbf{3. Searching and Updating}\cite{Guttman}.
 
-\paragraph{} Une telle structure semble bien plus intéréssante en terme d'occupation mémoire. En effet le nombre de feuilles de l'arbre est au pire égale à $\frac{N}{m}$. Cependant on peut se demander si rechercher une fenêtre de visualisation serait efficace. En effet il est nécessaire de parcourir toutes les boîtes dont l'intersection est non nulle avec la fenêtre. De nombreuses analyses ont été effectuées sur le sujet. On pourra se reporter à une analyse de performances sur les Priority R-trees \cite{PRTree}.
+\paragraph{Avantages et inconvénients du R-tree} Le R-tree est une structure de données spécialement conçue pour la recherche de données non-nulles pour dans des espaces $k$-dimensionnels. L'arbre a une profondeur maximale $h_{max}$ égale à :
+\begin{equation}
+ h_{max} = \left\lceil\log_{m} n\right\rceil - 1
+\end{equation}
+et le nombre de nœuds est au pire égale à :
+\begin{equation}
+ \sum_{i=1}^{h_{max}}{\left\lceil\frac{n}{m^i}\right\rceil} = \left\lceil\frac{n}{m}\right\rceil + \left\lceil\frac{n}{m^2}\right\rceil + \cdots + 1
+\end{equation}
 
+ Bien que ne pouvant garantir de bonnes performances en pire cas\footnote{\og \emph{More than one substree under a node may need to be searched, hence it is not possible to guarantee good worst-case performance.}\fg{}\cite{Guttman}, section \textbf{3.1 Searching}}, le R-tree offre en pratique de bons résultats ; on pourra d'ailleurs se reporter à l'analyse de performances effectuer par A. \textsc{Guttman}\footnote{section \textbf{4. Performance}\cite{Guttman}}. Cependant il existe aujourd'hui de nombreuses variantes du R-tree ( R*tree, Hilbert R-tree, etc\dots{} ), on pourra donc, pour une analyse plus générale des différentes implémentations, préférer \og\emph{R-trees : Theory and Applications} \fg{}\cite{poulos}.
