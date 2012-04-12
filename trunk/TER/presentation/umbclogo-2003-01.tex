@@ -1,0 +1,24 @@
+% UMBC logo
+%
+% This file is \included in PPRumbc*.sty
+%
+% Rouben Rostamian
+% September 2002
+
+\definecolor{shadowcolorA}{gray}{0.7}
+\definecolor{shadowcolorB}{gray}{0.2}
+\newcommand{\umbclogo}{%
+	{\fontfamily{phv}\fontseries{b}\fontshape{sl}\fontsize{7}{7}%
+	\selectfont%
+	\makebox[0pt][l]{\raisebox{-0.20ex}[0pt][0pt]{\color{shadowcolorA}\hspace*{.20ex}UMBC}}%
+	\makebox[0pt][l]{\raisebox{-0.10ex}[0pt][0pt]{\color{shadowcolorB}\hspace*{.10ex}UMBC}}%
+	{\red UMBC}\hspace{.20ex}%
+}}
+
+% Define custumized bullets if the tribullet.sty package is available.
+\IfFileExists{tribullet.sty}{
+	\RequirePackage{tribullet}
+	\myitem{1}{\raisebox{0.60ex}{\tribullet[1.40ex]{red}}}
+	\myitem{2}{\raisebox{0.55ex}{\tribullet[1.30ex]{blue}}}
+	\myitem{3}{\raisebox{0.50ex}{\tribullet[1.25ex]{cyan}}}
+}{}

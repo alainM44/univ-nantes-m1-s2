@@ -2,9 +2,9 @@
 Les méthodes formelles et numériques, bien que performantes par certains aspects, sont rapidement limitées lorsque l'on veut résoudre des problèmes complexes ou que l'on veut pouvoir valider une solution (problème de propagation des erreurs\dots). C'est dans ce cadre que la méthode de résolution par intervalles a toute sa places. Construite grâce à l'arithmétique des intervalles, elle utilise aussi des notions apportées par la programmation par contrainte.
  
 \subsection{L'Arithmétique des intervalles}
-Cette arithmétique permet un calcul sur l' ensemble $\mathbb{I}$ des intervalles à bornes sur $\mathbb{R}$. Les bornes $b1$ et $b2$ de l'intervalle $[b1,b2]$, résultant de tout calcul, sont choisies en prenant un arrondi respectivement inférieur à $b1$ et supérieur à $b2$ de manière à garantir l'exactitude des calculs. L'extension des fonctions aux intervalles, introduite par Moore en 1966, permet une transition à des intervalles grâce à un opérateur d'encadrement. Les opérations élémentaires sont alors réécrites en terme des bornes des intervalles  par exemple : 
+Cette arithmétique permet un calcul sur l' ensemble $\mathbb{I}$ des intervalles à bornes sur $\mathbb{R}$. Les bornes $b1$ et $b2$ de l'intervalle $[b1,b2]$, résultant de tout calcul, sont choisies en prenant un arrondi respectivement inférieur à $b1$ et supérieur à $b2$ de manière à garantir l'exactitude des calculs. L'extension des fonctions aux intervalles, introduite par \textsc{Moore} en 1966, permet une transition à des intervalles grâce à un opérateur d'encadrement. Les opérations élémentaires sont alors réécrites en terme des bornes des intervalles  par exemple : 
 
-\begin{equation}\label{eq}
+\begin{equation}\label{eq2}
 \begin{cases}
 [a .. b] + [c .. d] = [a + c .. b + d] \\
 [a .. b] × [c .. d] = [min(ac, ad, bc, bd) .. max(ac, ad, bc, bd)]
@@ -26,9 +26,9 @@ Une liste non-exhaustive des opérations de cet opérateur est listée dans \cit
 
 
 \subsection{Utilisation des intervalles pour la notion de contraintes}
-\'Egalement, la méthode de résolution par intervalles utilise des notions de programmation par contraintes. On y retrouve celle de consistance. La consistance consiste à rechercher les valeurs cohérentes dans le domaine des variables pour les contraintes du CSP. Par exemple un CSP est globalement consistant lorsque toutes les valeurs des variables de son domaine appartiennent au moins à une solution. On devine qu'il peut être intéressant pour un CSP de posséder la consistance la plus forte possible. Ainsi les opérations pour la résolution de problèmes seront moins nombreuses.
+\'Egalement, la méthode de résolution par intervalles utilise des notions de programmation par contraintes. On y retrouve celle de consistance. La consistance consiste à rechercher les valeurs cohérentes dans le domaine des variables pour les contraintes du \textsc{CSP}. Par exemple un \textsc{CSP} est globalement consistant lorsque toutes les valeurs des variables de son domaine appartiennent au moins à une solution. On devine qu'il peut être intéressant pour un \textsc{CSP} de posséder la consistance la plus forte possible. Ainsi les opérations pour la résolution de problèmes seront moins nombreuses.
 
-Dans le cas du problème (\ref{eq}), il serait possible d'avoir des solutions différentes selon la consistance choisie. Avec une hull-consistance, nous obtiendrions une boite contenant les deux solutions mais aussi une bonne partie de l'intersection des deux cercles. Tandis qu'avec une arc-consistance (cf \cite{Goualard} Chapitre 3, section 3.3, définition 3.5), nous obtiendrions deux boites, plus petites que dans le premier cas, et chacune contenant une des solutions.
+Dans le cas du problème (\ref{eq2}), il serait possible d'avoir des solutions différentes selon la consistance choisie. Avec une hull-consistance, nous obtiendrions une boite contenant les deux solutions mais aussi une bonne partie de l'intersection des deux cercles. Tandis qu'avec une arc-consistance (cf \cite{Goualard} Chapitre 3, section 3.3, définition 3.5), nous obtiendrions deux boites, plus petites que dans le premier cas, et chacune contenant une des solutions.
 
 
 \subsection{Exemples d'application}

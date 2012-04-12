@@ -1,0 +1,141 @@
+% PPRumbc3.sty -- a style option for the prosper documentclass
+%
+% The options colorBG/nocolorBG have not been implemented.
+%
+% This style defines the following user-accessible commands:
+%
+% \umbcColorA{r, g, b}	% set color colA (see below) to the specified rgb
+% \umbcColorB{r, g, b}	% set color colB (see below) to the specified rgb
+% \umbcColorC{r, g, b}	% set color colC (see below) to the specified rgb
+% \umbclogo		% draw UMBC logo
+% \umbcNoDecorations	% suppress drawing the "ratchet holes"
+% \umbcNoStrip		% suppress drawing background strip of ratchet holes
+%
+%
+% Author:
+% Rouben Rostamian <rostamian@umbc.edu>
+% September 2002
+% Revised: January 2003
+
+% Slide dimensions (aspect ratio: 13.6/10.2 = 4/3):
+%
+%      ---    --   +-------+----------------------------------------------+
+%       ^      ^   |       |                                              |
+%       |      |   |       |                    x <-- (anchor of NewSlideStyle)
+%       |      |   |       |                    |                         |
+%       |      |   |     <-|--------------------+-------------------->    |
+%       |      |   |       |  slide width (opt arg of NewSlideStyle)      |
+%       |  8.9 |   |       |                                              |
+%       |      |   |       |                                              |
+%  10.2 |      |   |       x-- NewSlideStyle relative to this             |
+%       |      |   |       |                                              |
+%       |      |   |       |  _____ origin for frames and logo            |
+%       |      |   |       | /                                            |
+%       |      v   |       |/                                             |
+%       |     ---  +-------X----------------------------------------------+
+%       |      ^   |       |                                              |
+%       |  1.3 |   |       |                                              |
+%       v      v   |       |                                              |
+%      ---    --   +-------+----------------------------------------------+
+%
+%                  |<----->|<-------------------------------------------->|
+%                     1.9                       11.7
+%
+%                  |<---------------------------------------------------->|
+%                                         13.6
+%
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{PPRumbc3}[2002/09/28]
+\typeout{UMBC style for Prosper -- (c) 2002 Rouben Rostamian, UMBC}
+
+\RequirePackage{pstcol}
+
+\IfFileExists{pst-grad}{\RequirePackage{pst-grad}}{\RequirePackage{gradient}}
+
+%\RequirePackage{avantgar}	% Avant Garde Postscript font
+\renewcommand{\rmdefault}{pag}	% same as above; works on older systems
+
+% color definitions
+% colA:	used for the decorations on the left edge
+% colB:	used for the decorations on the left edge
+% colC:	used for title, subtitle and slide title
+
+\definecolor{colA}{rgb}{0.00, 0.00, 0.00}	% black
+\definecolor{colB}{rgb}{1.00, 0.84, 0.00}	% X11 gold
+%\definecolor{colB}{rgb}{1.00, 0.65, 0.00}	% also try
+\definecolor{colC}{rgb}{0.67, 0.49, 0.04}	% my gold
+
+\newcommand{\umbcColorA}[1]{\definecolor{colA}{rgb}{#1}}
+\newcommand{\umbcColorB}[1]{\definecolor{colB}{rgb}{#1}}
+\newcommand{\umbcColorC}[1]{\definecolor{colC}{rgb}{#1}}
+
+\FontTitle{\Large\color{colC}}{\Large\black}
+\FontSubtitle{\large\sl\color{colC}}{\large\sl\black}
+\FontText{\black}{\black}
+\ColorFoot{\black}
+
+% Slide title position
+\newcommand{\slidetitle}[1]{\rput[lb](-0.7,4.0){%
+	\parbox{10cm}{%
+    		\fontTitle{%
+			\makebox[0pt][l]{\rule[-0.6ex]{11cm}{0.10ex}}%
+			\makebox[0pt][l]{\rule[-0.8ex]{11cm}{0.05ex}}%
+			\sl#1}%
+	}%
+}}
+
+% Logo default position
+\LogoPosition{-1.0,-1.08}
+\input{umbclogo-2003-01}
+
+\newboolean{ratchetholes}
+\setboolean{ratchetholes}{true}
+\newboolean{ratchetbg}
+\setboolean{ratchetbg}{true}
+\newcommand{\umbcNoDecorations}{\setboolean{ratchetholes}{false}}
+\newcommand{\umbcNoStrip}{\setboolean{ratchetbg}{false}}
+
+\newcommand{\UMBCFrame}[1]{%
+
+	% I don't understand, this, but without this no-op(?) command,
+	% acroread v5 messes up slide colors -- RR
+	\psline(-1.8,-1.2)(-1.8,-1.2)
+
+\ifthenelse{\boolean{ratchetbg}}{%
+	\psframe[%
+		fillstyle=gradient,%
+		gradbegin=colC,%
+		gradend=white,%
+		gradmidpoint=1.0,%
+		gradangle=90,%
+		linestyle=none]%
+			(-1.9,-1.34)(-0.9,8.9)%
+}{}
+\ifthenelse{\boolean{ratchetholes}}{%
+	\multirput(-1.7,-1.4)(0.0,.40){26}{%
+    		\psframe[%
+			%framearc=0.4,%
+			fillstyle=gradient,%
+			gradangle=90,%
+			gradbegin=colA,%
+			gradend=colB,%
+			gradmidpoint=0.35,%
+			linestyle=none]%
+				(0,0)(.35,.15)%
+	}
+}{}
+
+  	\PutLogo % required
+	{#1}%
+}
+
+\NewSlideStyle[11cm]{t}{5.2,3.5}{UMBCFrame}
+
+%\PDFCroppingBox{0 0 595 842}	% A4 dimensions in pts
+%\PDFCroppingBox{0 0 594 773}	% Letter aspect
+%\PDFCroppingBox{0 0 594 792}	% 4/3 aspect, width=letter
+\PDFCroppingBox{0 0 603 804}	% 4/3 aspect -- as above plus add (9,12)
+				% for extra right/top margins
+
+\endinput
