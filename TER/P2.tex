@@ -16,7 +16,7 @@ L'algorithme de Branch and Prune  est au centre de la méthode de résolution pa
  \label{fig:CercleDisque} %la légende
 \end{figure} %on ferme l'environnement figure
 \paragraph{Prune :}
-La découpe d'un problème en sous problèmes peut amener à une situation ou un des sous problèmes créés ne contient aucune solution. On peut alors étudier et trier ces sous problèmes pour en supprimer un espaces de recherche superflu. Cette étape est appelée \textbf{pruning}.
+La découpe d'un problème en sous problèmes peut amener à une situation ou un des sous problèmes créés ne contient aucune solution. On peut alors étudier et trier ces sous problèmes pour en supprimer les espaces de recherche superflus. Cette étape est appelée \textbf{pruning}.
 %\end{itemize}
 Au bout d'un certain nombre d'itération, l'algorithmes de Branch and Prune propose un ensemble de solutions sous la forme d'intervalles. On visualise sur la figure \ref{fig:CercleDisque} un tel ensemble dans le cas d'une intersection entre un cercle et d'un disque.
 
@@ -29,19 +29,25 @@ En sortie l'algorithme va nous retourner un ensemble de boîtes. Cet ensemble ga
 \begin{figure}[h] %on ouvre l'environnement figure
   \center
 \includegraphics[scale=0.50]{img/disk-disk}
-  \caption{Intersection de deux disques} %la légende
+  \caption{Intersection de deux disques \ref{chap:realout}} %la légende
  \label{fig:DisqueDisque} %la légende
 \end{figure} %on ferme l'environnement figure
 
- Il est d'ailleurs possible de savoir si tout l'espace d'une boîte est solution du problème. En contrepartie on ne peut toujours garantir l'existence d'une solution dans une enveloppe, il peut donc exister une approximation autour des résultats de l'algorithme.
+ Il est d'ailleurs possible de savoir si tout l'espace d'une boîte est solution du problème. En contrepartie on ne peut toujours garantir l'existence d'une solution dans une enveloppe, il peut donc exister une approximation autour des résultats de l'algorithme. 
  \clearpage
  
  \subsection{Outils existant}
 \begin{description}
- \item [RealPaver]
-Developpé  au sein de l'équipe OPTI, cet outil reprend entre autre les méthodes de résolutions de contraintes géométriques par propagation d'intervalles. Il permet la résolution de sytèmes d'équations à n variables représentant des contraintes. Dans un soucis de précision ces solutions sont sous la forme d'intervalles. \cite{realpaver}
-\item [CHOCO]  Projet commun  de l'École des Mines de Nantes, de LIRMM de Montpellier ansi que l'INRA de Toulouse. CHOCO est une librairie  JAVA  dédiée au résolution de CSP et à la programmation par contrainte. \cite{choco}
- 
+ \item [RealPaver]\label{realp}
+Developpé  au sein de l'équipe \textsc{OPTI}, cet outil reprend entre autre les méthodes de résolutions de contraintes géométriques par propagation d'intervalles. Il permet la résolution de sytèmes d'équations à n variables représentant des contraintes. Dans un soucis de précision ces solutions sont sous la forme d'intervalles. \cite{realpaver}
+\item [CHOCO]  Projet commun  de l'École des Mines de Nantes, de \textsc{LIRMM} de Montpellier ansi que l'INRA de Toulouse. \textsc{CHOCO} est une librairie  \textsc{JAVA}  dédiée au résolution de \textsc{CSP} et à la programmation par contrainte. \cite{choco}
+ \begin{figure}[h] %on ouvre l'environnement figure
+  \center
+\includegraphics[scale=0.50]{img/choco}
+  %\caption{Intersection de deux disques \ref{chap:realout}} %la légende
+% \label{fig:DisqueDisque} %la légende
+\end{figure} %on ferme l'environnement figure
+
 
 \item [Google or-tools]
  Bibliothèque Python fournissant un solveur de contraintes générique et des algorithmes : \cite{ortools}

@@ -2,17 +2,18 @@
 \contentsline {section}{\numberline {1}Introduction }{2}{section.0.1}
 \contentsline {section}{\numberline {2}Pr\IeC {\'e}sentation du probl\IeC {\`e}me}{2}{section.0.2}
 \contentsline {subsection}{\numberline {2.1}D\IeC {\'e}finition du contexte}{2}{subsection.0.2.1}
-\contentsline {subsection}{\numberline {2.2}Exemple}{2}{subsection.0.2.2}
-\contentsline {section}{\numberline {3}M\IeC {\'e}thodes de calculs}{2}{section.0.3}
-\contentsline {subsection}{\numberline {3.1}M\IeC {\'e}thodes formelles}{3}{subsection.0.3.1}
-\contentsline {subsection}{\numberline {3.2}M\IeC {\'e}thodes num\IeC {\'e}riques}{4}{subsection.0.3.2}
-\contentsline {section}{\numberline {4}R\IeC {\'e}solution par Intervalles}{4}{section.0.4}
-\contentsline {subsection}{\numberline {4.1}L'Arithm\IeC {\'e}tique des intervalles}{4}{subsection.0.4.1}
-\contentsline {subsection}{\numberline {4.2}Utilisation des intervalles pour la notion de contraintes}{5}{subsection.0.4.2}
-\contentsline {subsection}{\numberline {4.3}Exemples d'application}{5}{subsection.0.4.3}
-\contentsline {section}{\numberline {5}Mise en \IeC {\oe }uvre de la m\IeC {\'e}thode de r\IeC {\'e}solution par intervalles}{7}{section.0.5}
-\contentsline {subsection}{\numberline {5.1}Algorithmes}{7}{subsection.0.5.1}
-\contentsline {paragraph}{Branch :}{7}{section*.2}
-\contentsline {paragraph}{Prune :}{7}{section*.3}
-\contentsline {subsection}{\numberline {5.2}Donn\IeC {\'e}es en sortie}{8}{subsection.0.5.2}
-\contentsline {subsection}{\numberline {5.3}Outils existant}{9}{subsection.0.5.3}
+\contentsline {subsection}{\numberline {2.2}Exemple}{3}{subsection.0.2.2}
+\contentsline {section}{\numberline {3}M\IeC {\'e}thodes de calculs}{4}{section.0.3}
+\contentsline {subsection}{\numberline {3.1}M\IeC {\'e}thodes formelles}{4}{subsection.0.3.1}
+\contentsline {subsection}{\numberline {3.2}M\IeC {\'e}thodes num\IeC {\'e}riques}{5}{subsection.0.3.2}
+\contentsline {section}{\numberline {4}R\IeC {\'e}solution par Intervalles}{5}{section.0.4}
+\contentsline {subsection}{\numberline {4.1}L'Arithm\IeC {\'e}tique des intervalles}{6}{subsection.0.4.1}
+\contentsline {subsection}{\numberline {4.2}Utilisation des intervalles pour la notion de contraintes}{6}{subsection.0.4.2}
+\contentsline {subsection}{\numberline {4.3}Exemples d'application}{7}{subsection.0.4.3}
+\contentsline {section}{\numberline {5}Mise en \IeC {\oe }uvre de la m\IeC {\'e}thode de r\IeC {\'e}solution par intervalles}{9}{section.0.5}
+\contentsline {subsection}{\numberline {5.1}Algorithmes}{9}{subsection.0.5.1}
+\contentsline {paragraph}{Branch :}{9}{section*.2}
+\contentsline {paragraph}{Prune :}{9}{section*.3}
+\contentsline {subsection}{\numberline {5.2}Donn\IeC {\'e}es en sortie}{10}{subsection.0.5.2}
+\contentsline {subsection}{\numberline {5.3}Outils existant}{11}{subsection.0.5.3}
+\contentsline {chapter}{\numberline {A}Sortie RealPaver : intersection de deux disques}{12}{appendix.A}
