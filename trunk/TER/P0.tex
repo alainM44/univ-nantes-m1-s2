@@ -75,11 +75,11 @@ Constraints
 ;
 \end{verbatim}
 \section{Méthodes de calculs}
-Les méthodes de calculs permettent la résolution de problèmes mathématiques en machine; en particulier lorsque l'on cherche à résoudre des problèmes sur les nombres réels. Elles permettent par exemple la résolution des \textsc{CSP}  ou \textsc{GCSP} (Geometric Constraint Satisfaction Problem \cite{Jermann}) et peuvent être divisées en deux catégories : les méthodes formelles et les méthodes numériques. . 
+Les méthodes de calculs permettent la résolution de problèmes mathématiques en machine; en particulier lorsque l'on cherche à résoudre des problèmes sur les nombres réels. Elles permettent par exemple la résolution des \textsc{CSP}  ou \textsc{GCSP} (Geometric Constraint Satisfaction Problem \cite{Jermann}) et peuvent être divisées en deux catégories : les méthodes formelles et les méthodes numériques.
 
 
 \subsection{Méthodes formelles}
-Les méthodes formelles permettent de résoudre des système d'équations ou d'inéquations en utilisant au maximum le calcul symbolique. Les approches les plus classiques des méthodes formelles utilisent des théories, telles que les idéaux polynomiaux pour les bases de Gröbner, ou la théorie des déterminants pour la méthode du résultant.
+Les méthodes formelles permettent de résoudre des systèmes d'équations ou d'inéquations en utilisant au maximum le calcul symbolique. Les approches les plus classiques des méthodes formelles utilisent des théories, telles que les idéaux polynomiaux pour les bases de Gröbner, ou la théorie des déterminants pour la méthode du résultant.
 
  Ces méthodes ont l'énorme avantage de retourner des solutions exactes d'un système d'équation, ou tout du moins de minimiser l'utilisation de l'arithmétique flottante. Elles tenteront donc de résoudre le problème (\ref{eq}) en effectuant uniquement des opérations sur les équations sans évaluer les variables. On pourra donc avoir des expressions pour $x$ et $y$ représentant les solutions du problème de façon symbolique. 
 
@@ -89,5 +89,5 @@ Cependant les résolutions de problèmes par des méthodes formelles sont forcé
 \subsection{Méthodes numériques}
 Les méthodes numériques consistent à évaluer de façon calculatoire la ou les solutions d'un problème. En effet elles sont capables d'essayer de résoudre n'importe quel système d'équation (ou d'égalités). Ainsi dans le cas du problème (\ref{eq}) la machine va affecter directement les calculs pour évaluer le résultats. Or l'utilisation de la représentation flottante et de son arithmétique pour simuler les opérations réelles va entrainer une diffusion et une augmentation de l'erreur de calcul, à tel point que l'on ne peut  parfois plus assurer la validité d'une solution. On pourra d'ailleurs citer à titre d'exemple le problème de l'inversion d'une matrice mal conditionnée\cite{Conditionnement}. 
 
-Cependant ces calculs numériques utilisés  par des méthodes de résolutions par intervalles permettent de contourner ces problèmes. Pour plus de détails sur la représentation flottante, on pourra se référer à la thèse de Frédéric \textsc{Goualard} \cite{Goualard}
+Cependant ces calculs numériques utilisés  par des méthodes de résolutions par intervalles permettent de contourner ces problèmes. Pour plus de détails sur la représentation flottante, on pourra se référer à la thèse de Frédéric \textsc{Goualard}\footnote{Notamment dans la première Partie : \emph{Chapitre 1 : L’arithmétique flottante}} \cite{Goualard}
 
