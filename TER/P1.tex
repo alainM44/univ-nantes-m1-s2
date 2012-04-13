@@ -1,8 +1,8 @@
 \section{Résolution par Intervalles}
-Les méthodes formelles et numériques, bien que performantes par certains aspects, sont rapidement limitées lorsque l'on veut résoudre des problèmes complexes ou que l'on veut pouvoir valider une solution (problème de propagation des erreurs\dots). C'est dans ce cadre que la méthode de résolution par intervalles a toute sa places. Construite grâce à l'arithmétique des intervalles, elle utilise aussi des notions apportées par la programmation par contrainte.
+Les méthodes formelles et numériques, bien que performantes par certains aspects, sont rapidement limitées lorsque l'on veut résoudre des problèmes complexes ou que l'on veut pouvoir valider une solution (problème de propagation des erreurs\dots). C'est dans ce cadre que la méthode de résolution par intervalles a toute sa place. Construite grâce à l'arithmétique des intervalles, elle utilise aussi des notions apportées par la programmation par contraintes.
  
 \subsection{L'Arithmétique des intervalles}
-Cette arithmétique permet un calcul sur l' ensemble $\mathbb{I}$ des intervalles à bornes sur $\mathbb{R}$. Les bornes $b1$ et $b2$ de l'intervalle $[b1,b2]$, résultant de tout calcul, sont choisies en prenant un arrondi respectivement inférieur à $b1$ et supérieur à $b2$ de manière à garantir l'exactitude des calculs. L'extension des fonctions aux intervalles, introduite par \textsc{Moore} en 1966, permet une transition à des intervalles grâce à un opérateur d'encadrement. Les opérations élémentaires sont alors réécrites en terme des bornes des intervalles  par exemple : 
+Cette arithmétique permet un calcul sur l'ensemble $\mathbb{I}$ des intervalles à bornes sur $\mathbb{R}$. Les bornes $b1$ et $b2$ de l'intervalle $[b1,b2]$, résultant de tout calcul, sont choisies en prenant un arrondi respectivement inférieur à $b1$ et supérieur à $b2$ de manière à garantir l'exactitude des calculs. L'extension des fonctions aux intervalles, introduite par \textsc{Moore} en 1966, permet une transition à des intervalles grâce à un opérateur d'encadrement. Les opérations élémentaires sont alors réécrites en terme des bornes des intervalles, par exemple : 
 
 \begin{equation}\label{eq2}
 \begin{cases}
@@ -33,7 +33,7 @@ Dans le cas du problème (\ref{eq2}), il serait possible d'avoir des solutions d
 
 \subsection{Exemples d'application}
 
-La précision de la méthode attirent le monde industriel. Notamment les applications composées de contraintes géométriques comme la robototique. La figure \ref{fig:rob} illustre un robot avec deux points d'encrage (P1 et P2) possédant chacun un bras rotatif de longueurs respectives [L1] et [L2]. Ces bras sont composés de pistons permettant d'ajuster leurs longueurs. Ainsi leurs la longueur des bras sont comprises respectivement entre $[L1min .. L1max]$ et $[L2min .. L2max]$ . 
+La précision de la méthode attirent le monde industriel. Notamment les applications composées de contraintes géométriques comme la robototique. La figure \ref{fig:rob} illustre un robot avec deux points d'encrage (P1 et P2) possédant chacun un bras rotatif de longueurs respectives [$L_1$] et [$L_2$] et orientés respaectivement par les angles $\alpha_1$ et $\alpha_2$. Ces bras sont composés de pistons permettant d'ajuster leurs longueurs. Ainsi leurs longueurs de bras sont comprises respectivement entre $[L_{1min} \dots L_{1max}]$ et $[L_{2min} \dots L_{2max}]$ et les angles entre $[\alpha_{1min} \dots \alpha_{1max}]$ et $[\alpha_{2min} \dots \alpha_{2max}]$.  
 
 \begin{figure}[h] %on ouvre l'environnement figure
   \center
@@ -41,15 +41,9 @@ La précision de la méthode attirent le monde industriel. Notamment les applica
   \caption{Exemples d'application dans la robotique} %la légende
  \label{fig:rob} %la légende
 \end{figure} %on ferme l'environnement figure
-L'objectif de ce robot est de positioner sa tête disposé au bout de ses bras sur l'intersection précise des deux cercles en vert.  Les domaines de solutions de ce problème est illustré sur la figure \ref{fig:rob2} : 
+L'objectif est de connaitre l'ensemble des enplacements possibles pour la main du robots en fonction des paramètres donnés ci-dessus. Dans le cas de la figure \ref{fig:rob}, on peut considérer que les $L_{imin}$ sont nulles et que les bras puissent effectuer des rotations de $360 \degres$. Ainsi le problème consiste à retrouver l'intersection de deux disques. 
 
-\begin{figure}[h] %on ouvre l'environnement figure
-  \center
-\huge image manquante
-%\includegraphics[scale=0.80]{img/robot2}
-  \caption{Illustration des domaines solutions} %la légende
- \label{fig:rob2} %la légende
-\end{figure} %on ferme l'environnement figure
   Par ailleurs, la seule possibilité de trouver un minimum global intéresse régulièrement les industriels. On retrouve en effet dans \cite{Schichl}, le détails d'applications dans le secteur de la chimie industrielle mais aussi dans celui de la biologie avec une étude sur les protéines.
  La science fondamentale met aussi en application ces outils. C'est le cas en mathématique par exemple de problèmes tel que la conjecture de Kepler ou encore le  maximum de clique.
- \clearpage
+
+\clearpage
