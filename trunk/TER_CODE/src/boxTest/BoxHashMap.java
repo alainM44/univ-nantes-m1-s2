@@ -24,10 +24,11 @@ public class BoxHashMap implements IBox {
 	public BoxHashMap(int i) {
 		super();
 		id = i;
+		
 		list_coords = new HashMap<Integer, Interval>();
-		list_cara_string = new HashMap<Integer, String>();
-		list_cara_number = new HashMap<Integer, Number>();
-		list_cara_interval = new HashMap<Integer, Interval>();
+		list_cara_string = new HashMap<Integer, String>(7);
+		list_cara_number = new HashMap<Integer, Number>(7);
+		list_cara_interval = new HashMap<Integer, Interval>(7);
 	}
 
 	@Override

@@ -22,13 +22,18 @@ public class BoxArrayList implements IBox {
 		list_cara_interval = listCaraInterval;
 	}
 
+	public BoxArrayList() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public BoxArrayList(int i) {
 		super();
 		id = i;
-		list_coords = new ArrayList<Interval>();
-		list_cara_string = new ArrayList<String>();
-		list_cara_number = new ArrayList<Number>();
-		list_cara_interval = new ArrayList<Interval>();
+		list_coords = new ArrayList<Interval>(100);
+		list_cara_string = new ArrayList<String>(7);
+		list_cara_number = new ArrayList<Number>(7);
+		list_cara_interval = new ArrayList<Interval>(7);
 	}
 
 	@Override
@@ -43,7 +48,7 @@ public class BoxArrayList implements IBox {
 
 	@Override
 	public void addCara(int id, Number cara) {
-		list_cara_number.add(id,cara);
+		list_cara_number.add(cara);
 	}
 
 	@Override
