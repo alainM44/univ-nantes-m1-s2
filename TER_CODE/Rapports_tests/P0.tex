@@ -10,9 +10,9 @@ Pour les Maps l'organisation des structures de données est la suivante :
  \item Chaque boîte contient quatre Maps contenant les différentes informations :
 \begin{itemize}
  \item Une Map pour l'ensemble des intervalles coordonnées.
-\item Une Map pour les caractéristiques de type String
-\item Une Map pour les caractéristiques de type Interval
-\item Une Map pour les caractéristiques de type Number
+\item Une Map pour les caractéristiques de type String.
+\item Une Map pour les caractéristiques de type Interval.
+\item Une Map pour les caractéristiques de type Number.
 \end{itemize}
 \end{itemize}
 
@@ -32,10 +32,10 @@ Un TreeMap ne peut avoir de paramètre de taille fourni à l'initialisation.
 Pour les map, une autre organisation des structures de données possible est la suivante :
 \begin{itemize}
 \item Il y a un TreeMap globale contenant le type de chaque caractéristique.
- \item Chaque boite contient deux Maps contenant les différentes informations :
+ \item Chaque boîte contient deux Maps contenant les différentes informations :
 \begin{itemize}
  \item Une map pour l'ensemble des intervalles coordonnées.
-\item Une liste pour l'ensemble des caractéristiques de la boîte stockées sous la forme d'Objects
+\item Une liste pour l'ensemble des caractéristiques stockées dans la boîte sous la forme d'Objects
 \end{itemize}
 \end{itemize}
 
@@ -47,7 +47,7 @@ Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap3} et \ref{t
 Pour les structures liste et tableau l'organisation des structures de données est la suivante :
 \begin{itemize}
 \item Il y a un TreeMap globale contenant le type de chaque caractéristique.
- \item Chaque boite contient deux listes (ou tableaux) :
+ \item Chaque boîte contient deux listes (ou tableaux) :
 \begin{itemize}
  \item Une liste pour l'ensemble des intervalles coordonnées.
 \item Une liste pour l'ensemble des caractéristiques de la boîte stockées sous la forme d'Objects
@@ -65,7 +65,7 @@ Les boîtes sont composées  de 4 ArrayLists :
   \item Une ArrayList pour les caractéristiques de type Interval.
   \item Une ArrayList pour les caractéristiques de type Number.
 \end{itemize}
-Il faut cependant savoir à quels indices se trouves les différents élément pour effecter des accès directs. Pour cela, on dispose ici de quatres Maps globales :
+Il faut cependant savoir à quels indices se trouves les différents élément pour effectuer des accès directs. Pour cela, on dispose ici de quatre Maps globales :
 \begin{itemize}
   \item Une Map pour l'ensemble des intervalles coordonnées.
   \item Une Map pour les caractéristiques de type String
@@ -88,7 +88,7 @@ On propose trois cas de tests ou les Maps globales seront :
   \item Des TreeMaps :  \ref{tab:treemapglobal} et \ref{tab:treemapglobalInit}
   \item Une TreeMaps construites à partir des HashMaps correspondantes : \ref{tab:treehashmapglobal} et \ref{tab:treehashmapglobalInit}
 \end{itemize}
- Pour chaque cas, nous avons recommencé la série de tests en donnant aux constructeurs le nombre d'éléments qu'ils vont contenir. Lorsque cette information est fournie au constructeurs, les résultats révèles dans les trois cas qu'une  la quantité de mémoire alouée est plus important, mais celle réelement utilisée plus faible. Par ailleurs on ne constate aucune différence flagrantes entre les trois structures. Pour 100000 boîtes elles necessitent toutes les trois entre 310 et 350Mo. Les différences se manifesteront en théorie  en cas d'accès à des boîtes.
+ Pour chaque cas, nous avons recommencé la série de tests en donnant aux constructeurs le nombre d'éléments qu'ils vont contenir. Lorsque cette information est fournie au constructeurs, les résultats révèlent dans les trois cas que la quantité de mémoire allouée est plus importante, mais celle réellement utilisée est plus faible. Par ailleurs on ne constate aucune différence flagrantes entre les trois structures. Pour 100000 boîtes elles nécessitent toutes les trois entre 310Mo et 350Mo. Les différences se manifesteront en théorie  en cas d'accès à des boîtes.
  
 \appendix
 \chapter{Annexes}
@@ -221,7 +221,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 \hline
 \end{tabular}
 \caption{Étude de performances avec des ArrayList}
- 
+ \label{tab:arraylist}
 \end{table}
 
 \begin{table}[htbp]
