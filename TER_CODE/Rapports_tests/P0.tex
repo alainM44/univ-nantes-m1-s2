@@ -1,5 +1,5 @@
 \chapter{Génération de boîtes}
-Pour la génération des boîtes le nombre de caractéristiques est fixé à 20 et la dimension du pavage à 100.
+Pour la génération des boîtes le nombre de caractéristiques est fixé à 20 et la dimension du pavage à 100. Ces valeurs ont été choisies car elles peuvent être considérées comme les valeurs au pire renvoyées par \emph{Realpaver}. Cependant les caractéristiques pouvant être de différents types et ne connaissant pas la probabilité d'apparition de chacun de ces types, nous avons préféré construire des caractéristiques de chaque type en proportion un tiers. 
 
 \section{Map}
 
@@ -16,17 +16,10 @@ Pour les Maps l'organisation des structures de données est la suivante :
 \end{itemize}
 \end{itemize}
 
-\subsubsection{Map sans valeur d'initialisation}
-Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap1} et \ref{tab:treemap1}
+\paragraph{}Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap1} et \ref{tab:treemap1}
+D'après les résultats, les deux structures fournissent un temps de construction et une occupation mémoire similaires.
+Il est encore difficile de déterminer laquelle de la TreeMap ou de la HashMap est la plus pertinente, les différences apparaitront sans doûte plus nettement au moment des tests d'accès aux caractéristiques. 
 
-
-\subsubsection{Map avec valeur d'initialisation}
-Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap2}
-
-
-Un TreeMap ne peut avoir de paramètre de taille fourni à l'initialisation.
-
-\paragraph{} On peut observer que l'initialisation des Maps n'influence pas sur leur temps de construction ou leur taille.
 
 \subsection{Une seconde proposition de structure}
 Pour les map, une autre organisation des structures de données possible est la suivante :
@@ -35,12 +28,12 @@ Pour les map, une autre organisation des structures de données possible est la 
  \item Chaque boîte contient deux Maps contenant les différentes informations :
 \begin{itemize}
  \item Une map pour l'ensemble des intervalles coordonnées.
-\item Une liste pour l'ensemble des caractéristiques stockées dans la boîte sous la forme d'Objects
+\item Une liste pour l'ensemble des caractéristiques stockées dans la boîte sous la forme d'Objects.
 \end{itemize}
 \end{itemize}
 
-Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap3} et \ref{tab:treemap2}
-
+\paragraph{}Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap3} et \ref{tab:treemap2}
+Nous n'observons pas de différence nette, par rapport à la première proposition, quant au temps de construction et de l'occupation mémoire. Cette structure nécessitant d'effectuer un cast à chaque accès, il est plus avantageux de conserver la première structure.
 
 
 \section{Liste et Tableau}
@@ -54,8 +47,8 @@ Pour les structures liste et tableau l'organisation des structures de données e
 \end{itemize}
 \end{itemize}
 
-Les résultats obtenus sont indiqués dans la table \ref{tab:arraylist} et \ref{tab:linkedlist}
-
+\paragraph{}Les résultats obtenus sont indiqués dans la table \ref{tab:arraylist} et \ref{tab:linkedlist}
+On peut constater que les structures de données en liste sont bien meilleures vis-à-vis du temps de construction et de l'espace mémoire(Tout du moins pour l'ArrayList) que les structures map de la première partie. Étrangement la structure LinkedList demande un espace mémoire presque 60\% plus grand que celui alloué pour l'ArrayList
 
 \section{Maps globales}
 Les boîtes sont composées  de 4 ArrayLists : 
@@ -86,10 +79,13 @@ On propose trois cas de tests ou les Maps globales seront :
 \begin{itemize}
   \item Des HashMaps :  \ref{tab:hashmapglobal} et \ref{tab:hashmapglobalInit}
   \item Des TreeMaps :  \ref{tab:treemapglobal} et \ref{tab:treemapglobalInit}
-  \item Une TreeMaps construites à partir des HashMaps correspondantes : \ref{tab:treehashmapglobal} et \ref{tab:treehashmapglobalInit}
+  \item Une TreeMap construite à partir des HashMaps correspondantes : \ref{tab:treehashmapglobal} et \ref{tab:treehashmapglobalInit}
 \end{itemize}
  Pour chaque cas, nous avons recommencé la série de tests en donnant aux constructeurs le nombre d'éléments qu'ils vont contenir. Lorsque cette information est fournie au constructeurs, les résultats révèlent dans les trois cas que la quantité de mémoire allouée est plus importante, mais celle réellement utilisée est plus faible. Par ailleurs on ne constate aucune différence flagrantes entre les trois structures. Pour 100000 boîtes elles nécessitent toutes les trois entre 310Mo et 350Mo. Les différences se manifesteront en théorie  en cas d'accès à des boîtes.
  
+\subsection{Conclusion}
+
+
 \appendix
 \chapter{Annexes}
 \section{Études de performance avec des Maps}
@@ -111,7 +107,7 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 1000000 & \multicolumn{4}{|c|}{Out of memory}\\
 \hline
 \end{tabular}
-\caption{Étude de performances avec des HashMap sans initialisation}
+\caption{Étude de performances avec des HashMap}
 \label{tab:hashmap1}
 \end{table}
 
@@ -132,30 +128,30 @@ Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\
 1000000 & \multicolumn{4}{|c|}{Out of memory}\\
 \hline
 \end{tabular}
-\caption{Étude de performances avec des TreeMap sans initialisation}
+\caption{Étude de performances avec des TreeMap}
 \label{tab:treemap1}
 \end{table}
 
-\begin{table}[htbp]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.02125s & 0.06s & 52Mo & 1Mo\\
-\hline
-1000 & 0.04448s & 0.07s & 52Mo & 7Mo\\
-\hline
-10000 & 0.38182s & 0.15s & 123Mo & 69Mo\\
-\hline
-100000 & 10.61614s & 0.81s & 776Mo & 667Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des HashMap avec initialisation}
-\label{tab:hashmap2}
-\end{table}
+%\begin{table}[htbp]
+%  \centering
+%\begin{tabular}{|c|c|c|c|c|}
+%\hline
+%Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
+%\hline
+%100 & 0.02125s & 0.06s & 52Mo & 1Mo\\
+%\hline
+%1000 & 0.04448s & 0.07s & 52Mo & 7Mo\\
+%\hline
+%10000 & 0.38182s & 0.15s & 123Mo & 69Mo\\
+%\hline
+%100000 & 10.61614s & 0.81s & 776Mo & 667Mo\\
+%\hline
+%1000000 & \multicolumn{4}{|c|}{Out of memory}\\
+%\hline
+%\end{tabular}
+%\caption{Étude de performances avec des HashMap avec initialisation}
+%\label{tab:hashmap2}
+%\end{table}
 
 \begin{table}[htbp]
   \centering

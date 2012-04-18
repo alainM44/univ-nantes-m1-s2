@@ -149,7 +149,7 @@ public class mainTest {
 		// String name="box";
 		constructGlobalMapType(globale, nbCarac);
 		for (int i = 0; i < n; i++) {
-			b = new BoxUniqueTreeMap(i);
+			b = new BoxUniqueLinkedList(i);
 			each_cara_in_box(b, nbCoord, nbCarac);
 			boxs[i] = b;
 		}
