@@ -1,12 +1,13 @@
-\chapter{Génération de boîtes}
+\chapter{Chargement de pavages}
+\label{chap:Chargement}
 Pour la génération des boîtes le nombre de caractéristiques est fixé à 20 et la dimension du pavage à 100. Ces valeurs ont été choisies car elles peuvent être considérées comme les valeurs au pire renvoyées par \emph{Realpaver}. Cependant les caractéristiques pouvant être de différents types et ne connaissant pas la probabilité d'apparition de chacun de ces types, nous avons préféré construire des caractéristiques de chaque type en proportion un tiers. 
 
-\section{Map}
+\section{Map internes}
 
-\subsection{Une première proposition de structure}
+\subsection{Pavage avec une première proposition de structure}
 Pour les Maps l'organisation des structures de données est la suivante :
 \begin{itemize}
-\item Il n'y a aucune structure de données globale, tout est stocké au niveau de la boîte
+\item Il n'y a aucune structure de données globale, tout est stocké au niveau de la boîte. On a donc dans chaque boîte l'identifiant et la valeur de chaque caractéristique ou intervalle.
  \item Chaque boîte contient quatre Maps contenant les différentes informations :
 \begin{itemize}
  \item Une Map pour l'ensemble des intervalles coordonnées.
@@ -21,7 +22,7 @@ D'après les résultats, les deux structures fournissent un temps de constructio
 Il est encore difficile de déterminer laquelle de la TreeMap ou de la HashMap est la plus pertinente, les différences apparaitront sans doûte plus nettement au moment des tests d'accès aux caractéristiques. 
 
 
-\subsection{Une seconde proposition de structure}
+\subsection{Pavage avec une seconde proposition de structure}
 Pour les map, une autre organisation des structures de données possible est la suivante :
 \begin{itemize}
 \item Il y a un TreeMap globale contenant le type de chaque caractéristique.
@@ -36,7 +37,7 @@ Pour les map, une autre organisation des structures de données possible est la 
 Nous n'observons pas de différence nette, par rapport à la première proposition, quant au temps de construction et de l'occupation mémoire. Cette structure nécessitant d'effectuer un cast à chaque accès, il est plus avantageux de conserver la première structure.
 
 
-\section{Liste et Tableau}
+\section{Listes et Tableaux internes}
 Pour les structures liste et tableau l'organisation des structures de données est la suivante :
 \begin{itemize}
 \item Il y a un TreeMap globale contenant le type de chaque caractéristique.
@@ -48,7 +49,9 @@ Pour les structures liste et tableau l'organisation des structures de données e
 \end{itemize}
 
 \paragraph{}Les résultats obtenus sont indiqués dans la table \ref{tab:arraylist} et \ref{tab:linkedlist}
-On peut constater que les structures de données en liste sont bien meilleures vis-à-vis du temps de construction et de l'espace mémoire(Tout du moins pour l'ArrayList) que les structures map de la première partie. Étrangement la structure LinkedList demande un espace mémoire presque 60\% plus grand que celui alloué pour l'ArrayList
+On peut constater que les structures de données en liste sont bien meilleures vis-à-vis du temps de construction et de l'espace mémoire(Tout du moins pour l'ArrayList) que les structures map de la première partie. Étrangement la structure LinkedList demande un espace mémoire presque 60\% plus grand que celui alloué pour l'ArrayList.
+
+Bien que l'ArrayList soit plus légère que les Maps de la prémière partie et plus rapide à construire, il est probable que celle-ci ne soit pas efficace pour l'accès. Nous traiterons cela dans une seconde étude.
 
 \section{Maps globales}
 Les boîtes sont composées  de 4 ArrayLists : 
@@ -77,311 +80,11 @@ Indice de l'objet dans le tableau de la boîte.
 \paragraph{Observations :}
 On propose trois cas de tests ou les Maps globales seront :
 \begin{itemize}
-  \item Des HashMaps :  \ref{tab:hashmapglobal} et \ref{tab:hashmapglobalInit}
-  \item Des TreeMaps :  \ref{tab:treemapglobal} et \ref{tab:treemapglobalInit}
-  \item Une TreeMap construite à partir des HashMaps correspondantes : \ref{tab:treehashmapglobal} et \ref{tab:treehashmapglobalInit}
+  \item Des HashMaps :  \ref{tab:hashmapglobal} 
+  \item Des TreeMaps :  \ref{tab:treemapglobal} 
+  \item Une TreeMap construite à partir des HashMaps correspondantes : \ref{tab:treehashmapglobal} 
 \end{itemize}
- Pour chaque cas, nous avons recommencé la série de tests en donnant aux constructeurs le nombre d'éléments qu'ils vont contenir. Lorsque cette information est fournie au constructeurs, les résultats révèlent dans les trois cas que la quantité de mémoire allouée est plus importante, mais celle réellement utilisée est plus faible. Par ailleurs on ne constate aucune différence flagrantes entre les trois structures. Pour 100000 boîtes elles nécessitent toutes les trois entre 310Mo et 350Mo. Les différences se manifesteront en théorie  en cas d'accès à des boîtes.
- 
-\subsection{Conclusion}
-
-
-\appendix
-\chapter{Annexes}
-\section{Études de performance avec des Maps}
-
-\begin{table}[htpb]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.02687s & 0.05s & 52Mo & 1Mo\\
-\hline
-1000 & 0.05415s & 0.09s & 52Mo & 7Mo\\
-\hline
-10000 & 0.36794s & 0.16s & 119Mo & 70Mo\\
-\hline
-100000 & 10.50770s & 0.86s & 776Mo & 667Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des HashMap}
-\label{tab:hashmap1}
-\end{table}
-
-\begin{table}[htbp]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.02873s & 0.06s & 52Mo & 1Mo\\
-\hline
-1000 & 0.05472s & 0.07s & 52Mo & 6Mo\\
-\hline
-10000 & 0.48741s & 0.16s & 138Mo & 64Mo\\
-\hline
-100000 & 7.47501s & 0.84s & 776Mo & 635Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des TreeMap}
-\label{tab:treemap1}
-\end{table}
-
-%\begin{table}[htbp]
-%  \centering
-%\begin{tabular}{|c|c|c|c|c|}
-%\hline
-%Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-%\hline
-%100 & 0.02125s & 0.06s & 52Mo & 1Mo\\
-%\hline
-%1000 & 0.04448s & 0.07s & 52Mo & 7Mo\\
-%\hline
-%10000 & 0.38182s & 0.15s & 123Mo & 69Mo\\
-%\hline
-%100000 & 10.61614s & 0.81s & 776Mo & 667Mo\\
-%\hline
-%1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-%\hline
-%\end{tabular}
-%\caption{Étude de performances avec des HashMap avec initialisation}
-%\label{tab:hashmap2}
-%\end{table}
-
-\begin{table}[htbp]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.02201s & 0.06s & 52Mo & 1Mo\\
-\hline
-1000 & 0.04329s & 0.08s & 52Mo & 7Mo\\
-\hline
-10000 & 0.35066s & 0.13s & 118Mo & 69Mo\\
-\hline
-100000 & 9.99475s & 0.84s & 776Mo & 655Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des HashMap seconde structure}
-\label{tab:hashmap3}
-\end{table}
+Les trois cas de tests nous renvoient des résultats relativement similaires mais qui se montrent aussi performants que les résultats de l'ArrayList. Il s'agit donc d'une organisation intéressante à étudier au niveau des temps d'accès.
 
 
 
-\begin{table}[htbp]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.02792s & 0.07s & 52Mo & 1Mo\\
-\hline
-1000 & 0.05299s & 0.08s & 52Mo & 6Mo\\
-\hline
-10000 & 0.50868s & 0.15s & 138Mo & 64Mo\\
-\hline
-100000 & 7.54041s & 0.88s & 776Mo & 633Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des TreeMap seconde structure}
-\label{tab:treemap2}
-\end{table}
-\clearpage
-\section{Études de performance avec des Tableaux et des Listes}
-
-\begin{table}[h]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.018991s & 0.05s & 52Mo & <1Mo\\
-\hline
-1000 & 0.03237s & 0.06s & 52Mo & 4Mo\\
-\hline
-10000 & 0.11064s & 0.09s & 66Mo & 37Mo\\
-\hline
-100000 & 1.85945s & 0.30s & 408Mo & 342Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des ArrayList}
- \label{tab:arraylist}
-\end{table}
-
-\begin{table}[htbp]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.02318s & 0.05s & 52Mo & 1Mo\\
-\hline
-1000 & 0.05196s & 0.08s & 52Mo & 5Mo\\
-\hline
-10000 & 0.21947s & 0.1s & 88Mo & 54Mo\\
-\hline
-100000 & 6.12441s & 0.30s & 776Mo & 542Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des LinkedList}
-\label{tab:linkedlist}
-\end{table}
-\clearpage
-
-
-
-
-\section{Études de performance avec des maps globales}
-%hashmap
-\begin{table}[h]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.00646& 0.05s & 52Mo & 0Mo\\
-\hline
-1000 & 0.04284 & 0.07s & 52Mo & 4Mo\\
-\hline
-10000 & 0.146819 & 0.1s & 66Mo & 38Mo\\
-\hline
-100000 &2.071468 & 0.34s & 424Mo & 351Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des HashMap globales sans initialisation} 
-\label{tab:hashmapglobal}
-\end{table}
-
-
-\begin{table}[h]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.00237& 0.05s & 52Mo & 0Mo\\
-\hline
-1000 & 0.03380 & 0.07s & 52Mo & 3Mo\\
-\hline
-10000 & 0.19556 & 0.09s & 89mo & 32mo\\
-\hline
-100000 & 2.0883 & 0.25s & 480mo & 312mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des HashMap globales avec initialisation}
-\label{tab:hashmapglobalInit}
-\end{table}
-
-
-
-
-
-
-
-
-
-%TreeMap
-\begin{table}[h]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & .0074534& 0.05s & 52Mo & 0Mo\\
-\hline
-1000 & 0.05651 & 0.06s & 52Mo & 4Mo\\
-\hline
-10000 & 0.14486s & 0.11s & 66Mo & 38Mo\\
-\hline
-100000 & 2.10083s & 0.38s & 422Mo & 350Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des TreeMaps globales sans initialisation} 
-\label{tab:treemapglobal}
-\end{table}
-
-\begin{table}[h]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.008355 & 0.05s & 52Mo & 7Mo\\
-\hline
-1000 & 0.03096 & 0.06s & 52Mo & 6Mo\\
-\hline
-10000 & 0.181671s & 0.13s & 89Mo & 32Mo\\
-\hline
-100000 & 2.130028 & 0.30s & 481Mo & 318Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des TreeMaps globales avec initialisation}
-\label{tab:treemapglobalInit}
-\end{table}
-
-
-
-%TreeMap a partir de Hashmap
-\begin{table}[h]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.0085 & 0.05s & 52Mo & 0Mo\\
-\hline
-1000 & 0.05201 & 0.06s & 52Mo & 4Mo\\
-\hline
-10000 & 0.126349s & 0.11s & 66Mo & 38Mo\\
-\hline
-100000 & 2.07826 & 0.39s & 420Mo & 350Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des TreeMaps construites à partir de HashMaps globales sans initialisation} 
-\label{tab:treehashmapglobal}
-\end{table}
-
-\begin{table}[h]
-  \centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Nombre de boîtes & Temps écoulé & CPU & Mémoire totale & Mémoire utilisée\\
-\hline
-100 & 0.008646 & 0.05s & 52Mo & 0Mo\\
-\hline
-1000 & 0.0.04127 & 0.07s & 52Mo & 6Mo\\
-\hline
-10000 & 0.18813s & 0.10s & 89Mo & 32Mo\\
-\hline
-100000 & 2.12998599 & 0.29s & 482Mo & 317Mo\\
-\hline
-1000000 & \multicolumn{4}{|c|}{Out of memory}\\
-\hline
-\end{tabular}
-\caption{Étude de performances avec des TreeMaps construites à partir de HashMaps globales avec initialisation} 
-\label{tab:treehashmapglobalInit}
-\end{table}
