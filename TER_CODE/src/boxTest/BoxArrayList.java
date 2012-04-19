@@ -67,4 +67,28 @@ public class BoxArrayList implements IBox {
 
 	}
 
+	@Override
+	public Interval getCoord(int id)
+	{
+		return list_coords.get(id);
+	}
+
+	@Override
+	public Interval getInterval(int id)
+	{
+		return list_cara_interval.get(id);
+	}
+
+	@Override
+	public Number getNumber(int id)
+	{
+		return list_cara_number.get(id);
+	}
+
+	@Override
+	public String getString(int id)
+	{
+		return list_cara_string.get(id);
+	}
+
 }

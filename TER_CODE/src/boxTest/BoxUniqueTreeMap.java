@@ -56,5 +56,29 @@ public class BoxUniqueTreeMap implements IBox {
 		list_coords.put(id, coord);
 
 	}
+	
+	@Override
+	public Interval getCoord(int id)
+	{
+		return list_coords.get(id);
+	}
+
+	@Override
+	public Interval getInterval(int id)
+	{
+		return (Interval) list_cara.get(id);
+	}
+
+	@Override
+	public Number getNumber(int id)
+	{
+		return (Number) list_cara.get(id);
+	}
+
+	@Override
+	public String getString(int id)
+	{
+		return (String) list_cara.get(id);
+	}
 
 }

@@ -1,14 +1,16 @@
 \select@language {french}
-\contentsline {chapter}{\numberline {1}G\IeC {\'e}n\IeC {\'e}ration de bo\IeC {\^\i }tes}{2}{chapter.1}
+\contentsline {chapter}{\numberline {1}Chargement de pavages}{2}{chapter.1}
 \contentsline {section}{\numberline {1}Map}{2}{section.1.1}
-\contentsline {subsection}{\numberline {1.1}Une premi\IeC {\`e}re proposition de structure}{2}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1}Pavage avec une premi\IeC {\`e}re proposition de structure}{2}{subsection.1.1.1}
 \contentsline {paragraph}{}{2}{section*.2}
-\contentsline {subsection}{\numberline {1.2}Une seconde proposition de structure}{2}{subsection.1.1.2}
+\contentsline {subsection}{\numberline {1.2}Pavage avec une seconde proposition de structure}{2}{subsection.1.1.2}
 \contentsline {paragraph}{}{3}{section*.3}
 \contentsline {section}{\numberline {2}Liste et Tableau}{3}{section.1.2}
+\contentsline {paragraph}{}{3}{section*.4}
 \contentsline {section}{\numberline {3}Maps globales}{3}{section.1.3}
-\contentsline {paragraph}{Observations :}{4}{section*.4}
-\contentsline {chapter}{\numberline {A}Annexes}{5}{appendix.A}
-\contentsline {section}{\numberline {1}\IeC {\'E}tudes de performance avec des Maps}{5}{section.A.1}
+\contentsline {paragraph}{Observations :}{4}{section*.5}
+\contentsline {chapter}{\numberline {2}Acc\IeC {\`e}s au \IeC {\'e}l\IeC {\'e}ment d'une bo\IeC {\^\i }te}{5}{chapter.2}
+\contentsline {chapter}{\numberline {A}Annexes}{6}{appendix.A}
+\contentsline {section}{\numberline {1}\IeC {\'E}tudes de performance avec des Maps}{6}{section.A.1}
 \contentsline {section}{\numberline {2}\IeC {\'E}tudes de performance avec des Tableaux et des Listes}{7}{section.A.2}
 \contentsline {section}{\numberline {3}\IeC {\'E}tudes de performance avec des maps globales}{8}{section.A.3}
