@@ -2,20 +2,20 @@
 \contentsline {chapter}{Table des mati\`eres}{1}{section*.2}
 \contentsline {chapter}{\numberline {1}Point de vue Utilisateur}{2}{chapter.1}
 \contentsline {section}{\numberline {1.1}Plugins d\IeC {\'e}velopp\IeC {\'e}s}{2}{section.1.1}
-\contentsline {section}{\numberline {1.2}Lancement et manuel}{3}{section.1.2}
-\contentsline {chapter}{\numberline {2}Point de vue d\IeC {\'e}veloppeur}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Documentation}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}Conception}{5}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Architecture et classes}{5}{subsection.2.2.1}
-\contentsline {paragraph}{Acquisition}{6}{section*.3}
-\contentsline {paragraph}{Reasoning}{6}{section*.4}
-\contentsline {subparagraph}{Analyseur d'image}{6}{section*.5}
-\contentsline {subparagraph}{Image sombre}{7}{section*.6}
-\contentsline {subparagraph}{Composition de l'image}{8}{section*.7}
-\contentsline {subparagraph}{Detecteur de presence : Utilisation d'OpenCV}{8}{section*.8}
-\contentsline {subparagraph}{Diff\IeC {\'e}rences de performance}{8}{section*.9}
-\contentsline {subparagraph}{Optimisation}{9}{section*.10}
-\contentsline {paragraph}{NetP}{9}{section*.11}
-\contentsline {subsection}{\numberline {2.2.2}Robustesse}{10}{subsection.2.2.2}
-\contentsline {chapter}{Table des figures}{11}{section*.13}
-\contentsline {chapter}{Bibliographie}{12}{section*.15}
+\contentsline {section}{\numberline {1.2}Lancement et manuel}{4}{section.1.2}
+\contentsline {chapter}{\numberline {2}Point de vue d\IeC {\'e}veloppeur}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Documentation}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}Conception}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Architecture et classes}{6}{subsection.2.2.1}
+\contentsline {paragraph}{Acquisition}{7}{section*.3}
+\contentsline {paragraph}{Reasoning}{7}{section*.4}
+\contentsline {subparagraph}{Analyseur d'image}{7}{section*.5}
+\contentsline {subparagraph}{Image sombre}{8}{section*.6}
+\contentsline {subparagraph}{Composition de l'image}{9}{section*.7}
+\contentsline {subparagraph}{Detecteur de presence : Utilisation d'OpenCV}{9}{section*.8}
+\contentsline {subparagraph}{Diff\IeC {\'e}rences de performance}{9}{section*.9}
+\contentsline {subparagraph}{Optimisation}{10}{section*.10}
+\contentsline {paragraph}{NetP}{10}{section*.11}
+\contentsline {subsection}{\numberline {2.2.2}Robustesse}{11}{subsection.2.2.2}
+\contentsline {chapter}{Table des figures}{12}{section*.13}
+\contentsline {chapter}{Bibliographie}{13}{section*.15}

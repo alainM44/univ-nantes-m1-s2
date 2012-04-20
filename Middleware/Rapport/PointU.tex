@@ -11,13 +11,23 @@ Middleware, notre plugin principal, propose la vue Eclipse suivante :
 	  \label{fig:vue}
 \end{figure} 
 \begin{description}
+\item[Choose video...]
+Ce bouton permet d'ouvrir une fenêtre de sélection de fichier pour permettre d'obtenir le chemin d'accès au fichier plus simplement. Il est tout de même possible de renseiger ce chemin de façon textuelle dans le champs adapté ( cf figure \ref{fig:choix}).
+  \begin{figure}[h]
+	  \centering
+	  \includegraphics[scale=0.50]{img/choixvideo}
+	  \caption{Fenêtre de sélection du fichier vidéo}
+	  \label{fig:choix}
+\end{figure} 
 \item[Load Video]
 L'utilisateur doit au préalable avoir renseigné le chemin de la vidéo à analyser. Le plugin Acquisition est sollicité au déclenchement de ce bouton. 
 \item[Lancer Analyse]
 Appel du plugin Reasoning qui effectue une analyse de la vidéo précedement acquise.
-\item[Post]
+\item[Poster sur FB]
 L'utilisateur doit au préalable avoir renseigné l'acces token nécessaire pour poster sur une plateforme en ligne. 
 Le plugin en charge de poster sur un blog ou un réseau social est appelé.
+\item[Enable proxy]
+Ce bouton permet de renseigner les paramètres de configuration du proxy de la faculté. Il a été ajouté dans une optique de simplification.
 \end{description}
  
  \clearpage
@@ -38,9 +48,9 @@ afin d'ouvrir une fenêtre de configuration (cf : \ref{fig:fenetreConfg} ).
       \item Une fois les paramètres configurés cliquez sur \verb+Run+.
       \item Attendez que \emph{Eclipse} se lance. Lorsqu'\emph{Eclipse} sera lancé, allez dans \verb+Window+ $\rightarrow$ \verb+Show View+ $\rightarrow$ \verb+Other+\dots
       \item Choisissez \verb+middleware_view+ puis la vue \verb+Middleware+ (cf : \ref{fig:ShowView})
-      \item Une fois que vous accès à la vue, entrez dans le premier champs de texte le chemin de la vidéo à analyser et cliquez sur\verb+LoadVideo+ afin de charger la vidéo
+      \item Une fois que vous accès à la vue, entrez dans le premier champs de texte le chemin de la vidéo à analyser ou cliquez sur le bouton \verb+Choose video...+ pour avoir accès à la fenêtre de sélection (cf figure \ref{fig:choix}) et cliquez sur \verb+LoadVideo+ afin de charger la vidéo
       \item Puis, pour lancer l'analyse, cliquez sur \verb+Lancer Analyse+
-      \item Un fois l'analyse terminée, entrez le token associé à votre compte facebook pour cliquer sur \verb+ Poster sur FB+ une fois posté, le message sera envoyé sur facebook( cf \ref{fig:messageFB})
+      \item Un fois l'analyse terminée, entrez le token associé à votre compte facebook pour cliquer sur \verb+ Poster sur FB+ une fois posté, le message sera envoyé sur facebook( cf \ref{fig:messageFB}). \emph{Attention si vous vous trouvez à la faculté de Nantes, cliquez d'abord sur le bouton} \verb+Enable Proxy+.
   \end{enumerate}
 \begin{figure}[h]
 	  \centering
