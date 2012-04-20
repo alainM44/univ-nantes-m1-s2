@@ -51,4 +51,9 @@ public interface IInformation
 	 */
 	public void setAccessToken(String accessToken);
 
+	/**
+	 * Fonction permettant de prendre en compte les paramètres du proxy de la faculté.
+	 */
+	public void setProxy();
+
 }

@@ -176,7 +176,6 @@ public class Activator extends AbstractUIPlugin
 	 */
 	public void sendFluxToReasoning()
 	{
-		System.out.println("toto a une image");
 		IEvent ev = null;
 		BufferedImage itIm = flux.next();
 		while (itIm != null && ev == null)
@@ -189,6 +188,16 @@ public class Activator extends AbstractUIPlugin
 		{
 			event = ev;
 		}
+	}
+
+	/**
+	 * Fonction permettant de prendre en compte le proxy de la faculté
+	 */
+	public void setProxy()
+	{
+		if (currentInformationFactory == null)
+			setInformationInstance();
+		currentInformationFactory.setProxy();
 	}
 
 }
