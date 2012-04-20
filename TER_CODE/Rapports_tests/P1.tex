@@ -1,8 +1,10 @@
 \chapter{Accès au élément d'une boîte}
-Dans cette partie nous allons effectuer des tests d'accès au éléments d'une boîte. Le nombre de coordonnées et de caractéristiques sont les même que dans la partie \ref{chap:Chargement}. De même le remplissage de chaque type de caractéristique demeure de un tiers pour chaque. Nous effectuerons d'abord des tests d'accès au caractéristiques puis des tests d'accès au coordonnées.
+Dans cette partie nous allons effectuer des tests d'accès au éléments d'une boîte. Le nombre de coordonnées et de caractéristiques sont les même que dans la partie \ref{chap:Chargement}. De même le remplissage de chaque type de caractéristique demeure de un tiers pour chaque. Nous effectuerons d'abord des tests d'accès au caractéristiques puis des tests d'accès au coordonnées. 
+
+Il est aussi important de préciser que, pour tester, nous avons créer dix-mille boîtes et que pour accèder à une caractéristique, nous accèdons d'abord à une boîte aléatoirement. Les boîtes sont stockés dans un tableau à accès direct par indice. Même s'il est vrai que cette méthode introduit une constante dans le calcul de la complexité, elle permet de ne pas toujours accèder à la même information et donc de ne pas permettre un accès plus rapide qui ne serait pas réaliste.
 
 \section{Tests d'accès au caractéristiques}
 Dans tous les cas nous demanderons une caractéristiques en générant aléatoirement un identifiant.
 
 \subsection{Maps internes}
-
+Résultats tableau \ref{tab:accesHM}

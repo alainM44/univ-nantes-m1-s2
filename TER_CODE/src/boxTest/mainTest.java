@@ -4,6 +4,7 @@ import interfaces.IBox;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -31,9 +32,9 @@ public class mainTest
 	{
 		int i = 0;
 		for (i = 0; i < nb_coord; i++)
-			b.addCoord(i, new Interval(1.2, 1.3));
+			b.addCoord(i, new Interval(Math.random(), Math.random()));
 		for (i = 0; i < nb_cara; i++)
-			b.addCara(i, Math.PI);
+			b.addCara(i, Math.random());
 
 	}
 
@@ -51,7 +52,7 @@ public class mainTest
 	{
 		int i = 0;
 		for (i = 0; i < nb_coord; i++)
-			b.addCoord(i, new Interval(1.2, 1.3));
+			b.addCoord(i, new Interval(Math.random(), Math.random()));
 		for (i = 0; i < nb_cara; i++)
 			b.addCara(i, "Une chaine de caracteres");
 
@@ -71,9 +72,9 @@ public class mainTest
 	{
 		int i = 0;
 		for (i = 0; i < nb_coord; i++)
-			b.addCoord(i, new Interval(1.4, 1.5));
+			b.addCoord(i, new Interval(Math.random(), Math.random()));
 		for (i = 0; i < nb_cara; i++)
-			b.addCara(i, new Interval(1.2, 1.3));
+			b.addCara(i, new Interval(Math.random(), Math.random()));
 
 	}
 
@@ -92,13 +93,13 @@ public class mainTest
 	{
 		int i = 0;
 		for (i = 0; i < nb_coord; i++)
-			b.addCoord(i, new Interval(1.4, 1.5));
+			b.addCoord(i, new Interval(Math.random(), Math.random()));
 		for (i = 0; i < nb_cara / 3; i++)
-			b.addCara(i, new Interval(1.2, 1.3));
+			b.addCara(i, new Interval(Math.random(), Math.random()));
 		for (i = nb_cara / 3; i < 2 * nb_cara / 3; i++)
 			b.addCara(i, "Une chaine de caracteres");
 		for (i = 2 * nb_cara / 3; i < nb_cara; i++)
-			b.addCara(i, Math.PI);
+			b.addCara(i, Math.random());
 
 	}
 
@@ -132,24 +133,32 @@ public class mainTest
 	{
 		int i = 0;
 		for (i = 0; i < nb_coord; i++)
-			b.addCoord(i, new Interval(1.4, 1.5));
+			b.addCoord(i, new Interval(Math.random(), Math.random()));
 		for (i = 0; i < nb_cara / 3; i++)
-			b.addCara(globale.get(i), new Interval(1.2, 1.3));
+			b.addCara(globale.get(i), new Interval(Math.random(), Math.random()));
 		for (i = nb_cara / 3; i < 2 * nb_cara / 3; i++)
 			b.addCara(globale.get(i), "Une chaine de caracteres");
 		for (i = 2 * nb_cara / 3; i < nb_cara; i++)
-			b.addCara(globale.get(i), Math.PI);
+			b.addCara(globale.get(i), Math.random());
 
 	}
 
-	public static void nRandomAccesCarac(IBox b, int nb_Acces, int nb_Carac,
+	public static void nRandomAccesCarac(IBox[] boxs, int nb_box, int nb_Acces, int nb_Carac,
 			Map<Integer, Integer> globaleid, Map<Integer, String> globaleType)
 	{
 		int rand;
+		int randBox;
+		IBox b ;
 //		System.out.println(globaleid);
 //		System.out.println(globaleType);
 		for (int i = 0; i < nbAcces; i++)
 		{
+			randBox = (int) (Math.random() * (nb_box));
+			if (randBox == nb_box)
+				randBox = 0;
+			
+			b = boxs[randBox];
+			
 			rand = (int) (Math.random() * (nb_Carac));
 			if (rand == nb_Carac)
 				rand = 0;
@@ -169,36 +178,73 @@ public class mainTest
 
 	}
 
+	
+	public static void nRandomAccesCaracHashMap(IBox[] boxs, int nb_box, int nb_Acces, int nb_Carac, Map<Integer, String> globaleType)
+	{
+		int rand;
+		int randBox;
+		IBox b ;
+//		System.out.println(globaleid);
+//		System.out.println(globaleType);
+		for (int i = 0; i < nbAcces; i++)
+		{
+
+			randBox = (int) (Math.random() * (nb_box));
+			if (randBox == nb_box)
+				randBox = 0;
+			
+			b = boxs[randBox];
+			
+			rand = (int) (Math.random() * (nb_Carac));
+//			System.out.println(rand);
+			if (rand == nb_Carac)
+				rand = 0;
+			if (globaleType.get(rand) == "Number")
+			{
+				b.getNumber(rand);
+			}
+			else if (globaleType.get(rand) == "String")
+			{
+				b.getString(rand);
+			}
+			else
+			{
+				b.getInterval(rand);
+			}
+		}
+
+	}
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args)
 	{
-		n = 1;
-		nbAcces = 1000000000;
+		n = 100000;
+		nbAcces = 1000000 * 1;
 		int nbCarac = 20;
 		int nbCoord = 100;
 		IBox boxs[] = new IBox[n];
 		IBox b = null;
-		TreeMap<Integer, String> globaletype = new TreeMap<Integer, String>();
-		TreeMap<Integer, Integer> globaleid = new TreeMap<Integer, Integer>();
+		HashMap<Integer, String> globaletype = new HashMap<Integer, String>();
+		HashMap<Integer, Integer> globaleid = new HashMap<Integer, Integer>();
 		// Box b;
 		// String name="box";
 		constructGlobalMap(globaleid, nbCarac);
 		constructGlobalMapType(globaletype, nbCarac);
 		for (int i = 0; i < n; i++)
 		{
-			b = new BoxArrayList(i);
-			each_cara_in_box_with_global_array(b, nbCoord, nbCarac, globaleid);
+			b = new BoxUniqueArrayList(i);
+			each_cara_in_box(b, nbCoord, nbCarac);
 			boxs[i] = b;
 		}
 		start = System.nanoTime();
-		nRandomAccesCarac(b, nbAcces, nbCarac, globaleid, globaletype);
+		CpuTime = getCpuTime();
+		nRandomAccesCaracHashMap(boxs, n, nbAcces, nbCarac, globaletype);
 
 		Runtime s_runtime = Runtime.getRuntime();
 		Used_memory = s_runtime.totalMemory() - s_runtime.freeMemory(); // bytes
 		elapsedTimeInSec = (System.nanoTime() - start) * 1.0e-9;
-		CpuTime = getCpuTime();
+		CpuTime = getCpuTime() -CpuTime;
 		System.out.println("Nombre de boîtes :" + n);
 		// System.out.println("Time start :" + start);
 		System.out.println("elapsed time :" + elapsedTimeInSec + "s");
