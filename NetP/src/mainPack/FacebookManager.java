@@ -1,9 +1,11 @@
 package mainPack;
 
 
+
 import middleware.IEvent;
 import middleware.IInformation;
 
+import com.restfb.BinaryAttachment;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
@@ -36,7 +38,7 @@ public class FacebookManager implements IInformation
 
 	public void setClientFB(FacebookClient clientFB)
 	{
-		ClientFB = clientFB;
+		ClientFB = new DefaultFacebookClient(AccessToken);
 	}
 
 	public String getAccessToken()
@@ -46,20 +48,43 @@ public class FacebookManager implements IInformation
 
 	public void setAccessToken(String accessToken)
 	{
-		AccessToken = accessToken;
-	}
+		System.setProperty("http.proxyHost","proxy.ensinfo.sciences.univ-nantes.prive");
+		System.setProperty("http.proxyPort", "3128");
+		System.setProperty("https.proxyHost","proxy.ensinfo.sciences.univ-nantes.prive");
+		System.setProperty("https.proxyPort", "3128");
 
-	public void postMessage(EventfaceB evFB)
-	{
-		FacebookType publishMessageResponse = ClientFB.publish("me/feed", FacebookType.class, Parameter.with("message", evFB.getMessage()));
-		System.out.println("Published message ID: " + publishMessageResponse.getId());
+		AccessToken = accessToken;
+
+		ClientFB = new DefaultFacebookClient(AccessToken);
 
 	}
 
 	@Override
 	public void postMessage(IEvent evFB)
 	{
-		postMessage(evFB);
+		System.out.println("AT: "+AccessToken);
+		FacebookType publishMessageResponse = ClientFB.publish("me/feed", FacebookType.class, Parameter.with("message",evFB.getMessage()));
+		System.out.println("Published message ID: " + publishMessageResponse.getId());
+	}
+
+	@Override
+	public String toString()
+	{
+		return this.AccessToken;
+	}
+
+
+
+	@Override
+	public void postPicture(IEvent evFB)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void postVideo(IEvent ecVF)
+	{
 		// TODO Auto-generated method stub
 		
 	}
