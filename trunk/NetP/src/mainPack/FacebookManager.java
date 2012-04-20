@@ -48,10 +48,6 @@ public class FacebookManager implements IInformation
 
 	public void setAccessToken(String accessToken)
 	{
-		System.setProperty("http.proxyHost","proxy.ensinfo.sciences.univ-nantes.prive");
-		System.setProperty("http.proxyPort", "3128");
-		System.setProperty("https.proxyHost","proxy.ensinfo.sciences.univ-nantes.prive");
-		System.setProperty("https.proxyPort", "3128");
 
 		AccessToken = accessToken;
 
@@ -87,6 +83,15 @@ public class FacebookManager implements IInformation
 	{
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void setProxy()
+	{
+		System.setProperty("http.proxyHost","proxy.ensinfo.sciences.univ-nantes.prive");
+		System.setProperty("http.proxyPort", "3128");
+		System.setProperty("https.proxyHost","proxy.ensinfo.sciences.univ-nantes.prive");
+		System.setProperty("https.proxyPort", "3128");		
 	}
 
 }
