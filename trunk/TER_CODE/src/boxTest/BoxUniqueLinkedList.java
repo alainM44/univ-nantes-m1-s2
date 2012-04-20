@@ -39,22 +39,22 @@ public class BoxUniqueLinkedList implements IBox {
 
 	@Override
 	public void addCara(int id, Number cara) {
-		list_cara.push(cara);
+		list_cara.add(cara);
 	}
 
 	@Override
 	public void addCara(int id, String cara) {
-		list_cara.push(cara);
+		list_cara.add(cara);
 	}
 
 	@Override
 	public void addCara(int id, Interval cara) {
-		list_cara.push(cara);
+		list_cara.add(cara);
 	}
 
 	@Override
 	public void addCoord(int id, Interval coord) {
-		list_coords.push(coord);
+		list_coords.add(coord);
 
 	}
 	

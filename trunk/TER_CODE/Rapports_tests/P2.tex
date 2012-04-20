@@ -298,18 +298,50 @@ Nombre de boîtes & CPU & Mémoire totale & Mémoire utilisée\\
 %\label{tab:treehashmapglobalInit}
 %\end{table}
 
-%Accès ArrayList et LinkedList
+%Accès HashMap et TreeMap
 \begin{table}[h]
   \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
-Structure & \multicolumn{3}{|c|}{Nombre d'accès}\\
+\backslashbox{Structure} {Nombre d'accès} & $10^6$ & $10^7$ & $10^8$ \\
 \hline
-ArrayList & & & \\
+HashMap & 0.56s& 5.24s & 52.34s\\
 \hline
-LinkedList & & & \\
+TreeMap & 0.53s & 5.04s & 48.75s \\
 \hline
 \end{tabular}
-\caption{Étude de performances avec des TreeMaps construites à partir de HashMaps globales} 
-\label{tab:treehashmapglobal}
+\caption{Relevé des temps CPU d'accès au caractéristiques en secondes pour la HashMap et la TreeMap} 
+\label{tab:accesHM}
+\end{table}
+
+%Accès HashMap et TreeMap Unique
+\begin{table}[h]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\backslashbox{Structure} {Nombre d'accès} & $10^6$ & $10^7$ & $10^8$ \\
+\hline
+HashMap & 0.57s& 5.34s & 52.79s\\
+\hline
+TreeMap & 0.58s & 5.62s & 54.81s \\
+\hline
+\end{tabular}
+\caption{Relevé des temps CPU d'accès au caractéristiques en secondes pour la HashMap et la TreeMap v2} 
+\label{tab:accesHM2}
+\end{table}
+
+%Accès ArrayList et LinkedList Unique
+\begin{table}[h]
+  \centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\backslashbox{Structure} {Nombre d'accès} & $10^6$ & $10^7$ & $10^8$ \\
+\hline
+ArrayList & 0.43s & 3.94s & 39.15s\\
+\hline
+LinkedList & 0.55s & 5.17s &  51.43s\\
+\hline
+\end{tabular}
+\caption{Relevé des temps CPU d'accès au caractéristiques en secondes pour l'ArrayList et la LinkedList} 
+\label{tab:accesAL}
 \end{table}
