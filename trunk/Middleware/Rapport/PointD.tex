@@ -60,6 +60,15 @@ Notre Javadoc des différents plugins est disponible ici \cite{doc} et nos plugi
 					\label{divisionRGB}
 				\end{figure}
 				
+				Pourquoi ne pas analyser toutes l'image ?
+				Soit n la largeur et m la hauteur en nombre de pixel de l'image à analyser, la complexité de la méthode d'analyse est en O(n*m). Si la définition est vraiment très elevé, il est fort probable que des pixel proches aient les memes propriétés : les photos en 5, 8, 12 etc... millions de pixels sont intéressantes dans le sens où le niveau de détails est vraiment très élevé. Mais dans notre cas, la seule chose qui compte c'est une analyse globale de l'image afin de déterminer si elle est sombre ou non. De ce fait, il n'est pas nécessaire d'analyser tous les pixels, car des pixels contigus ont très souvent la même propriété. Sur une ligne de x pixels, si le premier est considéré comme sombre et le dernier comme clair, il n'est peut-être pas nécessaire de tous les analyser, ce qui compte c'est de savoir à partir de quand l'image passe du sombre au clair : nous avons donc fixé un minimum de 1000 pixel à analyser, mais au dela, seuls un pixel sur 2, sur 3, etc... doit nécessairement être analysé pour obtenir un résultat cohérent.
+
+				Exemple = 4 pixel rouges, il suffit d'analyser un pixel sur les 4 pour trouver la meme priopriété que si nous avions analysé les 4. Donc l'algorithme fait en sorte de majorer le nombre de pixel à analyser en "sautant" régulierement des pixel.
+
+				Problématique : choisir le saut. Deux solutions : saut proportionnel au nombre de pixel (qu'il y ai 1000, 2000, 3000 ou 10000 pixels en largeur, toujours en analyser 1000 ?) ou saut fixe (si plus de 2000 pixels, en analyser seulement la moitié en largeur et en hauteur, soit le quart du total.
+				Sans pouvoir le démontrer scientifiquement, il nous semble évident que perdre 1 pixel sur 3 ne changera pas le résultat de l'analyse, dans le cas de l'analyse de photos. Sur une image créée artificiellement, il serait possible de tromper l'algorithme, mais ce cas ne se produira pas.
+
+				
 			\subparagraph{Composition de l'image}
 					Arbitrairement nous avons choisi de considérer une image comme étant sombre si plus de la moitié de ses pixels le sont.
 					
