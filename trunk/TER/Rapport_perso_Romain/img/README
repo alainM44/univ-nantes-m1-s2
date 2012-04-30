@@ -1,0 +1,20 @@
+Create an AUTOMAKE
+
+1. Create all Makefile.am
+ex :
+Makefile.am
+SUBDIRS = src
+
+src/Makefile.am
+bin_PROGRAMS = {PROJECT_NAME}
+{PROJECT_NAME}_SOURCES = {Files}.cpp {Files}.h
+
+2. Execute 'autoscan' : a configure.scan is created, modify it to add AM_INIT_AUTOMAKE and rename into configure.in
+
+3. Execute 'autoconf' : create a configure and autom4te.cache
+
+4. Execute 'autoheader' : create a config.h.in
+
+5. Execute 'aclocal' : create aclocal.m4
+
+6. Execute 'automake' --add-missing : option tu add INSTALL, install.sh ...
