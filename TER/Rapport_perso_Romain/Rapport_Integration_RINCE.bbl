@@ -1,8 +1,15 @@
-\begin{thebibliography}{Rea}
+\begin{thebibliography}{OPT}
+
+\bibitem[LIN]{LINA}
+Site web du lina.
+\newblock \url{http://www.lina.univ-nantes.fr/}.
+
+\bibitem[OPT]{OPTI}
+Page web de l'équipe opti sur le site du lina.
+\newblock \url{http://www.lina.univ-nantes.fr/?-OPTI-.html}.
 
 \bibitem[Rea]{Realpaver}
-\href{http://pagesperso.lina.univ-nantes.fr/~granvilliers-l/realpaver/index.ht%
-ml}{Site web de Realpaver}.
+Site web de realpaver.
 \newblock
   \url{http://pagesperso.lina.univ-nantes.fr/~granvilliers-l/realpaver/index.h%
 tml}.
