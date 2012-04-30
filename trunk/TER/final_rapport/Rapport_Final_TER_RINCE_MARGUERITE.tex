@@ -1,0 +1,142 @@
+\documentclass[11pt,a4paper,utf8x]{report}
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc} 
+\usepackage{lmodern}
+\usepackage [frenchb]{babel}
+% Pour pouvoir utiliser 
+\usepackage{ucs}
+
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{keystroke}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\renewcommand{\thesection}{\arabic{section}} % numérotation des sectiosn
+\usepackage[cc]{titlepic} %rajouter le logo dans la page de garde
+\usepackage{url} % Pour avoir de belles url
+\usepackage {geometry}
+\usepackage[linktocpage]{hyperref}
+% Pour pouvoir faire plusieurs colonnes
+\usepackage {multicol}
+%Pour faire plusieurs lignes
+\usepackage{multirow}
+\usepackage{slashbox}
+% Pour mettre du code source
+\usepackage {listings}
+% Pour pouvoir passer en paysage
+\usepackage{lscape}	
+
+% Pour pouvoir faire plusieurs colonnes
+\usepackage {multicol}
+
+% POur crééer un index
+\usepackage{makeidx}
+
+
+\usepackage{pdfpages}
+
+\hypersetup{
+backref=true,
+%permet d'ajouter des liens dans...
+pagebackref=true,%...les bibliographies
+hyperindex=true, %ajoute des liens dans les index.
+colorlinks=true, %colorise les liens
+breaklinks=true, %permet le retour à la ligne dans les liens trop longs
+urlcolor= blue, %couleur des hyperliens
+citecolor=	cyan,
+bookmarks=true, %créé des signets pour Acrobat
+bookmarksopen=true,
+%si les signets Acrobat sont créés,
+%les afficher complètement.
+pdftitle={Initiation à la Recherche}, %informations apparaissant dans
+pdfauthor={MARGUERITE Alain\\ RINCE Romain},
+%dans les informations du document
+pdfsubject={Doc}
+%sous Acrobat.
+}
+
+\makeindex
+
+
+%%%% debut macro pour enlever le nom chapitre %%%%
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    \ifnum \c@secnumdepth >\m@ne
+        \Huge\bfseries \thechapter\quad
+    \fi
+    \Huge \bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries  #1\par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
+%%%% fin macro %%%%
+
+%Couverture 
+
+%Couverture 
+
+\widowpenalty=10000
+\clubpenalty=10000
+ 
+\title{ \huge{Initiation à la Recherche \vspace{3cm} }% \\ \emph{Conception et réalisation d’un logiciel interactif de visualisation de pavages 2D/3D }%\vspace{3cm}
+}
+
+\titlepic{\includegraphics[scale=0.80]{img/logolina}     \hspace{2cm} \includegraphics[scale=0.80]{img/logouniv}}
+
+
+\author{A.\textsc{Marguerite}\\ R.\textsc{Rincé}}%\vspace{3cm}}
+\date{Université de Nantes \\ 2 rue de la Houssinière, BP92208, F-44322 Nantes cedex 03, FRANCE}
+%\vspace{20cm}
+% Nice RRealpaver
+\newcommand{\realpaver}{\emph{Realpaver}}
+
+
+%\vspace{9cm}
+\date{Université de Nantes \\ 2 rue de la Houssinière, BP92208, F-44322 Nantes cedex 03, FRANCE}
+%\vspace{20cm}
+
+\hyphenation{vi-sua-li-sa-tion}
+\hyphenation{vi-sua-li-sé}
+\hyphenation{vi-sua-li-sée}
+\hyphenation{vi-sua-li-sés}
+\hyphenation{vi-sua-li-sées}
+\hyphenation{si-tu-a-tion}
+\hyphenation{a-na-lyse}
+
+\begin{document}
+
+\maketitle
+\renewcommand{\labelitemi}{$\bullet$} 
+
+\clearpage
+
+\tableofcontents
+\clearpage
+
+
+\input{Introduction}
+\input{RapportDocumentation}
+\input{Contributions}
+\input{EtudePratique}
+
+
+\input{annexes}
+
+\listoffigures
+% Pour finir l'interligne de 1,5
+\bibliographystyle{alpha}
+\bibliography{biblio.bib}
+
+
+\end{document}
