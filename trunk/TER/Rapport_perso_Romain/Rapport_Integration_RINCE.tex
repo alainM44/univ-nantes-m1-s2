@@ -18,7 +18,7 @@
 \usepackage {geometry}
 \usepackage{hyperref}
 
-\usepackage{acronym} %Pour écrire les acronymes
+\usepackage[printonlyused,nohyperlinks]{acronym} %Pour écrire les acronymes
 
 % Pour pouvoir faire plusieurs colonnes
 \usepackage {multicol}
@@ -104,7 +104,11 @@ pdfsubject={Doc}
 \author{\textsc{Rincé} Romain}
 \date{Université de Nantes \\ 2 rue de la Houssinière, BP92208, F-44322 Nantes cedex 03, FRANCE}
 
-\acrodef{OPTI}[OPTI]{optimisation globale et optimisation multi-objectifs}
+
+\acrodef{OPTI}[OPTI]{Optimisations globale et multi-objectif}
+\acrodef{MEO}[MEO]{Méthodes Ensemblistes pour l’Optimisation}
+\acrodef{ROOM}[ROOM]{Recherche Opérationnelle et Optimisation Multi-objectif}
+\acrodef{LINA}[LINA]{Laboratoire Informatique de Nantes}
 
 \hyphenation{appar-tiennent}
 \hyphenation{pro-blèmes}
@@ -114,18 +118,31 @@ pdfsubject={Doc}
 
 \maketitle
 \renewcommand{\labelitemi}{$\bullet$} 
+\newcommand{\realpaver}{\emph{Realpaver}}
 
 \clearpage
 
-Dans le cadre du module d'\emph{Initiation à la Recherche}, j'ai été affecté à l'équipe \ac{OPTI} pour concevoir et réaliser un logiciel interactif de visualisation de pavages 2D/3D pour \emph{RealPaver}\footnote{\emph{Realpaver} est librairie de résolution de contraintes numériques développée par Laurent \textsc{Granvilliers}\cite{Realpaver}.}
+Dans le cadre du module d'\emph{Initiation à la Recherche}, j'ai été affecté à l'équipe \ac{OPTI} dans le but de concevoir et réaliser un logiciel interactif de visualisation de pavages 2D/3D pour \realpaver\footnote{\realpaver{} est librairie de résolution de contraintes numériques développée par Laurent \textsc{Granvilliers}\cite{Realpaver}}. Notre binôme était encadré par Christophe \textsc{Jermann}.
 
-\section{Présentation de l'équipe \ac{OPTI}
-
+\section{Présentation de l'équipe \ac{OPTI}}
+L'équipe \ac{OPTI}\cite{OPTI}, rattachée au \ac{LINA}\cite{LINA}, résulte de la fusion de l'équipe \ac{ROOM} et \ac{MEO} :
+\begin{description}
+\item 
+L'axe de recherche de l'équipe \ac{ROOM} était la résolution de problèmes d'optimisation multi-objectifs, généralement discrets. Ces problèmes reposent essentiellement sur la recherche de méthodes efficaces sur des problèmes combinatoires.
+\item
+ L'équipe \ac{MEO} était davantage centrée sur des problèmes d'optimisation globale. L'équipe cherchait donc à développer des méthodes de satisfaction de contraintes et d’analyse par intervalles pour résoudre des problèmes numériques non linéaires à variables continues.
+ 
+ Étant donné mon sujet, j'ai été amené à être, plus généralement, en contact avec des membres de l'ancienne équipe \ac{MEO}
+\end{description}
 \section{Motivation du choix du sujet}
+Le sujet qui m'a été affecté était la conception et la réalisation d'un logiciel de visulisation pour les pavages de sorties fournis par \realpaver. Ayant initialement hésité entre la filière ALMA et ORO, je restais désireux de découvrir la thématique de recherche de l'équipe \ac{OPTI}. Les sujets de recherche fournis C.\textsc{Jermann} et L.\textsc{Granvilliers} pour ce module faisaient donc partie de mes choix d'attribution lors de la sélection des sujets en début de semestre.
 
 \section{Découverte du travail de chercheur}
+Les premières semaines de travail ont été l'occasion de nous familiariser avec l'axe de recherche de l'équipe, notamment en lisant, sur le conseil de notre encadrant, la thèse des différents membres de l'équipe.
 
 \section{Conclusion personnelle}
+
+\clearpage
 
 \bibliographystyle{alpha}
 \bibliography{biblio.bib}
