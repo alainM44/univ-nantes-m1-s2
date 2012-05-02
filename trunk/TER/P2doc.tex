@@ -1,0 +1,57 @@
+\section{Mise en œuvre de la méthode de résolution par intervalles}
+
+
+
+\subsection{Algorithmes}
+L'algorithme de Branch and Prune  est au centre de la méthode de résolution par intervalles. Nous résumons ici ses deux étapes :  % met en oeuvre deux opérations détaillées dans \cite{Neumaier}: \\
+%\begin{itemize}
+%\item{Branch}
+\paragraph{Branch :}
+\begin{quote}\emph{Diviser pour mieux régner}\end{quote} Cette méthode consiste à diviser récursivement un problème en deux sous problèmes. Appliquée à la méthode de résolution par intervalles, on découpe en deux l'intervalle concerné (en son milieu ou non). On obtient alors deux problèmes plus «petits» à étudier.%\clearpage
+%\item{Prune}\\
+\begin{figure}[h!] %on ouvre l'environnement figure
+  \center
+\includegraphics[scale=0.5]{img/circle-disk}
+  \caption{Intersection d'un cercle et d'un disque} %la légende
+ \label{fig:CercleDisque} %la légende
+\end{figure} %on ferme l'environnement figure
+\paragraph{Prune :}
+La découpe d'un problème en sous problèmes peut amener à une situation ou un des sous problèmes créés ne contient aucune solution. On peut alors étudier et trier ces sous problèmes pour en supprimer les espaces de recherche superflus. Cette étape est appelée \textbf{pruning}.
+%\end{itemize}
+Au bout d'un certain nombre d'itération, l'algorithme de Branch and Prune propose un ensemble de solutions sous la forme d'intervalles. On visualise sur la figure \ref{fig:CercleDisque} un tel ensemble dans le cas d'une intersection entre un cercle et d'un disque.
+
+
+
+
+
+\subsection{Données en sortie}
+En sortie l'algorithme va nous retourner un ensemble de boîtes. Cet ensemble garantissant, à contrario des méthodes numériques classiques, que toutes les solutions y sont incluses. En voici une illustration dans le cas d'une d'intersections entre deux disques : 
+\begin{figure}[h] %on ouvre l'environnement figure
+  \center
+\includegraphics[scale=0.50]{img/disk-disk}
+  \caption{Intersection de deux disques \ref{chap:realout}} %la légende
+ \label{fig:DisqueDisque} %la légende
+\end{figure} %on ferme l'environnement figure
+
+ Il est d'ailleurs possible de savoir si tout l'espace d'une boîte est solution du problème. En contrepartie on ne peut toujours garantir l'existence d'une solution dans une enveloppe, il peut donc exister une approximation autour des résultats de l'algorithme. 
+ \clearpage
+ 
+ \subsection{Outils existant}
+\begin{description}
+ \item [RealPaver]\label{realp}
+Developpé  au sein de l'équipe \textsc{OPTI}, cet outil reprend, entre autres, les méthodes de résolutions de contraintes géométriques par propagation d'intervalles. Il permet la résolution de systèmes d'équations à $n$ variables représentant des contraintes. Dans un soucis de précision ces solutions sont sous la forme d'intervalles. \cite{realpaver}
+\item [CHOCO]  Projet commun  de l'École des Mines de Nantes, de \textsc{LIRMM} de Montpellier ansi que l'INRA de Toulouse. \textsc{CHOCO} est une librairie  \textsc{JAVA}  dédiée au résolution de \textsc{CSP} et à la programmation par contrainte. \cite{choco}
+ \begin{figure}[h] %on ouvre l'environnement figure
+  \center
+\includegraphics[scale=0.50]{img/choco}
+  %\caption{Intersection de deux disques \ref{chap:realout}} %la légende
+% \label{fig:DisqueDisque} %la légende
+\end{figure} %on ferme l'environnement figure
+
+
+\item [Google or-tools]
+ Bibliothèque Python fournissant un solveur de contraintes générique et divers algorithmes, notamment sur les problèmes de graphes ou de sacs à dos : \cite{ortools}
+
+
+
+\end{description}

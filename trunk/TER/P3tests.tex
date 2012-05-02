@@ -1,0 +1,90 @@
+\section{Chargement de pavages}
+\label{chap:Chargement}
+Pour la génération des boîtes le nombre de caractéristiques est fixé à 20 et la dimension du pavage à 100. Ces valeurs ont été choisies car elles peuvent être considérées comme les valeurs au pire renvoyées par \emph{Realpaver}. Cependant les caractéristiques pouvant être de différents types et ne connaissant pas la probabilité d'apparition de chacun de ces types, nous avons préféré construire des caractéristiques de chaque type en proportion un tiers. 
+
+\subsection{Map internes}
+
+\subsubsection{Pavage avec une première proposition de structure}
+Pour les Maps l'organisation des structures de données est la suivante :
+\begin{itemize}
+\item Il n'y a aucune structure de données globale, tout est stocké au niveau de la boîte. On a donc dans chaque boîte l'identifiant et la valeur de chaque caractéristique ou intervalle.
+ \item Chaque boîte contient quatre Maps contenant les différentes informations :
+\begin{itemize}
+ \item Une Map pour l'ensemble des intervalles coordonnées.
+\item Une Map pour les caractéristiques de type String.
+\item Une Map pour les caractéristiques de type Interval.
+\item Une Map pour les caractéristiques de type Number.
+\end{itemize}
+\end{itemize}
+
+\paragraph{}Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap1} et \ref{tab:treemap1}
+D'après les résultats, les deux structures fournissent un temps de construction et une occupation mémoire similaires.
+Il est encore difficile de déterminer laquelle de la TreeMap ou de la HashMap est la plus pertinente, les différences apparaitront sans doûte plus nettement au moment des tests d'accès aux caractéristiques. 
+
+
+\subsubsection{Pavage avec une seconde proposition de structure}
+Pour les map, une autre organisation des structures de données possible est la suivante :
+\begin{itemize}
+\item Il y a une HashMap globale contenant le type de chaque caractéristique.
+ \item Chaque boîte contient deux Maps contenant les différentes informations :
+\begin{itemize}
+ \item Une map pour l'ensemble des intervalles coordonnées.
+\item Une liste pour l'ensemble des caractéristiques stockées dans la boîte sous la forme d'Objects.
+\end{itemize}
+\end{itemize}
+
+\paragraph{}Les résultats obtenus sont indiqués dans la table \ref{tab:hashmap3} et \ref{tab:treemap2}
+Nous n'observons pas de différence nette, par rapport à la première proposition, quant au temps de construction et de l'occupation mémoire. Cette structure nécessitant d'effectuer un cast à chaque accès, il est plus avantageux de conserver la première structure.
+
+
+\subsection{Listes et Tableaux internes}
+Pour les structures liste et tableau l'organisation des structures de données est la suivante :
+\begin{itemize}
+\item Il y a une HashMap globale contenant le type de chaque caractéristique.
+ \item Chaque boîte contient deux listes (ou tableaux) :
+\begin{itemize}
+ \item Une liste pour l'ensemble des intervalles coordonnées.
+\item Une liste pour l'ensemble des caractéristiques de la boîte stockées sous la forme d'Objects
+\end{itemize}
+\end{itemize}
+
+\paragraph{}Les résultats obtenus sont indiqués dans la table \ref{tab:arraylist} et \ref{tab:linkedlist}
+On peut constater que les structures de données en liste sont bien meilleures vis-à-vis du temps de construction et de l'espace mémoire(Tout du moins pour l'ArrayList) que les structures map de la première partie. Étrangement la structure LinkedList demande un espace mémoire presque 60\% plus grand que celui alloué pour l'ArrayList.
+
+Bien que l'ArrayList soit plus légère que les Maps de la prémière partie et plus rapide à construire, il est probable que celle-ci ne soit pas efficace pour l'accès. Nous traiterons cela dans une seconde étude.
+
+\subsection{Maps globales}
+Les boîtes sont composées  de 4 ArrayLists : 
+\begin{itemize}
+  \item Une ArrayList pour l'ensemble des intervalles coordonnées.
+  \item Une ArrayList pour les caractéristiques de type String.
+  \item Une ArrayList pour les caractéristiques de type Interval.
+  \item Une ArrayList pour les caractéristiques de type Number.
+\end{itemize}
+Il faut cependant savoir à quels indices se trouves les différents élément pour effectuer des accès directs. Pour cela, on dispose ici de quatre Maps globales :
+\begin{itemize}
+  \item Une Map pour l'ensemble des intervalles coordonnées.
+  \item Une Map pour les caractéristiques de type String
+  \item Une Map pour les caractéristiques de type Interval
+  \item Une Map pour les caractéristiques de type Number
+\end{itemize}
+La composition de chacune de ces maps est la suivante :  
+\begin{description}
+ \item[Clef :]
+ID de la coordonée ou de la variable.
+\item[Valeur :]
+Indice de l'objet dans le tableau de la boîte.
+\end{description}
+
+
+\paragraph{Observations :}
+On propose trois cas de tests ou les Maps globales seront :
+\begin{itemize}
+  \item Des HashMaps :  \ref{tab:hashmapglobal} 
+  \item Des TreeMaps :  \ref{tab:treemapglobal} 
+  \item Une TreeMap construite à partir des HashMaps correspondantes : \ref{tab:treehashmapglobal} 
+\end{itemize}
+Les trois cas de tests nous renvoient des résultats relativement similaires mais qui se montrent aussi performants que les résultats de l'ArrayList. Il s'agit donc d'une organisation intéressante à étudier au niveau des temps d'accès.
+
+
+
