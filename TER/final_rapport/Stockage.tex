@@ -1,6 +1,6 @@
 \section{Stockage des boîtes et visualisation}
 
-\subsection{\'Etude d'une solution possible : le QuadTree}
+\subsection{\'Etude d'une solution possible : le QuadTree}{\color{red} À discuter}
 \paragraph{}Une des solutions qui pourrait permettre une visualisation fluide du pavage tout en répondant au document de spécifications serait de représenter le pavages sous une forme de QuadTree pour deux dimensions ou OcTree pour trois dimensions.
 \begin{figure}[htbp]
 \centering
@@ -73,7 +73,7 @@ Dans une telle situation chaque division va entraîner la création d'un espace 
 \caption{Superposition de boîtes 2}
 \label{fig:frontiere2}
 \end{figure}
-Ainsi sachant que la précision maximale par défaut de \realpaver{} est de $10^{-16}$, cela implique qu'il est nécessaire d'au moins égaler cette précision pour l'arbre de visualisation. Ainsi pour une sortie de \realpaver{} contenant un total $l$ de longueurs de \og frontières \fg{}  cumulées et $p$ la précision du modèle, on a un nombre d'espaces à créer supérieur à $\frac{l}{p}$ avec $p$ très petit. Par exemple pour une sortie de \realpaver{} comportant une \og frontière \fg{} de taille $1$, il faudra au moins $10^{16}$ espaces pour la contenir. {\color{red} À discuter}
+Ainsi sachant que la précision maximale par défaut de \realpaver{} est de $10^{-16}$, cela implique qu'il est nécessaire d'au moins égaler cette précision pour l'arbre de visualisation. Ainsi pour une sortie de \realpaver{} contenant un total $l$ de longueurs de \og frontières \fg{}  cumulées et $p$ la précision du modèle, on a un nombre d'espaces à créer supérieur à $\frac{l}{p}$ avec $p$ très petit. Par exemple pour une sortie de \realpaver{} comportant une \og frontière \fg{} de taille $1$, il faudra au moins $10^{16}$ espaces pour la contenir. 
 
 \paragraph{Brève conclusion} Le QuadTree est une structure intéressante pour la visualisation mais si un nœud de l'arbre a un coût en mémoire non nul, alors l'espace mémoire de la structure va exploser. Elle semble donc, pour le moment, inappropriée.
 
@@ -95,7 +95,9 @@ La figure \ref{fig:rtree} donne une bonne idée de l'organisation des R-trees :
 \label{fig:rtree}
 \end{figure}
 
-Les algorithmes permettant la recherche et la création du R-tree sont quant à eux décrient dans l'article de \textsc{A. Guttman} dans la section \textbf{3. Searching and Updating}\cite{Guttman}. Nous rappelons brièvement les algorithmes de recherche (cf. Algorithme \ref{algo:recherche}) et d'ajout d'une boîte (cf. Algorithme \ref{algo:ajout}) \cite{poulos}.
+Les algorithmes permettant la recherche et la création du R-tree sont quant à eux décrient dans l'article de \textsc{A. Guttman} dans la section \textbf{3. Searching and Updating}\cite{Guttman}. Nous rappelons brièvement les algorithmes de recherche (cf. Algorithme \ref{algo:recherche}) et d'ajout d'une boîte (cf. Algorithme \ref{algo:ajout}) \cite{poulos}. Il est important de noter que \textsc{Guttman} propose trois algorithme de \og split \fg{} qui permettent ensuite à l'algorithme de recherche d'être plus  ou moins efficace. Du moins efficace au plus efficace pour la recheche : un algorithme linéaire, un quadratique et un exponentielle.
+
+L'algorithme \ref{algo:ajout} d'ajout présenté est implémenté avec le split linéaire.
 
 \begin{algorithm}
 \caption{\textbf{Recherche}(nœud $N$, rectangle $R$)}
