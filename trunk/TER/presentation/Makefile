@@ -15,7 +15,7 @@
 
 TEXFILE	= slides.tex
 
-.PHONY: dvi ps pdf clean
+.PHONY:  pdf clean
 
 pdf:	$(TEXFILE:.tex=.pdf)
 ps:	$(TEXFILE:.tex=.ps)

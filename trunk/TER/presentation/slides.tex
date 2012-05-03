@@ -1,14 +1,18 @@
-\documentclass[frames,pdf,slideColor,colorBG]{prosper}
+\documentclass[frames,ps,pdf,slideColor,colorBG,accumulate]{prosper}
 \usepackage[francais]{babel}
 \usepackage{amsmath, amsfonts, amsbsy, pstricks, pst-node, pst-text, pst-3d}
-
-
-
+\usepackage{graphicx,color,caption2,amssymb,pstricks,lmodern}
 \usepackage{moreverb,epsfig,color,subfigure}
 \NoFrenchBabelItemize
 \usepackage{ucs}
 \usepackage[utf8x]{inputenc}
-\usepackage{graphicx,color,caption2,amssymb,pstricks,lmodern}
+
+\usepackage{pst-plot}
+\usepackage[metapost]{mfpic}
+\opengraphsfile{figs}
+
+
+
 %\usepackage{epsfig}
 
 %\documentclass[pdf,autumn,slideColor,colorBG]{prosper}
@@ -42,56 +46,30 @@
 % make the title slide
 \maketitle
 
-% % make the rest of the slides as usual:
-% \Begin{slide}{The first slide}
-% Body of the first slide
-% \end{slide}
-%\overlays{5}{%
-%% \begin{slide}{Outline}
 
-%%   \vspace*{-8pt}
-%%   \begin{Itemize}
-%%   \item Sound techniques    \begin{Itemize}
-%%     \item Cylindrical Algebraic Decomposition
-%%     \item Interval arithmetic and inner-approximation computation
-%%     \end{Itemize}
-%%   \item Complete techniques
-%%     \begin{Itemize}
-%%     \item Interval constraint solving
-%%     \end{Itemize}
-%%   \item Interval constraint solving and soundness
-%%   \item Solving constraints with universal quantifiers
-%%   \item Conclusion and perspectives
-%%   \end{Itemize}
-%% \end{slide}
 
-\overlays{3}{
-  \begin{slide}[Box]{Acoustic Reverberation Cancellation}
-    \slidetextsize
-    \setlength{\MiniPageLeft}{0.4\textwidth}
-    \setlength{\MiniPageRight}{\textwidth}\addtolength{\MiniPageRight}{-\MiniPageLeft}
-    %% \begin{minipage}[t]{\MiniPageLeft}
-    %%   \begin{figure}[t]
-    %%     \begin{center}
-    %%       \onlySlide*{1}{\includegraphics[width=\MiniPageLeft]{img/logouniv}}
-    %%       \fromSlide{2}{\includegraphics[width=\MiniPageLeft]{img/logouniv}}
-    %%     \end{center}
-    %%   \end{figure}
-    %% \end{minipage}%
-    \begin{minipage}[t]{\MiniPageRight}
+\overlays{7}{
+  \begin{slide}{Presentation du laboratoire \textsc{LINA}}
+    {Goal}: easily make presentation-quality slides \\
+\begin{center}
+\includegraphics{img/lab.jpg}
+\end{center} 
+
+    \FromSlide{2}{\yellow Options}: \FromSlide{3}
+    \begin{Itemize}
+    \item PowerPoint \FromSlide{4}- what to do about equations?
+      \FromSlide{5}
+    \item \LaTeX $\rightarrow$ pdf  -several packages will do this
       \begin{Itemize}
-      \item Normal hearing: can concentrate on original sound despite:
-        \begin{Itemize}
-        \item reverberation
-          \fromSlide{2}{\item environmental noise}
-        \end{Itemize}
-        \fromSlide{3}{\item Hearing aid users unable to distinguish one voice from another
-        \item Sensori-neuro loss cannot be compensated for by simple
-          amplifying hearing aids or surgery}
-
+        \FromSlide{6}
+      \item pdfslide or P$^4$ with pdflatex
+        \FromSlide{7}
+      \item \texttt{prosper} - most straight-forward; can easily convert existing \texttt{seminar} slides
       \end{Itemize}
-    \end{minipage}
-\end{slide}}
+    \end{Itemize}
+  \end{slide}
+}
+
 
 
 %% \begin{slide}{Présentation du laboratoire LINA}
