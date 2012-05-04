@@ -1,6 +1,6 @@
 \section{Stockage des boîtes et visualisation}\label{sec:vis}
 
-\subsection{\'Etude d'une solution possible : le QuadTree}{\color{red} À discuter}
+\subsection{\'Etude d'une solution possible : le QuadTree}
 \paragraph{}Une des solutions qui pourrait permettre une visualisation fluide du pavage tout en répondant au document de spécifications serait de représenter le pavages sous une forme de QuadTree pour deux dimensions ou OcTree pour trois dimensions.
 \begin{figure}[htbp]
 \centering
@@ -51,7 +51,7 @@ L'OcTree repose sur le même principe mais étendu à trois dimensions. Une cell
 
 \paragraph{Avantage de cette méthode}Cette structure est particulièrement intéressante pour la visualisation du pavage. En effet pour une fenêtre de visualisation donnée, il est très simple et rapide d'extraire la sous-arborescence correspondante à la fenêtre visualisée et permet aussi de ne pas afficher les objets trop petits. 
 
-De plus il serait possible de créer une structure reposant sur le même principe que le QuadTree mais étant $k$-dimensionnelle\footnote{$k$ étant la dimension du problème fourni à \realpaver.}. Chaque espace peut alors être potentiellement subdivisé en $2^k$ sous-espaces. Cette structure permettrait d'éviter de recalculer l'arbre à chaque changement de variables de visualisation. On évite par ailleurs le cas de superposition de boîtes pour lequel l'algorithme n'est plus efficace (cf : figure \ref{fig:superpos}).
+De plus il serait possible de créer une structure reposant sur le même principe que le QuadTree mais étant $d$-dimensionnelle\footnote{$d$ étant la dimension du problème fourni à \realpaver.}. Chaque cellule peut alors être potentiellement subdivisé en $2^d$ sous-cellules. Cette structure permettrait d'éviter de recalculer l'arbre à chaque changement de variables de visualisation. On évite par ailleurs le cas de superposition de boîtes pour lequel l'algorithme n'est plus efficace (cf : figure \ref{fig:superpos}).
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.30]{img/QT8}
@@ -59,23 +59,24 @@ De plus il serait possible de créer une structure reposant sur le même princip
 \label{fig:superpos}
 \end{figure}
 
-\paragraph{Inconvénient de cette méthode}Le problème majeur de cette méthode se présente lorsque des boîtes sont côte à côte (cf : figure \ref{fig:frontiere}).
+\paragraph{Inconvénient de cette méthode \label{para:qtInconv}}Le problème majeur de cette méthode se présente lorsque des boîtes sont côte à côte (\cf{} figure \ref{fig:frontiere}).
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.40]{img/QT7}
-\caption{Superposition de boîtes 1}
+\includegraphics[scale=0.40]{img/QT10}
+\caption{État initial du QuadTree lorsque deux boîtes sont côte à côte}
 \label{fig:frontiere}
 \end{figure}
-Dans une telle situation chaque division va entraîner la création d'un espace dans la même configuration. L'algorithme ne s'arrêtera donc pas avant d'avoir atteint la taille minimale d'un espace. Nous nous retrouvons donc avec un grand nombre de boîtes au niveau de ces \og frontières\fg{} (cf : figure \ref{fig:frontiere2}).
+Dans une telle situation chaque division va entraîner la création d'une cellule dans la même configuration. L'algorithme ne s'arrêtera donc pas avant d'avoir atteint la taille minimale pour une cellule. Nous nous retrouvons donc avec un grand nombre de cellules au niveau de ces \og frontières\fg{} (\cf{} figure \ref{fig:frontiere2}).
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.40]{img/QT9}
-\caption{Superposition de boîtes 2}
+\includegraphics[scale=0.40]{img/QT11}
+\caption{État final du QuadTree lorsque deux boîtes sont côte à côte}
 \label{fig:frontiere2}
 \end{figure}
-Ainsi sachant que la précision maximale par défaut de \realpaver{} est de $10^{-16}$, cela implique qu'il est nécessaire d'au moins égaler cette précision pour l'arbre de visualisation. Ainsi pour une sortie de \realpaver{} contenant un total $l$ de longueurs de \og frontières \fg{}  cumulées et $p$ la précision du modèle, on a un nombre d'espaces à créer supérieur à $\frac{l}{p}$ avec $p$ très petit. Par exemple pour une sortie de \realpaver{} comportant une \og frontière \fg{} de taille $1$, il faudra au moins $10^{16}$ espaces pour la contenir. 
+Ainsi sachant que la précision maximale par défaut de \realpaver{} est de $10^{-16}$, cela implique qu'il est nécessaire d'au moins égaler cette précision pour l'arbre de visualisation. Ainsi pour une sortie de \realpaver{} contenant un total $l$ de longueurs de \og frontières \fg{}  cumulées et $p$ la précision du modèle, on a un nombre de cellules à créer supérieur à $\frac{l}{p}$ avec $p$ très petit. Par exemple pour une sortie de \realpaver{} comportant une \og frontière \fg{} de taille $1$, il faudra au moins $10^{16}$ cellules-feuilles pour la contenir. 
 
-\paragraph{Brève conclusion} Le QuadTree est une structure intéressante pour la visualisation mais si un nœud de l'arbre a un coût en mémoire non nul, alors l'espace mémoire de la structure va exploser. Elle semble donc, pour le moment, inappropriée.
+\paragraph{Brève conclusion} Dans le meilleur des cas, le QuadTree nécessite autant de cellules-feuilles que de boîtes dans le pavage. Soit $\displaystyle {\sum_{i=0}^{\left\lceil{\sqrt[4]{N}}\right\rceil}} 4^i$ cellules au total. Si une cellule contient au moins un pointeur vers chacune de ces filles, un pointeur vers la cellule-mère et un pointeur vers la boîte contenue, et que l'on considère 4 octets pour stocker une adresse, on a donc une cellule de 24 octets.
+Donc pour un ordinateur actuel possédant une mémoire de 16 Gio, on peut stocker au maximum $4^{14}$ ($\approx 2 \times 10^8$) boîtes. Cependant on a vu qu'il était possible de se retrouver rapidement avec un QuadTree ne pouvant être stocké. Le cas cité un peu plus haut créait d'ailleurs plus de $10^{16}$ cellules-filles pour seulement 2 boîtes.
 
 \subsection{\'Etude d'une seconde solution : le R-tree}
 \paragraph{}Bien que le QuadTree soit une structure intéressante pour permettre l'indexation et la recherche de points dans un espace, celui-ci l'est beaucoup moins pour la gestion de données à dimensions non nulles. Le R-tree est une structure proposé en 1984 par Antonin \textsc{Guttman} permettant l'indexation et la recherche d'éléments de dimension $d > 0$ dans $k$ dimensions\cite{Guttman}.
@@ -95,7 +96,7 @@ La figure \ref{fig:rtree} donne une bonne idée de l'organisation des R-trees :
 \label{fig:rtree}
 \end{figure}
 
-Les algorithmes permettant la recherche et la création du R-tree sont quant à eux décrient dans l'article de \textsc{A. Guttman} dans la section \textbf{3. Searching and Updating}\cite{Guttman}. Nous rappelons brièvement les algorithmes de recherche (cf. Algorithme \ref{algo:recherche}) et d'ajout d'une boîte (cf. Algorithme \ref{algo:ajout}) \cite{poulos}. Il est important de noter que \textsc{Guttman} propose trois algorithme de \og split \fg{} qui permettent ensuite à l'algorithme de recherche d'être plus  ou moins efficace. Du moins efficace au plus efficace pour la recheche : un algorithme linéaire, un quadratique et un exponentielle.
+Les algorithmes permettant la recherche et la création du R-tree sont quant à eux décrient dans l'article de \textsc{A. Guttman} dans la section \textbf{3. Searching and Updating}\cite{Guttman}. Nous rappelons brièvement les algorithmes de recherche (cf. Algorithme \ref{algo:recherche}) et d'ajout d'une boîte (cf. Algorithme \ref{algo:ajout}) \cite{poulos}. Il est important de noter que \textsc{Guttman} propose trois algorithme de \og split \fg{} qui permettent ensuite à l'algorithme de recherche d'être plus  ou moins efficace. Du moins efficace au plus efficace pour la recherche : un algorithme linéaire, un quadratique et un exponentielle.
 
 L'algorithme \ref{algo:ajout} d'ajout présenté est implémenté avec le split linéaire.
 
@@ -156,6 +157,8 @@ et le nombre de nœuds est au pire égale à :
 \begin{equation}
  \sum_{i=1}^{h_{max}}{\left\lceil\frac{n}{m^i}\right\rceil} = \left\lceil\frac{n}{m}\right\rceil + \left\lceil\frac{n}{m^2}\right\rceil + \cdots + 1
 \end{equation}
+
+\paragraph{Brève conclusion} Afin d'avoir une idée de les performance en espace mémoire prenons $m=2$ et $M=50$ et une mémoire de 16 Gio. Une nœud du R-tree doit contenir au minimum un pointeur sur tous ces fils, un pointeur sur son père et un pointeur vers son MBR, un nœud fera donc une taille de 208 octets. On peut donc avoir jusqu'à $8.2 \times 10^7$ nœuds, soit $4.1 \times 10^7$ boîtes contenues dans les feuilles au total.   
 
  Bien que ne pouvant garantir de bonnes performances en pire cas\footnote{\og \emph{More than one substree under a node may need to be searched, hence it is not possible to guarantee good worst-case performance.}\fg{}\cite{Guttman}, section \textbf{3.1 Searching}}, le R-tree offre en pratique de bons résultats ; on pourra d'ailleurs se reporter à l'analyse de performances effectuer par A. \textsc{Guttman}\footnote{section \textbf{4. Performance}\cite{Guttman}}. Cependant il existe aujourd'hui de nombreuses variantes du R-tree ( R*tree, Hilbert R-tree, etc\dots{} ), on pourra donc, pour une analyse plus générale des différentes implémentations, préférer \og\emph{R-trees : Theory and Applications} \fg{}\cite{poulos}.
 
