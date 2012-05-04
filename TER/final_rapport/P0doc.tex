@@ -14,21 +14,12 @@ Un domaine de valeurs pour chaque variable. Chaque valeur du domaine $D_i$ assoc
 Un ensemble de contraintes (relations) $\mathbf{C}$ restreignant les variables de $\mathbf{V}$ défini ci-dessus :  $\mathbf{C} = \left\{c_1,...,cm\right\}$. 
 \end{itemize}
 \vspace{1.5cm}
-On s'intéressera notamment à la résolution des \textsc{CSP} sur le domaine continu. Dans ce cas les variables seront des intervalles à valeurs réelles et les contraintes seront généralement représentées par des équations et des inégalités. 
+On s'intéressera notamment à la résolution des \textsc{CSP} sur le domaine continu. Dans ce cas les domaines des variables seront des intervalles dans les réels et les contraintes seront généralement représentées par des équations et des inégalités. 
 
-\clearpage
+%\clearpage
 \subsection{Exemple}
 
-Une représentation simple de ce type de problèmes est la recherche des intersections de deux cercles dans un plan : 
-\begin{figure}[h] %on ouvre l'environnement figure
-  \center
-\includegraphics[scale=0.55]{img/circle-circle}
-  \caption{Intersection de deux cercles} %la légende
- \label{fig:Deuxcerlces} %la légende
-\end{figure} %on ferme l'environnement figure
-
-
-Définissons deux cercles respectivement de rayons  $r_1$ et $r_2$ et de centres : $(x_1,y_1)$ et $(x_2,y_2)$.
+Une représentation simple de ce type de problèmes est la recherche des intersections de deux cercles dans un plan. Définissons deux cercles respectivement de rayons  $r_1$ et $r_2$ et de centres : $(x_1,y_1)$ et $(x_2,y_2)$.
 On peut alors fixer les données en entrées du problème :
 
 \begin{itemize}
@@ -47,27 +38,7 @@ L'ensemble des contrainte est composé par les équations des cercles :
 \end{cases}
 \end{equation}
 \end{itemize}
-\clearpage
-Reprenons l'exemple du problème de l'intersection de deux disques. Soient deux disques, l'un de centre $(-1,0)$ et l'autre de centre $(1,0)$. Tous deux sont de rayon $2$. L'outil RealPaver (cf. \ref{realp}) modélise un tel problème de la sorte :
-\label{realprob}
-\begin{verbatim} 
-Constants
-  x0 = -1,
-  y0 = 0,
-  R0 = 2,
-  x1 = 1,
-  y1 = 0,
-  R1 = 2
-;
-Variables
-  x in ]-oo, +oo[,
-  y in ]-oo, +oo[
-;
-Constraints
-  (x-x0)^2 + (y-y0)^2 <= R0^2,
-  (x-x1)^2 + (y-y1)^2 <= R1^2
-;
-\end{verbatim}
+
 
 \section{Méthodes de calculs}
 Les méthodes de calculs permettent la résolution de problèmes mathématiques en machine; en particulier lorsque l'on cherche à résoudre des problèmes sur les nombres réels. Elles permettent par exemple la résolution des \textsc{CSP}  ou \textsc{GCSP} (Geometric Constraint Satisfaction Problem \cite{Jermann}) et peuvent être divisées en deux catégories : les méthodes formelles et les méthodes numériques.

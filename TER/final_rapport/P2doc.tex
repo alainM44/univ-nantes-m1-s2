@@ -9,12 +9,7 @@ L'algorithme de Branch and Prune  est au centre de la méthode de résolution pa
 \paragraph{Branch :}
 \begin{quote}\emph{Diviser pour mieux régner}\end{quote} Cette méthode consiste à diviser récursivement un problème en deux sous problèmes. Appliquée à la méthode de résolution par intervalles, on découpe en deux l'intervalle concerné (en son milieu ou non). On obtient alors deux problèmes plus «petits» à étudier.%\clearpage
 %\item{Prune}\\
-\begin{figure}[h!] %on ouvre l'environnement figure
-  \center
-\includegraphics[scale=0.5]{img/circle-disk}
-  \caption{Intersection d'un cercle et d'un disque} %la légende
- \label{fig:CercleDisque} %la légende
-\end{figure} %on ferme l'environnement figure
+
 \paragraph{Prune :}
 La découpe d'un problème en sous problèmes peut amener à une situation ou un des sous problèmes créés ne contient aucune solution. On peut alors étudier et trier ces sous problèmes pour en supprimer les espaces de recherche superflus. Cette étape est appelée \emph{pruning}.
 
@@ -25,10 +20,49 @@ Au bout d'un certain nombre d'itération, l'algorithme de Branch and Prune propo
 
 
 \subsection{Données en sortie}
-En sortie l'algorithme va nous retourner un ensemble de boîtes. Cet ensemble garantissant, à contrario des méthodes numériques classiques, que toutes les solutions y sont incluses. En exemple, \realpaver, au  probleme \ref{realprob} propose l'ensemble de solutions suivant : 
+En sortie l'algorithme va nous retourner un ensemble de boîtes. Cet ensemble garantissant, à contrario des méthodes numériques classiques, que toutes les solutions y sont incluses. La figure \ref{fig:CercleDisque} propose une illustration d'un tel ensemble dans le cas d'une intersection entre un cercle et un disque.
 
+\begin{figure}[h!] %on ouvre l'environnement figure
+  \center
+\includegraphics[scale=0.5]{img/circle-disk}
+  \caption{Intersection d'un cercle et d'un disque} %la légende
+ \label{fig:CercleDisque} %la légende
+\end{figure} %on ferme l'environnement figure
+
+ Il est d'ailleurs possible de savoir si tout l'espace d'une boîte est solution du problème. En contrepartie on ne peut toujours garantir l'existence d'une solution dans une enveloppe, il peut donc exister une approximation autour des résultats de l'algorithme.
+
+\clearpage
+ 
+ \section{Applications par des outils}
+\subsection{Realpaver}\label{realp}
+Developpé  au sein de l'équipe \textsc{OPTI}, cet outil reprend, entre autres, les méthodes de résolutions de contraintes géométriques par propagation d'intervalles. Il permet la résolution de systèmes d'équations à $n$ variables représentant des contraintes. Dans un soucis de précision ces solutions sont sous la forme d'intervalles. Les figures présentées dans ce chapitre (\ref{fig:Deuxcerlces}, \ref{fig:CercleDisque} et \ref{fig:CercleDisque}), correspondent à des pavages calculés par cet outil. \cite{realpaver}.
+\paragraph{Problème}
+Soient deux disques, l'un de centre $(-1,0)$ et l'autre de centre $(1,0)$. Tous deux sont de rayon $2$. Donnez l'ensemble des solutions de l'intersection de ces deux disques.
+\paragraph{Modèle}
+L'outil \realpaver{}  modélise un tel problème de la sorte :
+\label{realprob}
+\begin{verbatim} 
+Constants
+  x0 = -1,
+  y0 = 0,
+  R0 = 2,
+  x1 = 1,
+  y1 = 0,
+  R1 = 2
+;
+Variables
+  x in ]-oo, +oo[,
+  y in ]-oo, +oo[
+;
+Constraints
+  (x-x0)^2 + (y-y0)^2 <= R0^2,
+  (x-x1)^2 + (y-y1)^2 <= R1^2
+;
+\end{verbatim}
+\paragraph{Données en sortie}
+L'ensemble de solutions suivant \realpaver propose l'ensemble de solutions suivant : 
+{\color{red} A CHANGER}
 \begin{verbatim}
-
 RealPaver v. 0.4 (c) LINA 2004
 
 INITIAL BOX
@@ -58,34 +92,26 @@ INNER BOX 999
 END OF SOLVING
   Property:     reliable process (no solution is lost)
   Elapsed time: 10 ms
+
+
 \end{verbatim}
-\clearpage
-La figure \ref{fig:DisqueDisque} propose une illustration dans le cas d'une intersection entre deux disques.
+
 \begin{figure}[ht!] %on ouvre l'environnement figure
   \center
 \includegraphics[scale=0.50]{img/disk-disk}
   \caption{Intersection de deux disques} %la légende
  \label{fig:DisqueDisque} %la légende
 \end{figure} %on ferme l'environnement figure
-\\
- Il est d'ailleurs possible de savoir si tout l'espace d'une boîte est solution du problème. En contrepartie on ne peut toujours garantir l'existence d'une solution dans une enveloppe, il peut donc exister une approximation autour des résultats de l'algorithme.
-
- \clearpage
- 
- \subsection{Outils existant}
+\clearpage
+\subsection{Autres outils existants}
 \begin{description}
- \item [RealPaver]\label{realp}
-Developpé  au sein de l'équipe \textsc{OPTI}, cet outil reprend, entre autres, les méthodes de résolutions de contraintes géométriques par propagation d'intervalles. Il permet la résolution de systèmes d'équations à $n$ variables représentant des contraintes. Dans un soucis de précision ces solutions sont sous la forme d'intervalles. Les figures présentées dans ce chapitre (\ref{fig:Deuxcerlces}, \ref{fig:CercleDisque} et \ref{fig:CercleDisque}), correspondent à des pavages calculés par cet outil. \cite{realpaver}
 \item [CHOCO]  Projet commun  de l'École des Mines de Nantes, de \textsc{LIRMM} de Montpellier ansi que l'INRA de Toulouse. \textsc{CHOCO} est une librairie  \textsc{JAVA}  dédiée au résolution de \textsc{CSP} et à la programmation par contrainte. \cite{choco}
  \begin{figure}[h] %on ouvre l'environnement figure
   \center
 \includegraphics[scale=0.50]{img/choco}
 \end{figure} %on ferme l'environnement figure
-
-
 \item [Google or-tools]
  Bibliothèque Python fournissant un solveur de contraintes générique et divers algorithmes, notamment sur les problèmes de graphes ou de sacs à dos : \cite{ortools}
-
 
 
 \end{description}

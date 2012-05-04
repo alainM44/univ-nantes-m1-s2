@@ -26,8 +26,17 @@ Une liste non-exhaustive des opérations de cet opérateur est listée dans \cit
 
 
 \subsection{Utilisation des intervalles pour la notion de contraintes}
-\'Egalement, la méthode de résolution par intervalles utilise des notions de programmation par contraintes. On y retrouve celle de consistance. La consistance consiste à rechercher les valeurs cohérentes dans le domaine des variables pour les contraintes du \textsc{CSP}. Par exemple un \textsc{CSP} est globalement consistant lorsque toutes les valeurs des variables de son domaine appartiennent au moins à une solution. On devine qu'il peut être intéressant pour un \textsc{CSP} de posséder la consistance la plus forte possible. Ainsi les opérations pour la résolution de problèmes seront moins nombreuses.
+\'Egalement, la méthode de résolution par intervalles utilise des notions de programmation par contraintes. On y retrouve celle de consistance. La consistance consiste à rechercher les valeurs cohérentes dans le domaine des variables pour les contraintes du \textsc{CSP}. Par exemple un \textsc{CSP} est globalement consistant lorsque toutes les valeurs des variables de son domaine appartiennent au moins à une solution. On devine qu'il peut être intéressant pour un \textsc{CSP} de posséder la consistance la plus forte possible. Ainsi les opérations pour la résolution de problèmes seront moins nombreuses. Cette méthode appliquée au problème d'intersection de deux cercles, illustre les solutions de la manière suivante   
 
+\begin{figure}[ht!] %on ouvre l'environnement figure
+  \center
+\includegraphics[scale=0.55]{img/circle-circle}
+  \caption{Intersection de deux cercles} %la légende
+ \label{fig:Deuxcerlces} %la légende	
+\end{figure} %on ferme l'environnement figure
+On visualise ici que les solution sont encadrées par des \og boîtes \fg{} rouges, et non réduites à des points. 
+
+{\color{red} A CHANGER SELON LE RETOUR DE C.JERMANN}
 Dans le cas du problème \ref{eq2}, il serait possible d'avoir des solutions différentes selon la consistance choisie. Avec une hull-consistance, nous obtiendrions une boite contenant les deux solutions mais aussi une bonne partie de l'intersection des deux cercles. Tandis qu'avec une arc-consistance (cf. \cite{Goualard} Chapitre 3, section 3.3, définition 3.5), nous obtiendrions deux boites, plus petites que dans le premier cas, et chacune contenant une des solutions.
 
 
