@@ -3,31 +3,31 @@
 
 
 \subsection{Algorithmes}
-L'algorithme de Branch and Prune  est au centre de la méthode de résolution par intervalles. Nous résumons ici ses deux étapes :  % met en oeuvre deux opérations détaillées dans \cite{Neumaier}: \\
+L'algorithme de \emph{Branch and Prune} est au centre de la méthode de résolution par intervalles. Nous résumons ici ses deux étapes :  % met en oeuvre deux opérations détaillées dans \cite{Neumaier}: \\
 %\begin{itemize}
 %\item{Branch}
 \paragraph{Branch :}
-\begin{quote}\emph{Diviser pour mieux régner}\end{quote} Cette méthode consiste à diviser récursivement un problème en deux sous problèmes. Appliquée à la méthode de résolution par intervalles, on découpe en deux l'intervalle concerné (en son milieu ou non). On obtient alors deux problèmes plus «petits» à étudier.%\clearpage
+\begin{quote}\emph{Diviser pour mieux régner}\end{quote} Cette méthode consiste à diviser récursivement un problème en deux sous problèmes. Appliquée à la méthode de résolution par intervalles, on découpe en deux l'intervalle concerné (en son milieu ou non). On obtient alors deux problèmes plus \og petits \fg{} à étudier.%\clearpage
 %\item{Prune}\\
 
 \paragraph{Prune :}
 La découpe d'un problème en sous problèmes peut amener à une situation ou un des sous problèmes créés ne contient aucune solution. On peut alors étudier et trier ces sous problèmes pour en supprimer les espaces de recherche superflus. Cette étape est appelée \emph{pruning}.
 
-Au bout d'un certain nombre d'itération, l'algorithme de Branch and Prune propose un ensemble de solutions sous la forme d'intervalles. On visualise sur la figure \ref{fig:CercleDisque} un tel ensemble dans le cas d'une intersection entre un cercle et d'un disque.
+Au bout d'un certain nombre d'itération, l'algorithme de \emph{Branch and Prune} propose un ensemble de solutions sous la forme d'intervalles.% On visualise sur la figure \ref{fig:CercleDisque} un tel ensemble dans le cas d'une intersection entre un cercle et d'un disque.
 
 
 
 
 
 \subsection{Données en sortie}
-En sortie l'algorithme va nous retourner un ensemble de boîtes. Cet ensemble garantissant, à contrario des méthodes numériques classiques, que toutes les solutions y sont incluses. La figure \ref{fig:CercleDisque} propose une illustration d'un tel ensemble dans le cas d'une intersection entre un cercle et un disque.
+En sortie l'algorithme va nous retourner un ensemble de boîtes. Cet ensemble garantissant, à contrario des méthodes numériques classiques, que toutes les solutions y sont incluses. Dans la section \ref{par:out} un exemple d'illustration d'un tel ensemble est donné.
 
-\begin{figure}[h!] %on ouvre l'environnement figure
-  \center
-\includegraphics[scale=0.5]{img/circle-disk}
-  \caption{Intersection d'un cercle et d'un disque} %la légende
- \label{fig:CercleDisque} %la légende
-\end{figure} %on ferme l'environnement figure
+%~ \begin{figure}[h!] %on ouvre l'environnement figure
+  %~ \center
+%~ \includegraphics[scale=0.5]{img/circle-disk}
+  %~ \caption{Intersection d'un cercle et d'un disque} %la légende
+ %~ \label{fig:CercleDisque} %la légende
+%~ \end{figure} %on ferme l'environnement figure
 
  Il est d'ailleurs possible de savoir si tout l'espace d'une boîte est solution du problème. En contrepartie on ne peut toujours garantir l'existence d'une solution dans une enveloppe, il peut donc exister une approximation autour des résultats de l'algorithme.
 
@@ -35,7 +35,7 @@ En sortie l'algorithme va nous retourner un ensemble de boîtes. Cet ensemble ga
  
  \section{Applications par des outils}
 \subsection{Realpaver}\label{realp}
-Developpé  au sein de l'équipe \textsc{OPTI}, cet outil reprend, entre autres, les méthodes de résolutions de contraintes géométriques par propagation d'intervalles. Il permet la résolution de systèmes d'équations à $n$ variables représentant des contraintes. Dans un soucis de précision ces solutions sont sous la forme d'intervalles. Les figures présentées dans ce chapitre (\ref{fig:Deuxcerlces}, \ref{fig:CercleDisque} et \ref{fig:CercleDisque}), correspondent à des pavages calculés par cet outil. \cite{realpaver}.
+Développé  au sein de l'équipe \textsc{OPTI}, cet outil reprend, entre autres, les méthodes de résolutions de contraintes géométriques par propagation d'intervalles. Il permet la résolution de systèmes d'équations à $n$ variables représentant des contraintes. Dans un soucis de précision ces solutions sont sous la forme d'intervalles \cite{realpaver}.% Les figures présentées dans ce chapitre (\ref{fig:Deuxcerlces}, \ref{fig:3Bconst} et \ref{fig:CercleDisque}), correspondent à des pavages calculés par cet outil. \cite{realpaver}.
 \paragraph{Problème}
 Soient deux disques, l'un de centre $(-1,0)$ et l'autre de centre $(1,0)$. Tous deux sont de rayon $2$. Donnez l'ensemble des solutions de l'intersection de ces deux disques.
 \paragraph{Modèle}
@@ -59,9 +59,9 @@ Constraints
   (x-x1)^2 + (y-y1)^2 <= R1^2
 ;
 \end{verbatim}
-\paragraph{Données en sortie}
-L'ensemble de solutions suivant \realpaver propose l'ensemble de solutions suivant : 
-{\color{red} A CHANGER}
+\paragraph{Données en sortie}\label{par:out}
+L'ensemble de solutions suivant \realpaver{} propose l'ensemble de solutions suivant : 
+
 \begin{verbatim}
 RealPaver v. 0.4 (c) LINA 2004
 
@@ -69,43 +69,33 @@ INITIAL BOX
   x in ]-oo , +oo[
   y in ]-oo , +oo[
 
-INNER BOX 1
-  x in [-0.3333333333333334 , +0.3333333333333333]
-  y in [-0.6666666666666667 , +0.6666666666666665]
-
-  precision: 1.33, elapsed time: 0 ms
-
-INNER BOX 2
-  x in [-0.2952060277213756 , +0.2952060277213757]
-  y in [-1.470023035500388 , -1.068344851083527]
-
-  precision: 0.59, elapsed time: 0 ms
+OUTER BOX 1
+  x in [0.7924334198270921 , 0.795689483022687]
+  y in [0.8806243697296342 , 0.8872330220900007]
 
 ...
 
-INNER BOX 999
-  x in [-0.7807367577388001 , -0.7676049444451444]
-  y in [0.8571753677312972 , 0.8833570617896725]
+OUTER BOX 3053
+  x in [-0.7956894830226868 , -0.7924334198270919]
+  y in [-0.8872330220900011 , -0.8806243697296345]
 
-  precision: 0.0262, elapsed time: 10 ms
+  precision: 0.00661, elapsed time: 150 ms
 
 END OF SOLVING
   Property:     reliable process (no solution is lost)
-  Elapsed time: 10 ms
-
-
+  Elapsed time: 150 ms
 \end{verbatim}
-
+Ces 3053 solutions proposées par \realpaver{} sont illustrées sur la figure \ref{fig:DisqueDisque}.
 \begin{figure}[ht!] %on ouvre l'environnement figure
   \center
-\includegraphics[scale=0.50]{img/disk-disk}
+\includegraphics[scale=0.40]{img/disk-disk}
   \caption{Intersection de deux disques} %la légende
  \label{fig:DisqueDisque} %la légende
 \end{figure} %on ferme l'environnement figure
 \clearpage
 \subsection{Autres outils existants}
 \begin{description}
-\item [CHOCO]  Projet commun  de l'École des Mines de Nantes, de \textsc{LIRMM} de Montpellier ansi que l'INRA de Toulouse. \textsc{CHOCO} est une librairie  \textsc{JAVA}  dédiée au résolution de \textsc{CSP} et à la programmation par contrainte. \cite{choco}
+\item [CHOCO]  Projet commun  de l'École des Mines de Nantes, de \textsc{LIRMM} de Montpellier ansi que l'\textsc{INRA} de Toulouse. \textsc{CHOCO} est une librairie  \textsc{JAVA}  dédiée au résolution de \textsc{CSP} et à la programmation par contrainte. \cite{choco}
  \begin{figure}[h] %on ouvre l'environnement figure
   \center
 \includegraphics[scale=0.50]{img/choco}
