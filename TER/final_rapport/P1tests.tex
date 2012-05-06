@@ -1,6 +1,6 @@
 \section{Chargement de pavages}
 \label{chap:Chargement}
-Pour la génération des boîtes le nombre de caractéristiques est fixé à 20 et la dimension du pavage à 100. Ces valeurs ont été choisies car elles peuvent être considérées comme les valeurs au pire renvoyées par \emph{Realpaver}. Cependant les caractéristiques pouvant être de différents types et ne connaissant pas la probabilité d'apparition de chacun de ces types, nous avons préféré construire des caractéristiques de chaque type en proportion un tiers. 
+Pour la génération des boîtes le nombre de caractéristiques est fixé à 20 et la dimension du pavage à 100. Ces valeurs ont été choisies car elles peuvent être considérées comme les valeurs au pire renvoyées par \realpaver. Cependant les caractéristiques pouvant être de différents types et ne connaissant pas la probabilité d'apparition de chacun de ces types, nous avons préféré construire des caractéristiques de chaque type en proportion un tiers (sept Number, sept String, six Interval). 
 
 \subsection{Map internes}
 
@@ -51,7 +51,6 @@ Pour les structures liste et tableau l'organisation des structures de données e
 \paragraph{}Les résultats obtenus sont indiqués dans la table \ref{tab:arraylist} et \ref{tab:linkedlist}
 On peut constater que les structures de données en liste sont bien meilleures vis-à-vis du temps de construction et de l'espace mémoire(Tout du moins pour l'ArrayList) que les structures map de la première partie. Étrangement la structure LinkedList demande un espace mémoire presque 60\% plus grand que celui alloué pour l'ArrayList.
 
-Bien que l'ArrayList soit plus légère que les Maps de la prémière partie et plus rapide à construire, il est probable que celle-ci ne soit pas efficace pour l'accès. Nous traiterons cela dans une seconde étude.
 
 \subsection{Maps globales}
 Les boîtes sont composées  de 4 ArrayLists : 
