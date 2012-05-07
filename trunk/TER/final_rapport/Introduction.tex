@@ -1,7 +1,7 @@
 \chapter{Introduction}
 
 \section{Présentation du sujet}
-Le module \emph{Initiation à la recherche} du 2\up{nd} semestre du master \textsc{ALMA} propose une initiation au métier de chercheur en informatique. Dans le cadre de ce module notre binôme a choisi le sujet : \emph{Conception et réalisation d’un logiciel interactif de visualisation de pavages 2D/3D}. Ce sujet à la particularité d'être la reprise d'un projet de stage. Ce stage effectué au cours de l'été 2011 par un membre du binôme avait pour objectif initial la conception et la réalisation d'un outil de visualisation des calculs en sortie du logiciel \realpaver (\cf{} \ref{realp}) développé au sein de l'équipe d'accueil. Le développement de ce stage a suivit le modèle du cycle en V.
+Le module \emph{Initiation à la recherche} du 2\up{nd} semestre du master \textsc{ALMA} propose une initiation au métier de chercheur en informatique. Dans le cadre de ce module notre binôme a choisi le sujet : \emph{Conception et réalisation d’un logiciel interactif de visualisation de pavages 2D/3D}. Ce sujet à la particularité d'être la reprise d'un projet de stage. Ce stage effectué au cours de l'été 2011 par un membre du binôme avait pour objectif initial la conception et la réalisation d'un outil de visualisation des calculs en sortie du logiciel \realpaver (\cf{} Section \ref{realp}) développé au sein de l'équipe d'accueil. Le développement de ce stage a suivit le modèle du cycle en V.
 
 % décrit par la figure \ref{fig:vcycle}.
 % \begin{figure}[htbp]
@@ -15,9 +15,9 @@ Le module \emph{Initiation à la recherche} du 2\up{nd} semestre du master \text
 Au terme des deux mois de stage, le travail accompli fut le suivant :
 \begin{enumerate}
 \item 
-Rédaction du cahier des charges (\cf{} annexe \ref{sec:cac})
+Rédaction du cahier des charges (\cf{} Annexe \ref{sec:cac})
 \item
-Rédaction du document de spécification (\cf{} annexe \ref{sec:spe}).
+Rédaction du document de spécification (\cf{} Annexe \ref{sec:spe}).
 \end{enumerate} 
 
 
@@ -29,7 +29,7 @@ L'équipe Optimisation globale, optimisation multi-objectifs\cite{opti} (\textsc
 \section{Déroulement du projet}
 Au cours des premières semaines, C.\textsc{Jermann} nous a proposé d'étudier de manières générales les sujets de l'équipe \textsc{OPTI}. Un bref bilan de cette étude est proposé dans le chapitre \ref{chap:doc}. En parallèle, nous avons manipulé quelques outils ad-hoc tel que \emph{gnuplot} \cite{gnu}, utilisés jusqu'à présent par l'équipe \textsc{OPTI} pour représenter les valuations calculées par \realpaver. Par la suite nous avons pris (ou repris) connaissance du cahier des charges et du document de spécifications, en apportant certaines corrections à ce dernier. 
 
-\paragraph{}Une problématique est apparue quant à l'axe d'étude à choisir pour le déroulement du projet. En effet une des caractéristiques principale de l'outil à concevoir, est de manipuler un nombre potentiellement très grand de données (\cf{} \ref{chap:con}). Nos alternatives étaient alors les suivantes : 
+\paragraph{}Une problématique est apparue quant à l'axe d'étude à choisir pour le déroulement du projet. En effet une des caractéristiques principale de l'outil à concevoir, est de manipuler un nombre potentiellement très grand de données (\cf{} Chapitre \ref{chap:con}). Nos alternatives étaient alors les suivantes : 
 \begin{enumerate}
 \item
 Étudier les différents algorithmes et structures de données nécessaires à l'outil.
@@ -42,9 +42,9 @@ Ce second choix impliquait la possibilité au terme de l'année, de proposer un 
 \section{Caractéristiques de l'outil}
 Nous rappellerons dans cette section quelques notions propres à l'outils et indispensables à la compréhension de cette étude.  
 \begin{description}
-\item[Données en entrée] Un format spécifique à l'outil est défini dans le document de spécification(\cf{} annexe \ref{sec:spe}).
- \item[Fenêtre de visualisation] Il s'agit de la partie du pavage visible à l'écran à un instant t. Selon le cahier des charges, l'utilisateur peut \og naviguer\fg{} dans l'environement contenant le pavage. La gestion de la fenêtre de visualisation est l'une des problématiques abordées dans cette étude (\cf{} section \ref{sec:vis}).
-\item[Dimensions visualisées] L'intitulé du sujet d'étude précise que l'outil doit permettre visualisation de deux ou trois dimensions. Cependant \realpaver{} est en mesure de calculer des problèmes à $n$ dimension. L'utilisateur doit donc préciser les deux ou trois variables qu'il souhaite afficher à l'écran.  
-\item[Filtre] Le cahier des charges demande la possibilité d'appliquer des filtres sur le pavage. Il s'agit d'effectuer une classification des boîtes déterminée par l'utilisateur (\cf{} \ref{sec:spe} section 1.2, 5\up{ème} point. Une telle opération sur le pavage va nécessiter de nombreuses opérations (accès aux caractéristiques d'une boîte, tris,\dots). La mise en œuvre de ces opération est l'une des problématiques principale de la conception.    
-\item[Données en sortie] Une sauvegarde du pavage visualisé est demandé par le cahier des charges. Il s'agit pour l'outil d'une simple \og sauvegarde \fg{} utilisant le même format que le fichier d'entrée. La création d'images à partir de l'écran de visualisation est aussi demandée.(\cf{} annexe \ref{sec:spe})
+\item[Données en entrée] Un format spécifique à l'outil est défini dans le document de spécification(\cf{} Annexe \ref{sec:spe}).
+ \item[Fenêtre de visualisation] Il s'agit de la partie du pavage visible à l'écran à un instant t. Selon le cahier des charges, l'utilisateur peut \og naviguer\fg{} dans l'environement contenant le pavage. La gestion de la fenêtre de visualisation est l'une des problématiques abordées dans cette étude (\cf{} Section \ref{sec:vis}).
+\item[Dimensions visualisées] L'intitulé du sujet d'étude précise que l'outil doit permettre visualisation de deux ou trois dimensions. Cependant \realpaver{} est en mesure de calculer des problèmes à $n$ dimension. L'utilisateur doit donc préciser les deux ou trois variables sur lesquelles seront effectuées la projection du pavage.  
+\item[Filtre] Le cahier des charges demande la possibilité d'appliquer des filtres sur le pavage. Il s'agit d'effectuer une classification des boîtes déterminée par l'utilisateur (\cf{} Annexe \ref{sec:spe} section 1.2, 5\up{ème} point. Une telle opération sur le pavage va nécessiter de nombreuses opérations (accès aux caractéristiques d'une boîte, tris,\dots). La mise en œuvre de ces opération est l'une des problématiques principale de la conception.    
+\item[Données en sortie] Une sauvegarde du pavage visualisé est demandé par le cahier des charges. Il s'agit pour l'outil d'une simple \og sauvegarde \fg{} utilisant le même format que le fichier d'entrée. La création d'images à partir de l'écran de visualisation est aussi demandée.(\cf{} Annexe \ref{sec:spe})
 \end{description}
