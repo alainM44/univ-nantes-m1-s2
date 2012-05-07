@@ -1,9 +1,9 @@
 
-\section{Annexes}
-\subsection{Études de performance de création d'une boîte}
+\section{Annexes}\label{sec:annexe}
+\subsection{Études de performance de création d'une boîte}\label{sec:creation}
 \subsubsection{Études de performance avec des Maps}
 
-\begin{table}[htpb]
+\begin{table}[h]
   \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -24,7 +24,7 @@ Nombre de boîtes & CPU & Mémoire totale & Mémoire utilisée\\
 \label{tab:hashmap1}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[h]
   \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -66,7 +66,7 @@ Nombre de boîtes & CPU & Mémoire totale & Mémoire utilisée\\
 %\label{tab:hashmap2}
 %\end{table}
 
-\begin{table}[htbp]
+\begin{table}[h]
   \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -89,7 +89,7 @@ Nombre de boîtes & CPU & Mémoire totale & Mémoire utilisée\\
 
 
 
-\begin{table}[htbp]
+\begin{table}[h]
   \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -110,6 +110,7 @@ Nombre de boîtes & CPU & Mémoire totale & Mémoire utilisée\\
 \label{tab:treemap2}
 \end{table}
 
+\clearpage
 \subsubsection{Études de performance avec des Tableaux et des Listes}
 
 \begin{table}[h]
@@ -133,7 +134,7 @@ Nombre de boîtes & CPU & Mémoire totale & Mémoire utilisée\\
  \label{tab:arraylist}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[h]
   \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -153,11 +154,11 @@ Nombre de boîtes & CPU & Mémoire totale & Mémoire utilisée\\
 \caption{Étude de performances avec des LinkedList}
 \label{tab:linkedlist}
 \end{table}
+
+
+
+
 \clearpage
-
-
-
-
 \subsubsection{Études de performance avec des maps globales}
 %hashmap
 \begin{table}[h]
@@ -299,7 +300,8 @@ Nombre de boîtes & CPU & Mémoire totale & Mémoire utilisée\\
 %\label{tab:treehashmapglobalInit}
 %\end{table}
 
-\subsection{Études de performance d'accès aux éléments d'une boîte}
+\clearpage
+\subsection{Études de performance d'accès aux éléments d'une boîte}\label{sec:acces}
 \subsubsection{Comparaison des performances d'accès aux caractéristiques}
 %Accès HashMap et TreeMap
 \begin{table}[h]
@@ -365,6 +367,7 @@ TreeMap & 0.22s & 1,99s &  19,48s\\
 \label{tab:accesHMG}
 \end{table}
 
+\clearpage
 \subsubsection{Comparaison des performances d'accès aux coordonnées}
 %Accès Coord
 \begin{table}[h]
