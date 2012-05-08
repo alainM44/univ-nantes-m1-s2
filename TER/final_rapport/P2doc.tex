@@ -13,14 +13,14 @@ L'algorithme de \emph{Branch and Prune} est au centre de la méthode de résolut
 \paragraph{Prune :}
 La découpe d'un problème en sous problèmes peut amener à une situation ou un des sous problèmes créés ne contient aucune solution. On peut alors étudier et trier ces sous problèmes pour en supprimer les espaces de recherche superflus. Cette étape est appelée \emph{pruning}.
 
-Au bout d'un certain nombre d'itération, l'algorithme de \emph{Branch and Prune} propose un ensemble de solutions sous la forme d'intervalles.% On visualise sur la figure \ref{fig:CercleDisque} un tel ensemble dans le cas d'une intersection entre un cercle et d'un disque.
+Au bout d'un certain nombre d'itérations, l'algorithme de \emph{Branch and Prune} propose un ensemble de solutions sous la forme d'intervalles.% On visualise sur la figure \ref{fig:CercleDisque} un tel ensemble dans le cas d'une intersection entre un cercle et d'un disque.
 
 
 
 
 
 \subsection{Données en sortie}
-En sortie l'algorithme va nous retourner un ensemble de boîtes. Cet ensemble garantissant, à contrario des méthodes numériques classiques, que toutes les solutions y sont incluses. Dans la section \ref{par:out} un exemple d'illustration d'un tel ensemble est donné.
+En sortie, l'algorithme va nous retourner un ensemble de boîtes. Cet ensemble garantissant, à contrario des méthodes numériques classiques, que toutes les solutions y sont incluses. Dans la section \ref{par:out} un exemple d'illustration d'un tel ensemble est donné.
 
 %~ \begin{figure}[h!] %on ouvre l'environnement figure
   %~ \center
@@ -60,7 +60,7 @@ Constraints
 ;
 \end{verbatim}
 \paragraph{Données en sortie}\label{par:out}
-L'ensemble de solutions suivant \realpaver{} propose l'ensemble de solutions suivant : 
+\realpaver{} propose l'ensemble de solutions suivant : 
 
 \begin{verbatim}
 RealPaver v. 0.4 (c) LINA 2004
@@ -85,7 +85,7 @@ END OF SOLVING
   Property:     reliable process (no solution is lost)
   Elapsed time: 150 ms
 \end{verbatim}
-Ces 3053 solutions proposées par \realpaver{} sont illustrées sur la figure \ref{fig:DisqueDisque}.
+Ces 3053 solutions sont illustrées sur la figure \ref{fig:DisqueDisque}.
 \begin{figure}[ht!] %on ouvre l'environnement figure
   \center
 \includegraphics[scale=0.40]{img/disk-disk}

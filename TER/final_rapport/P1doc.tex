@@ -26,21 +26,21 @@ Une liste non-exhaustive des opérations de cet opérateur est listée dans \cit
 
 
 \subsection{Utilisation des intervalles pour la notion de contraintes}
-Également, la méthode de résolution par intervalles utilise des notions de programmation par contraintes. On y retrouve celle de consistance. La consistance consiste à rechercher les valeurs cohérentes dans le domaine des variables pour les contraintes du \textsc{CSP}. Par exemple un \textsc{CSP} est globalement consistant lorsque toutes les valeurs des variables de son domaine appartiennent au moins à une solution. On devine qu'il peut être intéressant pour un \textsc{CSP} de posséder la consistance la plus forte possible. Ainsi les opérations pour la résolution de problèmes seront moins nombreuses. %Cette méthode appliquée au problème d'intersection de deux cercles, illustre les solutions de la manière suivante   
+Également, la méthode de résolution par intervalles utilise des notions de programmation par contraintes. On y retrouve celle de consistance. La consistance consiste à rechercher les valeurs cohérentes dans le domaine des variables pour les contraintes du \textsc{CSP}. Par exemple un \textsc{CSP} est globalement consistant lorsque toutes les valeurs des variables de son domaine appartiennent au moins à une solution. On devine qu'il peut être intéressant pour un \textsc{CSP} de posséder la consistance la plus forte possible. Ainsi les opérations pour la résolution de problèmes seront moins nombreuses. Cette méthode appliquée au problème d'intersection de deux cercles, illustre les solutions de la manière suivante :
 
-%~ \begin{figure}[ht!] %on ouvre l'environnement figure
-  %~ \center
-%~ \includegraphics[scale=0.55]{img/circle-circle}
-  %~ \caption{Intersection de deux cercles} %la légende
- %~ \label{fig:Deuxcerlces} %la légende	
-%\end{figure} %on ferme l'environnement figure
-On visualise ici que les solutions sont encadrées par des \og boîtes \fg{} rouges, et non réduites à des points. 
-
-Dans le cas du problème \ref{eq2}, il serait possible d'avoir des solutions différentes selon la consistance choisie. Avec une hull-consistance, nous obtiendrions une boite contenant les deux solutions mais aussi une bonne partie de l'intersection des deux cercles. La \emph{3B-consistance} est une méthode plus puissante. Cette méthode vérifie, à l'instanciation de deux variables, vérifie localement toutes les contraintes. Une illustration des différences entre ces méthodes est proposée sur la figure \ref{fig:3Bconst}. Le problème résolu est celui de l'intersection de deux disques.
+ \begin{figure}[ht!] %on ouvre l'environnement figure
+   \center
+ \includegraphics[scale=0.55]{img/circle-circle}
+   \caption{Intersection de deux cercles} %la légende
+  \label{fig:Deuxcerlces} %la légende	
+\end{figure} %on ferme l'environnement figure
+{\color{red}On visualise sur la figure \ref{fig:Deuxcerlces} que les solutions sont encadrées par des \og boîtes \fg{} rouges, et non réduites à des points. }
+\clearpage
+Dans le cas du problème \ref{eq2}, il serait possible d'avoir des solutions différentes selon la consistance choisie. Avec une \emph{Hull-consistance}, nous obtiendrions une boite contenant les deux solutions mais aussi une bonne partie de l'intersection des deux cercles. La \emph{3B-consistance} est une méthode plus puissante. Cette méthode vérifie, à l'instanciation de deux variables, toutes les contraintes. Une illustration des différences entre ces deux méthodes est proposée sur la figure \ref{fig:3Bconst}. Le problème résolu est celui de l'intersection de deux disques.
 \begin{figure}[ht!] %on ouvre l'environnement figure
   \center
 \includegraphics[scale=0.35]{img/disk-disk2}
-  \caption{Comparaison graphique entre la Hull-consistance (rouge) et la 3B-consistance (orange)} %la légende
+  \caption{Comparaison graphique entre la \emph{Hull-consistance} (rouge) et la 3B-consistance (orange)} %la légende
  \label{fig:3Bconst} %la légende	
 \end{figure} %on ferme l'environnement figure
 
