@@ -3,7 +3,7 @@
 
 \section{Introduction}%{\color{red} À discuter}
 
-L'objectif de ce chapitre est de mener une étude sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Dans une première partie, nous nous intéresserons à l'opération d'accès à une caractéristique ou d'une donnée d'une boîte ainsi qu'à l'occupation mémoire de cette dernière. Les problématiques liées à l'implémentation d'un pavage (ensemble de boîtes) est par la suite abordé. Il s'appuie sur le document de spécification (\cf{}  Annexe \ref{sec:spe}). Ce document sur les calculs de complexité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème. Le nombre de boîtes réellement utilisées dans le pavage est représenté par $N$. 
+L'objectif de ce chapitre est de mener une étude sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Dans une première partie, nous nous intéresserons à l'opération d'accès à une caractéristique ou d'une donnée d'une boîte ainsi qu'à l'occupation mémoire de cette dernière. Les problématiques liées à l'implémentation d'un pavage (ensemble de boîtes) est par la suite abordé. Il s'appuie sur le document de spécification (\cf{}  Annexe \ref{sec:spe}). Ce document sur les calculs de complexité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème.
 
 
 La seconde partie sera consacrée à la recherche de structures efficaces pour la réalisation du logiciel de visualisation. Dans cette partie, nous tenterons de répondre aux problèmes de gestion d'un grand nombre de boîtes, ainsi que ceux liés aux changement des variables de projection du pavage.
@@ -36,14 +36,14 @@ Ces données seront régulièrement requises lors de la mise en œuvre des algor
 \item
   Une liste : Si l'accès à une coordonnée n'est pas direct ($O(n)$), les opérations d'ajout et de suppression sont en temps constant.
 \item
-  Une table de hachage : Coûteuse si la fonction de hachage n'est pas appropriée, une table de hachage propose cependant un accès en $O(1)$.  Cependant le phénomène de collisions (mauvaise répartition des clefs entrainant un conflit entre deux valeurs) est à prendre en considération :
+  Une table de hachage : Coûteuse si la fonction de hachage n'est pas appropriée, une table de hachage propose cependant un accès en $O(1)$.  Cependant le phénomène de collisions (mauvaise répartition des clefs entraînant un conflit entre deux valeurs) est à prendre en considération :
 
 \begin{description}
 \item[Implémentation avec un tableau dynamique] Une telle structure permet de garantir un accès en temps constant. Cependant chaque collision va doubler l'occupation mémoire du tableau. Or même si la fonction de hachage est bonne, il est possible d'avoir au moins une collision, ce qui aurait pour conséquence une perte de l'espace mémoire qui se répercuterait sur chaque boîte.
-\item[Gestion des collisions avec chaînage] Contrairement à la structure précédente, cette méthode permet de ne pas occuper trop d'espace en chainant les éléments entrants en collision. Malheureusement la complexité en pire cas des opérations d'accès passe en $O(n)$. En revanche, grâce à une bonne fonction de hachage, on accèdera généralement en temps constant sans contre coût mémoire. 
+\item[Gestion des collisions avec chaînage] Contrairement à la structure précédente, cette méthode permet de ne pas occuper trop d'espace en chaînant les éléments entrants en collision. Malheureusement la complexité en pire cas des opérations d'accès passe en $O(n)$. En revanche, grâce à une bonne fonction de hachage, on accédera généralement en temps constant sans contre coût mémoire. 
 \end{description}
 
-Le passage en revue de ces différentes structures écarte la liste et la table de hachage implémentée par un tableau dynamique. En effet les performances des opérations d'accès de la liste ne sont pas raisonnables. De même l'implémentation d'une table de hachage par un tableau dynamique risque d'entrainer une perte de mémoire trop importante.
+Le passage en revue de ces différentes structures écarte la liste et la table de hachage implémentée par un tableau dynamique. En effet les performances des opérations d'accès de la liste ne sont pas raisonnables. De même l'implémentation d'une table de hachage par un tableau dynamique risque d'entraîner une perte de mémoire trop importante.
 %\item
  % Une TreeMap \cite{TreeMap}. Implémentation de base des arbres rouges noirs, cette map a la particularité de posséder des clefs triées. Ainsi les complexités de plusieurs opérations telle que l'accès en $O(\log{n})$. Dans le cas d'un grand nombre de valeurs à stocker, il est plus performant de construire la TreeMap à partir d'une HashMap.
 
@@ -55,7 +55,7 @@ Le passage en revue de ces différentes structures écarte la liste et la table 
 Un problème majeur apparaît pour l'instanciation des boîtes. On rappelle qu'une caractéristique à plusieurs types (\verb+String+, \verb+Number+ ou \verb+Interval+). Plusieurs solutions sont envisageables : 
 \begin{itemize}
 \item
-  Une Map unique contenant des \verb+String+ stocke les différentes caractéristiques de la boîte. On aura casté les attributs \verb+Number+ ou \verb+Interval+ en \verb+String+. Il sera alors nécessaire, pour chaque futurs accès, d'effectuer un cast dynamique. On rajoute alors une constante supplémentaire à la complexité de cette opération. 
+  Une Map unique contenant des \verb+String+ stocke les différentes caractéristiques de la boîte. On aura casté les attributs \verb+Number+ ou \verb+Interval+ en \verb+String+. Il sera alors nécessaire, pour chaque futur accès, d'effectuer un cast dynamique. On rajoute alors une constante supplémentaire à la complexité de cette opération. 
 \item 
 Trois tableaux (un pour chaque type) au sein d'une boîte. Trois Maps (une pour chaque type) \og générales \fg{} au niveau du pavage. La clef d'une Map est l'id de la caractéristique et la valeur de la Map son indice dans le tableau concret. La boîte peut alors retrouver la valeur de la caractéristique au sein de son tableau.
 \item 
@@ -74,7 +74,7 @@ Le cahier de spécification exige de l'outil la capacité à charger un pavage d
 \paragraph{Étude de structures}
 
 \begin{description}
- \item[Vector] Collection de données à accès direct par indice. Le nombre de boîte étant donné dans l'entête du fichier d'entrée, une implémentation par un tableau statique proposerait une complexité en temps égale à $O(n)$ pour l'opération de stockage du pavage. Si l'accès à une boîte à partir de son indice serait direct, l'opération de recherche en revanche aurait une complexité en temps égale à $O(n)$. 
+ \item[Vector] Collection de données à accès direct par indice. Le nombre de boîtes étant donné dans l'entête du fichier d'entrée, une implémentation par un tableau statique proposerait une complexité en temps égale à $O(n)$ pour l'opération de stockage du pavage. Si l'accès à une boîte à partir de son indice est direct, l'opération de recherche en revanche aurait une complexité en temps égale à $O(n)$. 
 
 \item[Dictionnaire]
 Collection de données à accès direct par clef. Dans l'hypothèse de posséder une fonction de hachage ne provoquant pas de collisions, une implémentation par une fonction de hachage propose une complexité en temps égale à $O(n)$ (à nouveau grâce à la connaissance du nombre de boîtes dans l'entête du fichier d'entrée).
@@ -122,7 +122,7 @@ L'avantage des arbres a-b est que leurs hauteurs  sont comprises entres les vale
 \paragraph{Brève conclusion}
 Ce passage en revue de ces différentes possibilités permet, pour certaines d'entre elles, de suggérer un usage dans certaines conditions.  En effet les structures telles que les \emph{dictionnaires} ou les \emph{vectors} ne sont pas recommandables pour le stockages du pavage. On peut notamment leurs reprocher le coût trop élevé de l'opération de recherche de la structure \emph{vector}. Quant aux \emph{dictionnaires}, ses performances sont restrictives à l'existence d'une fonction de hachage ne provoquant pas de collisions. 
 
-Les structures arborescences ont l'atout de pouvoir stocker et manipuler un grand nombre d'entités par des opérations ayant, la plupart du temps, des complexités en temps d'ordre logarithmique. On peut cependant envisager une utlilsation de structures à accès direct (\emph{vectors}, \emph{dictionnaires}) en parallèle de structures arborescences dans le cadre de certaines opérations (recherche d'une liste de boîtes pour l'application d'un \emph{filtre}, d'une vue,\dots{}). En revanche, le maintien de la cohérence entre une structure contenant le pavage et ces structures \og secondaires \fg{} introduit une redondance et donc un coût en mémoire.
+Les structures arborescences ont l'atout de pouvoir stocker et manipuler un grand nombre d'entités par des opérations ayant, la plupart du temps, des complexités en temps d'ordre logarithmique. On peut cependant envisager une utilisation de structures à accès direct (\emph{vectors}, \emph{dictionnaires}) en parallèle de structures arborescences dans le cadre de certaines opérations (recherche d'une liste de boîtes pour l'application d'un \emph{filtre}, d'une vue,\dots{}). En revanche, le maintien de la cohérence entre une structure contenant le pavage et ces structures \og secondaires \fg{} introduit une redondance et donc un coût en mémoire.
 
 \input{Stockage}
 

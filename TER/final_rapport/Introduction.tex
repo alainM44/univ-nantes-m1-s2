@@ -1,7 +1,7 @@
 \chapter{Introduction}
 
 \section{Présentation du sujet}
-Le module \emph{Initiation à la recherche} du 2\up{nd} semestre du master \textsc{ALMA} propose une initiation au métier de chercheur en informatique. Dans le cadre de ce module notre binôme a choisi le sujet : \emph{Conception et réalisation d’un logiciel interactif de visualisation de pavages 2D/3D}. Ce sujet à la particularité d'être la reprise d'un projet de stage. Ce stage effectué au cours de l'été 2011 par un membre du binôme avait pour objectif initial la conception et la réalisation d'un outil de visualisation des calculs en sortie du logiciel \realpaver (\cf{} Section \ref{realp}) développé au sein de l'équipe d'accueil. Le développement de ce stage a suivit le modèle du cycle en V.
+Le module \emph{Initiation à la recherche} du 2\up{nd} semestre du master \textsc{ALMA} propose une initiation au métier de chercheur en informatique. Dans le cadre de ce module notre binôme a choisi le sujet : \emph{Conception et réalisation d’un logiciel interactif de visualisation de pavages 2D/3D}. Ce sujet à la particularité d'être la reprise d'un projet de stage. Ce stage effectué au cours de l'été 2011 par un des membres du binôme avait pour objectif initial la conception et la réalisation d'un outil de visualisation des calculs en sortie du logiciel \realpaver (\cf{} Section \ref{realp}) développé au sein de l'équipe d'accueil. Le développement de ce stage a suivit le modèle du cycle en V.
 
 % décrit par la figure \ref{fig:vcycle}.
 % \begin{figure}[htbp]
@@ -23,7 +23,7 @@ Rédaction du document de spécification (\cf{} Annexe \ref{sec:spe}).
 
 
 %exlpliquer ce que fait le logiciel (entrée et sortie),projection des dimensions notions fe,être de visualisation( ce n'est quune partie du pavage ... )  
-\section{\'Equipe d'accueil}
+\section{Équipe d'accueil}
 L'équipe Optimisation globale, optimisation multi-objectifs\cite{opti} (\textsc{OPTI}) du laboratoire \textsc{LINA}\cite{lina} travaille principalement sur des méthodes visant à la résolution efficace de problèmes d’optimisation complexes.  
 
 \section{Déroulement du projet}
@@ -43,8 +43,8 @@ Ce second choix impliquait la possibilité au terme de l'année, de proposer un 
 Nous rappellerons dans cette section quelques notions propres à l'outils et indispensables à la compréhension de cette étude.  
 \begin{description}
 \item[Données en entrée] Un format spécifique à l'outil est défini dans le document de spécification(\cf{} Annexe \ref{sec:spe}).
- \item[Fenêtre de visualisation] Il s'agit de la partie du pavage visible à l'écran à un instant t. Selon le cahier des charges, l'utilisateur peut \og naviguer\fg{} dans l'environement contenant le pavage. La gestion de la fenêtre de visualisation est l'une des problématiques abordées dans cette étude (\cf{} Section \ref{sec:vis}).
-\item[Dimensions visualisées] L'intitulé du sujet d'étude précise que l'outil doit permettre visualisation de deux ou trois dimensions. Cependant \realpaver{} est en mesure de calculer des problèmes à $n$ dimension. L'utilisateur doit donc préciser les deux ou trois variables sur lesquelles seront effectuées la projection du pavage.  
-\item[Filtre] Le cahier des charges demande la possibilité d'appliquer des filtres sur le pavage. Il s'agit d'effectuer une classification des boîtes déterminée par l'utilisateur (\cf{} Annexe \ref{sec:spe} section 1.2, 5\up{ème} point. Une telle opération sur le pavage va nécessiter de nombreuses opérations (accès aux caractéristiques d'une boîte, tris,\dots). La mise en œuvre de ces opération est l'une des problématiques principale de la conception.    
+ \item[Fenêtre de visualisation] Il s'agit de la partie du pavage visible à l'écran à un instant~t. Selon le cahier des charges, l'utilisateur peut \og naviguer\fg{} dans l'environnement contenant le pavage. La gestion de la fenêtre de visualisation est l'une des problématiques abordées dans cette étude (\cf{} Section \ref{sec:vis}).
+\item[Dimensions visualisées] L'intitulé du sujet d'étude précise que l'outil doit permettre une visualisation de deux ou trois dimensions. Cependant \realpaver{} est en mesure de calculer des problèmes à $n$ dimensions. L'utilisateur doit donc préciser les deux ou trois variables sur lesquelles seront effectuées la projection du pavage.  
+\item[Filtre] Le cahier des charges demande la possibilité d'appliquer des filtres sur le pavage. Il s'agit d'effectuer une classification des boîtes déterminée par l'utilisateur (\cf{} Annexe \ref{sec:spe} section 1.2, 5\up{ème} point). Une telle opération sur le pavage va nécessiter de nombreuses opérations (accès aux caractéristiques d'une boîte, tris,\dots). La mise en œuvre de ces opération est l'une des problématiques principale de la conception.    
 \item[Données en sortie] Une sauvegarde du pavage visualisé est demandé par le cahier des charges. Il s'agit pour l'outil d'une simple \og sauvegarde \fg{} utilisant le même format que le fichier d'entrée. La création d'images à partir de l'écran de visualisation est aussi demandée.(\cf{} Annexe \ref{sec:spe})
 \end{description}
