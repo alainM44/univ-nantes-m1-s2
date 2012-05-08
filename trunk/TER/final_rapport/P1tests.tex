@@ -12,10 +12,10 @@ Pour les Maps l'organisation des structures de données est la suivante :
 \item Il n'y a aucune structure de données globale, tout est stocké au niveau de la boîte. On a donc dans chaque boîte l'identifiant et la valeur de chaque caractéristique ou intervalle.
  \item Chaque boîte contient quatre Maps contenant les différentes informations :
 \begin{itemize}
- \item Une Map pour l'ensemble des intervalles coordonnées.
-\item Une Map pour les caractéristiques de type String.
-\item Une Map pour les caractéristiques de type Interval.
-\item Une Map pour les caractéristiques de type Number.
+ \item Une Map pour l'ensemble des {\color{red}intervalles coordonnées.}
+\item Une Map pour les caractéristiques de type \verb+String+.
+\item Une Map pour les caractéristiques de type \verb+Interval+.
+\item Une Map pour les caractéristiques de type \verb+Number+.
 \end{itemize}
 \end{itemize}
 
@@ -51,28 +51,28 @@ Pour les structures liste et tableau l'organisation des structures de données e
 \end{itemize}
 
 \paragraph{}Les résultats obtenus sont indiqués dans la table \ref{tab:arraylist} et \ref{tab:linkedlist}
-On peut constater que les structures de données en liste sont bien meilleures vis-à-vis du temps de construction et de l'espace mémoire(Tout du moins pour l'ArrayList) que les structures map de la première partie. Étrangement la structure LinkedList demande un espace mémoire presque 60\% plus grand que celui alloué pour l'ArrayList.
+On peut constater que les structures de données en liste sont bien meilleures vis-à-vis du temps de construction et de l'espace mémoire (tout du moins pour l'ArrayList) que les structures de type Map de la première partie. Étrangement la structure LinkedList demande un espace mémoire presque 60\% plus grand que celui alloué pour l'ArrayList.
 
 
 \subsection{Maps globales}
 Les boîtes sont composées  de 4 ArrayLists : 
 \begin{itemize}
   \item Une ArrayList pour l'ensemble des intervalles coordonnées.
-  \item Une ArrayList pour les caractéristiques de type String.
-  \item Une ArrayList pour les caractéristiques de type Interval.
-  \item Une ArrayList pour les caractéristiques de type Number.
+  \item Une ArrayList pour les caractéristiques de type \verb+String+.
+  \item Une ArrayList pour les caractéristiques de type \verb+Interval+.
+  \item Une ArrayList pour les caractéristiques de type \verb+Number+.
 \end{itemize}
 Il faut cependant savoir à quels indices se trouves les différents élément pour effectuer des accès directs. Pour cela, on dispose ici de quatre Maps globales :
 \begin{itemize}
   \item Une Map pour l'ensemble des intervalles coordonnées.
-  \item Une Map pour les caractéristiques de type String
-  \item Une Map pour les caractéristiques de type Interval
-  \item Une Map pour les caractéristiques de type Number
+  \item Une Map pour les caractéristiques de type \verb+String+.
+  \item Une Map pour les caractéristiques de type \verb+Interval+.
+  \item Une Map pour les caractéristiques de type \verb+Number+.
 \end{itemize}
 La composition de chacune de ces maps est la suivante :  
 \begin{description}
  \item[Clef :]
-ID de la coordonnée ou de la variable.
+\verb+ID+ de la coordonnée ou de la variable.
 \item[Valeur :]
 Indice de l'objet dans le tableau de la boîte.
 \end{description}

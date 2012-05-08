@@ -3,10 +3,10 @@
 
 \section{Introduction}%{\color{red} À discuter}
 
-L'objectif de ce chapitre est de mener une étude sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Dans une première partie, nous nous intéresserons à l'opération d'accès à une caractéristique ou d'une donnée d'une boîte ainsi qu'à l'occupation mémoire de cette dernière. Les problématiques liées à l'implémentation d'un pavage (ensemble de boîtes) est par la suite abordé. Il s'appuie sur le document de spécification (\cf{}  Annexe \ref{sec:spe}). Ce document sur les calculs de complexité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème.
+L'objectif de ce chapitre est de mener une étude sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Dans une première partie, nous nous intéresserons à l'opération d'accès à une caractéristique ou d'une donnée d'une boîte ainsi qu'à l'occupation mémoire de cette dernière. Les problématiques liées à l'implémentation d'un pavage (ensemble de boîtes) sont par la suite abordées. Il s'appuie sur le document de spécifications (\cf{}  Annexe \ref{sec:spe}). Dans ce chapitre, les calculs de complexité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème.
 
 
-La seconde partie sera consacrée à la recherche de structures efficaces pour la réalisation du logiciel de visualisation. Dans cette partie, nous tenterons de répondre aux problèmes de gestion d'un grand nombre de boîtes, ainsi que ceux liés aux changement des variables de projection du pavage.
+La seconde partie sera consacrée à la recherche de structures efficaces pour la réalisation du logiciel de visualisation. Nous tenterons de répondre aux problèmes de gestion d'un grand nombre de boîtes, ainsi que ceux liés aux changements des variables de projection du pavage.
 
 
 
@@ -28,7 +28,7 @@ C'est l'entité atomique du pavage. Les accès à ses attributs sont donc crucia
 \item Le temps de calcul (valeur numérique).
   \end{itemize}
 \end{itemize}
-Ces données seront régulièrement requises lors de la mise en œuvre des algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voire directs. Pour le cas de l'identifiant, s'agissant d'une simple \verb+String+ le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. Plusieurs possibilités sont alors envisageables : 
+Ces données seront régulièrement requises lors de la mise en œuvre des algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voire directs. Pour le cas de l'identifiant, s'agissant d'une simple \verb+String+ le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. {\color{red} Comment prendre en compte le polymorphisme des caractéritiques ? } Plusieurs possibilités sont alors envisageables : 
 
 \begin{itemize}
 \item
