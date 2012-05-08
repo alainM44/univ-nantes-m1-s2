@@ -1,6 +1,6 @@
 \section{Stockage des boîtes et visualisation}\label{sec:vis}
 \subsection{Introduction}
- Afin de répondre au mieux au cahier des charges du logiciel de visualisation (\cf{} Annexe \ref{sec:cac}), trois difficultés majeures apparaissent. La première est bien entendu la gestion d'une très grande quantité de boîtes lors de l'affichage. Il est en effet nécessaire d'offrir un accès rapide aux informations des boîtes dans la fenêtre. La seconde est la gestion des filtres sur ces mêmes boîtes. Et le troisième apparait lors du changement des variables étudiées (changement des dimensions visualisées). Dans cette section, nous chercherons d'avantage à apporter une solution pour les problèmes de temps d'accès et de changement de variables. Il est en effet probable que la gestion des filtres soit effectuée par une structure différente.
+ Afin de répondre au mieux au cahier des charges du logiciel de visualisation (\cf{} Annexe \ref{sec:cac}), trois difficultés majeures apparaissent. La première est bien entendu la gestion d'une très grande quantité de boîtes lors de l'affichage. Il est en effet nécessaire d'offrir un accès rapide aux informations des boîtes dans la fenêtre. La seconde est la gestion des filtres sur ces mêmes boîtes. Et le troisième apparaît lors du changement des variables étudiées (changement des dimensions visualisées). Dans cette section, nous chercherons d'avantage à apporter une solution pour les problèmes de temps d'accès et de changement de variables. Il est en effet probable que la gestion des filtres soit effectuée par une structure différente.
 
 
 \subsection{\'Etude d'une solution possible : le QuadTree}
@@ -54,23 +54,25 @@ L'OcTree repose sur le même principe mais étendu à trois dimensions. Une cell
 
 \paragraph{Avantage de cette méthode}Cette structure est particulièrement intéressante pour la visualisation du pavage. En effet pour une fenêtre de visualisation donnée, il est très simple et rapide d'extraire la sous-arborescence correspondante à la fenêtre visualisée et permet aussi de ne pas afficher les objets trop petits. 
 
-De plus il serait possible de créer une structure reposant sur le même principe que le QuadTree mais étant $d$-dimensionnelle\footnote{$d$ étant la dimension du problème fourni à \realpaver.}. Chaque cellule peut alors être potentiellement subdivisé en $2^d$ sous-cellules. Cette structure permettrait d'éviter de recalculer l'arbre à chaque changement de variables de visualisation. On évite par ailleurs le cas de superposition de boîtes pour lequel l'algorithme n'est plus efficace (cf : figure \ref{fig:superpos}).
-\begin{figure}[htbp]
+
+\begin{figure}[h!]
 \centering
 \includegraphics[scale=0.30]{img/QT8}
 \caption{Superposition de boîtes}
 \label{fig:superpos}
 \end{figure}
+De plus il serait possible de créer une structure reposant sur le même principe que le QuadTree mais étant $d$-dimensionnelle\footnote{$d$ étant la dimension du problème fourni à \realpaver.}. Chaque cellule peut alors être potentiellement subdivisé en $2^d$ sous-cellules. Cette structure permettrait d'éviter de recalculer l'arbre à chaque changement de variables de visualisation. On évite par ailleurs le cas de superposition de boîtes pour lequel l'algorithme n'est plus efficace (cf : figure \ref{fig:superpos}).
+
 
 \paragraph{Inconvénient de cette méthode \label{para:qtInconv}}Le problème majeur de cette méthode se présente lorsque des boîtes sont côte à côte (\cf{} figure \ref{fig:frontiere}).
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \includegraphics[scale=0.40]{img/QT10}
 \caption{État initial du QuadTree lorsque deux boîtes sont côte à côte}
 \label{fig:frontiere}
 \end{figure}
 Dans une telle situation chaque division va entraîner la création d'une cellule dans la même configuration. L'algorithme ne s'arrêtera donc pas avant d'avoir atteint la taille minimale pour une cellule. Nous nous retrouvons donc avec un grand nombre de cellules au niveau de ces \og frontières\fg{} (\cf{} figure \ref{fig:frontiere2}).
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \includegraphics[scale=0.40]{img/QT11}
 \caption{État final du QuadTree lorsque deux boîtes sont côte à côte}
