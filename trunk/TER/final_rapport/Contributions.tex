@@ -44,7 +44,7 @@ Ces données seront régulièrement requises lors de la mise en œuvre des algor
 \item[Gestion des collisions avec chaînage] Contrairement à la structure précédente, cette méthode permet de ne pas occuper trop d'espace en chaînant les éléments entrants en collision. Malheureusement la complexité en pire cas des opérations d'accès passe en $O(n)$. En revanche, grâce à une bonne fonction de hachage, on accédera généralement en temps constant sans contre coût mémoire. 
 \end{description}
 
-Le passage en revue de ces différentes structures écarte la liste et la table de hachage implémentée par un tableau dynamique. En effet les performances des opérations d'accès de la liste ne sont pas raisonnables. De même l'implémentation d'une table de hachage par un tableau dynamique risque d'entraîner une perte de mémoire trop importante.
+Le passage en revue de ces différentes structures écarte la liste et la table de hachage implémentée par un tableau dynamique. En effet les performances des opérations d'accès de la liste ne sont pas raisonnables. De même, l'implémentation d'une table de hachage par un tableau dynamique risque d'entraîner une perte de mémoire trop importante.
 %\item
  % Une TreeMap \cite{TreeMap}. Implémentation de base des arbres rouges noirs, cette map a la particularité de posséder des clefs triées. Ainsi les complexités de plusieurs opérations telle que l'accès en $O(\log{n})$. Dans le cas d'un grand nombre de valeurs à stocker, il est plus performant de construire la TreeMap à partir d'une HashMap.
 
@@ -58,7 +58,7 @@ Un problème majeur apparaît pour l'instanciation des boîtes :  comment prendr
 \item
   Une Map unique contenant des \verb+String+ stocke les différentes caractéristiques de la boîte. On aura casté les attributs \verb+Number+ ou \verb+Interval+ en \verb+String+. Il sera alors nécessaire, pour chaque futur accès, d'effectuer un cast dynamique. On rajoute alors une constante supplémentaire à la complexité de cette opération. 
 \item 
-Trois tableaux (un pour chaque type) au sein d'une boîte. Trois Maps (une pour chaque type) \og générales \fg{} au niveau du pavage. La clef d'une Map est l'id de la caractéristique et la valeur de la Map son indice dans le tableau concret. La boîte peut alors retrouver la valeur de la caractéristique au sein de son tableau.
+Trois tableaux (un pour chaque type) au sein d'une boîte. Trois Maps (une pour chaque type) \og générales \fg{} au niveau du pavage. La clef d'une Map est l'identifiant de la caractéristique et la valeur de la Map son indice dans le tableau concret. La boîte peut alors retrouver la valeur de la caractéristique au sein de son tableau.
 \item 
   Chaque boîte possède trois Maps pour ces trois types de caractéristiques. 
 \end{itemize}
@@ -68,7 +68,7 @@ Trois tableaux (un pour chaque type) au sein d'une boîte. Trois Maps (une pour 
 \paragraph{Problématique}
 %L'outil de visualisation peut charger un fichier entrée de manière dynamique ou non. Nous nous plaçons ici dans le cadre où cette option de chargement dynamique n'est pas activée. \\ 
 %L'outil va lire séquentiellement chaque ligne du fichier d'entrée.
-Le cahier de spécification exige de l'outil la capacité à charger un pavage de taille non déterminée. Si le nombre de boîtes sera en pratique nécessairement borné (limite mémoire de la machine), il faut cependant répondre à cette attente en proposant une structure de stockage capable de supporter un très grand nombre de boîtes. De plus l'outil doit être en mesure de fournir régulièrement des listing spécifiques de boîtes. Par exemple pour afficher la liste de celles concernées par un \emph{filtre} (\cf{} \ref{sec:spe} section 1.2, 5\up{ème} point). La structure du pavage doit être en mesure de répondre de manière efficace à des requêtes de séquences de boîtes selon un ordre particulier. La structure du pavage doit être aussi en mesure de répondre efficacement à la structure  de visualisation graphique (fournir rapidement les nouvelles boîtes dans le champs de visualisation, lors d'une rotation de caméra par exemple). Quelles structures de données et quelles stratégies choisir face à de telles exigences ?  %Ce chapitre débute par de le passage en revue de différentes structures de données potentielles. % La création de la structure de stockage débute par la lecture séquentielle du fichier d'entrée (cf section 1  du document de spécification). Plusieurs options apparaissent à cette étape, faut-il par exemple :
+Le cahier de spécifications exige de l'outil la capacité à charger un pavage de taille non déterminée. Si le nombre de boîtes sera en pratique nécessairement borné (limite mémoire de la machine), il faut cependant répondre à cette attente en proposant une structure de stockage capable de supporter un très grand nombre de boîtes. De plus l'outil doit être en mesure de fournir régulièrement des listing spécifiques de boîtes. Par exemple pour afficher la liste de celles concernées par un \emph{filtre} (\cf{} \ref{sec:spe} section 1.2, 5\up{ème} point). La structure du pavage doit être en mesure de répondre de manière efficace à des requêtes de séquences de boîtes selon un ordre particulier. La structure du pavage doit être aussi en mesure de répondre efficacement à la structure  de visualisation graphique (fournir rapidement les nouvelles boîtes dans le champs de visualisation, lors d'une rotation de caméra par exemple). Quelles structures de données et quelles stratégies choisir face à de telles exigences ?  %Ce chapitre débute par de le passage en revue de différentes structures de données potentielles. % La création de la structure de stockage débute par la lecture séquentielle du fichier d'entrée (cf section 1  du document de spécification). Plusieurs options apparaissent à cette étape, faut-il par exemple :
 
 
 
@@ -83,8 +83,8 @@ Collection de données à accès direct par clef. Dans l'hypothèse de posséder
 
 %Le nombre potentiellement très grand de boîtes élimine d'emblée la possibilité de choisir une HashMap. En effet même si la fonction de hashage est judicieusement choisie, l'occupation mémoire requise serait bien trop importante. Les listes ne sont pas  appropriées ici. Une complexité en $O(n²)$ pour un accès à une boîte n'est pas raisonnable.
 %\clearpage
-\item[Arbre binaire]
-L'utilisation d'un arbre binaire de recherche pour la création de $n$ boîtes aurait une complexité en temps égale à $O(n²)$ en pire cas. En effet il s'agit du cas où les boîtes arriveraient triées selon l'ordre inverse de celui que l'on souhaite. Ce critère d'ordonnancement des boîtes peut varier (Id, caractéristique \og temps de calcul \fg{}, borne inférieur d'une variable, \dots{}). Il faudrait alors effectuer $(p-1)$ comparaisons, pour chaque boîte :  $\sum_{p=2}^{n}(p-1)$  Soit une complexité en temps égale à $O(n)=\frac{1}{2}n²-\frac{1}{2}n$. Cependant dans le meilleur des cas, cette opération a une complexité en temps égale à $O(n\log{n})$. La création d'un pavage composé de $n$ boîtes à $d$ dimensions aurait alors une complexité en temps égale à: $O(d \times n\log(n))$.
+\item[Arbre binaire](\cf{} Figure \ref{fig:ab})
+L'utilisation d'un arbre binaire de recherche pour la création de $n$ boîtes aurait une complexité en temps égale à $O(n²)$ en pire cas. En effet il s'agit du cas où les boîtes arriveraient triées selon l'ordre inverse de celui que l'on souhaite. Ce critère d'ordonnancement des boîtes peut varier (Id, caractéristique \og temps de calcul \fg{}, borne inférieur d'une variable, \dots{}). Il faudrait alors effectuer $(p-1)$ comparaisons, pour chaque boîte :  $\sum_{p=2}^{n}(p-1)$. Soit une complexité en temps égale à $O(n)=\frac{1}{2}n²-\frac{1}{2}n$. Cependant dans le meilleur des cas, cette opération a une complexité en temps égale à $O(n\log{n})$. La création d'un pavage composé de $n$ boîtes à $d$ dimensions aurait alors une complexité en temps égale à: $O(d \times n\log(n))$.
 
 \begin{figure}[htbp]
   \centering
@@ -92,13 +92,13 @@ L'utilisation d'un arbre binaire de recherche pour la création de $n$ boîtes a
   \caption{arbre binaire}
   \label{fig:ab}
 \end{figure}
-L'arbre binaire était équilibré par définition, la complexité en temps de son opération de recherche est en $O(\log_2{n})$ (hauteur de l'arbre).
+L'arbre binaire étant équilibré par définition, la complexité en temps de son opération de recherche est en $O(\log_2{n})$ (hauteur de l'arbre).
    
 
 
 %http://www.enseignement.polytechnique.fr/profs/informatique/Luc.Maranget/421/poly/arbre-bin.html
 %\clearpage
-\item[Arbres a-b]
+\item[Arbres a-b](\cf{} Figure \ref{fig:abtree})
 Il s'agit d'un arbre de recherche avec les propriétés suivantes :
 \begin{itemize}
 \item
@@ -121,9 +121,9 @@ L'avantage des arbres a-b est que leurs hauteurs  sont comprises entres les vale
 
 \end{description}
 \paragraph{Brève conclusion}
-Ce passage en revue de ces différentes possibilités permet, pour certaines d'entre elles, de suggérer un usage dans certaines conditions.  En effet les structures telles que les \emph{dictionnaires} ou les \emph{vectors} ne sont pas recommandables pour le stockages du pavage. On peut notamment leurs reprocher le coût trop élevé de l'opération de recherche de la structure \emph{vector}. Quant aux \emph{dictionnaires}, ses performances sont restrictives à l'existence d'une fonction de hachage ne provoquant pas de collisions. 
+Ce passage en revue de ces différentes possibilités permet, pour certaines d'entre elles, de suggérer leur usage dans certaines conditions.  En effet les structures telles que les \emph{dictionnaires} ou les \emph{vectors} ne sont pas recommandables pour le stockage du pavage. On peut notamment leurs reprocher le coût trop élevé de l'opération de recherche de la structure \emph{vector}. Quant aux \emph{dictionnaires}, ses performances sont restrictives à l'existence d'une fonction de hachage ne provoquant pas de collisions. 
 
-Les structures arborescences ont l'atout de pouvoir stocker et manipuler un grand nombre d'entités par des opérations ayant, la plupart du temps, des complexités en temps d'ordre logarithmique. On peut cependant envisager une utilisation de structures à accès direct (\emph{vectors}, \emph{dictionnaires}) en parallèle de structures arborescences dans le cadre de certaines opérations (recherche d'une liste de boîtes pour l'application d'un \emph{filtre}, d'une vue,\dots{}). En revanche, le maintien de la cohérence entre une structure contenant le pavage et ces structures \og secondaires \fg{} introduit une redondance et donc un coût en mémoire.
+Les structures arborescences ont l'atout de pouvoir stocker et manipuler un grand nombre d'entités par des opérations ayant, la plupart du temps, des complexités en temps d'ordre logarithmique. On peut cependant envisager une utilisation de structures à accès direct (\emph{vectors}, \emph{dictionnaires}) en parallèle de structures arborescences dans le cadre de certaines opérations (recherche d'une liste de boîtes pour l'application d'un \emph{filtre}, d'une vue, \dots{}). En revanche, le maintien de la cohérence entre une structure contenant le pavage et ces structures \og secondaires \fg{} introduit une redondance et donc un coût en mémoire.
 
 \input{Stockage}
 

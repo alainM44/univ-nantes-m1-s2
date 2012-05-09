@@ -1,10 +1,10 @@
 \section{Stockage des boîtes et visualisation}\label{sec:vis}
 \subsection{Introduction}
- Afin de répondre au mieux au cahier des charges du logiciel de visualisation (\cf{} Annexe \ref{sec:cac}), trois difficultés majeures apparaissent. La première est bien entendu la gestion d'une très grande quantité de boîtes lors de l'affichage. Il est en effet nécessaire d'offrir un accès rapide aux informations des boîtes dans la fenêtre. La seconde est la gestion des filtres sur ces mêmes boîtes. Et le troisième apparaît lors du changement des variables étudiées (changement des dimensions visualisées). Dans cette section, nous chercherons d'avantage à apporter une solution pour les problèmes de temps d'accès et de changement de variables. Il est en effet probable que la gestion des filtres soit effectuée par une structure différente.
+ Afin de répondre au mieux au cahier des charges du logiciel de visualisation (\cf{} Annexe \ref{sec:cac}), trois difficultés majeures apparaissent. La première est, bien entendu, la gestion d'une très grande quantité de boîtes lors de l'affichage. Il est en effet nécessaire d'offrir un accès rapide aux informations des boîtes dans la fenêtre. La seconde est la gestion des filtres sur ces mêmes boîtes. Et le troisième apparaît lors du changement des variables étudiées (changement des dimensions visualisées). Dans cette section, nous chercherons d'avantage à apporter une solution pour les problèmes de temps d'accès et de changement de variables. Il est en effet probable que la gestion des filtres soit effectuée par une structure différente.
 
 
 \subsection{\'Etude d'une solution possible : le QuadTree}
-\paragraph{}Une des solutions qui pourrait permettre une visualisation fluide du pavage tout en répondant au document de spécifications serait de représenter le pavages sous une forme de QuadTree pour deux dimensions ou OcTree pour trois dimensions.
+\paragraph{}Une des solutions qui pourrait permettre une visualisation fluide du pavage tout en répondant au cahier des charges  serait de représenter le pavages sous une forme de QuadTree pour deux dimensions ou OcTree pour trois dimensions.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.50]{img/quadtree}
@@ -19,7 +19,7 @@ Cette structure pourrait être utilisée pour déterminer la position des boîte
 \begin{enumerate}
 \item Cas d'arrêts : 
 \begin{enumerate}
-\item La cellule fournie est entièrement inclus dans une boîte.
+\item La cellule fournie est entièrement incluse dans une boîte.
 \label{enu:quad1}
 \item La cellule fournie contient entièrement une seule boîte.
 \label{enu:quad2}
@@ -27,7 +27,7 @@ Cette structure pourrait être utilisée pour déterminer la position des boîte
 \label{enu:quad3}
 \item La cellule fournie n'intersecte aucune boîte.
 \label{enu:quad4}
-\item La cellule fournie ne peux plus être subdivisé car on a fourni une taille minimale pour les espaces.
+\item La cellule fournie ne peux plus être subdivisée car on a fourni une taille minimale pour les espaces.
 \end{enumerate}
 \item cas de récursions :
 \begin{enumerate}
@@ -61,7 +61,7 @@ L'OcTree repose sur le même principe mais étendu à trois dimensions. Une cell
 \caption{Superposition de boîtes}
 \label{fig:superpos}
 \end{figure}
-De plus il serait possible de créer une structure reposant sur le même principe que le QuadTree mais étant $d$-dimensionnelle\footnote{$d$ étant la dimension du problème fourni à \realpaver.}. Chaque cellule peut alors être potentiellement subdivisé en $2^d$ sous-cellules. Cette structure permettrait d'éviter de recalculer l'arbre à chaque changement de variables de visualisation. On évite par ailleurs le cas de superposition de boîtes pour lequel l'algorithme n'est plus efficace (cf : figure \ref{fig:superpos}).
+De plus il serait possible de créer une structure reposant sur le même principe que le QuadTree mais étant $d$-dimensionnelle\footnote{$d$ étant la dimension du problème fourni à \realpaver.}. Chaque cellule peut alors être potentiellement subdivisée en $2^d$ sous-cellules. Cette structure permettrait d'éviter de recalculer l'arbre à chaque changement de variables de visualisation. On évite par ailleurs le cas de superposition de boîtes pour lequel l'algorithme n'est plus efficace (cf : figure \ref{fig:superpos}).
 
 
 \paragraph{Inconvénient de cette méthode \label{para:qtInconv}}Le problème majeur de cette méthode se présente lorsque des boîtes sont côte à côte (\cf{} figure \ref{fig:frontiere}).
@@ -84,16 +84,16 @@ Ainsi sachant que la précision maximale par défaut de \realpaver{} est de $10^
 Donc pour un ordinateur actuel possédant une mémoire de 16 Gio, on peut stocker au maximum $4^{14}$ ($\approx 2 \times 10^8$) boîtes. Cependant on a vu qu'il était possible de se retrouver rapidement avec un QuadTree ne pouvant être stocké. Le cas cité un peu plus haut créait d'ailleurs plus de $10^{16}$ cellules-filles pour seulement 2 boîtes.
 
 \subsection{\'Etude d'une seconde solution : le R-tree}
-\paragraph{}Bien que le QuadTree soit une structure intéressante pour permettre l'indexation et la recherche de points dans un espace, celui-ci l'est beaucoup moins pour la gestion de données à dimensions non nulles. Le R-tree est une structure proposé en 1984 par Antonin \textsc{Guttman} permettant l'indexation et la recherche d'éléments de dimension $d > 0$ dans $k$ dimensions\cite{Guttman}.
+\paragraph{}Bien que le QuadTree soit une structure intéressante pour permettre l'indexation et la recherche de points dans un espace, celui-ci l'est beaucoup moins pour la gestion de données à dimensions non nulles. Le R-tree est une structure proposé en 1984 par Antonin \textsc{Guttman} permettant l'indexation et la recherche d'éléments de dimension $d > 0$ dans $k$ dimensions\cite{Guttman}. On considèrera pour la suite $d$ et $k$ égaux.
 
 \paragraph{}Le R-tree est une variante de l'arbre B, sa structure est la suivante :
 \begin{itemize}
- \item Un noeud de l'arbre correspond à une boîte non-solution du pavage. Chacun de ces nœuds est un MBR\footnote{\og \emph{Minimum bounding rectangle}\fg{} : les rectangles étant, dans le cas présent, $d$-dimensionnels.} de ces fils.
+ \item Un nœud de l'arbre correspond à une boîte non-solution du pavage. Chacun de ces nœuds est un MBR\footnote{\og \emph{Minimum bounding rectangle}\fg{} : les rectangles étant, dans le cas présent, $d$-dimensionnels.} de ces fils.
  \item Chaque boîte peut contenir entre $m$ et $M$ sous-boîtes entièrement incluses. Avec $m\leq \frac{M}{2}$.
- \item Une feuille de l'arbre est une boîte ne contenant que des boîtes solution du pavage.
+ \item Une feuille de l'arbre est une boîte ne contenant que des boîtes solutions du pavage.
 \end{itemize}
 
-La figure \ref{fig:rtree} donne une bonne idée de l'organisation des R-trees :
+La figure \ref{fig:rtree} donne une bonne idée de l'organisation des R-trees.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.50]{img/rtree}
@@ -101,7 +101,7 @@ La figure \ref{fig:rtree} donne une bonne idée de l'organisation des R-trees :
 \label{fig:rtree}
 \end{figure}
 
-Les algorithmes permettant la recherche et la création du R-tree sont quant à eux décrient dans l'article de \textsc{A. Guttman} dans la section \textbf{3. Searching and Updating}\cite{Guttman}. Nous rappelons brièvement les algorithmes de recherche (cf. Algorithme \ref{algo:recherche}) et d'ajout d'une boîte (cf. Algorithme \ref{algo:ajout}) \cite{poulos}. Il est important de noter que \textsc{Guttman} propose trois algorithme de \og split \fg{} qui permettent ensuite à l'algorithme de recherche d'être plus  ou moins efficace. Du moins efficace au plus efficace pour la recherche : un algorithme linéaire, un quadratique et un exponentielle.
+Les algorithmes permettant la recherche et la création du R-tree sont quant à eux décrient dans l'article de \textsc{A. Guttman} dans la section \textbf{3. Searching and Updating}\cite{Guttman}. Nous rappelons brièvement les algorithmes de recherche (cf. Algorithme \ref{algo:recherche}) et d'ajout d'une boîte (cf. Algorithme \ref{algo:ajout}) \cite{poulos}. Il est important de noter que \textsc{Guttman} propose trois algorithmes de \og split \fg{} qui permettent ensuite à l'algorithme de recherche d'être plus  ou moins efficace. Du moins efficace au plus efficace pour la recherche : un algorithme linéaire, un quadratique et un exponentiel.
 
 L'algorithme \ref{algo:ajout} d'ajout présenté est implémenté avec le split linéaire.
 
@@ -163,9 +163,9 @@ et le nombre de nœuds est au pire égale à :
  \sum_{i=1}^{h_{max}}{\left\lceil\frac{n}{m^i}\right\rceil} = \left\lceil\frac{n}{m}\right\rceil + \left\lceil\frac{n}{m^2}\right\rceil + \cdots + 1
 \end{equation}
 
-\paragraph{Brève conclusion} Afin d'avoir une idée de les performance en espace mémoire prenons $m=2$ et $M=50$ et une mémoire de 16 Gio. Une nœud du R-tree doit contenir au minimum un pointeur sur tous ces fils, un pointeur sur son père et un pointeur vers son MBR, un nœud fera donc une taille de 208 octets. On peut donc avoir jusqu'à $8.2 \times 10^7$ nœuds, soit $4.1 \times 10^7$ boîtes contenues dans les feuilles au total.   
+\paragraph{Brève conclusion} Afin d'avoir une idée des performance en espace mémoire, prenons $m=2$ et $M=50$ et une mémoire de 16 Gio. Une nœud du R-tree doit contenir au minimum un pointeur sur tous ces fils, un pointeur sur son père et un pointeur vers son MBR, un nœud fera donc une taille de 208 octets. On peut donc avoir jusqu'à $8.2 \times 10^7$ nœuds, soit $4.1 \times 10^7$ boîtes contenues dans les feuilles au total.   
 
- Bien que ne pouvant garantir de bonnes performances en pire cas\footnote{\og \emph{More than one substree under a node may need to be searched, hence it is not possible to guarantee good worst-case performance.}\fg{}\cite{Guttman}, section \textbf{3.1 Searching}}, le R-tree offre en pratique de bons résultats ; on pourra d'ailleurs se reporter à l'analyse de performances effectuer par A. \textsc{Guttman}\footnote{section \textbf{4. Performance}\cite{Guttman}}. Cependant il existe aujourd'hui de nombreuses variantes du R-tree ( R*tree, Hilbert R-tree, etc\dots{} ), on pourra donc, pour une analyse plus générale des différentes implémentations, préférer \emph{R-trees : Theory and Applications} \cite{poulos}.
+ Bien que ne pouvant garantir de bonnes performances en pire cas\footnote{\og \emph{More than one substree under a node may need to be searched, hence it is not possible to guarantee good worst-case performance.}\fg{}\cite{Guttman}, section \textbf{3.1 Searching}}, le R-tree offre en pratique de bons résultats ; on pourra d'ailleurs se reporter à l'analyse de performances effectuée par A. \textsc{Guttman}\footnote{section \textbf{4. Performance}\cite{Guttman}}. Cependant il existe aujourd'hui de nombreuses variantes du R-tree ( R*tree, Hilbert R-tree, etc\dots{} ), on pourra donc, pour une analyse plus générale des différentes implémentations, préférer \emph{R-trees : Theory and Applications} \cite{poulos}.
 
 \subsection{Conclusion}
-Au vu de l'étude comparative entre les deux structures, le R-tree nous semble une structure plus adéquate pour répondre à une visualisation des pavages. En effet, bien que le QuadTree soit adapté pour stocker des éléments sans dimension. Il devient moins performant et plus coûteux lorsque les éléments sont $d$-dimensionnels et notamment lorsque le pavage résultat possède un grand nombre de boîtes adjacentes comme c'est le cas pour la figure \ref{fig:DisqueDisque}. La structure R-tree quant à elle offre de meilleurs résultats sur les objets $d$-dimensionnels et semble donc plus adaptée pour notre logiciel de visualisation.
+Au vu de l'étude comparative entre les deux structures, le R-tree nous semble une structure plus adéquate pour répondre à une visualisation du pavage. En effet, bien que le QuadTree soit adapté pour stocker des éléments sans dimension. Il devient moins performant et plus coûteux lorsque les éléments sont $d$-dimensionnels, et notamment lorsque le pavage résultat possède un grand nombre de boîtes adjacentes, comme c'est le cas pour la figure \ref{fig:DisqueDisque}. La structure R-tree, quant à elle, offre de meilleurs résultats sur les objets $d$-dimensionnels et semble donc plus adaptée pour notre logiciel de visualisation.
