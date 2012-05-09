@@ -49,16 +49,11 @@
 % ================================
 \newlength{\MiniPageLeft}
 \newlength{\MiniPageRight}
-\newlength{\ThisFigureWidth}
 
 
-%\usepackage{epsfig}
-\slideCaption{Blind Deconvolution using Nonstationary Signal Processing. \today}
-
-%\documentclass[pdf,autumn,slideColor,colorBG]{prosper}
 \title{Initiation à la recherche}
-%\subtitle{Conception et réalisation d’un logiciel interactif de visualisation de pavages 2D/3D }
-
+\subtitle{Conception et réalisation d’un logiciel interactif de visualisation de pavages 2D/3D}
+%\caption{IR}
 \author{A.\textsc{Marguerite} R.\textsc{Rincé}}
 
 %\Logo{\includegraphics[scale=0.40]{img/logouniv.eps}}
@@ -91,7 +86,7 @@
           \fromSlide{2}{\includegraphics[width=\MiniPageLeft]{img/logolina}}
         \end{center}
       \end{figure}
-    \end{minipage}%
+    \end{minipage}
     \begin{minipage}[t]{\MiniPageRight}
       \begin{Itemize}
       \item Laboratoire d’Informatique de Nantes-Atlantique :
@@ -99,88 +94,73 @@
         \item Effectif global proche de 170 membres 
           \fromSlide{2}{\item 10 équipes de recherche}
         \end{Itemize}
-        \fromSlide{3}{\item Optimisation globale, optimisation multi-objectifs      }
+        \fromSlide{3}{\item Équipe Optimisation globale, optimisation multi-objectifs (\textsc{OPTI})}
       \end{Itemize}
     \end{minipage}
   \end{slide}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}\overlays{6}{
+  \begin{slide}[Box]{Reprise d'un projet de stage}
+    \textbf{Création d'un outil de visualisation}
+    \begin{Itemize}
+      \fromSlide{1}{\item État d'avancement}
+      \begin{Itemize}
+        \fromSlide{2}{\item Cahier des charges}
+        \fromSlide{3}{\item Document de spécifications}
+      \end{Itemize}
+      \fromSlide{4}{\item Quelles problématiques à ce stade ?}
+      \begin{Itemize}
+        \fromSlide{5}{\item Implémenter les entités à visualiser}
+        \fromSlide{6}{\item Garantir un affichage fluide}
+      \end{Itemize}
+    \end{Itemize}
+  \end{slide}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\overlays{7}{
+\overlays{9}{
   \begin{slide}[Box]{Problématiques}
-    %    \slidetextsiz
     \begin{Itemize}
-      \fromSlide{2}{\item Création d'un outil de visualisation}
+      \fromSlide{1}{\item Quelle orientation du projet choisir?}
       \begin{Itemize}
-        \fromSlide{3}{\item Données en entrée}
-        \fromSlide{4}{\item Fenêtre de visualisation}
-        \fromSlide{5}{\item Dimensions visualisées }
-        \fromSlide{6}{\item Filtre}
-        \fromSlide{7}{\item Données en sortie}
+        \fromSlide{2}{\item Entamer la conception}
+        \fromSlide{3}{\item Effectuer une étude des problématiques de conception }
+      \end{Itemize}
+      \fromSlide{4}{\item Caractéristiques de l'outil}
+      \begin{Itemize}
+        \fromSlide{5}{\item Données en entrée}
+        \fromSlide{6}{\item Fenêtre de visualisation}
+        \fromSlide{7}{\item Dimensions visualisées }
+        \fromSlide{8}{\item Filtre}
+        \fromSlide{9}{\item Données en sortie}
       \end{Itemize}
     \end{Itemize}
   \end{slide}
 }
-
 
 %% %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\overlays{7}{
-  \begin{slide}[Box]{Reprise d'un projet de stage}
-    %    \slidetextsiz
-    \begin{Itemize}
-      \fromSlide{2}{\item Quelles problématiques à ce stade ?}
-      \begin{Itemize}
-        \fromSlide{3}{\item Comment implémenter une boîte ?}
-        \fromSlide{4}{\item Quelle stratégie  adopter pour le pavage ?}
-      \end{Itemize}
-      \vspace{1cm}
-      \fromSlide{5}{\item Quelles orientations du projet choisir?}
-      \begin{Itemize}
-    \fromSlide{6}{\item Entamer la conception}
-        \fromSlide{7}{\item Effectuer une étude des problématiques de conception }
-      \end{Itemize}
-    \end{Itemize}
-  \end{slide}
-}
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \overlays{5}{
   \begin{slide}[Box]{Domaine de recherche}
     \slidetextsize
     \textbf{L’Arithmétique des intervalles}\\
-    \begin{Itemize}
+    \begin{Itemize} 
       \fromSlide{2}{\item Extension des fonctions aux intervalles}
       \fromSlide{3}{\item Quelques opérations: \\}
     \begin{Itemize}
       \fromSlide{4}{\item Opérateur Plus : \\
         $[a \dots b] + [c \dots d] = [a + c \dots b + d]$ }
       \fromSlide{5}{\item Opérateur Fois : \\
-      
       $ [a \dots b] × [c \dots d] = $\\ \hspace{1cm}$[min(ac, ad, bc, bd) \dots max(ac, ad, bc, bd)]$}
     \end{Itemize}
     \end{Itemize}
     
   \end{slide}
 }
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\overlays{4}{
-  \begin{slide}[Box]{Domaine de recherche}
-    \slidetextsize
-    \textbf{Définition d'un \textsc{CSP}}\\
-  \begin{Itemize}
-      \fromSlide{2}{  \item
-    Un ensemble de variables $\mathbf{V} = \left\{ v_1, \dots ,v_n \right\}$.}
-      \fromSlide{3}{  \item
-   Un domaine de valeurs  $D_i$ pour chaque variable $v_i$  \\ avec $\mathbf{D} =D_1 \times \dots \times D_n $.}
-%Chaque valeur du domaine $D_i$ associée à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times \dots \times D_n $.}
-      \fromSlide{4}{  \item
-    Un ensemble de contraintes :  $\mathbf{C} = \left\{c_1, \dots ,c_m\right\}$. }
-    \end{Itemize}
-  \end{slide}
-}
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \overlays{3}{
   \begin{slide}[Box]{Exemple de \emph{Branch and Prune} :\\  Intersection de deux cercles}
-    %\slidetextsize
+    \slidetextsize
     \onlySlide*{1}{1\up{ère} Étape : \emph{Pruning}
       \begin{figure}[t]
         \begin{center}
@@ -205,54 +185,115 @@
     }
 
 \end{slide}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
-\overlays{2}{
-  \begin{slide}[Box]{Hull-consistance :\\ 1\up{ère} étape}
-    \slidetextsize
-    %% \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull1.ps}}
-    %% \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull2.ps}}
-    \fromSlide{2}{    \begin{equation*}
-        (x-x_{c_1})²+(y-y_{c_1})² = r_{c_1}²
-    \end{equation*}}
-    %    \fromSlide{3}{\centering \includegraphics[width=0.65\textwidth]{img/hull1.ps}}
-  \end{slide}
-}
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 
- \overlays{2}{
-  \begin{slide}[Box]{Hull-consistance :\\ 2\up{ème} étape}
+\overlays{4}{
+  \begin{slide}[Box]{Domaine de recherche}
     \slidetextsize
-    \slidetextsize
-    %% \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull2.ps}}
-    %% \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull3.ps}}
-    \fromSlide{2}{    \begin{equation*}
+    \textbf{Définition d'un \textsc{CSP}}\\
+  \begin{Itemize}
+      \fromSlide{2}{  \item
+    Un ensemble de variables $\mathbf{V} = \left\{ v_1, \dots ,v_n \right\}$.}
+      \fromSlide{3}{  \item
+   Un domaine de valeurs  $D_i$ pour chaque variable $v_i$  \\ avec $\mathbf{D} =D_1 \times \dots \times D_n $.}
+Chaque valeur du domaine $D_i$ associée à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times \dots \times D_n $.}
+      \fromSlide{4}{  \item
+    Un ensemble de contraintes :  $\mathbf{C} = \left\{c_1, \dots ,c_m\right\}$. }
+    \end{Itemize}
+  \end{slide}
+}
+
+\overlays{4}{
+  \begin{slide}[Box]{Intersection de 2 cercles}
+    \onlySlide*{1}{
+      \textbf{Exemple de CSP}
+      \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.45\textwidth]{img/hull.ps}
+        \end{center}
+      \end{figure}
+      \begin{equation*}
+        \begin{cases}
+          (x-x_{c_1})²+(y-y_{c_1})² = r_{c_1}²\\
+          (x-x_{c_2})²+(y-y_{c_2})² = r_{c_2}²\\
+          (x-x_{c_3})²+(y-y_{c_3})² = r_{c_3}²
+        \end{cases}
+      \end{equation*}
+}
+    \onlySlide*{2}{
+    \emph{Hull-consistance} : 1\up{ère} étape
+      \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.65\textwidth]{img/hull1}
+        \end{center}
+      \end{figure}
+      \begin{equation*}
+        (x-x_{c_1})²+(y-y_{c_1})² = r_{c_1}²
+      \end{equation*}
+        }
+    \onlySlide*{3}{
+    \emph{Hull-consistance} : 2\up{nd} étape
+      \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.65\textwidth]{img/hull2}
+        \end{center}
+      \end{figure}
+   \begin{equation*}
        (x-x_{c_2})²+(y-y_{c_2})² = r_{c_2}²
-    \end{equation*}}
-  \end{slide}
-}
-%% %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\overlays{2}{
-  \begin{slide}[Box]{Hull-consistance :\\ 3\up{ème} étape}
-    \slidetextsize
-    %% \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull3.ps}}
-    %% \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull4.ps}}
-    \fromSlide{2}{    \begin{equation*}
+    \end{equation*}
+    }
+    \onlySlide*{4}{
+    \emph{Hull-consistance} : 3\up{ère} étape
+      \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.65\textwidth]{img/hull3}
+        \end{center}
+      \end{figure}
+    \begin{equation*}
         (x-x_{c_3})²+(y-y_{c_3})² = r_{c_3}²
-    \end{equation*}}
+    \end{equation*}
+    }
   \end{slide}
 }
-%%  %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+ 
+
   \begin{slide}[Box]{Realpaver : présentation}
     \slidetextsize
     Méthodes de résolutions de contraintes géométriques par propagation d’intervalles.
    \begin{figure}[t]\centering \includegraphics[width=0.35\textwidth]{img/disk-disk.ps}\end{figure}
   \end{slide}
-%%  %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+ %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\begin{slide}{Realpaver : exemple de modèle}
+\hypertarget{code}{ }
+\tiny\vspace{-.35in}\hspace{-.35in}
+\begin{verbatim}
+Constants
+x0 = -1,
+y0 = 0,
+R0 = 2,
+x1 = 1,
+y1 = 0,
+R1 = 2
+;
+Variables
+x in ]-oo,
+y in ]-oo,
+;
+Constraints
+(x-x0)^2 +
+(x-x1)^2 +
+;
++oo[,
++oo[
+(y-y0)^2 <= R0^2,
+(y-y1)^2 <= R1^2
+\end{verbatim}
+\end{slide}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{slide}{Realpaver : exemple de sortie}
 \hypertarget{code}{ }
 \tiny\vspace{-.35in}
 \begin{verbatim}
-%% RealPaver v. 0.4 (c) LINA 2004
+RealPaver v. 0.4 (c) LINA 2004
 INITIAL BOX
 x in ]-oo , +oo[
 y in ]-oo , +oo[
@@ -269,10 +310,10 @@ Property: reliable process (no solution is lost)
 Elapsed time: 150 ms
 \end{verbatim}
 \end{slide}
-%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \overlays{4}{
   \begin{slide}[Box]{Définition d'une boîte}
-    %    \slidetextsiz
+       \slidetextsiz
     \textbf{Entité atomique du pavage}
     \begin{Itemize}
       \fromSlide{2}{\item Un identifiant 
@@ -283,7 +324,7 @@ Elapsed time: 150 ms
       \fromSlide{3}{\item Une liste de coordonnées
         \begin{Itemize}
         \item INTERVAL
-      \end{Itemize}}
+²      \end{Itemize}}
       \fromSlide{4}{\item Une liste des caractéristiques
         \begin{Itemize}
         \item NUMBER
@@ -293,7 +334,7 @@ Elapsed time: 150 ms
     \end{Itemize}
   \end{slide}
 }
-%% %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \overlays{4}{
   \begin{slide}[Box]{Étude des structures de données pour une boîte}
     \textbf{Structure de données}
@@ -304,7 +345,7 @@ Elapsed time: 150 ms
     \end{Itemize}
   \end{slide}
 }
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \begin{slide}[Box]{Étude des structures de données pour une boîte}
     \textbf{Tests expérimentaux}
@@ -327,7 +368,7 @@ Elapsed time: 150 ms
     Relevé des temps CPU d'accès au caractéristiques en secondes
   \end{slide}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \overlays{5}{
   \begin{slide}[Box]{Étude des structures de données pour un pavage}
     \textbf{Structure de données}
@@ -339,12 +380,11 @@ Elapsed time: 150 ms
     \end{Itemize}
   \end{slide}
 }
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{slide}[Box]{Visualisation : QuadTree}
     %    \slidetextsiz
         \textbf{Exemple de représentation}
       \begin{figure}[t]
-
         \begin{center}
           \includegraphics[width=0.55\textwidth]{img/quadtree}
         \end{center}
@@ -454,7 +494,6 @@ Classification visuelle des cas d'arrêts et de récursions
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \overlays{4}{
   \begin{slide}[Box]{Visualisation : R-Tree}
-    %    \slidetextsiz
     \textbf{Description du R-Tree}
     \begin{Itemize}
       \fromSlide{2}{   \item Variante de l'arbre B}
@@ -483,8 +522,7 @@ Classification visuelle des cas d'arrêts et de récursions
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \begin{slide}[Box]{Que reste-t-il à faire ?}
-    %    \slidetextsiz
+\begin{slide}[Box]{Que reste-t-il à faire ?}
     \vspace{1cm}
     \begin{Itemize}
     \item Chercher la meilleure implémentation pour le R-Tree.
@@ -493,4 +531,4 @@ Classification visuelle des cas d'arrêts et de récursions
     \end{Itemize}
   \end{slide}
 
-\end{document}
+ \end{document}
