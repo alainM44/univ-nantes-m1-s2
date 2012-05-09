@@ -1,10 +1,7 @@
 \documentclass[frames,pdf,slideColor,colorBG,accumulate,total]{prosper}
 \usepackage[francais]{babel}
 \usepackage{amsmath, amsfonts, amsbsy, pstricks, pst-node, pst-text, pst-3d}
-
-\usepackage{amsmath, amsfonts, amsbsy, pstricks, pst-node, pst-text, pst-3d}
-
-
+\usepackage{slashbox}
 \usepackage{moreverb,epsfig,color,subfigure}
 \NoFrenchBabelItemize
 \usepackage{ucs}
@@ -19,7 +16,7 @@
 %\newcommand{\captionstyle}[1]{\scriptsize \textbf{#1}}
 
 \myitem{1}{\includegraphics[width=.4cm]{red-bullet-on-white}}
-\myitem{2}{\includegraphics[width=.4cm]{green-bullet-on-blue}}
+\myitem{2}{\includegraphics[width=.4cm]{green-bullet-on-white}}
 \myitem{3}{\includegraphics[width=.4cm]{yellow-bullet-on-blue}}
 % ==================================
 % Start of Commands Used in Document
@@ -59,11 +56,12 @@
 
 %\documentclass[pdf,autumn,slideColor,colorBG]{prosper}
 \title{Initiation à la recherche}
-\subtitle{Soutenance}
+\subtitle{Conception et réalisation d’un logiciel interactif de visualisation de pavages 2D/3D }
 
 \author{A.\textsc{Marguerite} R.\textsc{Rincé}}
 %\Logo{\includegraphics[scale=0.40]{img/logouniv.eps}}
-\Logo(9,-0.7){\includegraphics[scale=0.5]{img/logouniv.eps}}
+\Logo(9,-0.70){\includegraphics[scale=0.5]{img/logouniv.eps}}
+
 
 
 \institution{
@@ -106,6 +104,24 @@
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \overlays{7}{
+  \begin{slide}[Box]{Problématiques}
+    %    \slidetextsiz
+    \begin{Itemize}
+      \fromSlide{2}{\item Création d'un outil de visualisation}
+      \begin{Itemize}
+        \fromSlide{3}{\item Données en entrée}
+        \fromSlide{4}{\item Fenêtre de visualisation}
+        \fromSlide{5}{\item Dimensions visualisées }
+        \fromSlide{6}{\item Filtre}
+        \fromSlide{7}{\item Données en sortie}
+      \end{Itemize}
+    \end{Itemize}
+  \end{slide}
+}
+
+
+%% %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overlays{7}{
   \begin{slide}[Box]{Reprise d'un projet de stage}
     %    \slidetextsiz
     \begin{Itemize}
@@ -115,37 +131,81 @@
         \fromSlide{4}{\item Quelle stratégie  adopter pour le pavage ?}
       \end{Itemize}
       \vspace{1cm}
-      \fromSlide{5}{\item Quelles orientation du projet choisir?}
+      \fromSlide{5}{\item Quelles orientations du projet choisir?}
       \begin{Itemize}
     \fromSlide{6}{\item Entamer la conception}
-        \fromSlide{7}{\item Effectuer une études des problématiques de conceptions }
-
+        \fromSlide{7}{\item Effectuer une étude des problématiques de conception }
       \end{Itemize}
-
     \end{Itemize}
   \end{slide}
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\overlays{2}{
-  \begin{slide}[Box]{Exemple de CSP :\\  Intersection de trois cercles}
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overlays{5}{
+  \begin{slide}[Box]{Domaine de recherche}
     \slidetextsize
-%        \fromSlide{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull1.ps}}
-        \fromSlide{2}{
-          \begin{equation*}
-              \begin{cases}
-                (x-x_{c_1})²+(y-y_{c_1})² = r_{c_1}²\\
-                (x-x_{c_2})²+(y-y_{c_2})² = r_{c_2}²\\
-                (x-x_{c_3})²+(y-y_{c_3})² = r_{c_3}²
-              \end{cases}
-          \end{equation*}
-        }
-        
+    \textbf{L’Arithmétique des intervalles}\\
+    \begin{Itemize}
+      \fromSlide{2}{\item Extension des fonctions aux intervalles}
+      \fromSlide{3}{\item Quelques opérations: \\}
+    \begin{Itemize}
+      \fromSlide{4}{\item Opérateur Plus : \\
+        $[a \dots b] + [c \dots d] = [a + c \dots b + d]$ }
+      \fromSlide{5}{\item Opérateur Fois : \\
+      
+      $ [a \dots b] × [c \dots d] = $\\ \hspace{1cm}$[min(ac, ad, bc, bd) \dots max(ac, ad, bc, bd)]$}
+    \end{Itemize}
+    \end{Itemize}
+    
+  \end{slide}
+}
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overlays{4}{
+  \begin{slide}[Box]{Domaine de recherche}
+    \slidetextsize
+    \textbf{Définition d'un \textsc{CSP}}\\
+  \begin{Itemize}
+      \fromSlide{2}{  \item
+    Un ensemble de variables $\mathbf{V} = \left\{ v_1, \dots ,v_n \right\}$.}
+      \fromSlide{3}{  \item
+   Un domaine de valeurs  $D_i$ pour chaque variable $v_i$  \\ avec $\mathbf{D} =D_1 \times \dots \times D_n $.}
+%Chaque valeur du domaine $D_i$ associée à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times \dots \times D_n $.}
+      \fromSlide{4}{  \item
+    Un ensemble de contraintes :  $\mathbf{C} = \left\{c_1, \dots ,c_m\right\}$. }
+    \end{Itemize}
+  \end{slide}
+}
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\overlays{3}{
+  \begin{slide}[Box]{Exemple de \emph{Branch and Prune} :\\  Intersection de deux cercles}
+    %\slidetextsize
+    \onlySlide*{1}{1\up{ère} Étape : \emph{Pruning}
+      \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.65\textwidth]{img/BP}
+        \end{center}
+      \end{figure}
+    }      
+    \onlySlide*{2}{2\up{nd} Étape : \emph{Branch}
+      \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.65\textwidth]{img/BP2}
+        \end{center}
+      \end{figure}
+    }
+    \fromSlide{3}{3\up{ème} Étape :\emph{Pruning}
+      \begin{figure}[t]
+        \begin{center}
+          
+          \includegraphics[width=0.65\textwidth]{img/BP3}
+        \end{center}
+      \end{figure}
+    }
+
 \end{slide}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 \overlays{2}{
   \begin{slide}[Box]{Hull-consistance :\\ 1\up{ère} étape}
-    \slidetextsize
     \slidetextsize
     %% \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull1.ps}}
     %% \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull2.ps}}
@@ -155,9 +215,9 @@
     %    \fromSlide{3}{\centering \includegraphics[width=0.65\textwidth]{img/hull1.ps}}
   \end{slide}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 
-\overlays{2}{
+ \overlays{2}{
   \begin{slide}[Box]{Hull-consistance :\\ 2\up{ème} étape}
     \slidetextsize
     \slidetextsize
@@ -168,12 +228,9 @@
     \end{equation*}}
   \end{slide}
 }
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
-
-
+%% %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \overlays{2}{
   \begin{slide}[Box]{Hull-consistance :\\ 3\up{ème} étape}
-    \slidetextsize
     \slidetextsize
     %% \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull3.ps}}
     %% \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull4.ps}}
@@ -182,22 +239,256 @@
     \end{equation*}}
   \end{slide}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%  %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+  \begin{slide}[Box]{Realpaver : présentation}
+    \slidetextsize
+    Méthodes de résolutions de contraintes géométriques par propagation d’intervalles.
+   \begin{figure}[t]\centering \includegraphics[width=0.35\textwidth]{img/disk-disk.ps}\end{figure}
+  \end{slide}
+%%  %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\begin{slide}{Realpaver : exemple de sortie}
+\hypertarget{code}{ }
+\tiny\vspace{-.35in}
+\begin{verbatim}
+%% RealPaver v. 0.4 (c) LINA 2004
+INITIAL BOX
+x in ]-oo , +oo[
+y in ]-oo , +oo[
+OUTER BOX 1
+x in [0.7924334198270921 , 0.795689483022687]
+y in [0.8806243697296342 , 0.8872330220900007]
+...
+OUTER BOX 3053
+x in [-0.7956894830226868 , -0.7924334198270919]
+y in [-0.8872330220900011 , -0.8806243697296345]
+precision: 0.00661, elapsed time: 150 ms
+END OF SOLVING
+Property: reliable process (no solution is lost)
+Elapsed time: 150 ms
+\end{verbatim}
+\end{slide}
+%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\overlays{4}{
+  \begin{slide}[Box]{Définition d'une boîte}
+    %    \slidetextsiz
+    \textbf{Entité atomique du pavage}
+    \begin{Itemize}
+      \fromSlide{2}{\item Un identifiant 
+        \begin{Itemize}
+        \item NUMBER
+        \item STRING
+        \end{Itemize}}
+      \fromSlide{3}{\item Une liste de coordonnées
+        \begin{Itemize}
+        \item INTERVAL
+      \end{Itemize}}
+      \fromSlide{4}{\item Une liste des caractéristiques
+        \begin{Itemize}
+        \item NUMBER
+        \item STRING
+        \item INTERVAL
+      \end{Itemize}}
+    \end{Itemize}
+  \end{slide}
+}
+%% %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overlays{4}{
+  \begin{slide}[Box]{Étude des structures de données pour une boîte}
+    \textbf{Structure de données}
+    \begin{Itemize}
+      \fromSlide{2}{\item Un tableau}
+      \fromSlide{3}{\item Une liste}
+      \fromSlide{4}{\item Une table de hachage}
+    \end{Itemize}
+  \end{slide}
+}
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% \overlays{3}{
-%%   \begin{slide}[Box]{Acoustic Reverberation Cancellation}
-%%     \slidetextsize
- 
-%%       \begin{Itemize}
-%%       \item Normal hearing: can concentrate on original sound despite:
-%%         \begin{Itemize}
-%%           \onlySlide*{2}{    \item \includegraphics[width=0.5\textwidth]{img/hull1.ps}}
-%%           \fromSlide{3}{    \item \includegraphics[width=0.5\textwidth]{img/hull2.ps}}
+  \begin{slide}[Box]{Étude des structures de données pour une boîte}
+    \textbf{Tests expérimentaux}
+    \begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        \backslashbox{Structure} {Nombre d'accès} & $10^6$ & $10^7$ & $10^8$ \\
+        \hline
+       3 HashMap & 0.31s& 2.86s & 28.56s\\
+       \hline
+       3 ArrayList & 0.20s & 1.81s & 17.49s\\
+        \hline
+       1 ArrayList & 0.19s & 1.58s & 15.12s\\
+        \hline
+       1 LinkedList & 0.31s & 2,79s &  27.59s\\
+        \hline
+      \end{tabular}
+    \end{table}
+    Relevé des temps CPU d'accès au caractéristiques en secondes
+  \end{slide}
 
-%%         \end{Itemize}
-%%       \end{Itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overlays{5}{
+  \begin{slide}[Box]{Étude des structures de données pour un pavage}
+    \textbf{Structure de données}
+    \begin{Itemize}
+      \fromSlide{2}{\item Vector}
+      \fromSlide{3}{\item Dictionnaire}
+      \fromSlide{4}{\item Arbre binaire}
+      \fromSlide{5}{\item Arbre a-b}
+    \end{Itemize}
+  \end{slide}
+}
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{slide}[Box]{Visualisation : QuadTree}
+    %    \slidetextsiz
+        \textbf{Exemple de représentation}
+      \begin{figure}[t]
 
-%% \end{slide}}
+        \begin{center}
+          \includegraphics[width=0.55\textwidth]{img/quadtree}
+        \end{center}
+      \end{figure}
+  \end{slide}
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{slide}[Box]{Visualisation : QuadTree}
+    %    \slidetextsiz
+    \textbf{Algorithme}
+    \begin{table}[htbp]
+      \centering
+      \begin{tabular}{|c|cccc|}
+        \hline
+   Cas de récursion & \includegraphics[scale=0.20]{img/QT4}&  \includegraphics[scale=0.20]{img/QT5}& &\\
+   \hline
+   Cas d'arrêt&  \includegraphics[scale=0.20]{img/QT1}&  \includegraphics[scale=0.20]{img/QT2}&  \includegraphics[scale=0.20]{img/QT3}&  \includegraphics[scale=0.30]{img/QT6}\\
+   \hline
+      \end{tabular}
+    \end{table}
+Classification visuelle des cas d'arrêts et de récursions
 
+  \end{slide}
+  %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overlays{3}{
+  \begin{slide}[Box]{Visualisation : QuadTree}
+    %    \slidetextsiz
+    \textbf{Inconvénients du QuadTree}
+    \begin{Itemize}
+      \fromSlide{2}{\item Structure peu adaptée pour stocker des éléments de dimension $d$}
+      \fromSlide{3}{\item Problèmes des \emph{frontières}}
+    \end{Itemize}
+  \end{slide}
+}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{slide}[Box]{Visualisation : QuadTree}
+    %    \slidetextsiz
+    \textbf{Cas de superposition des boîtes}
+      \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.25\textwidth]{img/QT8}
+        \end{center}
+      \end{figure}
+  \end{slide}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\overlays{6}{
+  \begin{slide}[Box]{Visualisation : QuadTree}
+    %    \slidetextsiz
+    \textbf{Le problème des \emph{frontières}}
+   \onlySlide*{1}{
+   \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.50\textwidth]{img/SQT1}
+        \end{center}
+      \end{figure}
+}
+   \onlySlide*{2}{
+   \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.50\textwidth]{img/SQT2}
+        \end{center}
+      \end{figure}
+}
+   \onlySlide*{3}{
+     \begin{figure}[t]
+       \begin{center}
+         \includegraphics[width=0.50\textwidth]{img/SQT3}
+       \end{center}
+     \end{figure}
+   }
+   \onlySlide*{4}{
+   \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.50\textwidth]{img/SQT4}
+        \end{center}
+      \end{figure}
+}
+   \onlySlide*{5}{
+   \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.50\textwidth]{img/SQT5}
+        \end{center}
+      \end{figure}
+}
+   \fromSlide{6}{
+   \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.50\textwidth]{img/SQT6}
+        \end{center}
+      \end{figure}
+}
+
+ \end{slide}
+}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{slide}[Box]{Visualisation : R-Tree}
+    %    \slidetextsiz
+        \textbf{Exemple de représentation}
+      \begin{figure}[t]
+
+        \begin{center}
+          \includegraphics[width=0.55\textwidth]{img/rtree}
+        \end{center}
+      \end{figure}
+  \end{slide}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overlays{4}{
+  \begin{slide}[Box]{Visualisation : R-Tree}
+    %    \slidetextsiz
+    \textbf{Description du R-Tree}
+    \begin{Itemize}
+      \fromSlide{2}{   \item Variante de l'arbre B}
+      \fromSlide{3}{    \item Chaque nœud est un MBR de ces fils}
+      \fromSlide{4}{  \item Chaque nœud contient entre $m$ et $M$ fils \\ avec $m \leq \frac{M}{2}$}
+    \end{Itemize}
+  \end{slide}
+}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{slide}[Box]{Visualisation : R-Tree}
+    %    \slidetextsiz
+    \textbf{Hauteur de l'arbre et nombre de nœuds au pire cas}
+    \begin{Itemize}
+    \item Hauteur
+      \begin{equation*}
+        h_{max} = \left\lceil\log_{m} n\right\rceil - 1
+      \end{equation*}
+      
+    \item Nombre de nœuds
+      \begin{equation*}
+        N_{noeuds}=\sum_{i=1}^{h_{max}}{\left\lceil\frac{n}{m^i}\right\rceil}
+      \end{equation*}
+    \end{Itemize}
+  \end{slide}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{slide}[Box]{Que reste-t-il à faire ?}
+    %    \slidetextsiz
+    \vspace{1cm}
+    \begin{Itemize}
+    \item Chercher la meilleure implémentation pour le R-Tree.
+    \item Une étude approfondie pour prendre en compte la gestion des filtres.
+    \item Trouver un moyen efficace de sauvegarde.
+    \end{Itemize}
+  \end{slide}
 
 \end{document}
