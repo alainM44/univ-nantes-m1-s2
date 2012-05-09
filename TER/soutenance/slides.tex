@@ -75,10 +75,58 @@
 % make the title slide
 \maketitle
 
+\overlays{3}{
+  \begin{slide}[Box]{Présentation du \textsc{LINA}}
+    \slidetextsize
+    \setlength{\MiniPageLeft}{0.4\textwidth}
+    \setlength{\MiniPageRight}{\textwidth}\addtolength{\MiniPageRight}{-\MiniPageLeft}
+    \begin{minipage}[t]{\MiniPageLeft}
+      \begin{figure}[t]
+        \begin{center}
+          \onlySlide*{1}{\includegraphics[width=0.8\MiniPageLeft]{img/lina}}
+          \fromSlide{2}{\includegraphics[width=\MiniPageLeft]{img/logolina}}
+        \end{center}
+      \end{figure}
+    \end{minipage}%
+    \begin{minipage}[t]{\MiniPageRight}
+      \begin{Itemize}
+      \item Laboratoire d’Informatique de Nantes-Atlantique :
+        \begin{Itemize}
+        \item Effectif global proche de 170 membres 
+          \fromSlide{2}{\item 10 équipes de recherche}
+        \end{Itemize}
+        \fromSlide{3}{\item Optimisation globale, optimisation multi-objectifs      }
+      \end{Itemize}
+    \end{minipage}
+  \end{slide}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overlays{7}{
+  \begin{slide}[Box]{Reprise d'un projet de stage}
+    %    \slidetextsiz
+    \begin{Itemize}
+      \fromSlide{2}{\item Quelles problématiques à ce stade ?}
+      \begin{Itemize}
+        \fromSlide{3}{\item Comment implémenter une boîte ?}
+        \fromSlide{4}{\item Quelle stratégie  adopter pour le pavage ?}
+      \end{Itemize}
+      \vspace{1cm}
+      \fromSlide{5}{\item Quelles orientation du projet choisir?}
+      \begin{Itemize}
+    \fromSlide{6}{\item Entamer la conception}
+        \fromSlide{7}{\item Effectuer une études des problématiques de conceptions }
+
+      \end{Itemize}
+
+    \end{Itemize}
+  \end{slide}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \overlays{2}{
   \begin{slide}[Box]{Exemple de CSP :\\  Intersection de trois cercles}
     \slidetextsize
-        \fromSlide{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull1.ps}}
+%        \fromSlide{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull1.ps}}
         \fromSlide{2}{
           \begin{equation*}
               \begin{cases}
@@ -95,8 +143,8 @@
   \begin{slide}[Box]{Hull-consistance :\\ 1\up{ère} étape}
     \slidetextsize
     \slidetextsize
-    \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull1.ps}}
-    \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull2.ps}}
+    %% \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull1.ps}}
+    %% \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull2.ps}}
     \fromSlide{2}{    \begin{equation*}
         (x-x_{c_1})²+(y-y_{c_1})² = r_{c_1}²
     \end{equation*}}
@@ -109,8 +157,8 @@
   \begin{slide}[Box]{Hull-consistance :\\ 2\up{ème} étape}
     \slidetextsize
     \slidetextsize
-    \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull2.ps}}
-    \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull3.ps}}
+    %% \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull2.ps}}
+    %% \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull3.ps}}
     \fromSlide{2}{    \begin{equation*}
        (x-x_{c_2})²+(y-y_{c_2})² = r_{c_2}²
     \end{equation*}}
@@ -123,8 +171,8 @@
   \begin{slide}[Box]{Hull-consistance :\\ 3\up{ème} étape}
     \slidetextsize
     \slidetextsize
-    \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull3.ps}}
-    \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull4.ps}}
+    %% \onlySlide*{1}{\centering \includegraphics[width=0.65\textwidth]{img/hull3.ps}}
+    %% \fromSlide{2}{\centering \includegraphics[width=0.65\textwidth]{img/hull4.ps}}
     \fromSlide{2}{    \begin{equation*}
         (x-x_{c_3})²+(y-y_{c_3})² = r_{c_3}²
     \end{equation*}}
