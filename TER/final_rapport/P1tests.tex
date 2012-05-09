@@ -31,7 +31,7 @@ Pour les Maps, une autre organisation des structures de données possible est la
  \item Chaque boîte contient deux Maps contenant les différentes informations :
 \begin{itemize}
  \item Une map pour l'ensemble des coordonnées de type \verb+Interval+.
-\item Une liste pour l'ensemble des caractéristiques stockées dans la boîte sous la forme d'Objects.
+\item Une liste pour l'ensemble des caractéristiques stockées dans la boîte sous la forme d'\verb+Objects+.
 \end{itemize}
 \end{itemize}
 
@@ -47,7 +47,7 @@ Pour les structures liste et tableau l'organisation des structures de données e
  \item Chaque boîte contient deux listes (ou tableaux) :
 \begin{itemize}
  \item Une liste pour l'ensemble des coordonnées de type \verb+Interval+.
-\item Une liste pour l'ensemble des caractéristiques de la boîte stockées sous la forme d'Objects
+\item Une liste pour l'ensemble des caractéristiques de la boîte stockées sous la forme d'\verb+Objects+
 \end{itemize}
 \end{itemize}
 
@@ -63,7 +63,7 @@ Les boîtes sont composées  de 4 ArrayLists :
   \item Une ArrayList pour les caractéristiques de type \verb+Interval+.
   \item Une ArrayList pour les caractéristiques de type \verb+Number+.
 \end{itemize}
-Il faut cependant savoir à quels indices se trouves les différents élément pour effectuer des accès directs. Pour cela, on dispose ici de quatre Maps globales :
+Il faut cependant savoir à quels indices se trouves les différents éléments pour effectuer des accès directs. Pour cela, on dispose ici de quatre Maps globales :
 \begin{itemize}
   \item Une Map pour l'ensemble des coordonnées de type \verb+Interval+.
   \item Une Map pour les caractéristiques de type \verb+String+.
@@ -80,12 +80,12 @@ Indice de l'objet dans le tableau de la boîte.
 
 
 \paragraph{Observations :}
-On propose trois cas de tests ou les Maps globales seront :
+On propose deux  cas de tests ou les Maps globales seront :
 \begin{itemize}
   \item Des HashMaps :  \ref{tab:hashmapglobal} 
   \item Des TreeMaps :  \ref{tab:treemapglobal} 
 \end{itemize}
-Les trois cas de tests nous renvoient des résultats relativement similaires mais qui se montrent aussi performants que les résultats de l'ArrayList. Il s'agit donc d'une organisation intéressante à étudier au niveau des temps d'accès.
+Les deux cas de tests nous renvoient des résultats relativement similaires mais qui se montrent aussi performants que les résultats de l'ArrayList. Il s'agit donc d'une organisation intéressante à étudier au niveau des temps d'accès.
 
 
 
