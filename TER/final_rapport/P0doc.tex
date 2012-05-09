@@ -1,6 +1,6 @@
 \section{Introduction }
 %Dans le cadre du module Initiation à la recherche, 
-L'objectif de ce chapitre est de décrire les notions essentielles à retenir en ce début de projet d'initiation à la recherche. Ces notions font parties d'un même sujet d'étude, au cœur des travaux de l'équipe \textsc{OPTI}. Elles concernent le sujet des contraintes et des intervalles. %Aussi des notions d'optimisation seront abordées.
+L'objectif de ce chapitre est de décrire les notions essentielles à retenir en ce début de projet d'\emph{Initiation à la recherche}. Ces notions font partie d'un même sujet d'étude, au cœur des travaux de l'équipe \textsc{OPTI}. Elles concernent le sujet des contraintes et des intervalles. %Aussi des notions d'optimisation seront abordées.
 
 \section{Présentation du problème}
 \subsection{Définition du contexte}
@@ -9,12 +9,12 @@ Un problème de satisfaction de contraintes (\textsc{CSP}) est défini par 3 él
 \item
 Un ensemble de variables $\mathbf{V} = \left\{ v_1, \dots ,v_n \right\}$.
 \item
-Un domaine de valeurs pour chaque variable. Chaque valeur du domaine $D_i$ associé à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times \dots \times D_n $.
+Un domaine de valeurs pour chaque variable. Chaque valeur du domaine $D_i$ associée à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times \dots \times D_n $.
 \item
 Un ensemble de contraintes (relations) $\mathbf{C}$ restreignant les variables de $\mathbf{V}$ défini ci-dessus :  $\mathbf{C} = \left\{c_1, \dots ,c_m\right\}$. 
 \end{itemize}
 
-On s'intéressera notamment à la résolution des \textsc{CSP} sur le domaine continu. Dans ce cas les domaines des variables seront des intervalles dans les réels et les contraintes seront généralement représentées par des équations et des inégalités. 
+On s'intéressera notamment à la résolution des \textsc{CSP} sur le domaine continu. Dans ce cas, les domaines des variables seront des intervalles dans les réels et les contraintes seront généralement représentées par des équations et des inégalités. 
 
 %\clearpage
 \subsection{Exemple}
@@ -49,11 +49,11 @@ Les méthodes formelles permettent de résoudre des systèmes d'équations ou d'
 
  Ces méthodes ont l'énorme avantage de retourner des solutions exactes d'un système d'équations, ou tout du moins de minimiser l'utilisation de l'arithmétique flottante. Elles tenteront donc de résoudre le problème \ref{eq} en effectuant uniquement des opérations sur les équations sans évaluer les variables. On pourra donc avoir des expressions pour $x$ et $y$ représentant les solutions du problème de façon symbolique. 
 
-Cependant les résolutions de problèmes par des méthodes formelles sont forcément restreintes par les possibilités du calcul symbolique et ne pourront donc pas toujours offrir de solution générale et mettent en œuvre des algorithmes de complexité exponentielles. Il n'existe par exemple pas de formules générales permettant de trouver les solutions d'un polynôme de degré supérieur ou égal à cinq.
+Cependant les résolutions de problèmes par des méthodes formelles sont forcément restreintes par les possibilités du calcul symbolique. Elles ne pourront donc pas toujours offrir de solution générale et mettent en œuvre des algorithmes de complexité exponentielles. Il n'existe par exemple pas de formules générales permettant de trouver les solutions d'un polynôme de degré supérieur ou égal à cinq.
 
 
 \subsection{Méthodes numériques}
-Les méthodes numériques consistent à évaluer de façon calculatoire la ou les solutions d'un problème. En effet elles sont capables d'essayer de résoudre n'importe quel système d'équations (ou d'égalités). Ainsi dans le cas du problème \ref{eq} la machine va effectuer directement les calculs pour évaluer le résultats. Or l'utilisation de la représentation flottante et de son arithmétique pour simuler les opérations réelles va entraîner une diffusion et une augmentation de l'erreur de calcul, à tel point que l'on ne peut  parfois plus assurer la validité d'une solution. On pourra d'ailleurs citer à titre d'exemple le problème de l'inversion d'une matrice mal conditionnée\cite{Conditionnement}. 
+Les méthodes numériques consistent à évaluer de façon calculatoire la ou les solutions d'un problème. En effet elles sont capables d'essayer de résoudre n'importe quel système d'équations (ou d'égalités). Ainsi dans le cas du problème \ref{eq} la machine va effectuer directement les calculs pour évaluer le résultat. Or l'utilisation de la représentation flottante et de son arithmétique pour simuler les opérations réelles va entraîner une diffusion et une augmentation de l'erreur de calcul, à tel point que l'on ne peut  parfois plus assurer la validité d'une solution. On pourra d'ailleurs citer à titre d'exemple le problème de l'inversion d'une matrice mal conditionnée\cite{Conditionnement}. 
 
 Cependant ces calculs numériques utilisés  par des méthodes de résolutions par intervalles permettent de contourner ces problèmes. Pour plus de détails sur la représentation flottante, on pourra se référer à la thèse de Frédéric \textsc{Goualard}\footnote{Notamment dans la première Partie : \emph{Chapitre 1 : L’arithmétique flottante}} \cite{Goualard}.
 

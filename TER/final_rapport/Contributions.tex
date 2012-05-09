@@ -3,11 +3,12 @@
 
 \section{Introduction}%{\color{red} À discuter}
 
-L'objectif de ce chapitre est de mener une étude sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Dans une première partie, nous nous intéresserons à l'opération d'accès à une caractéristique ou d'une donnée d'une boîte ainsi qu'à l'occupation mémoire de cette dernière. Les problématiques liées à l'implémentation d'un pavage (ensemble de boîtes) sont par la suite abordées. Il s'appuie sur le document de spécifications (\cf{}  Annexe \ref{sec:spe}). Dans ce chapitre, les calculs de complexité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème.
+L'objectif de ce chapitre est de mener une étude sur les différentes structures de données nécessaires aux futurs algorithmes de visualisation. Dans une première partie, nous nous intéresserons à l'opération d'accès à une caractéristique ou d'une donnée d'une boîte, ainsi qu'à l'occupation mémoire de cette dernière. Les problématiques liées à l'implémentation d'un pavage (ensemble de boîtes) sont par la suite abordées. Cette partie s'appuie sur le document de spécifications (\cf{}  Annexe \ref{sec:spe}).
 
 
 La seconde partie sera consacrée à la recherche de structures efficaces pour la réalisation du logiciel de visualisation. Nous tenterons de répondre aux problèmes de gestion d'un grand nombre de boîtes, ainsi que ceux liés aux changements des variables de projection du pavage.
 
+ Dans ce chapitre, les calculs de complexité seront réalisés selon le paramètre $n$  représentant le nombre de boîtes, et $d$ est le nombre de dimensions du problème.
 
 
 
@@ -28,7 +29,7 @@ C'est l'entité atomique du pavage. Les accès à ses attributs sont donc crucia
 \item Le temps de calcul (valeur numérique).
   \end{itemize}
 \end{itemize}
-Ces données seront régulièrement requises lors de la mise en œuvre des algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voire directs. Pour le cas de l'identifiant, s'agissant d'une simple \verb+String+ le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. {\color{red} Comment prendre en compte le polymorphisme des caractéritiques ? } Plusieurs possibilités sont alors envisageables : 
+Ces données seront régulièrement requises lors de la mise en œuvre des algorithmes nécessaires à la visualisation. Il est donc important que leurs accès soient rapides, voire directs. Pour le cas de l'identifiant, s'agissant d'une simple \verb+String+ le problème de la structure à utiliser ne se pose pas. Pour la liste des coordonnées en revanche, il s'agit d'une séquence finie de données. Plusieurs possibilités sont alors envisageables : 
 
 \begin{itemize}
 \item
@@ -52,7 +53,7 @@ Le passage en revue de ces différentes structures écarte la liste et la table 
 %La création d'une boîte a alors une complexité en $O(d)$. De plus l'accès aux différents attributs de la boîte (identifiant, liste des coordonnées) sera en $O(1)$.
 
 \subsubsection{Généricité des caractéristiques}
-Un problème majeur apparaît pour l'instanciation des boîtes. On rappelle qu'une caractéristique à plusieurs types (\verb+String+, \verb+Number+ ou \verb+Interval+). Plusieurs solutions sont envisageables : 
+Un problème majeur apparaît pour l'instanciation des boîtes :  comment prendre en compte le polymorphisme des caractéritiques ? On rappelle qu'une caractéristique à plusieurs types (\verb+String+, \verb+Number+ ou \verb+Interval+). Plusieurs solutions sont envisageables : 
 \begin{itemize}
 \item
   Une Map unique contenant des \verb+String+ stocke les différentes caractéristiques de la boîte. On aura casté les attributs \verb+Number+ ou \verb+Interval+ en \verb+String+. Il sera alors nécessaire, pour chaque futur accès, d'effectuer un cast dynamique. On rajoute alors une constante supplémentaire à la complexité de cette opération. 

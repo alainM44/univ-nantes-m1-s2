@@ -21,7 +21,7 @@ Dans le cas d’une fonction non monotone comme le cosinus, on découpe les inte
 \end{figure} %on ferme l'environnement figure
 
 
-Une liste non-exhaustive des opérations de cet opérateur est listée dans \cite{Goualard}.
+Une liste non-exhaustive de ces opérations est décrite dans \cite{Goualard}.
 
 
 
@@ -34,7 +34,7 @@ Une liste non-exhaustive des opérations de cet opérateur est listée dans \cit
    \caption{Intersection de deux cercles} %la légende
   \label{fig:Deuxcerlces} %la légende	
 \end{figure} %on ferme l'environnement figure
-{\color{red}On visualise sur la figure \ref{fig:Deuxcerlces} que les solutions sont encadrées par des \og boîtes \fg{} rouges, et non réduites à des points. }
+On visualise sur la figure \ref{fig:Deuxcerlces} que les solutions sont encadrées par des \og boîtes \fg{} rouges, et non réduites à des points. 
 \clearpage
 Dans le cas du problème \ref{eq2}, il serait possible d'avoir des solutions différentes selon la consistance choisie. Avec une \emph{Hull-consistance}, nous obtiendrions une boite contenant les deux solutions mais aussi une bonne partie de l'intersection des deux cercles. La \emph{3B-consistance} est une méthode plus puissante. Cette méthode vérifie, à l'instanciation de deux variables, toutes les contraintes. Une illustration des différences entre ces deux méthodes est proposée sur la figure \ref{fig:3Bconst}. Le problème résolu est celui de l'intersection de deux disques.
 \begin{figure}[ht!] %on ouvre l'environnement figure
@@ -47,7 +47,7 @@ Dans le cas du problème \ref{eq2}, il serait possible d'avoir des solutions dif
 
 \subsection{Exemples d'application}
 
-La précision de la méthode attirent le monde industriel. Notamment les applications composées de contraintes géométriques comme la robotique. La figure \ref{fig:rob} illustre un robot avec deux points d'encrage ($P_1$ et $P_2$) possédant chacun un bras rotatif de longueurs respectives [$L_1$] et [$L_2$] et orientés respectivement par les angles $\alpha_1$ et $\alpha_2$. Ces bras sont composés de pistons permettant d'ajuster leurs longueurs. Ainsi leurs longueurs de bras sont comprises respectivement entre $[L_{1min} \dots L_{1max}]$ et $[L_{2min} \dots L_{2max}]$ et les angles entre $[\alpha_{1min} \dots \alpha_{1max}]$ et $[\alpha_{2min} \dots \alpha_{2max}]$.  
+La précision de la méthode attire le monde industriel. Notamment les applications composées de contraintes géométriques comme la robotique. La figure \ref{fig:rob} illustre un robot avec deux points d'encrage ($P_1$ et $P_2$) possédant chacun un bras rotatif de longueurs respectives [$L_1$] et [$L_2$] et orientés respectivement par les angles $\alpha_1$ et $\alpha_2$. Ces bras sont composés de pistons permettant d'ajuster leurs longueurs. Ainsi leurs longueurs de bras sont comprises respectivement entre $[L_{1min} \dots L_{1max}]$ et $[L_{2min} \dots L_{2max}]$ et les angles entre $[\alpha_{1min} \dots \alpha_{1max}]$ et $[\alpha_{2min} \dots \alpha_{2max}]$.  
 
 \begin{figure}[h] %on ouvre l'environnement figure
   \center
@@ -55,7 +55,7 @@ La précision de la méthode attirent le monde industriel. Notamment les applica
   \caption{Exemples d'application dans la robotique} %la légende
  \label{fig:rob} %la légende
 \end{figure} %on ferme l'environnement figure
-L'objectif est de connaître l'ensemble des emplacements possibles pour la main du robots en fonction des paramètres donnés ci-dessus. Dans le cas de la figure \ref{fig:rob}, on peut considérer que les $L_{imin}$ sont nulles et que les bras puissent effectuer des rotations de $360 \degres$. Ainsi le problème consiste à retrouver l'intersection de deux disques. 
+L'objectif est de connaître l'ensemble des emplacements possibles pour la main du robots en fonction des paramètres donnés ci-dessus. Dans le cas de la figure \ref{fig:rob}, on peut considérer que les $L_{imin}$ sont nulles et que les bras peuvent effectuer des rotations de $360 \degres$. Ainsi le problème consiste à retrouver l'intersection de deux disques. 
 
   Par ailleurs, ces méthodes intéressent régulièrement les industriels. On retrouve en effet dans \cite{Schichl}, les détails d'applications dans le secteur de la chimie industrielle mais aussi dans celui de la biologie avec une étude sur les protéines. La science fondamentale met aussi en application ces outils. C'est le cas en mathématique par exemple de problèmes tel que la conjecture de \textsc{Kepler} ou encore le  maximum de clique.
 

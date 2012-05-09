@@ -1,6 +1,6 @@
 \section{Chargement de pavages}
 \label{chap:Chargement}
-Pour la génération des boîtes le nombre de caractéristiques est fixé à 20 et la dimension du pavage à 100. Ces valeurs ont été choisies car elles peuvent être considérées comme les valeurs au pire renvoyées par \realpaver. Cependant les caractéristiques pouvant être de différents types et ne connaissant pas la probabilité d'apparition de chacun de ces types, nous avons préféré construire des caractéristiques, générées aléatoirement, de chaque type en proportion un tiers (sept Number, sept String, six Interval). 
+Pour la génération des boîtes le nombre de caractéristiques est fixé à 20 et la dimension du pavage à 100. Ces valeurs ont été choisies car elles peuvent être considérées comme les valeurs maximales renvoyées par \realpaver. Cependant les caractéristiques pouvant être de différents types et ne connaissant pas la probabilité d'apparition de chacun de ces types, nous avons préféré construire des caractéristiques, générées aléatoirement, de chaque type en proportion un tiers (sept \verb+Number+, sept \verb+String+, six \verb+Interval+). 
 
 Tous les résultats sont répertoriés dans la partie \ref{sec:creation}.
 
@@ -12,7 +12,7 @@ Pour les Maps l'organisation des structures de données est la suivante :
 \item Il n'y a aucune structure de données globale, tout est stocké au niveau de la boîte. On a donc dans chaque boîte l'identifiant et la valeur de chaque caractéristique ou intervalle.
  \item Chaque boîte contient quatre Maps contenant les différentes informations :
 \begin{itemize}
- \item Une Map pour l'ensemble des {\color{red}intervalles coordonnées.}
+ \item Une Map pour l'ensemble des coordonnées de type \verb+Interval+.
 \item Une Map pour les caractéristiques de type \verb+String+.
 \item Une Map pour les caractéristiques de type \verb+Interval+.
 \item Une Map pour les caractéristiques de type \verb+Number+.
@@ -25,12 +25,12 @@ Il est encore difficile de déterminer laquelle de la TreeMap ou de la HashMap e
 
 
 \subsubsection{Pavage avec une seconde proposition de structure}
-Pour les map, une autre organisation des structures de données possible est la suivante :
+Pour les Maps, une autre organisation des structures de données possible est la suivante :
 \begin{itemize}
 \item Il y a une HashMap globale contenant le type de chaque caractéristique.
  \item Chaque boîte contient deux Maps contenant les différentes informations :
 \begin{itemize}
- \item Une map pour l'ensemble des intervalles coordonnées.
+ \item Une map pour l'ensemble des coordonnées de type \verb+Interval+.
 \item Une liste pour l'ensemble des caractéristiques stockées dans la boîte sous la forme d'Objects.
 \end{itemize}
 \end{itemize}
@@ -39,13 +39,14 @@ Pour les map, une autre organisation des structures de données possible est la 
 Nous n'observons pas de différence nette, par rapport à la première proposition, quant au temps de construction et de l'occupation mémoire. Cette structure nécessitant d'effectuer un cast à chaque accès, il est plus avantageux de conserver la première structure.
 
 
+
 \subsection{Listes et Tableaux internes}
 Pour les structures liste et tableau l'organisation des structures de données est la suivante :
 \begin{itemize}
 \item Il y a une HashMap globale contenant le type de chaque caractéristique.
  \item Chaque boîte contient deux listes (ou tableaux) :
 \begin{itemize}
- \item Une liste pour l'ensemble des intervalles coordonnées.
+ \item Une liste pour l'ensemble des coordonnées de type \verb+Interval+.
 \item Une liste pour l'ensemble des caractéristiques de la boîte stockées sous la forme d'Objects
 \end{itemize}
 \end{itemize}
@@ -57,14 +58,14 @@ On peut constater que les structures de données en liste sont bien meilleures v
 \subsection{Maps globales}
 Les boîtes sont composées  de 4 ArrayLists : 
 \begin{itemize}
-  \item Une ArrayList pour l'ensemble des intervalles coordonnées.
+  \item Une ArrayList pour l'ensemble des coordonnées de type \verb+Interval+.
   \item Une ArrayList pour les caractéristiques de type \verb+String+.
   \item Une ArrayList pour les caractéristiques de type \verb+Interval+.
   \item Une ArrayList pour les caractéristiques de type \verb+Number+.
 \end{itemize}
 Il faut cependant savoir à quels indices se trouves les différents élément pour effectuer des accès directs. Pour cela, on dispose ici de quatre Maps globales :
 \begin{itemize}
-  \item Une Map pour l'ensemble des intervalles coordonnées.
+  \item Une Map pour l'ensemble des coordonnées de type \verb+Interval+.
   \item Une Map pour les caractéristiques de type \verb+String+.
   \item Une Map pour les caractéristiques de type \verb+Interval+.
   \item Une Map pour les caractéristiques de type \verb+Number+.
