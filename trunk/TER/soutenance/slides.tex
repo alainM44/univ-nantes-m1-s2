@@ -158,47 +158,46 @@
   \end{slide}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% \overlays{3}{
-%%   \begin{slide}[Box]{Exemple de \emph{Branch and Prune} :\\  Intersection de deux cercles}
-%%     \slidetextsize
-%%     \onlySlide*{1}{1\up{ère} Étape : \emph{Pruning}
-%%       \begin{figure}[t]
-%%         \begin{center}
-%%           \includegraphics[width=0.65\textwidth]{img/BP}
-%%         \end{center}
-%%       \end{figure}
-%%     }      
-%%     \onlySlide*{2}{2\up{nd} Étape : \emph{Branch}
-%%       \begin{figure}[t]
-%%         \begin{center}
-%%           \includegraphics[width=0.65\textwidth]{img/BP2}
-%%         \end{center}
-%%       \end{figure}
-%%     }
-%%     \fromSlide{3}{3\up{ème} Étape :\emph{Pruning}
-%%       \begin{figure}[t]
-%%         \begin{center}
+\overlays{3}{
+  \begin{slide}[Box]{Exemple de \emph{Branch and Prune} :\\  Intersection de deux cercles}
+    \slidetextsize
+    \onlySlide*{1}{1\up{ère} Étape : \emph{Pruning}
+      \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.65\textwidth]{img/BP}
+        \end{center}
+      \end{figure}
+    }      
+    \onlySlide*{2}{2\up{nd} Étape : \emph{Branch}
+      \begin{figure}[t]
+        \begin{center}
+          \includegraphics[width=0.65\textwidth]{img/BP2}
+        \end{center}
+      \end{figure}
+    }
+    \fromSlide{3}{3\up{ème} Étape :\emph{Pruning}
+      \begin{figure}[t]
+        \begin{center}
           
-%%           \includegraphics[width=0.65\textwidth]{img/BP3}
-%%         \end{center}
-%%       \end{figure}
-%%     }
+          \includegraphics[width=0.65\textwidth]{img/BP3}
+        \end{center}
+      \end{figure}
+    }
 
-%% \end{slide}}
+\end{slide}}
 
 \overlays{4}{
   \begin{slide}[Box]{Domaine de recherche}
     \slidetextsize
     \textbf{Définition d'un \textsc{CSP}}\\
   \begin{Itemize}
-      \fromSlide{2}{  \item
-    Un ensemble de variables $\mathbf{V} = \left\{ v_1, \dots ,v_n \right\}$.}
-      \fromSlide{3}{  \item
-        Un domaine de valeurs  $D_i$ pour chaque variable $v_i$  \\ avec $\mathbf{D} =D_1 \times \dots \times D_n $.
-      Chaque valeur du domaine $D_i$ associée à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times \dots \times D_n $.}
-      \fromSlide{4}{  \item
-    Un ensemble de contraintes :  $\mathbf{C} = \left\{c_1, \dots ,c_m\right\}$. }
-    \end{Itemize}
+    \fromSlide{2}{  \item
+      Un ensemble de variables $\mathbf{V} = \left\{ v_1, \dots ,v_n \right\}$.}
+    \fromSlide{3}{  \item
+      Un domaine de valeurs  $D_i$ pour chaque variable $v_i$  \\ avec $\mathbf{D} =D_1 \times \dots \times D_n $.}
+    \fromSlide{4}{  \item
+      Un ensemble de contraintes :  $\mathbf{C} = \left\{c_1, \dots ,c_m\right\}$. }
+  \end{Itemize}
   \end{slide}
 }
 
@@ -223,7 +222,7 @@
     \emph{Hull-consistance} : 1\up{ère} étape
       \begin{figure}[t]
         \begin{center}
-          \includegraphics[width=0.65\textwidth]{img/hull1}
+          \includegraphics[width=0.55\textwidth]{img/hull1}
         \end{center}
       \end{figure}
       \begin{equation*}
@@ -234,7 +233,7 @@
     \emph{Hull-consistance} : 2\up{nd} étape
       \begin{figure}[t]
         \begin{center}
-          \includegraphics[width=0.65\textwidth]{img/hull2}
+          \includegraphics[width=0.55\textwidth]{img/hull2}
         \end{center}
       \end{figure}
    \begin{equation*}
@@ -245,7 +244,7 @@
     \emph{Hull-consistance} : 3\up{ère} étape
       \begin{figure}[t]
         \begin{center}
-          \includegraphics[width=0.65\textwidth]{img/hull3}
+          \includegraphics[width=0.55\textwidth]{img/hull3}
         \end{center}
       \end{figure}
     \begin{equation*}
@@ -259,7 +258,7 @@
   \begin{slide}[Box]{Realpaver : présentation}
     \slidetextsize
     Méthodes de résolutions de contraintes géométriques par propagation d’intervalles.
-   %% \begin{figure}[t]\centering \includegraphics[width=0.35\textwidth]{img/disk-disk.ps}\end{figure}
+    \begin{figure}[t]\centering \includegraphics[width=0.35\textwidth]{img/disk-disk.ps}\end{figure}
   \end{slide}
  %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 \begin{slide}{Realpaver : exemple de modèle}
@@ -346,7 +345,6 @@ Elapsed time: 150 ms
   \end{slide}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
   \begin{slide}[Box]{Étude des structures de données pour une boîte}
     \textbf{Tests expérimentaux}
     \begin{table}[h]
@@ -367,8 +365,7 @@ Elapsed time: 150 ms
     \end{table}
     Relevé des temps CPU d'accès au caractéristiques en secondes
   \end{slide}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \overlays{5}{
   \begin{slide}[Box]{Étude des structures de données pour un pavage}
     \textbf{Structure de données}
@@ -382,8 +379,7 @@ Elapsed time: 150 ms
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{slide}[Box]{Visualisation : QuadTree}
-    %    \slidetextsiz
-        \textbf{Exemple de représentation}
+    \textbf{Exemple de représentation}
       \begin{figure}[t]
         \begin{center}
           \includegraphics[width=0.55\textwidth]{img/quadtree}
@@ -421,8 +417,7 @@ Classification visuelle des cas d'arrêts et de récursions
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \begin{slide}[Box]{Visualisation : QuadTree}
-    %    \slidetextsiz
-    \textbf{Cas de superposition des boîtes}
+      \textbf{Cas de superposition des boîtes}
       \begin{figure}[t]
         \begin{center}
           \includegraphics[width=0.25\textwidth]{img/QT8}
@@ -433,8 +428,7 @@ Classification visuelle des cas d'arrêts et de récursions
 
 \overlays{6}{
   \begin{slide}[Box]{Visualisation : QuadTree}
-    %    \slidetextsiz
-    \textbf{Le problème des \emph{frontières}}
+      \textbf{Le problème des \emph{frontières}}
    \onlySlide*{1}{
    \begin{figure}[t]
         \begin{center}
@@ -482,8 +476,7 @@ Classification visuelle des cas d'arrêts et de récursions
 }
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{slide}[Box]{Visualisation : R-Tree}
-    %    \slidetextsiz
-        \textbf{Exemple de représentation}
+          \textbf{Exemple de représentation}
       \begin{figure}[t]
 
         \begin{center}
@@ -505,15 +498,13 @@ Classification visuelle des cas d'arrêts et de récursions
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \begin{slide}[Box]{Visualisation : R-Tree}
-    %    \slidetextsiz
-    \textbf{Hauteur de l'arbre et nombre de nœuds au pire cas}
+      \textbf{Hauteur de l'arbre et nombre de nœuds au pire cas}
     \begin{Itemize}
     \item Hauteur
       \begin{equation*}
         h_{max} = \left\lceil\log_{m} n\right\rceil - 1
       \end{equation*}
-      
-    \item Nombre de nœuds
+      \item Nombre de nœuds
       \begin{equation*}
         N_{noeuds}=\sum_{i=1}^{h_{max}}{\left\lceil\frac{n}{m^i}\right\rceil}
       \end{equation*}
