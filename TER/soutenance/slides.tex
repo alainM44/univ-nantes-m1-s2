@@ -158,33 +158,33 @@
   \end{slide}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\overlays{3}{
-  \begin{slide}[Box]{Exemple de \emph{Branch and Prune} :\\  Intersection de deux cercles}
-    \slidetextsize
-    \onlySlide*{1}{1\up{ère} Étape : \emph{Pruning}
-      \begin{figure}[t]
-        \begin{center}
-          \includegraphics[width=0.65\textwidth]{img/BP}
-        \end{center}
-      \end{figure}
-    }      
-    \onlySlide*{2}{2\up{nd} Étape : \emph{Branch}
-      \begin{figure}[t]
-        \begin{center}
-          \includegraphics[width=0.65\textwidth]{img/BP2}
-        \end{center}
-      \end{figure}
-    }
-    \fromSlide{3}{3\up{ème} Étape :\emph{Pruning}
-      \begin{figure}[t]
-        \begin{center}
+%% \overlays{3}{
+%%   \begin{slide}[Box]{Exemple de \emph{Branch and Prune} :\\  Intersection de deux cercles}
+%%     \slidetextsize
+%%     \onlySlide*{1}{1\up{ère} Étape : \emph{Pruning}
+%%       \begin{figure}[t]
+%%         \begin{center}
+%%           \includegraphics[width=0.65\textwidth]{img/BP}
+%%         \end{center}
+%%       \end{figure}
+%%     }      
+%%     \onlySlide*{2}{2\up{nd} Étape : \emph{Branch}
+%%       \begin{figure}[t]
+%%         \begin{center}
+%%           \includegraphics[width=0.65\textwidth]{img/BP2}
+%%         \end{center}
+%%       \end{figure}
+%%     }
+%%     \fromSlide{3}{3\up{ème} Étape :\emph{Pruning}
+%%       \begin{figure}[t]
+%%         \begin{center}
           
-          \includegraphics[width=0.65\textwidth]{img/BP3}
-        \end{center}
-      \end{figure}
-    }
+%%           \includegraphics[width=0.65\textwidth]{img/BP3}
+%%         \end{center}
+%%       \end{figure}
+%%     }
 
-\end{slide}}
+%% \end{slide}}
 
 \overlays{4}{
   \begin{slide}[Box]{Domaine de recherche}
@@ -194,8 +194,8 @@
       \fromSlide{2}{  \item
     Un ensemble de variables $\mathbf{V} = \left\{ v_1, \dots ,v_n \right\}$.}
       \fromSlide{3}{  \item
-   Un domaine de valeurs  $D_i$ pour chaque variable $v_i$  \\ avec $\mathbf{D} =D_1 \times \dots \times D_n $.}
-Chaque valeur du domaine $D_i$ associée à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times \dots \times D_n $.}
+        Un domaine de valeurs  $D_i$ pour chaque variable $v_i$  \\ avec $\mathbf{D} =D_1 \times \dots \times D_n $.
+      Chaque valeur du domaine $D_i$ associée à la variable $v_i$ est une valeur que peut potentiellement prendre $v_i$ : $\mathbf{D} = D_1 \times \dots \times D_n $.}
       \fromSlide{4}{  \item
     Un ensemble de contraintes :  $\mathbf{C} = \left\{c_1, \dots ,c_m\right\}$. }
     \end{Itemize}
@@ -259,7 +259,7 @@ Chaque valeur du domaine $D_i$ associée à la variable $v_i$ est une valeur que
   \begin{slide}[Box]{Realpaver : présentation}
     \slidetextsize
     Méthodes de résolutions de contraintes géométriques par propagation d’intervalles.
-   \begin{figure}[t]\centering \includegraphics[width=0.35\textwidth]{img/disk-disk.ps}\end{figure}
+   %% \begin{figure}[t]\centering \includegraphics[width=0.35\textwidth]{img/disk-disk.ps}\end{figure}
   \end{slide}
  %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 \begin{slide}{Realpaver : exemple de modèle}
@@ -313,7 +313,7 @@ Elapsed time: 150 ms
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \overlays{4}{
   \begin{slide}[Box]{Définition d'une boîte}
-       \slidetextsiz
+       \slidetextsize
     \textbf{Entité atomique du pavage}
     \begin{Itemize}
       \fromSlide{2}{\item Un identifiant 
@@ -324,7 +324,7 @@ Elapsed time: 150 ms
       \fromSlide{3}{\item Une liste de coordonnées
         \begin{Itemize}
         \item INTERVAL
-²      \end{Itemize}}
+      \end{Itemize}}
       \fromSlide{4}{\item Une liste des caractéristiques
         \begin{Itemize}
         \item NUMBER
